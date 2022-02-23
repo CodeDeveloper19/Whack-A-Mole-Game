@@ -222,7 +222,9 @@ var count;
 var difficulty;  /* Use this to set how fast the mole will be spawned (difficulty*/
 var counts;
 var timeds;
+var highscore = [];
 var popss;
+var difficult = document.getElementById("difficulty");
 var audio1 = new Audio('splat.mp3');
 var easy1 = document.getElementById("easy");
 var medium1 = document.getElementById("medium");
@@ -245,6 +247,7 @@ function begin (){
         document.getElementById("results").style.visibility = "hidden";
         document.getElementById("timers").style.visibility = "visible";
         document.getElementById("main").style.visibility = "visible";
+        selection(); /*This function set a difficulty level under the high scores*/
     }
 }
 
@@ -272,10 +275,6 @@ function previous(){
     document.getElementById("instructions1").style.visibility = "visible";
 }
 
-function end(){
-    close();
-}
-
 function easy(){
     easy1.classList.add("change");
     medium1.classList.remove("change");
@@ -297,7 +296,7 @@ function hard(){
     medium1.classList.remove("change");
     hard1.classList.add("change");
     counts = 3;
-    difficulty = 550;
+    difficulty = 350;
 }
 
 function thirty(){
@@ -350,14 +349,24 @@ function twoforty(){
     time = 240; 
 }
 
-function mainmenu(){
+function reset(){
     difficulty = undefined;
     count = undefined;
     counts = undefined;
     time = undefined;
     counter = 0;
-    document.getElementById("instructions").style.visibility = "visible";
-    document.getElementById("instructions12").style.visibility = "visible";
+
+    document.getElementById("score1").innerHTML = ""
+    document.getElementById("score2").innerHTML = ""
+    document.getElementById("score3").innerHTML = ""
+    document.getElementById("score4").innerHTML = ""
+    document.getElementById("score5").innerHTML = ""
+    document.getElementById("score6").innerHTML = ""
+    document.getElementById("score7").innerHTML = ""
+    document.getElementById("score8").innerHTML = ""
+    document.getElementById("score9").innerHTML = ""
+    document.getElementById("score10").innerHTML = ""
+    highscore = [];
 
     thirty1.classList.remove("change");
     sixty1.classList.remove("change");
@@ -370,9 +379,27 @@ function mainmenu(){
     hard1.classList.remove("change");
 }
 
+function mainmenu(){
+    reset();
+    document.getElementById("instructions").style.visibility = "visible";
+    document.getElementById("instructions12").style.visibility = "visible";
+}
+
+function mainmenu2(){
+    mainmenu();
+    clearInterval (timeds);
+    clearInterval (popss);
+}
+
+function end(){
+    reset();
+    document.getElementById("introduction").style.visibility = "visible";
+    document.getElementById("instructions").style.visibility = "visible";
+    document.getElementById("instructions1").style.visibility = "visible";
+}
+
 function timer() {
     if (time > 0 && pausee != true) {
-        console.log("B");
         time -=1;
         document.getElementById("timer").innerHTML = time;
     }
@@ -380,6 +407,7 @@ function timer() {
         clearInterval (timeds);
         clearInterval (popss);
         document.getElementById("results").style.visibility = "visible"
+        highscores();
     }
 }
 
@@ -413,7 +441,7 @@ function retry(){
             difficulty = 750;
             break;
         case 3:
-            difficulty = 550;
+            difficulty = 350;
             break;
     }
 
@@ -424,4 +452,56 @@ function retry(){
 function music() {
     audio1.play();
 }
+
+function highscores(){
+    highscore.push(counter);
+    highscore = highscore.sort((a,b)=>b-a);
+
+    if (highscore[0] != undefined){
+        document.getElementById("score1").innerHTML = highscore[0];
+    }
+    if (highscore[1] != undefined){
+        document.getElementById("score2").innerHTML = highscore[1];
+    }
+    if (highscore[2] != undefined){
+        document.getElementById("score3").innerHTML = highscore[2];
+    }
+    if (highscore[3] != undefined){
+        document.getElementById("score4").innerHTML = highscore[3];
+    }
+    if (highscore[4] != undefined){
+        document.getElementById("score5").innerHTML = highscore[4];
+    }
+    if (highscore[5] != undefined){
+        document.getElementById("score6").innerHTML = highscore[5];
+    }
+    if (highscore[6] != undefined){
+        document.getElementById("score7").innerHTML = highscore[6];
+    }
+    if (highscore[7] != undefined){
+        document.getElementById("score8").innerHTML = highscore[7];
+    }
+    if (highscore[8] != undefined){
+        document.getElementById("score9").innerHTML = highscore[8];
+    }
+    if (highscore[9] != undefined){
+        document.getElementById("score10").innerHTML = highscore[9];
+    }
+}
+
+function selection(){
+    switch(counts){
+        case 1: 
+            difficult.innerHTML = "(Easy)";
+            break;
+        case 2:
+            difficult.innerHTML = "(Medium)";
+            break;
+        case 3:
+            difficult.innerHTML = "(Hard)";
+            break;
+    }
+}
+
+
 

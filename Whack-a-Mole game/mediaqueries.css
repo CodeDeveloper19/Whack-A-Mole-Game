@@ -30,8 +30,8 @@
         max-height: 40px;
     }
 
-    .main{
-        width: 250px;
+    #main{
+        width: 150px;
     }
 
     .col1, .col2{
@@ -49,7 +49,7 @@
 
     .pauseorplay{
     position: absolute;
-    bottom: 30px;
+    bottom: 50px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -57,11 +57,31 @@
     }
 
     .pause, .play{
-        width: 30%;
+        width: 25%;
     }
 
     .pause{
-        margin-right: 50px;
+        margin-right: 30px;
+    }
+
+    .highscores{
+        left: 10%;
+        top: 65%;
+        height: 90px;
+        width: 80%;
+        border-radius: 7px;
+    }
+
+    .highscores h1{
+        font-size: 14px;
+    }
+
+    .scorer{
+        font-size: 8.6px;
+    }
+
+    #difficulty{
+        font-size: 6.8px;
     }
 
     .result{
@@ -183,7 +203,6 @@
     }
 }
 
-
 @media screen and (min-width: 320px) and (max-width: 480px) {
     #hole{
         max-width: 40px;
@@ -197,8 +216,14 @@
         max-height: 40px;
     }
 
-    .main{
+    #main{
         width: 250px;
+    }
+
+    #sound{
+        width: 25px;
+        height: 25px;
+        bottom: 8%;
     }
 
     .col1, .col2{
@@ -212,11 +237,12 @@
     .result{
         height: 150px;
         width: 250px;
+        font-size: 7px;
     }
 
     .pauseorplay{
     position: absolute;
-    bottom: 30px;
+    bottom: 65px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -224,15 +250,31 @@
     }
 
     .pause, .play{
-        width: 30%;
+        width: 25%;
     }
 
     .pause{
-        margin-right: 50px;
+        margin-right: 30px;
     }
 
-    .result{
-        font-size: 7px;
+    .highscores{
+        left: 10%;
+        top: 62%;
+        height: 90px;
+        width: 80%;
+        border-radius: 7px;
+    }
+
+    .highscores h1{
+        font-size: 15px;
+    }
+
+    .scorer{
+        font-size: 9.6px;
+    }
+
+    #difficulty{
+        font-size: 7.8px;
     }
 
     button{
@@ -363,8 +405,9 @@
         max-height: 60px;
     }
 
-    .main{
-        width: 250px;
+    #main{
+        top: 40%;
+        width: 70%;
     }
 
     .col1, .col2{
@@ -375,19 +418,16 @@
         left: 5%;
     }
 
-    .main{
-        width: 70%;
-    }
-
     .result{
         height: 200px;
         width: 350px;
-        border-radius: 15x;
+        border-radius: 15px;
+        font-size: 10px;
     }
 
     .pauseorplay{
         position: absolute;
-        bottom: 15px;
+        bottom: 55px;
         width: 100%;
         display: flex;
         flex-direction: row;
@@ -395,15 +435,31 @@
         }
     
     .pause, .play{
-        width: 30%;
+        width: 25%;
     }
 
     .pause{
-        margin-right: 50px;
+        margin-right: 30px;
     }
 
-    .result{
-        font-size: 10px;
+    .highscores{
+        left: 10%;
+        top: 65%;
+        height: 80px;
+        width: 80%;
+        border-radius: 7px;
+    }
+
+    .highscores h1{
+        font-size: 16px;
+    }
+
+    .scorer{
+        font-size: 10.6px;
+    }
+
+    #difficulty{
+        font-size: 8.8px;
     }
 
     button{
@@ -534,8 +590,8 @@
         max-height: 85px;
     }
 
-    .main{
-        width: 250px;
+    #main{
+        width: 55%;
     }
 
     .col1, .col2{
@@ -546,10 +602,6 @@
         left: 5%;
     }
 
-    .main{
-        width: 70%;
-    }
-
     .result{
         height: 300px;
         width: 450px;
@@ -558,7 +610,7 @@
 
     .pauseorplay{
         position: absolute;
-        bottom: 0px;
+        bottom: 60px;
         width: 100%;
         display: flex;
         flex-direction: row;
@@ -566,11 +618,29 @@
         }
     
     .pause, .play{
-        width: 30%;
+        height: 50%;
+        width: 25%;
     }
 
     .pause{
-        margin-right: 50px;
+        margin-right: 30px;
+    }
+
+    .highscores{
+        height: 300px;
+        border-radius: 7px;
+    }
+
+    .highscores h1{
+        font-size: 18px;
+    }
+
+    .scorer{
+        font-size: 12.6px;
+    }
+
+    #difficulty{
+        font-size: 10.8px;
     }
 
     .result{
@@ -693,68 +763,11 @@
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1440px) {
-    #hole{
-        max-width: 80px;
-        max-height: 80px;
-    }
-
-    .mole{
-        position: absolute;
-        top: -55px;
-        max-width: 85px;
-        max-height: 85px;
-    }
-
-    .main{
-        width: 250px;
-    }
-
-    .col1, .col2{
-        margin-bottom: 90px;
-    }
-
-    #timer{
-        left: 5%;
-    }
-
-    .main{
-        width: 70%;
-    }
-
     .result{
         height: 300px;
         width: 450px;
         border-radius: 15px;
-    }
-     
-    .pause, .play{
-        width: 80%;
-    }
-
-    .result{
         font-size: 14px;
-    }
-
-    button{
-        width: 100px;
-        height: 40px;
-        font-size: 12px;
-        border-radius: 5px;
-    }
-
-    .moles1{
-        max-width: 70px;
-        max-height: 80px;
-    }
-    
-    .moles2{
-        max-width: 35px;
-        max-height: 40px;
-    }
-    
-    .moles3{
-        max-width: 17.5px;
-        max-height: 20px;
     }
 
     .result h1{
@@ -778,18 +791,6 @@
         width: 350px;
         height: 40px;
         font-size: 14px;
-    }
-    
-    .text {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        font-size: 14px;
-    }
-    
-    .text a {
-        text-decoration: none;
-        color:green;
     }
 
     #instructions1{
