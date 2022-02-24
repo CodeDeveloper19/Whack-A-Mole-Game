@@ -38,10 +38,6 @@
         margin-bottom: 60px;
     }
 
-    #timer{
-        left: 5%;
-    }
-
     .result{
         height: 150px;
         width: 250px;
@@ -230,10 +226,6 @@
         margin-bottom: 60px;
     }
 
-    #timer{
-        left: 5%;
-    }
-
     .result{
         height: 150px;
         width: 250px;
@@ -414,10 +406,6 @@
         margin-bottom: 85px;
     }
 
-    #timer{
-        left: 5%;
-    }
-
     .result{
         height: 200px;
         width: 350px;
@@ -596,10 +584,6 @@
 
     .col1, .col2{
         margin-bottom: 90px;
-    }
-
-    #timer{
-        left: 5%;
     }
 
     .result{
@@ -850,6 +834,7 @@
         margin-top: 25px;
     }
 }
+
 
 @-moz-document url-prefix() {
     #instructions1 h1{

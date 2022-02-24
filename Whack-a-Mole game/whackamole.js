@@ -234,7 +234,6 @@ var timeds;
 var highscore = [];
 var popss;
 var difficult = document.getElementById("difficulty");
-var audio1 = new Audio('splat.mp3');
 var easy1 = document.getElementById("easy");
 var medium1 = document.getElementById("medium");
 var hard1 = document.getElementById("hard");
