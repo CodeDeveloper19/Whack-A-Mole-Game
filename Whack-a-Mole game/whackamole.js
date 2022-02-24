@@ -106,7 +106,8 @@ var counter = 0;
 function one(){
     if (document.getElementById("mole1").style.visibility == "visible" && pausee != true){
         counter += 1;
-        music();
+        var audio1 = new Audio('splat.mp3');
+        audio1.play();
         document.getElementById("mole1").style.visibility = "hidden";
     }
 }
@@ -114,7 +115,8 @@ function one(){
 function two(){
     if (document.getElementById("mole2").style.visibility == "visible" && pausee != true){
         counter += 1;
-        music();
+        var audio2 = new Audio('splat.mp3');
+        audio2.play();
         document.getElementById("mole2").style.visibility = "hidden";
     }
 }
@@ -122,7 +124,8 @@ function two(){
 function three(){
     if (document.getElementById("mole3").style.visibility == "visible" && pausee != true){
         counter += 1;
-        music();
+        var audio3 = new Audio('splat.mp3');
+        audio3.play();
         document.getElementById("mole3").style.visibility = "hidden";
     }
 }
@@ -130,7 +133,8 @@ function three(){
 function four(){
     if (document.getElementById("mole4").style.visibility == "visible" && pausee != true){
         counter += 1;
-        music();
+        var audio4 = new Audio('splat.mp3');
+        audio4.play();
         document.getElementById("mole4").style.visibility = "hidden";
     }
 }
@@ -138,7 +142,8 @@ function four(){
 function five(){
     if (document.getElementById("mole5").style.visibility == "visible" && pausee != true){
         counter += 1;
-        music();
+        var audio5 = new Audio('splat.mp3');
+        audio5.play();
         document.getElementById("mole5").style.visibility = "hidden";
     }
 }
@@ -146,7 +151,8 @@ function five(){
 function six(){
     if (document.getElementById("mole6").style.visibility == "visible" && pausee != true){
         counter += 1;
-        music();
+        var audio6 = new Audio('splat.mp3');
+        audio6.play();
         document.getElementById("mole6").style.visibility = "hidden";
     }
 }
@@ -154,7 +160,8 @@ function six(){
 function seven(){
     if (document.getElementById("mole7").style.visibility == "visible" && pausee != true){
         counter += 1;
-        music();
+        var audio7 = new Audio('splat.mp3');
+        audio7.play();
         document.getElementById("mole7").style.visibility = "hidden";
     }
 }
@@ -162,7 +169,8 @@ function seven(){
 function eight(){
     if (document.getElementById("mole8").style.visibility == "visible" && pausee != true){
         counter += 1;
-        music();
+        var audio8 = new Audio('splat.mp3');
+        audio8.play();
         document.getElementById("mole8").style.visibility = "hidden";
     }
 }
@@ -170,7 +178,8 @@ function eight(){
 function nine(){
     if (document.getElementById("mole9").style.visibility == "visible" && pausee != true){
         counter += 1;
-        music();
+        var audio9 = new Audio('splat.mp3');
+        audio9.play();
         document.getElementById("mole9").style.visibility = "hidden";
     }
 }
@@ -448,9 +457,8 @@ function retry(){
     begin();
 }
 
-
-function music() {
-    audio1.play();
+function music2(){
+    audio2.play();
 }
 
 function highscores(){
