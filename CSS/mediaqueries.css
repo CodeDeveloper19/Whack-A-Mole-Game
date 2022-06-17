@@ -1,0 +1,1024 @@
+@media screen and (min-width: 0px) and (max-width: 199px){
+    body{
+        display: none;
+    }
+    
+}
+
+@media screen and (min-width: 200px) and (max-width: 319px) {
+    #introduction{
+        width: 150vw;
+        height: 150vh;
+        top: 0px;
+    }
+
+    #instructions{
+        width: 150vw;
+        height: 150vh;
+        top: 0px;
+    }
+    
+    #hole{
+        max-width: 40px;
+        max-height: 40px;
+    }
+
+    .mole{
+        position: absolute;
+        top: -25px;
+        max-width: 40px;
+        max-height: 40px;
+    }
+
+    #main{
+        width: 150px;
+    }
+
+    .col1, .col2{
+        margin-bottom: 60px;
+    }
+
+    .result{
+        height: 150px;
+        width: 250px;
+    }
+
+    .pauseorplay{
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    }
+
+    .pause, .play{
+        width: 25%;
+    }
+
+    .pause{
+        margin-right: 30px;
+    }
+
+    .highscores{
+        left: 10%;
+        top: 65%;
+        height: 90px;
+        width: 80%;
+        border-radius: 7px;
+    }
+
+    .highscores h1{
+        font-size: 14px;
+    }
+
+    .scorer{
+        font-size: 8.6px;
+    }
+
+    #difficulty{
+        font-size: 6.8px;
+    }
+
+    .result{
+        font-size: 7px;
+    }
+
+    button{
+        width: 50px;
+        height: 20px;
+        font-size: 7px;
+        border-radius: 3px;
+    }
+
+    .moles1{
+        max-width: 40px;
+        max-height: 50px;
+    }
+    
+    .moles2{
+        max-width: 20px;
+        max-height: 25px;
+    }
+    
+    .moles3{
+        max-width: 10px;
+        max-height: 12.5px;
+    }
+
+    .result h1{
+        margin-bottom: 30px;
+    }
+    
+    .result h4{
+        margin-right: 5px;
+    }
+
+    #introduction h1{
+        font-size: 19px;
+    }
+    
+    #introduction img{
+        max-width: 50%;
+        max-height: 50%;
+    }
+    
+    .fun button{
+        width: 200px;
+        height: 20px;
+        font-size: 9px;
+    }
+    
+    .text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 10px;
+    }
+    
+    .text a {
+        text-decoration: none;
+        color:green;
+    }
+
+    #instructions1{
+        width: 250px;
+        height: 200px;
+        padding: 20px;
+    }
+    
+    #instructions1 h1{
+        margin: 10px 0 0 0;
+        font-size: 17px;
+    }
+    
+    #instructions1 li{
+        margin-top: 15px;
+        font-size: 8px;
+    }
+    
+    .next {
+        margin-top: 15px;
+        width: 100px;
+    }
+    
+    #instructions12{
+        width: 250px;
+        height: 200px;
+        padding: 20px;
+    }
+    
+    #instructions12 h1{
+        margin: 10px 0 0 0;
+        font-size: 17px;
+    }
+    
+    #instructions12 button{
+        font-size: 6px;
+    }
+
+    .buttons2{
+        margin-top: 20px;
+    }
+
+    .difficulty, .timeduration{
+        margin-top: 20px;
+    }
+
+    .howtoplay1 h2{
+        font-size: 8px;
+    }
+
+    .howtoplay1 button{
+        width: 27px;
+        height: 18px;
+    }
+    
+    .timedurations, .difficulties{
+        margin-top: 10px;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    #hole{
+        max-width: 40px;
+        max-height: 40px;
+    }
+
+    .mole{
+        position: absolute;
+        top: -25px;
+        max-width: 40px;
+        max-height: 40px;
+    }
+
+    #main{
+        width: 250px;
+    }
+
+    #sound{
+        width: 25px;
+        height: 25px;
+        bottom: 8%;
+    }
+
+    .col1, .col2{
+        margin-bottom: 60px;
+    }
+
+    .result{
+        height: 150px;
+        width: 250px;
+        font-size: 7px;
+    }
+
+    .pauseorplay{
+    position: absolute;
+    bottom: 65px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    }
+
+    .pause, .play{
+        width: 25%;
+    }
+
+    .pause{
+        margin-right: 30px;
+    }
+
+    .highscores{
+        left: 10%;
+        top: 62%;
+        height: 90px;
+        width: 80%;
+        border-radius: 7px;
+    }
+
+    .highscores h1{
+        font-size: 15px;
+    }
+
+    .scorer{
+        font-size: 9.6px;
+    }
+
+    #difficulty{
+        font-size: 7.8px;
+    }
+
+    button{
+        width: 50px;
+        height: 20px;
+        font-size: 7px;
+        border-radius: 3px;
+    }
+
+    .moles1{
+        max-width: 40px;
+        max-height: 50px;
+    }
+    
+    .moles2{
+        max-width: 20px;
+        max-height: 25px;
+    }
+    
+    .moles3{
+        max-width: 10px;
+        max-height: 12.5px;
+    }
+
+    .result h1{
+        margin-bottom: 30px;
+    }
+    
+    .result h4{
+        margin-right: 5px;
+    }
+
+    #introduction h1{
+        font-size: 21px;
+    }
+    
+    #introduction img{
+        max-width: 50%;
+        max-height: 50%;
+    }
+    
+    .fun button{
+        width: 150px;
+        height: 30px;
+        font-size: 10px;
+    }
+    
+    .text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 10px;
+    }
+    
+    .text a {
+        text-decoration: none;
+        color:green;
+    }
+
+    #instructions1{
+        width: 250px;
+        height: 200px;
+        padding: 20px;
+    }
+    
+    #instructions1 h1{
+        margin: 10px 0 0 0;
+        font-size: 17px;
+    }
+    
+    #instructions1 li{
+        margin-top: 15px;
+        font-size: 8px;
+    }
+    
+    .next {
+        margin-top: 15px;
+        width: 100px;
+    }
+    
+    #instructions12{
+        width: 250px;
+        height: 200px;
+        padding: 20px;
+    }
+    
+    #instructions12 h1{
+        margin: 10px 0 0 0;
+        font-size: 17px;
+    }
+    
+    #instructions12 button{
+        font-size: 6px;
+    }
+
+    .buttons2{
+        margin-top: 20px;
+    }
+
+    .difficulty, .timeduration{
+        margin-top: 20px;
+    }
+
+    .howtoplay1 h2{
+        font-size: 8px;
+    }
+
+    .howtoplay1 button{
+        width: 27px;
+        height: 18px;
+    }
+    
+    .timedurations, .difficulties{
+        margin-top: 10px;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    #hole{
+        max-width: 60px;
+        max-height: 60px;
+    }
+
+    .mole{
+        position: absolute;
+        top: -40px;
+        max-width: 60px;
+        max-height: 60px;
+    }
+
+    #main{
+        top: 40%;
+        width: 70%;
+    }
+
+    .col1, .col2{
+        margin-bottom: 85px;
+    }
+
+    .result{
+        height: 200px;
+        width: 350px;
+        border-radius: 15px;
+        font-size: 10px;
+    }
+
+    .pauseorplay{
+        position: absolute;
+        bottom: 55px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        }
+    
+    .pause, .play{
+        width: 25%;
+    }
+
+    .pause{
+        margin-right: 30px;
+    }
+
+    .highscores{
+        left: 10%;
+        top: 65%;
+        height: 80px;
+        width: 80%;
+        border-radius: 7px;
+    }
+
+    .highscores h1{
+        font-size: 16px;
+    }
+
+    .scorer{
+        font-size: 10.6px;
+    }
+
+    #difficulty{
+        font-size: 8.8px;
+    }
+
+    button{
+        width: 60px;
+        height: 30px;
+        font-size: 10px;
+        border-radius: 3px;
+    }
+
+    .moles1{
+        max-width: 50px;
+        max-height: 60px;
+    }
+    
+    .moles2{
+        max-width: 25px;
+        max-height: 30px;
+    }
+    
+    .moles3{
+        max-width: 12.5px;
+        max-height: 15px;
+    }
+
+    .result h1{
+        margin-bottom: 30px;
+    }
+    
+    .result h4{
+        margin-right: 5px;
+    }
+
+    #introduction h1{
+        font-size: 32px;
+    }
+    
+    #introduction img{
+        max-width: 50%;
+        max-height: 50%;
+    }
+    
+    .fun button{
+        width: 250px;
+        height: 30px;
+        font-size: 12px;
+    }
+    
+    .text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 12px;
+    }
+    
+    .text a {
+        text-decoration: none;
+        color:green;
+    }
+
+    #instructions1{
+        width: 350px;
+        height: 250px;
+        padding: 25px;
+    }
+    
+    #instructions1 h1{
+        margin: 10px 0 0 0;
+        font-size: 20px;
+    }
+    
+    #instructions1 li{
+        margin-top: 20px;
+        font-size: 10px;
+    }
+    
+    .next {
+        margin-top: 20px;
+        width: 100px;
+    }
+    
+    #instructions12{
+        width: 350px;
+        height: 250px;
+        padding: 25px;
+    }
+    
+    #instructions12 h1{
+        margin: 10px 0 0 0;
+        font-size: 20px;
+    }
+    
+    #instructions12 button{
+        font-size: 8px;
+    }
+
+    .buttons2{
+        margin-top: 20px;
+    }
+
+    .difficulty, .timeduration{
+        margin-top: 20px;
+    }
+
+    .howtoplay1 h2{
+        font-size: 10px;
+    }
+
+    .howtoplay1 button{
+        width: 45px;
+        height: 30px;
+    }
+    
+    .timedurations, .difficulties{
+        margin-top: 20px;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    #hole{
+        max-width: 80px;
+        max-height: 80px;
+    }
+
+    .mole{
+        position: absolute;
+        top: -55px;
+        max-width: 85px;
+        max-height: 85px;
+    }
+
+    #main{
+        width: 55%;
+    }
+
+    .col1, .col2{
+        margin-bottom: 90px;
+    }
+
+    .result{
+        height: 300px;
+        width: 450px;
+        border-radius: 15px;
+    }
+
+    .pauseorplay{
+        position: absolute;
+        bottom: 60px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        }
+    
+    .pause, .play{
+        height: 50%;
+        width: 25%;
+    }
+
+    .pause{
+        margin-right: 30px;
+    }
+
+    .highscores{
+        height: 300px;
+        border-radius: 7px;
+    }
+
+    .highscores h1{
+        font-size: 18px;
+    }
+
+    .scorer{
+        font-size: 12.6px;
+    }
+
+    #difficulty{
+        font-size: 10.8px;
+    }
+
+    .result{
+        font-size: 14px;
+    }
+
+    button{
+        width: 100px;
+        height: 40px;
+        font-size: 12px;
+        border-radius: 5px;
+    }
+
+    .moles1{
+        max-width: 70px;
+        max-height: 80px;
+    }
+    
+    .moles2{
+        max-width: 35px;
+        max-height: 40px;
+    }
+    
+    .moles3{
+        max-width: 17.5px;
+        max-height: 20px;
+    }
+
+    .result h1{
+        margin-bottom: 30px;
+    }
+    
+    .result h4{
+        margin-right: 7px;
+    }
+
+    #introduction h1{
+        font-size: 51px;
+    }
+    
+    #introduction img{
+        max-width: 50%;
+        max-height: 50%;
+    }
+    
+    .fun button{
+        width: 320px;
+        height: 40px;
+        font-size: 14px;
+    }
+    
+    .text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 14px;
+    }
+    
+    .text a {
+        text-decoration: none;
+        color:green;
+    }
+
+    #instructions1{
+        width: 500px;
+        height: 350px;
+        padding: 30px;
+    }
+    
+    #instructions1 h1{
+        margin: 10px 0 0 0;
+        font-size: 30px;
+    }
+    
+    #instructions1 li{
+        margin-top: 30px;
+        font-size: 13px;
+    }
+    
+    .next {
+        margin-top: 30px;
+        width: 150px;
+    }
+    
+    #instructions12{
+        width: 500px;
+        height: 350px;
+        padding: 30px;
+    }
+    
+    #instructions12 h1{
+        margin: 10px 0 0 0;
+        font-size: 30px;
+    }
+    
+    #instructions12 button{
+        font-size: 10px;
+    }
+
+    .buttons2{
+        margin-top: 30px;
+    }
+
+    .difficulty, .timeduration{
+        margin-top: 30px;
+    }
+
+    .howtoplay1 h2{
+        font-size: 15px;
+    }
+
+    .howtoplay1 button{
+        width: 72px;
+        height: 35px;
+    }
+    
+    .timedurations, .difficulties{
+        margin-top: 25px;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+    .result{
+        height: 300px;
+        width: 450px;
+        border-radius: 15px;
+        font-size: 14px;
+    }
+
+    .result h1{
+        margin-bottom: 30px;
+    }
+    
+    .result h4{
+        margin-right: 7px;
+    }
+
+    #introduction h1{
+        font-size: 60px;
+    }
+    
+    #introduction img{
+        max-width: 50%;
+        max-height: 50%;
+    }
+    
+    .fun button{
+        width: 350px;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    #instructions1{
+        width: 500px;
+        height: 350px;
+        padding: 30px;
+    }
+    
+    #instructions1 h1{
+        margin: 10px 0 0 0;
+        font-size: 30px;
+    }
+    
+    #instructions1 li{
+        margin-top: 30px;
+        font-size: 13px;
+    }
+    
+    .next {
+        margin-top: 30px;
+        width: 150px;
+    }
+    
+    #instructions12{
+        width: 500px;
+        height: 350px;
+        padding: 30px;
+    }
+    
+    #instructions12 h1{
+        margin: 10px 0 0 0;
+        font-size: 30px;
+    }
+    
+    #instructions12 button{
+        font-size: 10px;
+    }
+
+    .buttons2{
+        margin-top: 30px;
+    }
+
+    .difficulty, .timeduration{
+        margin-top: 30px;
+    }
+
+    .howtoplay1 h2{
+        font-size: 15px;
+    }
+
+    .howtoplay1 button{
+        width: 72px;
+        height: 35px;
+    }
+    
+    .timedurations, .difficulties{
+        margin-top: 25px;
+    }
+}
+
+
+@-moz-document url-prefix() {
+    #instructions1 h1{
+        margin: 0px 0 10px 0;
+    }
+
+    #instructions1 li{
+        margin-top: 20px;
+    }
+
+    .timedurations button{
+        width: 65px;
+    }
+
+    #instructions12 h1{
+        margin: 0px 0 20px 0;
+    }
+
+    .difficulty, .timeduration{
+        margin-top: 25px;
+    }
+
+    @media screen and (min-width: 200px) and (max-width: 319px){
+        #instructions1 h1{
+            margin: 0 0 10px 0;
+            font-size: 13px;
+        }
+
+        .next{
+            height: 15px;
+        }
+    
+        #instructions1 li{
+            margin-top: 10px;
+            font-size: 6px;
+        }
+
+        #instructions12 h1{
+            margin: 10px 0 0 0;
+        }
+        
+        #instructions12 button{
+            font-size: 7px;
+        }
+    
+        .difficulty, .timeduration{
+            margin-top: 10px;
+        }
+    
+        .howtoplay1 button{
+            width: 31px;
+            height: 18px;
+        }
+
+        .result h1{
+            margin-bottom: 10px;
+        }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px){
+        #introduction h1{
+            font-size: 20px;
+        }
+        
+        #instructions1 h1{
+            margin: 0 0 10px 0;
+        }
+    
+        #instructions1 li{
+            margin-top: 10px;
+        }
+
+        #instructions12 h1{
+            margin: 10px 0 0 0;
+        }
+        
+        #instructions12 button{
+            font-size: 7px;
+        }
+    
+        .difficulty, .timeduration{
+            margin-top: 10px;
+        }
+    
+        .howtoplay1 button{
+            width: 31px;
+            height: 18px;
+        }
+
+        .result h1{
+            margin-bottom: 10px;
+        }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 768px){
+        #introduction h1{
+            font-size: 31px;
+        }
+        
+        #instructions1 h1{
+            margin: 0 0 10px 0;
+        }
+    
+        #instructions1 li{
+            margin-top: 15px;
+        }
+
+        #instructions12 h1{
+            margin: 10px 0 20px 0;
+        }
+    
+        .difficulty, .timeduration{
+            margin-top: 10px;
+        }
+    
+        .howtoplay1 button{
+            width: 45px;
+            height: 25px;
+        }
+
+        .result h1{
+            margin-bottom: 10px;
+        }
+    }
+
+    @media screen and (min-width: 769px) and (max-width: 1024px){
+        #introduction h1{
+            font-size: 45px;
+        }
+        
+        #instructions1 h1{
+            margin: 0 0 20px 0;
+        }
+    
+        #instructions1 li{
+            margin-top: 20px;
+        }
+
+        #instructions12 h1{
+            margin: 10px 0 0px 0;
+        }
+    
+        .difficulty, .timeduration{
+            margin-top: 30px;
+        }
+    
+        .howtoplay1 button{
+            width: 60px;
+            height: 30px;
+        }
+
+        .result h1{
+            margin-bottom: 10px;
+        }
+    }
+
+    @media screen and (min-width: 1025px) and (max-width: 1440px){
+        #introduction h1{
+            font-size: 45px;
+        }
+        
+        #instructions1 h1{
+            margin: 0 0 20px 0;
+        }
+    
+        #instructions1 li{
+            margin-top: 20px;
+        }
+
+        #instructions12 h1{
+            margin: 10px 0 0px 0;
+        }
+    
+        .difficulty, .timeduration{
+            margin-top: 30px;
+        }
+    
+        .howtoplay1 button{
+            width: 70px;
+            height: 30px;
+        }
+
+        .result h1{
+            margin-bottom: 10px;
+        }
+    }
+}

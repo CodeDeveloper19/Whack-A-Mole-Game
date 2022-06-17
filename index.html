@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whack-A-Mole</title>
+    <link rel="stylesheet" href="/CSS/whackamole.css">
+    <link rel="stylesheet" href="/CSS/mediaqueries.css">
+    <script src="https://kit.fontawesome.com/c123ad8ef2.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="main">
+        <div class="row1">
+            <div class="col1">
+                <img src="/Images/mole.png" id="mole1" class="mole" onclick ="one()">
+                <img src="/Images/hole.png" id="hole">
+            </div>
+            <div class="col2">
+                <img src="/Images/mole.png" id="mole2" class="mole" onclick ="two()">
+                <img src="/Images/hole.png" id="hole">
+            </div>
+            <div class="col3">
+                <img src="/Images/mole.png" id="mole3" class="mole" onclick ="three()">
+                <img src="/Images/hole.png" id="hole">
+            </div>
+        </div>
+        <div class="row2">
+            <div class="col1">
+                <img src="/Images/mole.png" id="mole4" class="mole" onclick ="four()">
+                <img src="/Images/hole.png" id="hole">
+            </div>
+            <div class="col2">
+                <img src="/Images/mole.png" id="mole5" class="mole" onclick ="five()">
+                <img src="/Images/hole.png" id="hole">
+            </div>
+            <div class="col3">
+                <img src="/Images/mole.png" id="mole6" class="mole" onclick ="six()">
+                <img src="/Images/hole.png" id="hole">
+            </div>
+        </div>
+        <div class="row3">
+            <div class="col1">
+                <img src="/Images/mole.png" id="mole7" class="mole" onclick ="seven()">
+                <img src="/Images/hole.png" id="hole">
+            </div>
+            <div class="col2">
+                <img src="/Images/mole.png" id="mole8" class="mole" onclick ="eight()">
+                <img src="/Images/hole.png" id="hole">
+            </div>
+            <div class="col3">
+                <img src="/Images/mole.png" id="mole9" class="mole" onclick ="nine()">
+                <img src="/Images/hole.png" id="hole">
+            </div>
+        </div>
+    </div>
+
+    <div id="timers">
+        <div class="left">
+            <h1 id="counter">0</h1>
+            <img src="/Images/mole.png">
+        </div>
+        <div class="right">
+            <h1 id="timer"></h1>
+            <img src="/Images/stopwatch.png">
+        </div>
+    </div>
+
+    <div class="highscores">
+        <h1>High Scores</h1>
+        <h3 id="difficulty">(Hard)</h3>
+        <div id="highscores">
+            <div class="scorer">
+                <h4>First:</h4>
+                <h5 id="score1"></h5>
+            </div>
+            <div class="scorer">
+                <h4>Second:</h4>
+                <h5 id="score2"></h5>
+            </div>
+            <div class="scorer">
+                <h4>Third:</h4>
+                <h5 id="score3"></h5>
+            </div>
+            <div class="scorer">
+                <h4>Fourth:</h4>
+                <h5 id="score4"></h5>
+            </div>
+            <div class="scorer">
+                <h4>Fifth:</h4>
+                <h5 id="score5"></h5>
+            </div>
+            <div class="scorer">
+                <h4>Sixth:</h4>
+                <h5 id="score6"></h5>
+            </div>
+            <div class="scorer">
+                <h4>Seventh:</h4>
+                <h5 id="score7"></h5>
+            </div>
+            <div class="scorer">
+                <h4>Eighth:</h4>
+                <h5 id="score8"></h5>
+            </div>
+            <div class="scorer">
+                <h4>Nineth:</h4>
+                <h5 id="score9"></h5>
+            </div>
+            <div class="scorer">
+                <h4>Tenth:</h4>
+                <h5 id="score10"></h5>
+            </div>
+        </div>
+    </div>
+     
+    <div class="pauseorplay">
+        <button onclick="pause()" class="pause">Pause</button>
+        <button onclick="mainmenu2()" class="pause">Mainmenu</button>
+        <button onclick="play()" class="play">Play</button>
+    </div>
+
+    <div id="sound" onclick="sound()"> 
+        <i class="fa-solid fa-volume-xmark" id="icon3"></i>
+    </div>
+
+    <div id="results">
+        <div class="result">
+            <div class="moles">
+                <img src="/Images/mole.png" class="moles1">
+                <img src="/Images/mole.png" class="moles2">
+                <img src="/Images/mole.png" class="moles3">
+            </div>
+            <h1>Game Over...</h1>
+            <div class="test">
+                <h4>Your final score is:</h4> 
+                <h5 id="output"></h5>
+            </div>
+            <div class="buttons">
+                <button onclick="retry()" class="retry">Retry</button>
+                <button onclick="mainmenu()" class="mainmenu">Main Menu</button>
+                <button onclick="end()" class="end">End</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="introduction">
+        <div class="fun">
+            <div class="logo">
+                <img src="/Images/mole2.png">
+                <h1>Whack-A-Mole</h1>
+            </div>
+            <button onclick = "start()">Start</button>
+        </div>
+        <div id="sound" onclick="sound()"> 
+            <i class="fa-solid fa-volume-xmark" id="icon"></i>
+        </div>
+        <div class="text">
+            <p>Ⓒ 2022 Vykatechnologies All Rights Reserved </p>
+            <p>Like what you see?</p>
+            <p>Find where we got out <a href='https://pngtree.com/so/cute'>mole</a> image and the <a href="https://www.vecteezy.com/free-vector/outside-background">background</a> design</p>
+            <p>Game Music gotten from <a href="https://www.joystock.org">Music by Joystock</a> and Sound from <a href="https://www.zapsplat.com">Zapsplat.com</a></p>
+        </div>
+    </div>
+
+    <div id="instructions">
+        <div class="instructions">
+                <div id="instructions1">
+                    <div id="sound" onclick="sound()"> 
+                        <i class="fa-solid fa-volume-xmark" id="icon1"></i>
+                    </div>
+                    <h1>How To Play</h1>
+                    <div class="howtoplay">
+                        <ul>
+                            <li>Select one of the listed timelimit options</li>
+                            <li>Pick a difficulty level</li>
+                            <li>Try to smash as many moles as possible within the selected time limit</li>
+                            <li>The total number of moles you are able to smash will be your final score.</li>
+                        </ul>
+                    </div>
+                    <button class="next" onclick="next()">Next</button>
+                </div>
+
+                <div id="instructions12">
+                    <div id="sound" onclick="sound()"> 
+                        <i class="fa-solid fa-volume-xmark" id="icon2"></i>
+                    </div>
+                    <h1>Settings</h1>
+                    <div class="howtoplay1">
+                        <div class="difficulty">
+                            <h2>Difficulty Level</h2>
+                            <div class="difficulties">
+                                <button onclick="easy()" id="easy">Easy</button>
+                                <button onclick="medium()" id="medium">Medium</button>
+                                <button onclick="hard()" id="hard">Hard</button>
+                            </div>
+                        </div>
+
+                        <div class="timeduration">
+                            <h2>Time Duration</h2>
+                            <div class="timedurations">
+                                <button onclick="thirty()" id="thirty">30s</button>
+                                <button onclick="sixty()" id="sixty">60s</button>
+                                <button onclick="onetwenty()" id="onetwenty">120s</button>
+                                <button onclick="oneeighty()" id="oneeighty">180s</button>
+                                <button onclick="twoforty()" id="twoforty">240s</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buttons2">
+                    <button class="previous" onclick="previous()">Previous</button>
+                    <button class="begin" onclick="begin()">Begin</button>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <script src="/Javascript/whackamole.js"></script>
+    <script src="/Javascript/sound.js"></script>
+</body>
+</html>
