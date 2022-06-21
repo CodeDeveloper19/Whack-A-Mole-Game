@@ -23,7 +23,6 @@ const moles = (num) => {
         document.getElementById(mole[i]).style.visibility = "hidden";
     }
     document.getElementById(mole[finalNum]).style.visibility = "visible";
-    console.log(finalNum)
 }
 
 
