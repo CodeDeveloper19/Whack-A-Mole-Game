@@ -1,191 +1,34 @@
 var playy;
 var pausee;
 
-function mole1() {
-    document.getElementById("mole1").style.visibility = "visible";
-    document.getElementById("mole2").style.visibility = "hidden";
-    document.getElementById("mole3").style.visibility = "hidden";
-    document.getElementById("mole4").style.visibility = "hidden";
-    document.getElementById("mole5").style.visibility = "hidden";
-    document.getElementById("mole6").style.visibility = "hidden";
-    document.getElementById("mole7").style.visibility = "hidden";
-    document.getElementById("mole8").style.visibility = "hidden";
-    document.getElementById("mole9").style.visibility = "hidden";
-} 
-function mole2() {
-    document.getElementById("mole1").style.visibility = "hidden";
-    document.getElementById("mole2").style.visibility = "visible";
-    document.getElementById("mole3").style.visibility = "hidden";
-    document.getElementById("mole4").style.visibility = "hidden";
-    document.getElementById("mole5").style.visibility = "hidden";
-    document.getElementById("mole6").style.visibility = "hidden";
-    document.getElementById("mole7").style.visibility = "hidden";
-    document.getElementById("mole8").style.visibility = "hidden";
-    document.getElementById("mole9").style.visibility = "hidden";
-} 
-function mole3() {
-    document.getElementById("mole1").style.visibility = "hidden";
-    document.getElementById("mole2").style.visibility = "hidden";
-    document.getElementById("mole3").style.visibility = "visible";
-    document.getElementById("mole4").style.visibility = "hidden";
-    document.getElementById("mole5").style.visibility = "hidden";
-    document.getElementById("mole6").style.visibility = "hidden";
-    document.getElementById("mole7").style.visibility = "hidden";
-    document.getElementById("mole8").style.visibility = "hidden";
-    document.getElementById("mole9").style.visibility = "hidden";
-} 
-function mole4() {
-    document.getElementById("mole1").style.visibility = "hidden";
-    document.getElementById("mole2").style.visibility = "hidden";
-    document.getElementById("mole3").style.visibility = "hidden";
-    document.getElementById("mole4").style.visibility = "visible";
-    document.getElementById("mole5").style.visibility = "hidden";
-    document.getElementById("mole6").style.visibility = "hidden";
-    document.getElementById("mole7").style.visibility = "hidden";
-    document.getElementById("mole8").style.visibility = "hidden";
-    document.getElementById("mole9").style.visibility = "hidden";
-} 
-function mole5() {
-    document.getElementById("mole1").style.visibility = "hidden";
-    document.getElementById("mole2").style.visibility = "hidden";
-    document.getElementById("mole3").style.visibility = "hidden";
-    document.getElementById("mole4").style.visibility = "hidden";
-    document.getElementById("mole5").style.visibility = "visible";
-    document.getElementById("mole6").style.visibility = "hidden";
-    document.getElementById("mole7").style.visibility = "hidden";
-    document.getElementById("mole8").style.visibility = "hidden";
-    document.getElementById("mole9").style.visibility = "hidden";
-} 
-function mole6() {
-    document.getElementById("mole1").style.visibility = "hidden";
-    document.getElementById("mole2").style.visibility = "hidden";
-    document.getElementById("mole3").style.visibility = "hidden";
-    document.getElementById("mole4").style.visibility = "hidden";
-    document.getElementById("mole5").style.visibility = "hidden";
-    document.getElementById("mole6").style.visibility = "visible";
-    document.getElementById("mole7").style.visibility = "hidden";
-    document.getElementById("mole8").style.visibility = "hidden";
-    document.getElementById("mole9").style.visibility = "hidden";
-} 
-function mole7() {
-    document.getElementById("mole1").style.visibility = "hidden";
-    document.getElementById("mole2").style.visibility = "hidden";
-    document.getElementById("mole3").style.visibility = "hidden";
-    document.getElementById("mole4").style.visibility = "hidden";
-    document.getElementById("mole5").style.visibility = "hidden";
-    document.getElementById("mole6").style.visibility = "hidden";
-    document.getElementById("mole7").style.visibility = "visible";
-    document.getElementById("mole8").style.visibility = "hidden";
-    document.getElementById("mole9").style.visibility = "hidden";
-}
-function mole8() {
-    document.getElementById("mole1").style.visibility = "hidden";
-    document.getElementById("mole2").style.visibility = "hidden";
-    document.getElementById("mole3").style.visibility = "hidden";
-    document.getElementById("mole4").style.visibility = "hidden";
-    document.getElementById("mole5").style.visibility = "hidden";
-    document.getElementById("mole6").style.visibility = "hidden";
-    document.getElementById("mole7").style.visibility = "hidden";
-    document.getElementById("mole8").style.visibility = "visible";
-    document.getElementById("mole9").style.visibility = "hidden";
-} 
-function mole9() {
-    document.getElementById("mole1").style.visibility = "hidden";
-    document.getElementById("mole2").style.visibility = "hidden";
-    document.getElementById("mole3").style.visibility = "hidden";
-    document.getElementById("mole4").style.visibility = "hidden";
-    document.getElementById("mole5").style.visibility = "hidden";
-    document.getElementById("mole6").style.visibility = "hidden";
-    document.getElementById("mole7").style.visibility = "hidden";
-    document.getElementById("mole8").style.visibility = "hidden";
-    document.getElementById("mole9").style.visibility = "visible";
-} 
-
 var counter = 0;
 
-function one(){
-    if (document.getElementById("mole1").style.visibility == "visible" && pausee != true){
-        counter += 1;
-        var audio1 = new Audio('/Sound Effects/splat.mp3');
-        audio1.play();
-        document.getElementById("mole1").style.visibility = "hidden";
-    }
+const mole = ["mole1", "mole2", "mole3", "mole4", "mole5", "mole6", "mole7", "mole8", "mole9"];
+
+for (let i = 0; i < 9; i++){
+    document.getElementById(mole[i]).addEventListener("click", () => {
+        if (document.getElementById(mole[i]).style.visibility == "visible" && pausee != true){
+            counter += 1;
+            var audio1 = new Audio('/Sound Effects/splat.mp3');
+            audio1.play();
+            document.getElementById(mole[i]).style.visibility = "hidden";
+        }
+    })
 }
 
-function two(){
-    if (document.getElementById("mole2").style.visibility == "visible" && pausee != true){
-        counter += 1;
-        var audio2 = new Audio('/Sound Effects/splat.mp3');
-        audio2.play();
-        document.getElementById("mole2").style.visibility = "hidden";
-    }
-}
 
-function three(){
-    if (document.getElementById("mole3").style.visibility == "visible" && pausee != true){
-        counter += 1;
-        var audio3 = new Audio('/Sound Effects/splat.mp3');
-        audio3.play();
-        document.getElementById("mole3").style.visibility = "hidden";
+const moles = (num) => {
+    let finalNum = num - 1;
+    for (let i = 0; i < 9; i++){
+        document.getElementById(mole[i]).style.visibility = "hidden";
     }
-}
-
-function four(){
-    if (document.getElementById("mole4").style.visibility == "visible" && pausee != true){
-        counter += 1;
-        var audio4 = new Audio('/Sound Effects/splat.mp3');
-        audio4.play();
-        document.getElementById("mole4").style.visibility = "hidden";
-    }
-}
-
-function five(){
-    if (document.getElementById("mole5").style.visibility == "visible" && pausee != true){
-        counter += 1;
-        var audio5 = new Audio('/Sound Effects/splat.mp3');
-        audio5.play();
-        document.getElementById("mole5").style.visibility = "hidden";
-    }
-}
-
-function six(){
-    if (document.getElementById("mole6").style.visibility == "visible" && pausee != true){
-        counter += 1;
-        var audio6 = new Audio('/Sound Effects/splat.mp3');
-        audio6.play();
-        document.getElementById("mole6").style.visibility = "hidden";
-    }
-}
-
-function seven(){
-    if (document.getElementById("mole7").style.visibility == "visible" && pausee != true){
-        counter += 1;
-        var audio7 = new Audio('/Sound Effects/splat.mp3');
-        audio7.play();
-        document.getElementById("mole7").style.visibility = "hidden";
-    }
-}
-
-function eight(){
-    if (document.getElementById("mole8").style.visibility == "visible" && pausee != true){
-        counter += 1;
-        var audio8 = new Audio('/Sound Effects/splat.mp3');
-        audio8.play();
-        document.getElementById("mole8").style.visibility = "hidden";
-    }
-}
-
-function nine(){
-    if (document.getElementById("mole9").style.visibility == "visible" && pausee != true){
-        counter += 1;
-        var audio9 = new Audio('/Sound Effects/splat.mp3');
-        audio9.play();
-        document.getElementById("mole9").style.visibility = "hidden";
-    }
+    document.getElementById(mole[finalNum]).style.visibility = "visible";
+    console.log(finalNum)
 }
 
 
 function popping(){
+    let num;
     const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     
     if (time > 0 && pausee != true){
@@ -194,31 +37,40 @@ function popping(){
 
 switch (value){
     case 1:
-        mole1();
+        num = 1;
+        moles(num);
         break;
     case 2:
-        mole2();
+        num = 2;
+        moles(num);
         break;
     case 3:
-        mole3();
+        num = 3;
+        moles(num);
         break;
     case 4:
-        mole4();
+        num = 4;
+        moles(num);
         break;
     case 5:
-        mole5();
+        num = 5;
+        moles(num);
         break;
     case 6:
-        mole6();
+        num = 6;
+        moles(num);
         break;
     case 7:
-        mole7();
+        num = 7;
+        moles(num);
         break;
     case 8:
-        mole8();
+        num = 8;
+        moles(num);
         break;
     case 9:
-        mole9();
+        num = 9;
+        moles(num);
         break;
 }
 
