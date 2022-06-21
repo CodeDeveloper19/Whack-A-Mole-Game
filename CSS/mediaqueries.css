@@ -52,7 +52,7 @@
     justify-content: center;
     }
 
-    .pause, .play{
+    .pause, #play{
         width: 25%;
     }
 
@@ -157,7 +157,7 @@
         font-size: 8px;
     }
     
-    .next {
+    #next {
         margin-top: 15px;
         width: 100px;
     }
@@ -216,7 +216,7 @@
         width: 250px;
     }
 
-    #sound{
+    .sound{
         width: 25px;
         height: 25px;
         bottom: 8%;
@@ -241,7 +241,7 @@
     justify-content: center;
     }
 
-    .pause, .play{
+    .pause, #play{
         width: 25%;
     }
 
@@ -342,7 +342,7 @@
         font-size: 8px;
     }
     
-    .next {
+    #next {
         margin-top: 15px;
         width: 100px;
     }
@@ -422,7 +422,7 @@
         justify-content: center;
         }
     
-    .pause, .play{
+    .pause, #play{
         width: 25%;
     }
 
@@ -523,7 +523,7 @@
         font-size: 10px;
     }
     
-    .next {
+    #next {
         margin-top: 20px;
         width: 100px;
     }
@@ -601,7 +601,7 @@
         justify-content: center;
         }
     
-    .pause, .play{
+    .pause, #play{
         height: 50%;
         width: 25%;
     }
@@ -704,7 +704,7 @@
         font-size: 13px;
     }
     
-    .next {
+    #next {
         margin-top: 30px;
         width: 150px;
     }
@@ -793,7 +793,7 @@
         font-size: 13px;
     }
     
-    .next {
+    #next {
         margin-top: 30px;
         width: 150px;
     }
@@ -863,7 +863,7 @@
             font-size: 13px;
         }
 
-        .next{
+        #next{
             height: 15px;
         }
     

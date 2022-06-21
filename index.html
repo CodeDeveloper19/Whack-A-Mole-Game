@@ -114,12 +114,12 @@
     </div>
      
     <div class="pauseorplay">
-        <button onclick="pause()" class="pause">Pause</button>
-        <button onclick="mainmenu2()" class="pause">Mainmenu</button>
-        <button onclick="play()" class="play">Play</button>
+        <button id="pause" class="pause">Pause</button>
+        <button id="mainmenu2" class="pause">Mainmenu</button>
+        <button id="play">Play</button>
     </div>
 
-    <div id="sound" onclick="sound()"> 
+    <div id="sound"> 
         <i class="fa-solid fa-volume-xmark" id="icon3"></i>
     </div>
 
@@ -136,9 +136,9 @@
                 <h5 id="output"></h5>
             </div>
             <div class="buttons">
-                <button onclick="retry()" class="retry">Retry</button>
-                <button onclick="mainmenu()" class="mainmenu">Main Menu</button>
-                <button onclick="end()" class="end">End</button>
+                <button id="retry">Retry</button>
+                <button id="mainmenu">Main Menu</button>
+                <button id="end">End</button>
             </div>
         </div>
     </div>
@@ -149,9 +149,9 @@
                 <img src="/Images/mole2.png">
                 <h1>Whack-A-Mole</h1>
             </div>
-            <button onclick = "start()">Start</button>
+            <button id="start">Start</button>
         </div>
-        <div id="sound" onclick="sound()"> 
+        <div class="sound"> 
             <i class="fa-solid fa-volume-xmark" id="icon"></i>
         </div>
         <div class="text">
@@ -165,7 +165,7 @@
     <div id="instructions">
         <div class="instructions">
                 <div id="instructions1">
-                    <div id="sound" onclick="sound()"> 
+                    <div class="sound"> 
                         <i class="fa-solid fa-volume-xmark" id="icon1"></i>
                     </div>
                     <h1>How To Play</h1>
@@ -177,11 +177,11 @@
                             <li>The total number of moles you are able to smash will be your final score.</li>
                         </ul>
                     </div>
-                    <button class="next" onclick="next()">Next</button>
+                    <button id="next">Next</button>
                 </div>
 
                 <div id="instructions12">
-                    <div id="sound" onclick="sound()"> 
+                    <div class="sound"> 
                         <i class="fa-solid fa-volume-xmark" id="icon2"></i>
                     </div>
                     <h1>Settings</h1>
@@ -189,26 +189,26 @@
                         <div class="difficulty">
                             <h2>Difficulty Level</h2>
                             <div class="difficulties">
-                                <button onclick="easy()" id="easy">Easy</button>
-                                <button onclick="medium()" id="medium">Medium</button>
-                                <button onclick="hard()" id="hard">Hard</button>
+                                <button id="easy">Easy</button>
+                                <button id="medium">Medium</button>
+                                <button id="hard">Hard</button>
                             </div>
                         </div>
 
                         <div class="timeduration">
                             <h2>Time Duration</h2>
                             <div class="timedurations">
-                                <button onclick="thirty()" id="thirty">30s</button>
-                                <button onclick="sixty()" id="sixty">60s</button>
-                                <button onclick="onetwenty()" id="onetwenty">120s</button>
-                                <button onclick="oneeighty()" id="oneeighty">180s</button>
-                                <button onclick="twoforty()" id="twoforty">240s</button>
+                                <button id="thirty">30s</button>
+                                <button id="sixty">60s</button>
+                                <button id="onetwenty">120s</button>
+                                <button id="oneeighty">180s</button>
+                                <button id="twoforty">240s</button>
                             </div>
                         </div>
                     </div>
                     <div class="buttons2">
-                    <button class="previous" onclick="previous()">Previous</button>
-                    <button class="begin" onclick="begin()">Begin</button>
+                    <button id="previous">Previous</button>
+                    <button id="begin">Begin</button>
                     </div>
                 </div>
         </div>
