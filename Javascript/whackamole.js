@@ -100,11 +100,13 @@ document.getElementById("begin").addEventListener("click", () => {
     } else {
         timeds = setInterval(timer, 1000);
         popss = setInterval(popping, difficulty); /* Use this to set how fast the mole will be spawned */
-        document.getElementById("instructions").style.visibility = "hidden";
-        document.getElementById("instructions12").style.visibility = "hidden";
-        document.getElementById("results").style.visibility = "hidden";
-        document.getElementById("timers").style.visibility = "visible";
-        document.getElementById("main").style.visibility = "visible";
+        document.getElementById("instructions").style.display = "none";
+        document.getElementById("instructions12").style.display = "none";
+        document.getElementById("results").style.display = "none";
+        document.getElementById("timers").style.display = "flex";
+        document.getElementById("main").style.display = "flex";
+        document.getElementById("highscoreslist").style.display = "flex";
+        document.getElementById("pauseorplay").style.display = "flex";
         selection(); /*This function set a difficulty level under the high scores*/
     }
 })
@@ -118,18 +120,18 @@ document.getElementById("play").addEventListener("click", () => {
 })
 
 document.getElementById("start").addEventListener("click", () => {
-    document.getElementById("introduction").style.visibility = "hidden";
-    document.getElementById("instructions").style.visibility = "visible";
+    document.getElementById("introduction").style.display = "none";
+    document.getElementById("instructions").style.display = "flex";
 })
 
 document.getElementById("next").addEventListener("click", () => {
-    document.getElementById("instructions1").style.visibility = "hidden";
-    document.getElementById("instructions12").style.visibility = "visible";
+    document.getElementById("instructions1").style.display = "none";
+    document.getElementById("instructions12").style.display = "flex";
 })
 
 document.getElementById("previous").addEventListener("click", () => {
-    document.getElementById("instructions12").style.visibility = "hidden";
-    document.getElementById("instructions1").style.visibility = "visible";
+    document.getElementById("instructions12").style.display = "none";
+    document.getElementById("instructions1").style.display = "flex";
 })
 
 easy1.addEventListener("click", () => {
@@ -228,8 +230,8 @@ const reset = () => {
 
 const mainmenu = () => {
     reset();
-    document.getElementById("instructions").style.visibility = "visible";
-    document.getElementById("instructions12").style.visibility = "visible";
+    document.getElementById("instructions").style.display = "flex";
+    document.getElementById("instructions12").style.display = "flex";
 }
 
 document.getElementById("mainmenu").addEventListener("click", () => {
@@ -244,9 +246,9 @@ document.getElementById("mainmenu2").addEventListener("click", () => {
 
 document.getElementById("end").addEventListener("click", () => {
     reset();
-    document.getElementById("introduction").style.visibility = "visible";
-    document.getElementById("instructions").style.visibility = "visible";
-    document.getElementById("instructions1").style.visibility = "visible";
+    document.getElementById("introduction").style.display = "flex";
+    document.getElementById("instructions").style.display = "flex";
+    document.getElementById("instructions1").style.display = "flex";
 })
 
 
@@ -258,13 +260,13 @@ const timer = () => {
     if (time == 0) {
         clearInterval (timeds);
         clearInterval (popss);
-        document.getElementById("results").style.visibility = "visible";
+        document.getElementById("results").style.display = "flex";
         highscores();
     }
 }
 
 document.getElementById("retry").addEventListener("click", () => {
-    document.getElementById("results").style.visibility = "hidden";
+    document.getElementById("results").style.display = "none";
     counter = 0;
 
     switch(count){

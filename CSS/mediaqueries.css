@@ -43,11 +43,11 @@
         width: 250px;
     }
 
-    .pauseorplay{
+    #pauseorplay{
     position: absolute;
     bottom: 50px;
     width: 100%;
-    display: flex;
+    display: none;
     flex-direction: row;
     justify-content: center;
     }
@@ -60,7 +60,7 @@
         margin-right: 30px;
     }
 
-    .highscores{
+    #highscoreslist{
         left: 10%;
         top: 65%;
         height: 90px;
@@ -68,7 +68,7 @@
         border-radius: 7px;
     }
 
-    .highscores h1{
+    #highscoreslist h1{
         font-size: 14px;
     }
 
@@ -232,11 +232,11 @@
         font-size: 7px;
     }
 
-    .pauseorplay{
+    #pauseorplay{
     position: absolute;
     bottom: 65px;
     width: 100%;
-    display: flex;
+    display: none;
     flex-direction: row;
     justify-content: center;
     }
@@ -249,7 +249,7 @@
         margin-right: 30px;
     }
 
-    .highscores{
+    #highscoreslist{
         left: 10%;
         top: 62%;
         height: 90px;
@@ -257,7 +257,7 @@
         border-radius: 7px;
     }
 
-    .highscores h1{
+    #highscoreslist h1{
         font-size: 15px;
     }
 
@@ -413,14 +413,14 @@
         font-size: 10px;
     }
 
-    .pauseorplay{
+    #pauseorplay{
         position: absolute;
         bottom: 55px;
         width: 100%;
-        display: flex;
+        display: none;
         flex-direction: row;
         justify-content: center;
-        }
+    }
     
     .pause, #play{
         width: 25%;
@@ -430,7 +430,7 @@
         margin-right: 30px;
     }
 
-    .highscores{
+    #highscoreslist{
         left: 10%;
         top: 65%;
         height: 80px;
@@ -438,7 +438,7 @@
         border-radius: 7px;
     }
 
-    .highscores h1{
+    #highscoreslist h1{
         font-size: 16px;
     }
 
@@ -592,14 +592,14 @@
         border-radius: 15px;
     }
 
-    .pauseorplay{
+    #pauseorplay{
         position: absolute;
         bottom: 60px;
         width: 100%;
-        display: flex;
+        display: none;
         flex-direction: row;
         justify-content: center;
-        }
+    }
     
     .pause, #play{
         height: 50%;
@@ -610,12 +610,12 @@
         margin-right: 30px;
     }
 
-    .highscores{
+    #highscoreslist{
         height: 300px;
         border-radius: 7px;
     }
 
-    .highscores h1{
+    #highscoreslist h1{
         font-size: 18px;
     }
 
