@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Whack-A-Mole</title>
     <link rel="stylesheet" href="/CSS/whackamole.css">
-    <link rel="stylesheet" href="/CSS/mediaqueries.css">
+    <!-- <link rel="stylesheet" href="/CSS/mediaqueries.css"> -->
     <script src="https://kit.fontawesome.com/c123ad8ef2.js" crossorigin="anonymous"></script>
     <script defer src="/Javascript/whackamole.js"></script>
     <script defer src="/Javascript/sound.js"></script>
@@ -147,21 +147,24 @@
 
     <div id="introduction">
         <div class="fun">
-            <div class="logo">
-                <img src="/Images/mole2.png">
-                <h1>Whack-A-Mole</h1>
+            <div class="top-part">
+                <div class="logo">
+                    <img src="/Images/mole2.png" class="background-mole">
+                    <h1>Whack-A-Mole</h1>
+                </div>
+                <button id="start">Start</button>
             </div>
-            <button id="start">Start</button>
+            <div class="text">
+                <p>Ⓒ 2022 Vykatechnologies All Rights Reserved </p>
+                <p>Like what you see?</p>
+                <p>Find where we got out <a href='https://pngtree.com/so/cute'>mole</a> image and the <a href="https://www.vecteezy.com/free-vector/outside-background">background</a> design</p>
+                <p>Game Music gotten from <a href="https://www.joystock.org">Music by Joystock</a> and Sound from <a href="https://www.zapsplat.com">Zapsplat.com</a></p>
+            </div>
         </div>
         <div class="sound"> 
             <i class="fa-solid fa-volume-xmark"></i>
         </div>
-        <div class="text">
-            <p>Ⓒ 2022 Vykatechnologies All Rights Reserved </p>
-            <p>Like what you see?</p>
-            <p>Find where we got out <a href='https://pngtree.com/so/cute'>mole</a> image and the <a href="https://www.vecteezy.com/free-vector/outside-background">background</a> design</p>
-            <p>Game Music gotten from <a href="https://www.joystock.org">Music by Joystock</a> and Sound from <a href="https://www.zapsplat.com">Zapsplat.com</a></p>
-        </div>
+        <img src="/Images/introduction-background.jpg" alt="cartoon forest scene" class="introduction-image">
     </div>
 
     <div id="instructions">

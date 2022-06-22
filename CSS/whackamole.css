@@ -22,8 +22,6 @@
 }
 
 body{
-    background-image: url("/Images/grass.png");
-    position: relative;
     height: 100vh;
     width: 100vw;
 }
@@ -290,13 +288,8 @@ button:hover{
 
 #introduction{
     z-index: 7;
-    background-image: url("/Images/introduction-background.jpg");
-    background-size: cover;
-    background-repeat: repeat;
     height: inherit;
     width: inherit;
-    position: fixed;
-    bottom: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -304,13 +297,19 @@ button:hover{
     color: white; 
 }
 
+.introduction-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 #introduction h1{
     font-family: 'aurora';
     color:  white;
-    font-size: 70px;
+    font-size: 60px;
 }
 
-#introduction img{
+.background-mole{
     max-width: 50%;
     max-height: 50%;
 }
@@ -319,27 +318,39 @@ button:hover{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 50px;
 }
 
 .fun button{
-    width: 400px;
-    height: 50px;
+    width: 350px;
+    height: 40px;
+    margin-bottom: 130px;
+    margin-top: 50px;
 }
 
 .fun{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
-    width: 80%;
-    height: 80%;
+    justify-content: space-between;
+    padding: 0 20px 0 20px;
+    width: 900px;
+    height: inherit;
+    position: absolute;
+    top: 0;
+}
+
+.top-part{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
 }
 
 .text {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .text a {
