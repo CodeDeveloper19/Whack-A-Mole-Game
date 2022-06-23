@@ -100,13 +100,10 @@ document.getElementById("begin").addEventListener("click", () => {
     } else {
         timeds = setInterval(timer, 1000);
         popss = setInterval(popping, difficulty); /* Use this to set how fast the mole will be spawned */
+        document.getElementById("game").style.display = "flex";
         document.getElementById("instructions").style.display = "none";
         document.getElementById("instructions12").style.display = "none";
         document.getElementById("results").style.display = "none";
-        document.getElementById("timers").style.display = "flex";
-        document.getElementById("main").style.display = "flex";
-        document.getElementById("highscoreslist").style.display = "flex";
-        document.getElementById("pauseorplay").style.display = "flex";
         selection(); /*This function set a difficulty level under the high scores*/
     }
 })
@@ -120,7 +117,6 @@ document.getElementById("play").addEventListener("click", () => {
 })
 
 document.getElementById("start").addEventListener("click", () => {
-    document.getElementById("introduction").style.display = "none";
     document.getElementById("instructions").style.display = "flex";
 })
 
