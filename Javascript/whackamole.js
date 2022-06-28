@@ -2,27 +2,41 @@ let playy;
 let pausee;
 
 let counter = 0;
+let isClicked = [false, false, false, false, false, false, false, false, false];
 
 const mole = ["mole1", "mole2", "mole3", "mole4", "mole5", "mole6", "mole7", "mole8", "mole9"];
+const x = ["x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9"];
 
 for (let i = 0; i < 9; i++){
     document.getElementById(mole[i]).addEventListener("click", () => {
+        isClicked[i] = true;
         if (document.getElementById(mole[i]).style.visibility == "visible" && pausee != true){
             counter += 1;
             var audio1 = new Audio('/Sound Effects/splat.mp3');
             audio1.play();
-            document.getElementById(mole[i]).style.visibility = "hidden";
-        }
+            document.getElementById(mole[i]).style.animationName = "";
+            document.getElementById(x[i]).style.display = "flex";
+            setTimeout(()=>{
+                document.getElementById(mole[i]).style.visibility = "hidden";
+                document.getElementById(x[i]).style.display = "none";
+                document.getElementById(mole[i]).style.animationName = "";
+                isClicked[i] = false;
+            }, 300);
+        } 
     })
 }
 
-
 const moles = (num) => {
     let finalNum = num - 1;
-    for (let i = 0; i < 9; i++){
-        document.getElementById(mole[i]).style.visibility = "hidden";
-    }
     document.getElementById(mole[finalNum]).style.visibility = "visible";
+    document.getElementById(mole[finalNum]).style.animationName = "mole-popping";
+
+    if (isClicked[finalNum] == false){
+        setTimeout(()=>{
+            document.getElementById(mole[finalNum]).style.animationName = "";
+            document.getElementById(mole[finalNum]).style.visibility = "hidden";
+        }, 1500)
+    }
 }
 
 
@@ -94,17 +108,22 @@ let onetwenty1 = document.getElementById("onetwenty");
 let twoforty1 = document.getElementById("twoforty");
 let oneeighty1 = document.getElementById("oneeighty");
 
+
+const begin = () => {
+    timeds = setInterval(timer, 1000);
+    popss = setInterval(popping, 500); /* Use this to set how fast the mole will be spawned */ /*change back to number to "difficulty"*/
+    document.getElementById("game").style.display = "flex";
+    document.getElementById("introduction").style.display = "none";
+    document.getElementById("instructions").style.display = "none";
+    document.getElementById("instructions12").style.display = "none";
+    document.getElementById("results").style.display = "none";
+    selection(); /*This function set a difficulty level under the high scores*/
+}
 document.getElementById("begin").addEventListener("click", () => {
     if (count == undefined || counts == undefined){
         alert("Please select both a difficulty level and timelimit")
     } else {
-        timeds = setInterval(timer, 1000);
-        popss = setInterval(popping, difficulty); /* Use this to set how fast the mole will be spawned */
-        document.getElementById("game").style.display = "flex";
-        document.getElementById("instructions").style.display = "none";
-        document.getElementById("instructions12").style.display = "none";
-        document.getElementById("results").style.display = "none";
-        selection(); /*This function set a difficulty level under the high scores*/
+        begin();
     }
 })
 

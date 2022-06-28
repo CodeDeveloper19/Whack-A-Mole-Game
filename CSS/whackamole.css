@@ -27,22 +27,38 @@ body{
 }
 
 #game{
-    display: flex;
+    /* display: flex; */
+    display: none;
     width: inherit;
     height: inherit;
-    z-index: 10; /*Remove this entirely when done*/
+}
+
+#game-background{
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
 }
 
 #main{
     z-index: 2;
-    position: fixed;
+    position: absolute;
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: none;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 50%;
+    width: 545px;
+    height: 440px;
+    display: grid;
+    grid-gap: 0px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 147px;
+}
+
+#main > div{
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 #timers{
@@ -53,7 +69,6 @@ body{
     height: 15%;
     display: flex; 
     justify-content: space-between;
-    display: none;
 }
 
 #counter{
@@ -104,7 +119,7 @@ body{
     position: absolute;
     bottom: 20%;
     left: 2%;
-    display: none; 
+    display: flex; 
     flex-direction: column;
     align-items: center;
     width: 15%;
@@ -150,39 +165,55 @@ body{
     width: 15%;
 }
 
-#hole{
+.hole{
     z-index: 2;
-    max-width: 55%;
-    max-height: 55%;
+    width: 70%;
+    height: 50px;
 }
 
 #mole1, #mole2, #mole3, #mole4, #mole5, #mole6, #mole7, #mole8, #mole9{
     visibility: hidden;
 }
 
+.x{
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    top: 30px;
+    z-index: 3;
+    display: none;
+}
+
 .mole{
     z-index: 1;
     position: relative;
     top: 30px;
-    max-width: 40%;
-    max-height: 40%;
+    width: 60%;
+    height: 110px;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
 }
 
-.col1, .col2{
-    margin-bottom: 20%;
+@keyframes mole-popping {
+    0% {
+        top: 130px;
+    }
+
+    50% {
+        top: 30px;
+    }
+
+    100%{
+        top: 130px;
+    }
+    
 }
 
-.col1,.col2, .col3{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.col1:hover, .col2:hover, .col3:hover, button:hover{
+.mole:hover, button:hover{
     cursor: url('hammericon.cur'), url('/Images/hammericon.png'), pointer;
 }
-
 
 #results{
     z-index: 4;
@@ -272,7 +303,7 @@ button:hover{
     bottom: 2%;
     width: 100%;
     height: 10%;
-    display: none;
+    display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -297,7 +328,7 @@ button:hover{
     z-index: 7;
     height: inherit;
     width: inherit;
-    display: flex;
+    display: flex; /*change back to flex*/
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -327,14 +358,14 @@ button:hover{
     align-items: center;
 }
 
-.fun button{
+#fun button{
     width: 350px;
     height: 40px;
     margin-bottom: 130px;
     margin-top: 50px;
 }
 
-.fun{
+#fun{
     display: flex;
     flex-direction: column;
     align-items: center;
