@@ -323,7 +323,7 @@ button:hover{
     z-index: 7;
     height: inherit;
     width: inherit;
-    display: flex; /*change back to flex*/
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -340,8 +340,8 @@ button:hover{
 }
 
 .background-mole{
-    max-width: 30%;
-    max-height: 30%;
+    max-width: 35%;
+    max-height: 35%;
 }
 
 .logo{
@@ -386,6 +386,11 @@ button:hover{
     color: yellow;
 }
 
+.text a:hover{
+    text-decoration: underline;
+    color: green;
+}
+
 #instructions{
     z-index: 6;
     height: 100vh;
@@ -407,7 +412,7 @@ button:hover{
 #instructions1{
     width: 820px;
     height: 400px;
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
     border-radius: 15px;
     font-family: 'DEADCRT';
     padding: 50px;
@@ -415,6 +420,9 @@ button:hover{
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-image: url(/Images/board.png);
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 #instructions1 h1{
@@ -508,7 +516,7 @@ button:hover{
 }
 
 #s-introduction{
-    bottom: 10%;
+    bottom: 5%;
 }
 
 #s-instructions{
