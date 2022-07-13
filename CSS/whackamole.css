@@ -336,11 +336,12 @@ button:hover{
     font-family: 'aurora';
     color:  white;
     font-size: 60px;
+    text-align: center;
 }
 
 .background-mole{
-    max-width: 40%;
-    max-height: 40%;
+    max-width: 30%;
+    max-height: 30%;
 }
 
 .logo{
@@ -372,25 +373,17 @@ button:hover{
     margin: auto;
 }
 
-.lower-part{
-    display: flex;
-    flex-direction: row;
-    width: 77.7635%;
-    margin: auto;
-    margin-bottom: 0;
-}
-
 .text {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 91%;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .text a {
     text-decoration: none;
-    color:green;
+    color: yellow;
 }
 
 #instructions{
@@ -515,7 +508,7 @@ button:hover{
 }
 
 #s-introduction{
-    position: unset;
+    bottom: 10%;
 }
 
 #s-instructions{

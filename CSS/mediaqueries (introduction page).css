@@ -1,0 +1,100 @@
+@media screen and (max-width: 950px) {
+    #fun{
+        width: 100%;
+    }
+
+    #introduction h1{
+        font-size: 45px;
+    }
+
+    .text{
+        font-size: 12px;
+    }
+
+    #fun button{
+        font-size: 9.75px;
+        width: 291.61px;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    #introduction h1{
+        font-size: 35px;
+    }
+
+    .text{
+        font-size: 9.3px;
+        width: 100%;
+    }
+
+    #fun button{
+        width: 242.62px;
+    }
+
+    #s-introduction{
+        width: 25px;
+        height: 25px;
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #introduction h1{
+        font-size: 25px;
+    }
+
+    .text{
+        font-size: 7.5px;
+    }
+
+    #fun button{
+        width: 138.64px;
+        height: 22.857px;
+    }
+
+    #s-introduction{
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+    }
+}
+
+
+@media screen and (max-width: 330px) {
+    #introduction h1{
+        font-size: 20px;
+    }
+
+    .text{
+        font-size: 6.5px;
+    }
+}
+
+@media screen and (max-width: 260px) {
+    #introduction h1{
+        font-size: 15px;
+    }
+
+    
+    #fun button{
+        width: 120px;
+        height: 18px;
+        font-size: 8px;
+    }
+
+    .text{
+        font-size: 5.5px;
+    }
+    #s-introduction{
+        width: 18px;
+        height: 18px;
+        font-size: 8px;
+    }
+}
+
+@media screen and (max-width: 199px){
+    body{
+        display: none;
+    }
+    
+}
