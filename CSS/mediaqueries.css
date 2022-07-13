@@ -1,3 +1,81 @@
+@media screen and (max-width: 950px) {
+    #fun{
+        width: 100%;
+    }
+
+    #introduction h1{
+        font-size: 45px;
+    }
+
+    .text{
+        font-size: 12px;
+    }
+
+    #fun button{
+        font-size: 9.75px;
+        width: 291.61px;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    #introduction h1{
+        font-size: 35px;
+    }
+
+    .background-mole{
+        max-width: 30%;
+        max-height: 30%;
+    }
+
+    .text{
+        font-size: 9.3px;
+        width: 100%;
+    }
+
+    #fun button{
+        width: 242.62px;
+    }
+
+    #s-introduction{
+        width: 25px;
+        height: 25px;
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #introduction h1{
+        font-size: 20px;
+    }
+
+    .background-mole{
+        max-width: 20%;
+        max-height: 20%;
+    }
+
+    .text{
+        font-size: 5.3px;
+    }
+
+    #fun button{
+        width: 138.64px;
+        height: 22.857px;
+    }
+
+    #s-introduction{
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+    }
+
+    /* .lower-part{
+        flex-direction: column-reverse;
+        margin-bottom: 20px;
+    } */
+}
+
+
+
 /* @media screen and (min-width: 0px) and (max-width: 199px){
     body{
         display: none;
