@@ -102,3 +102,154 @@
     }
     
 }
+
+/* Mediaqueries for the Instructions Screen*/
+
+@media screen and (max-width: 920px){
+    #instructions1{
+        width: 600px;
+        height: 400px;
+    }
+
+    #instructions1 h1{
+        top: 80px;
+        font-size: 23px;
+    }
+
+    .howtoplay{
+        top: 160px;
+        font-size: 11.2px;
+        width: 454px;
+    }
+
+    #next{
+        width: 146px;
+        height: 35px;
+        top: 340px;
+        font-size: 10px;
+    }
+
+    .sound-container1{
+        top: 345px;
+        left: 130px;
+    }
+
+    #s-instructions{
+        width: 25px;
+        height: 25px;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 700px){
+    #instructions1{
+        width: 400px;
+        height: 268px;
+    }
+
+    #instructions1 h1{
+        top: 70px;
+        font-size: 15.6px;
+    }
+
+    .howtoplay{
+        top: 125px;
+        font-size: 7.8px;
+        width: 302px;
+    }
+
+    #next{
+        width: 98px;
+        height: 23px;
+        top: 253px;
+        font-size: 7px;
+    }
+
+    .sound-container1{
+        top: 255px;
+        left: 110px;
+    }
+
+    #s-instructions{
+        width: 18px;
+        height: 18px;
+        font-size: 8px;
+    }
+}
+
+@media screen and (max-width: 500px){
+    #instructions1{
+        width: 300px;
+        height: 201px;
+    }
+
+    #instructions1 h1{
+        top: 65px;
+        font-size: 11.7px;
+    }
+
+    .howtoplay{
+        top: 110px;
+        font-size: 5.9px;
+        width: 227px;
+        height: 28%;
+    }
+
+    #next{
+        width: 73px;
+        height: 18px;
+        top: 210px;
+        font-size: 6px;
+        border-radius: 3px;
+    }
+
+    .sound-container1{
+        top: 210px;
+        left: 100px;
+    }
+
+    #s-instructions{
+        width: 16px;
+        height: 16px;
+        font-size: 6px;
+    }
+}
+
+@media screen and (max-width: 400px){
+    #instructions1{
+        width: 200px;
+        height: 134px;
+        padding: 0;
+    }
+
+    #instructions1 h1{
+        top: 10px;
+        font-size: 7.8px;
+    }
+
+    .howtoplay{
+        top: 40px;
+        left: 25px;
+        font-size: 4px;
+        width: 155px;
+        height: 40%;
+    }
+
+    #next{
+        width: 48px;
+        height: 12px;
+        top: 105px;
+        font-size: 4px;
+    }
+
+    .sound-container1{
+        top: 105px;
+        left: 30px;
+    }
+
+    #s-instructions{
+        width: 10px;
+        height: 10px;
+        font-size: 2.5px;
+    }
+}

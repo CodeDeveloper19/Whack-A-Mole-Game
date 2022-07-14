@@ -137,6 +137,7 @@ document.getElementById("play").addEventListener("click", () => {
 
 document.getElementById("start").addEventListener("click", () => {
     document.getElementById("instructions").style.display = "flex";
+    document.getElementById("introduction").style.display = "none";
 })
 
 document.getElementById("next").addEventListener("click", () => {
