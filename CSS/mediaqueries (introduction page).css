@@ -96,7 +96,7 @@
     }
 }
 
-@media screen and (max-width: 199px){
+@media screen and (max-width: 210px){
     body{
         display: none;
     }
@@ -106,18 +106,18 @@
 /* Mediaqueries for the Instructions Screen*/
 
 @media screen and (max-width: 920px){
-    #instructions1{
+    #instructions1, #instructions12{
         width: 600px;
         height: 400px;
     }
 
-    #instructions1 h1{
-        top: 80px;
+    #instructions1 h1, #instructions12 h1{
+        top: 70px;
         font-size: 23px;
     }
 
     .howtoplay{
-        top: 160px;
+        top: 150px;
         font-size: 11.2px;
         width: 454px;
     }
@@ -125,35 +125,62 @@
     #next{
         width: 146px;
         height: 35px;
-        top: 340px;
+        top: 330px;
         font-size: 10px;
     }
 
     .sound-container1{
-        top: 345px;
+        top: 335px;
         left: 130px;
     }
 
     #s-instructions{
-        width: 25px;
-        height: 25px;
-        font-size: 12px;
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+    }
+
+    /**************Second Part of the Instruction Screen*************/
+    .howtoplay1{
+        top: 120px;
+        width: 454px;
+    }
+
+    .howtoplay1 h2{
+        font-size: 17.5px;
+    }
+
+    .howtoplay1 button, .buttons2 button{
+        width: 73px;
+        height: 30px;
+        font-size: 9.7px;
+    }
+
+    #s-instructions12{
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+        left: 125px;
+    }
+
+    .buttons2, #s-instructions12{
+        top: 360px;
     }
 }
 
 @media screen and (max-width: 700px){
-    #instructions1{
+    #instructions1, #instructions12{
         width: 400px;
         height: 268px;
     }
 
-    #instructions1 h1{
-        top: 70px;
+    #instructions1 h1, #instructions12 h1{
+        top: 60px;
         font-size: 15.6px;
     }
 
     .howtoplay{
-        top: 125px;
+        top: 115px;
         font-size: 7.8px;
         width: 302px;
     }
@@ -161,12 +188,12 @@
     #next{
         width: 98px;
         height: 23px;
-        top: 253px;
+        top: 243px;
         font-size: 7px;
     }
 
     .sound-container1{
-        top: 255px;
+        top: 245px;
         left: 110px;
     }
 
@@ -175,21 +202,56 @@
         height: 18px;
         font-size: 8px;
     }
+
+    /**************Second Part of the Instruction Screen*************/
+    .howtoplay1{
+        top: 80px;
+        width: 302px;
+    }
+
+    .howtoplay1 h2{
+        font-size: 11.7px;
+    }
+
+    .howtoplay1 button, .buttons2 button{
+        width: 48.78px;
+        height: 25px;
+        font-size: 6.49px;
+    }
+
+    .buttons2, #s-instructions12{
+        top: 250px;
+    }
+
+    #s-instructions12{
+        width: 18px;
+        height: 18px;
+        font-size: 8px;
+        left: 110px;
+    }
+
+    .timeduration{
+        margin-top: 20px;
+    }
+
+    .timedurations, .difficulties{
+        margin-top: 15px;
+    }
 }
 
 @media screen and (max-width: 500px){
-    #instructions1{
+    #instructions1, #instructions12{
         width: 300px;
         height: 201px;
     }
 
-    #instructions1 h1{
-        top: 65px;
+    #instructions1 h1, #instructions12 h1{
+        top: 55px;
         font-size: 11.7px;
     }
 
     .howtoplay{
-        top: 110px;
+        top: 100px;
         font-size: 5.9px;
         width: 227px;
         height: 28%;
@@ -198,14 +260,14 @@
     #next{
         width: 73px;
         height: 18px;
-        top: 210px;
+        top: 200px;
         font-size: 6px;
         border-radius: 3px;
     }
 
     .sound-container1{
-        top: 210px;
-        left: 100px;
+        top: 200px;
+        left: 90px;
     }
 
     #s-instructions{
@@ -213,43 +275,116 @@
         height: 16px;
         font-size: 6px;
     }
+
+    /**************Second Part of the Instruction Screen*************/
+    .howtoplay1{
+        top: 60px;
+        width: 227px;
+    }
+
+    .howtoplay1 h2{
+        font-size: 8.78px;
+    }
+
+    .howtoplay1 button, .buttons2 button{
+        width: 36.59px;
+        height: 18px;
+        font-size: 4.87px;
+        border-radius: 3px;
+    }
+
+    .buttons2, #s-instructions12{
+        top: 195px;
+    }
+
+    #s-instructions12{
+        width: 16px;
+        height: 16px;
+        font-size: 6px;
+        left: 90px;
+        top: 200px;
+    }
+
+    .timeduration{
+        margin-top: 15px;
+    }
+
+    .timedurations, .difficulties{
+        margin-top: 10px;
+    }
 }
 
 @media screen and (max-width: 400px){
-    #instructions1{
-        width: 200px;
-        height: 134px;
+    #instructions1, #instructions12{
+        width: 230px;
+        height: 154px;
         padding: 0;
     }
 
-    #instructions1 h1{
+    #instructions1 h1, #instructions12 h1{
         top: 10px;
-        font-size: 7.8px;
+        font-size: 8.9px;
     }
 
     .howtoplay{
         top: 40px;
         left: 25px;
-        font-size: 4px;
-        width: 155px;
+        font-size: 4.3px;
+        width: 170px;
         height: 40%;
     }
 
     #next{
-        width: 48px;
-        height: 12px;
-        top: 105px;
-        font-size: 4px;
+        width: 50px;
+        height: 16px;
+        top: 120px;
+        font-size: 5px;
     }
 
     .sound-container1{
-        top: 105px;
-        left: 30px;
+        top: 120px;
+        left: 35px;
     }
 
     #s-instructions{
-        width: 10px;
-        height: 10px;
-        font-size: 2.5px;
+        width: 15px;
+        height: 15px;
+        font-size: 5px;
+    }
+
+    /**************Second Part of the Instruction Screen*************/
+    .howtoplay1{
+        top: 10px;
+        width: 170px;
+    }
+
+    .howtoplay1 h2{
+        font-size: 6.73px;
+    }
+
+    .howtoplay1 button, .buttons2 button{
+        width: 26.05px;
+        height: 12px;
+        font-size: 3.73px;
+    }
+
+    .buttons2, #s-instructions12{
+        top: 115px;
+    }
+
+    #s-instructions12{
+        width: 15px;
+        height: 15px;
+        font-size: 5px;
+        left: 40px;
+        top: 120px;
+    }
+
+    .timeduration{
+        margin-top: 10px;
+    }
+
+    .timedurations, .difficulties{
+        margin-top: 5px;
     }
 }
