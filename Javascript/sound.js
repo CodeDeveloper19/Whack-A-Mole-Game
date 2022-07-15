@@ -3,8 +3,10 @@ let audio = new Audio('/Sound Effects/backgroundmusic.mp3');
 
 let icon = document.getElementsByTagName("i");
 
+console.log(document.getElementsByClassName("sound"))
 
-for (let i = 0; i < 2; i++ ){
+
+for (let i = 0; i < 3; i++ ){
     document.getElementsByClassName("sound")[i].addEventListener("click", () => {
         if (LIMIT == 1){
             audio.play();
