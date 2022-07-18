@@ -7,9 +7,6 @@
     <title>Whack-A-Mole</title>
     <link rel="stylesheet" href="/CSS/whackamole.css">
     <link rel="stylesheet" href="/CSS/mediaqueries (introduction page).css">
-    <script src="https://kit.fontawesome.com/c123ad8ef2.js" crossorigin="anonymous"></script>
-    <script defer src="/Javascript/whackamole.js"></script>
-    <script defer src="/Javascript/sound.js"></script>
 </head>
 <body>
     <div id="game">
@@ -193,7 +190,10 @@
                             <li>The total number of moles you are able to smash will be your final score.</li>
                         </ul>
                     </div>
-                    <button id="next">Next</button>
+                    <div id="next" class="button">
+                        <img src="./images/normal slab.png" alt="normal slab" class="image"> 
+                        <p>Start</p>
+                    </div>
                     <div class="sound-container1">
                         <div class="sound" id="s-instructions"> 
                             <i class="fa-solid fa-volume-xmark"></i>
@@ -208,26 +208,61 @@
                         <div class="difficulty">
                             <h2>Difficulty Level</h2>
                             <div class="difficulties">
-                                <button id="easy">Easy</button>
-                                <button id="medium">Medium</button>
-                                <button id="hard">Hard</button>
+                                <div id="easy" class="button">
+                                    <img src="./images/normal slab.png" alt="normal slab" class="image"> 
+                                    <p>Easy</p>
+                                </div>
+                                <div id="medium" class="button">
+                                    <img src="./images/normal slab.png" alt="normal slab" class="image"> 
+                                    <p>Medium</p>
+                                </div>
+                                <div id="hard" class="button">
+                                    <img src="./images/normal slab.png" alt="normal slab" class="image"> 
+                                    <p>Hard</p>
+                                </div>
                             </div>
                         </div>
 
                         <div class="timeduration">
                             <h2>Time Duration</h2>
                             <div class="timedurations">
-                                <button id="thirty">30s</button>
+                                <div id="thirty" class="button">
+                                    <img src="./images/normal slab.png" alt="normal slab" class="image"> 
+                                    <p>30s</p>
+                                </div>
+                                <div id="sixty" class="button">
+                                    <img src="./images/normal slab.png" alt="normal slab" class="image"> 
+                                    <p>60s</p>
+                                </div>
+                                <div id="onetwenty" class="button">
+                                    <img src="./images/normal slab.png" alt="normal slab" class="image"> 
+                                    <p>120s</p>
+                                </div>
+                                <div id="oneeighty" class="button">
+                                    <img src="./images/normal slab.png" alt="normal slab" class="image"> 
+                                    <p>180s</p>
+                                </div>
+                                <div id="twoforty" class="button">
+                                    <img src="./images/normal slab.png" alt="normal slab" class="image"> 
+                                    <p>240s</p>
+                                </div>
+                                <!-- <button id="thirty">30s</button>
                                 <button id="sixty">60s</button>
                                 <button id="onetwenty">120s</button>
                                 <button id="oneeighty">180s</button>
-                                <button id="twoforty">240s</button>
+                                <button id="twoforty">240s</button> -->
                             </div>
                         </div>
                     </div>
                     <div class="buttons2">
-                    <button id="previous">Previous</button>
-                    <button id="begin">Begin</button>
+                        <div id="previous" class="button">
+                            <img src="./images/normal slab.png" alt="normal slab" class="image"> 
+                            <p>Previous</p>
+                        </div>
+                        <div id="begin" class="button">
+                            <img src="./images/normal slab.png" alt="normal slab" class="image"> 
+                            <p>Begin</p>
+                        </div>
                     </div>
                     <div class="sound" id="s-instructions12"> 
                         <i class="fa-solid fa-volume-xmark"></i>
@@ -235,5 +270,9 @@
                 </div>
         </div>
     </div>
+
+    <script src="https://kit.fontawesome.com/c123ad8ef2.js" crossorigin="anonymous"></script>
+    <script defer src="/Javascript/whackamole.js"></script>
+    <script defer src="/Javascript/sound.js"></script>
 </body>
 </html>

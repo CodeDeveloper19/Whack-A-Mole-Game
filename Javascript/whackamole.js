@@ -119,13 +119,13 @@ const begin = () => {
     document.getElementById("results").style.display = "none";
     selection(); /*This function set a difficulty level under the high scores*/
 }
-document.getElementById("begin").addEventListener("click", () => {
-    if (count == undefined || counts == undefined){
-        alert("Please select both a difficulty level and timelimit")
-    } else {
-        begin();
-    }
-})
+// document.getElementById("begin").addEventListener("click", () => {
+//     if (count == undefined || counts == undefined){
+//         alert("Please select both a difficulty level and timelimit")
+//     } else {
+//         begin();
+//     }
+// })
 
 document.getElementById("pause").addEventListener("click", () => {
     pausee = true;
@@ -345,5 +345,20 @@ const selection = () => {
     }
 }
 
+/*Hovering of Button*/
 
+for (let i = 0; i < document.getElementsByClassName("button").length; i++){
+    document.getElementsByClassName("button")[i].addEventListener("mouseover", () => {
+        document.getElementsByClassName("image")[i].src = "./images/slab hover.png";
+    })
+    
+    document.getElementsByClassName("button")[i].addEventListener("mouseout", () => {
+        document.getElementsByClassName("image")[i].src = "./images/normal slab.png";
+    }) 
+}
+
+
+// document.getElementById("hard").childNodes[0].src = "./images/hole.png";
+
+// alert(document.getElementById("hard").childNodes.length);
 

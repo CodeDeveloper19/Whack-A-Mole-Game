@@ -124,8 +124,11 @@
 
     #next{
         width: 146px;
-        height: 35px;
-        top: 330px;
+        height: 50px;
+        top: 325px;
+    }
+
+    #next p{
         font-size: 10px;
     }
 
@@ -150,21 +153,45 @@
         font-size: 17.5px;
     }
 
-    .howtoplay1 button, .buttons2 button{
-        width: 73px;
-        height: 30px;
-        font-size: 9.7px;
-    }
-
     #s-instructions12{
         width: 28px;
         height: 28px;
         font-size: 14px;
         left: 125px;
+        top: 360px;
     }
 
-    .buttons2, #s-instructions12{
-        top: 360px;
+    .buttons2{
+        width: 256px;
+        top: 350px;
+    }
+
+    .buttons2 p, .howtoplay1 p{
+        font-size: 9.7px;
+    }
+
+    #previous, #begin{
+        width: 117.07px;
+        height: 44px;
+    }
+
+    .timedurations{
+        width: 402px;
+        margin-top: 20px;
+    }
+
+    .difficulties{
+        width: 292.68px;
+        margin-top: 20px;
+    }
+
+    .timedurations > div, .difficulties > div{
+        width: 87.80px;
+        height: 36.59px;
+    }
+
+    .timedurations > div {
+        width: 73.17px;
     }
 }
 
@@ -187,8 +214,11 @@
 
     #next{
         width: 98px;
-        height: 23px;
-        top: 243px;
+        height: 28px;
+        top: 242px;
+    }
+   
+    #next p{
         font-size: 7px;
     }
 
@@ -213,29 +243,49 @@
         font-size: 11.7px;
     }
 
-    .howtoplay1 button, .buttons2 button{
-        width: 48.78px;
-        height: 25px;
-        font-size: 6.49px;
-    }
-
-    .buttons2, #s-instructions12{
-        top: 250px;
-    }
-
     #s-instructions12{
         width: 18px;
         height: 18px;
         font-size: 8px;
         left: 110px;
+        top: 250px;
     }
 
     .timeduration{
         margin-top: 20px;
     }
 
-    .timedurations, .difficulties{
+    .buttons2{
+        width: 170.73px;
+        top: 245px;
+    }
+
+    .buttons2 p, .howtoplay1 p{
+        font-size: 6.49px;
+    }
+
+    #previous, #begin{
+        width: 78.057px;
+        height: 29px;
+    }
+
+    .timedurations{
+        width: 268.29px;
         margin-top: 15px;
+    }
+
+    .difficulties{
+        width: 195.12px;
+        margin-top: 15px;
+    }
+
+    .timedurations > div, .difficulties > div{
+        width: 58.5px;
+        height: 24.39px;
+    }
+
+    .timedurations > div {
+        width: 48.78px;
     }
 }
 
@@ -261,8 +311,10 @@
         width: 73px;
         height: 18px;
         top: 200px;
+    }
+
+    #next p{
         font-size: 6px;
-        border-radius: 3px;
     }
 
     .sound-container1{
@@ -286,17 +338,6 @@
         font-size: 8.78px;
     }
 
-    .howtoplay1 button, .buttons2 button{
-        width: 36.59px;
-        height: 18px;
-        font-size: 4.87px;
-        border-radius: 3px;
-    }
-
-    .buttons2, #s-instructions12{
-        top: 195px;
-    }
-
     #s-instructions12{
         width: 16px;
         height: 16px;
@@ -309,8 +350,37 @@
         margin-top: 15px;
     }
 
-    .timedurations, .difficulties{
+    .buttons2{
+        width: 128.05px;
+        top: 195px;
+    }
+
+    .buttons2 p, .howtoplay1 p{
+        font-size: 4.87px;
+    }
+
+    #previous, #begin{
+        width: 58.54px;
+        height: 22px;
+    }
+
+    .timedurations{
+        width: 201px;
         margin-top: 10px;
+    }
+
+    .difficulties{
+        width: 146.34px;
+        margin-top: 10px;
+    }
+
+    .timedurations > div, .difficulties > div{
+        width: 43.90px;
+        height: 18.29px;
+    }
+
+    .timedurations > div {
+        width: 36.59px;
     }
 }
 
@@ -338,6 +408,9 @@
         width: 50px;
         height: 16px;
         top: 120px;
+    }
+    
+    #next p{
         font-size: 5px;
     }
 
@@ -362,16 +435,6 @@
         font-size: 6.73px;
     }
 
-    .howtoplay1 button, .buttons2 button{
-        width: 26.05px;
-        height: 12px;
-        font-size: 3.73px;
-    }
-
-    .buttons2, #s-instructions12{
-        top: 115px;
-    }
-
     #s-instructions12{
         width: 15px;
         height: 15px;
@@ -384,7 +447,37 @@
         margin-top: 10px;
     }
 
-    .timedurations, .difficulties{
-        margin-top: 5px;
+    .buttons2{
+        width: 98.17px;
+        top: 120px;
+        font-size: 3.73px;
+    }
+
+    .buttons2 p, .howtoplay1 p{
+        font-size: 3.73px;
+    }
+
+    #previous, #begin{
+        width: 44.88px;
+        height: 16.8px;
+    }
+
+    .timedurations{
+        width: 154px;
+        margin-top: 8px;
+    }
+
+    .difficulties{
+        width: 112.20px;
+        margin-top: 8px;
+    }
+
+    .timedurations > div, .difficulties > div{
+        width: 33.66px;
+        height: 14.02px;
+    }
+
+    .timedurations > div {
+        width: 28.05px;
     }
 }
