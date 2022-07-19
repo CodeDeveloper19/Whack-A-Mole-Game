@@ -3,7 +3,7 @@ let audio = new Audio('/Sound Effects/backgroundmusic.mp3');
 
 let icon = document.getElementsByTagName("i");
 
-for (let i = 0; i < 3; i++ ){
+for (let i = 0; i < document.getElementsByClassName("sound").length; i++ ){
     document.getElementsByClassName("sound")[i].addEventListener("click", () => {
         if (LIMIT == 1){
             audio.play();
