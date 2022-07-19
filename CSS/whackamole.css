@@ -540,25 +540,26 @@ button:hover{
 .sound{
     width: 30px;
     height: 30px;
-    border-radius: 50%;
-    background-color: green;
     color: white;
     position: absolute;
     bottom: 5%;
     left: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+}
+
+.circle-image{
+    height: 100%;
+    width: 100%;
 }
 
 .sound:hover{
     cursor: pointer;
 }
 
-.sound-container1{
+.fa-solid{
     position: absolute;
-    top: 450px;
-    left: 150px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #s-instructions12{
@@ -572,7 +573,7 @@ button:hover{
 }
 
 #s-instructions{
-    position: relative;
-    left: 10%;
-    bottom: unset;
+    position: absolute;
+    top: 450px;
+    left: 160px;
 }
