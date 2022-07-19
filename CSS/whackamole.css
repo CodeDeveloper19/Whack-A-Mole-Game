@@ -9,7 +9,7 @@
         url('/Fonts/DEADCRT.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-    font-display: swap;
+    font-display: block;
 }
 
 @font-face {
@@ -18,7 +18,7 @@
         url('/Fonts/aurora.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-    font-display: swap;
+    font-display: block;
 }
 
 #game{
