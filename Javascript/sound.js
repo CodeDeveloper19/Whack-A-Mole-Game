@@ -12,12 +12,12 @@ for (let i = 0; i < document.getElementsByClassName("sound").length; i++ ){
         }
     
         if (icon[0].classList[1] == "fa-volume-xmark") {
-            for(let i = 0; i < 3; i++){
+            for(let i = 0; i < document.getElementsByClassName("sound").length; i++){
                 icon[i].classList.replace("fa-volume-xmark", "fa-volume-high")
             }
             audio.muted = false;
         } else {
-            for(let i = 0; i < 3; i++){
+            for(let i = 0; i < document.getElementsByClassName("sound").length; i++){
                 icon[i].classList.replace("fa-volume-high", "fa-volume-xmark")
             }
             audio.muted = true;
