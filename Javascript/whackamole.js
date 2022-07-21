@@ -98,6 +98,7 @@ let counts;
 let timeds;
 let highscore = [];
 let popss;
+let isClicked2 = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
 let difficult = document.getElementById("difficulty");
 let easy1 = document.getElementById("easy");
 let medium1 = document.getElementById("medium");
@@ -156,6 +157,9 @@ easy1.addEventListener("click", () => {
     document.getElementsByClassName("image")[3].src = "./images/normal slab.png";
     counts = 1;
     difficulty = 1000;
+    isClicked2[1] = true;
+    isClicked2[2] = false;
+    isClicked2[3] = false;
 })
 
 medium1.addEventListener("click", () => {
@@ -164,6 +168,9 @@ medium1.addEventListener("click", () => {
     document.getElementsByClassName("image")[3].src = "./images/normal slab.png";
     counts = 2;
     difficulty = 750;      
+    isClicked2[1] = false;
+    isClicked2[2] = true;
+    isClicked2[3] = false;
 })
 
 hard1.addEventListener("click", () => {
@@ -172,6 +179,9 @@ hard1.addEventListener("click", () => {
     document.getElementsByClassName("image")[3].src = "./images/slab hover.png";
     counts = 3;
     difficulty = 350;
+    isClicked2[1] = false;
+    isClicked2[2] = false;
+    isClicked2[3] = true;
 })
 
 thirty1.addEventListener("click", () => {
@@ -181,7 +191,12 @@ thirty1.addEventListener("click", () => {
     document.getElementsByClassName("image")[7].src = "./images/normal slab.png";
     document.getElementsByClassName("image")[8].src = "./images/normal slab.png";
     count = 1;
-    time = 30;    
+    time = 30; 
+    isClicked2[4] = true;
+    isClicked2[5] = false;
+    isClicked2[6] = false;
+    isClicked2[7] = false;
+    isClicked2[8] = false;  
 })
 
 sixty1.addEventListener("click", () => {
@@ -191,7 +206,12 @@ sixty1.addEventListener("click", () => {
     document.getElementsByClassName("image")[7].src = "./images/normal slab.png";
     document.getElementsByClassName("image")[8].src = "./images/normal slab.png";
     count = 2;
-    time = 60;     
+    time = 60;
+    isClicked2[4] = false;
+    isClicked2[5] = true;
+    isClicked2[6] = false;
+    isClicked2[7] = false;
+    isClicked2[8] = false;      
 })
 
 onetwenty1.addEventListener("click", () => {
@@ -201,7 +221,12 @@ onetwenty1.addEventListener("click", () => {
     document.getElementsByClassName("image")[7].src = "./images/normal slab.png";
     document.getElementsByClassName("image")[8].src = "./images/normal slab.png";
     count = 3;
-    time = 120;          
+    time = 120;     
+    isClicked2[4] = false;
+    isClicked2[5] = false;
+    isClicked2[6] = true;
+    isClicked2[7] = false;
+    isClicked2[8] = false;      
 })
 
 oneeighty1.addEventListener("click", () => {
@@ -211,7 +236,12 @@ oneeighty1.addEventListener("click", () => {
     document.getElementsByClassName("image")[7].src = "./images/slab hover.png";
     document.getElementsByClassName("image")[8].src = "./images/normal slab.png";
     count = 4;
-    time = 180;            
+    time = 180;       
+    isClicked2[4] = false;
+    isClicked2[5] = false;
+    isClicked2[6] = false;
+    isClicked2[7] = true;
+    isClicked2[8] = false;      
 })
 
 twoforty1.addEventListener("click", () => {
@@ -222,6 +252,11 @@ twoforty1.addEventListener("click", () => {
     document.getElementsByClassName("image")[8].src = "./images/slab hover.png";
     count = 5;
     time = 240;
+    isClicked2[4] = false;
+    isClicked2[5] = false;
+    isClicked2[6] = false;
+    isClicked2[7] = false;
+    isClicked2[8] = true; 
 })
 
 const reset = () => {
@@ -366,17 +401,34 @@ document.getElementsByClassName("button")[0].addEventListener("mouseout", () => 
     document.getElementsByClassName("image")[0].src = "./images/normal slab.png";
 }) 
 
-/*This is for the buttons that are option for the difficulty and time */
-for (let i = 1; i < 9; i++){
+/*This is for the buttons that are option for the difficulty*/
+for (let i = 1; i < 4; i++){
     document.getElementsByClassName("button")[i].addEventListener("mouseover", () => {
         document.getElementsByClassName("image")[i].src = "./images/slab hover.png";
     })
 
-    if (document.getElementsByClassName("image")[i] != "./images/slab hover.png" && !difficulty){  
-        document.getElementsByClassName("button")[i].addEventListener("mouseout", () => {
+    document.getElementsByClassName("button")[i].addEventListener("mouseout", () => {
+        if ((!difficulty)){ 
+        document.getElementsByClassName("image")[i].src = "./images/normal slab.png";
+        } else if (difficulty && isClicked2[i] == false) {
             document.getElementsByClassName("image")[i].src = "./images/normal slab.png";
-        }) 
-    }
+        }
+    }) 
+}
+
+/*This is for the buttons that are option for the time*/
+for (let i = 4; i < 9; i++){
+    document.getElementsByClassName("button")[i].addEventListener("mouseover", () => {
+        document.getElementsByClassName("image")[i].src = "./images/slab hover.png";
+    })
+    
+    document.getElementsByClassName("button")[i].addEventListener("mouseout", () => {
+        if ((!time)){ 
+        document.getElementsByClassName("image")[i].src = "./images/normal slab.png";
+        } else if (time && isClicked2[i] == false) {
+            document.getElementsByClassName("image")[i].src = "./images/normal slab.png";
+        }
+    }) 
 }
 
 for (let i = 0; i < document.getElementsByClassName("sound").length; i++){
