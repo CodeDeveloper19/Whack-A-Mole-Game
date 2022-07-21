@@ -4,6 +4,14 @@ let audio = new Audio('/Sound Effects/backgroundmusic.mp3');
 let icon = document.getElementsByTagName("i");
 
 for (let i = 0; i < document.getElementsByClassName("sound").length; i++ ){
+    document.getElementsByClassName("sound")[i].addEventListener("mouseover", () => {
+        document.getElementsByClassName("circle-image")[i].src = "./images/circle slab hover.png";
+    })
+    
+    document.getElementsByClassName("sound")[i].addEventListener("mouseout", () => {
+        document.getElementsByClassName("circle-image")[i].src = "./images/circle slab.png";
+    })
+    
     document.getElementsByClassName("sound")[i].addEventListener("click", () => {
         if (LIMIT == 1){
             audio.play();

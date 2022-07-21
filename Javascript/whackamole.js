@@ -152,111 +152,91 @@ document.getElementById("previous").addEventListener("click", () => {
 })
 
 easy1.addEventListener("click", () => {
-    document.getElementsByClassName("image")[1].src = "./images/slab hover.png";
-    document.getElementsByClassName("image")[2].src = "./images/normal slab.png";
-    document.getElementsByClassName("image")[3].src = "./images/normal slab.png";
     counts = 1;
     difficulty = 1000;
-    isClicked2[1] = true;
-    isClicked2[2] = false;
-    isClicked2[3] = false;
+    for(let i = 1; i < 4; i++){
+        document.getElementsByClassName("image")[i].src = "./images/normal slab.png"; 
+        isClicked2[i] = false;
+    }
+    document.getElementsByClassName("image")[counts].src = "./images/slab hover.png";
+    isClicked2[counts] = true;
 })
 
 medium1.addEventListener("click", () => {
-    document.getElementsByClassName("image")[1].src = "./images/normal slab.png";
-    document.getElementsByClassName("image")[2].src = "./images/slab hover.png";
-    document.getElementsByClassName("image")[3].src = "./images/normal slab.png";
     counts = 2;
-    difficulty = 750;      
-    isClicked2[1] = false;
-    isClicked2[2] = true;
-    isClicked2[3] = false;
+    difficulty = 750;
+    for(let i = 1; i < 4; i++){
+        document.getElementsByClassName("image")[i].src = "./images/normal slab.png"; 
+        isClicked2[i] = false;
+    }
+    document.getElementsByClassName("image")[counts].src = "./images/slab hover.png";
+    isClicked2[counts] = true;      
 })
 
 hard1.addEventListener("click", () => {
-    document.getElementsByClassName("image")[1].src = "./images/normal slab.png";
-    document.getElementsByClassName("image")[2].src = "./images/normal slab.png";
-    document.getElementsByClassName("image")[3].src = "./images/slab hover.png";
     counts = 3;
     difficulty = 350;
-    isClicked2[1] = false;
-    isClicked2[2] = false;
-    isClicked2[3] = true;
+    for(let i = 1; i < 4; i++){
+        document.getElementsByClassName("image")[i].src = "./images/normal slab.png"; 
+        isClicked2[i] = false;
+    }
+    document.getElementsByClassName("image")[counts].src = "./images/slab hover.png";
+    isClicked2[counts] = true; 
 })
 
 thirty1.addEventListener("click", () => {
-    document.getElementsByClassName("image")[4].src = "./images/slab hover.png";
-    document.getElementsByClassName("image")[5].src = "./images/normal slab.png";
-    document.getElementsByClassName("image")[6].src = "./images/normal slab.png";
-    document.getElementsByClassName("image")[7].src = "./images/normal slab.png";
-    document.getElementsByClassName("image")[8].src = "./images/normal slab.png";
     count = 1;
-    time = 30; 
-    isClicked2[4] = true;
-    isClicked2[5] = false;
-    isClicked2[6] = false;
-    isClicked2[7] = false;
-    isClicked2[8] = false;  
+    time = 30;
+    for(let i = 4; i < 9; i++){
+        document.getElementsByClassName("image")[i].src = "./images/normal slab.png"; 
+        isClicked2[i] = false;
+    }
+    document.getElementsByClassName("image")[count + 3].src = "./images/slab hover.png";
+    isClicked2[count + 3] = true; 
 })
 
 sixty1.addEventListener("click", () => {
-    document.getElementsByClassName("image")[4].src = "./images/normal slab.png";
-    document.getElementsByClassName("image")[5].src = "./images/slab hover.png";
-    document.getElementsByClassName("image")[6].src = "./images/normal slab.png";
-    document.getElementsByClassName("image")[7].src = "./images/normal slab.png";
-    document.getElementsByClassName("image")[8].src = "./images/normal slab.png";
     count = 2;
     time = 60;
-    isClicked2[4] = false;
-    isClicked2[5] = true;
-    isClicked2[6] = false;
-    isClicked2[7] = false;
-    isClicked2[8] = false;      
+    for(let i = 4; i < 9; i++){
+        document.getElementsByClassName("image")[i].src = "./images/normal slab.png"; 
+        isClicked2[i] = false;
+    }
+    document.getElementsByClassName("image")[count + 3].src = "./images/slab hover.png";
+    isClicked2[count + 3] = true;     
 })
 
 onetwenty1.addEventListener("click", () => {
-    document.getElementsByClassName("image")[4].src = "./images/normal slab.png";
-    document.getElementsByClassName("image")[5].src = "./images/normal slab.png";
-    document.getElementsByClassName("image")[6].src = "./images/slab hover.png";
-    document.getElementsByClassName("image")[7].src = "./images/normal slab.png";
-    document.getElementsByClassName("image")[8].src = "./images/normal slab.png";
     count = 3;
-    time = 120;     
-    isClicked2[4] = false;
-    isClicked2[5] = false;
-    isClicked2[6] = true;
-    isClicked2[7] = false;
-    isClicked2[8] = false;      
+    time = 120;
+    for(let i = 4; i < 9; i++){
+        document.getElementsByClassName("image")[i].src = "./images/normal slab.png"; 
+        isClicked2[i] = false;
+    }
+    document.getElementsByClassName("image")[count + 3].src = "./images/slab hover.png";
+    isClicked2[count + 3] = true;     
 })
 
 oneeighty1.addEventListener("click", () => {
-    document.getElementsByClassName("image")[4].src = "./images/normal slab.png";
-    document.getElementsByClassName("image")[5].src = "./images/normal slab.png";
-    document.getElementsByClassName("image")[6].src = "./images/normal slab.png";
-    document.getElementsByClassName("image")[7].src = "./images/slab hover.png";
-    document.getElementsByClassName("image")[8].src = "./images/normal slab.png";
     count = 4;
-    time = 180;       
-    isClicked2[4] = false;
-    isClicked2[5] = false;
-    isClicked2[6] = false;
-    isClicked2[7] = true;
-    isClicked2[8] = false;      
+    time = 180;
+    for(let i = 4; i < 9; i++){
+        document.getElementsByClassName("image")[i].src = "./images/normal slab.png"; 
+        isClicked2[i] = false;
+    }
+    document.getElementsByClassName("image")[count + 3].src = "./images/slab hover.png";
+    isClicked2[count + 3] = true;     
 })
 
 twoforty1.addEventListener("click", () => {
-    document.getElementsByClassName("image")[4].src = "./images/normal slab.png";
-    document.getElementsByClassName("image")[5].src = "./images/normal slab.png";
-    document.getElementsByClassName("image")[6].src = "./images/normal slab.png";
-    document.getElementsByClassName("image")[7].src = "./images/normal slab.png";
-    document.getElementsByClassName("image")[8].src = "./images/slab hover.png";
     count = 5;
     time = 240;
-    isClicked2[4] = false;
-    isClicked2[5] = false;
-    isClicked2[6] = false;
-    isClicked2[7] = false;
-    isClicked2[8] = true; 
+    for(let i = 4; i < 9; i++){
+        document.getElementsByClassName("image")[i].src = "./images/normal slab.png"; 
+        isClicked2[i] = false;
+    }
+    document.getElementsByClassName("image")[count + 3].src = "./images/slab hover.png";
+    isClicked2[count + 3] = true; 
 })
 
 const reset = () => {
@@ -416,12 +396,12 @@ for (let i = 1; i < 4; i++){
     }) 
 }
 
-/*This is for the buttons that are option for the time*/
+/*This is for the buttons that are the options for time*/
 for (let i = 4; i < 9; i++){
     document.getElementsByClassName("button")[i].addEventListener("mouseover", () => {
         document.getElementsByClassName("image")[i].src = "./images/slab hover.png";
     })
-    
+
     document.getElementsByClassName("button")[i].addEventListener("mouseout", () => {
         if ((!time)){ 
         document.getElementsByClassName("image")[i].src = "./images/normal slab.png";
@@ -429,14 +409,4 @@ for (let i = 4; i < 9; i++){
             document.getElementsByClassName("image")[i].src = "./images/normal slab.png";
         }
     }) 
-}
-
-for (let i = 0; i < document.getElementsByClassName("sound").length; i++){
-    document.getElementsByClassName("sound")[i].addEventListener("mouseover", () => {
-        document.getElementsByClassName("circle-image")[i].src = "./images/circle slab hover.png";
-    })
-    
-    document.getElementsByClassName("sound")[i].addEventListener("mouseout", () => {
-        document.getElementsByClassName("circle-image")[i].src = "./images/circle slab.png";
-    })
 }

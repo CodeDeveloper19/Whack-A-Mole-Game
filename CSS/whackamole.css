@@ -343,7 +343,7 @@ button:hover{
     z-index: 7;
     height: inherit;
     width: inherit;
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -413,7 +413,7 @@ button:hover{
 
 #instructions{
     z-index: 6;
-    display: flex;
+    display: none;
     background-image: url("/Images/introduction-background.jpg");
     background-size: cover;
 }
@@ -433,7 +433,7 @@ button:hover{
     font-family: 'DEADCRT';
     padding: 40px;
     position: relative;
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
 }
@@ -475,7 +475,7 @@ button:hover{
 }
 
 #instructions12{
-    display: flex; 
+    display: none; 
     flex-direction: column;
     align-items: center;
     width: 820px;
