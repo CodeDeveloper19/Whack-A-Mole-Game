@@ -17,6 +17,7 @@ for (let i = 0; i < document.getElementsByClassName("sound").length; i++ ){
         if (LIMIT == 1){
             audioBackgroundMusic.play();
             audioBackgroundMusic.loop = true;
+            audioBackgroundMusic.volume = 0.1;
             LIMIT += 1;
         }
     

@@ -22,20 +22,31 @@
 }
 
 #game{
-    /* display: flex; */
     display: none;
-    width: inherit;
-    height: inherit;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
 }
 
-#game-background{
-    width: inherit;
-    height: inherit;
-    object-fit: cover;
+.background-image-container-1, .background-image-container-2{
+    z-index: -2;
+    position: absolute;
+    width: 100%;
+    height: 68.75%;
+    top: 0;
+    background-size: 100% 100%;
+    background-image: url("/Images/sky2.png");
+}
+
+.background-image-container-2{
+    z-index: -1;
+    top: unset;
+    bottom: 0;
+    height: 71.22%;
+    background-image: url("/Images/hill 2.png");
 }
 
 #main{
-    z-index: 2;
     position: absolute;
     top: 45%;
     left: 50%;
@@ -57,58 +68,70 @@
 }
 
 #timers{
-    z-index: 0;
-    position: absolute;
-    bottom: 83%;
-    width: 100%;
-    height: 15%;
-    display: flex; 
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
-}
-
-#counter{
-    font-size: 6vw;
-    color: white;
+    height: 103px;
+    width: 100%;
 }
 
 .left{
-    position: absolute;
-    right: 2%;
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    width: 50%;
-    height: 90%;
+    width: 180px;
+    margin-left: 35px;
 }
 
 .left img{
-    max-width: 50%;
-    max-height: 50%;
-    margin-right: 2%;
-}
-
-#timer{
-    position: absolute;
-    left: 38px;
-    font-size: 13px;
-    color: green;
-}
-
-.right{
-    position: absolute;
-    left: 2%;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    width: 50%;
-    height: 90%;
-}
-
-.right img{
-    max-width: 100%;
     max-height: 100%;
 }
 
+.right{
+    width: 464px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 25px;
+}
+
+.life-line-container{
+    position: relative;
+    width: 246px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.life-line{
+    width: 246px;
+    height: 46px;
+    background-image: url("/Images/screen.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.life-heart{
+    z-index: 2;
+    position: absolute;
+    background-image: url("/Images/heart.png");
+    background-size: 100% 100%;
+    width: 98px;
+    height: 100%;
+    right: 0;
+}
+
+.counter-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 95px;
+    width: 193px;
+}
+
+.counter-container img{
+    max-height: 100%;
+    
+}
+
+/*
 #highscoreslist{
     z-index: 0;
     position: absolute;
@@ -158,7 +181,7 @@
 
 .scorer h5{
     width: 15%;
-}
+} */
 
 .hole{
     z-index: 2;

@@ -7,24 +7,24 @@ let isClicked = [false, false, false, false, false, false, false, false, false];
 const mole = ["mole1", "mole2", "mole3", "mole4", "mole5", "mole6", "mole7", "mole8", "mole9"];
 const x = ["x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9"];
 
-for (let i = 0; i < 9; i++){
-    document.getElementById(mole[i]).addEventListener("click", () => {
-        isClicked[i] = true;
-        if (document.getElementById(mole[i]).style.visibility == "visible" && pausee != true){
-            counter += 1;
-            var audio1 = new Audio('/Sound Effects/splat.mp3');
-            audio1.play();
-            document.getElementById(mole[i]).style.animationName = "";
-            document.getElementById(x[i]).style.display = "flex";
-            setTimeout(()=>{
-                document.getElementById(mole[i]).style.visibility = "hidden";
-                document.getElementById(x[i]).style.display = "none";
-                document.getElementById(mole[i]).style.animationName = "";
-                isClicked[i] = false;
-            }, 300);
-        } 
-    })
-}
+// for (let i = 0; i < 9; i++){
+//     document.getElementById(mole[i]).addEventListener("click", () => {
+//         isClicked[i] = true;
+//         if (document.getElementById(mole[i]).style.visibility == "visible" && pausee != true){
+//             counter += 1;
+//             var audio1 = new Audio('/Sound Effects/splat.mp3');
+//             audio1.play();
+//             document.getElementById(mole[i]).style.animationName = "";
+//             document.getElementById(x[i]).style.display = "flex";
+//             setTimeout(()=>{
+//                 document.getElementById(mole[i]).style.visibility = "hidden";
+//                 document.getElementById(x[i]).style.display = "none";
+//                 document.getElementById(mole[i]).style.animationName = "";
+//                 isClicked[i] = false;
+//             }, 300);
+//         } 
+//     })
+// }
 
 const moles = (num) => {
     let finalNum = num - 1;
@@ -120,21 +120,21 @@ const begin = () => {
     document.getElementById("results").style.display = "none";
     selection(); /*This function set a difficulty level under the high scores*/
 }
-// document.getElementById("begin").addEventListener("click", () => {
-//     if (count == undefined || counts == undefined){
-//         alert("Please select both a difficulty level and timelimit")
-//     } else {
-//         begin();
-//     }
+document.getElementById("begin").addEventListener("click", () => {
+    if (count == undefined || counts == undefined){
+        alert("Please select both a difficulty level and timelimit")
+    } else {
+        begin();
+    }
+})
+
+// document.getElementById("pause").addEventListener("click", () => {
+//     pausee = true;
 // })
 
-document.getElementById("pause").addEventListener("click", () => {
-    pausee = true;
-})
-
-document.getElementById("play").addEventListener("click", () => {
-    pausee = false;
-})
+// document.getElementById("play").addEventListener("click", () => {
+//     pausee = false;
+// })
 
 document.getElementById("start").addEventListener("click", () => {
     document.getElementById("instructions").style.display = "flex";
@@ -259,92 +259,92 @@ const reset = () => {
     highscore = [];
 }
 
-const mainmenu = () => {
-    reset();
-    document.getElementById("instructions").style.display = "flex";
-    document.getElementById("instructions12").style.display = "flex";
-}
+// const mainmenu = () => {
+//     reset();
+//     document.getElementById("instructions").style.display = "flex";
+//     document.getElementById("instructions12").style.display = "flex";
+// }
 
-document.getElementById("mainmenu").addEventListener("click", () => {
-    mainmenu();
-})
+// document.getElementById("mainmenu").addEventListener("click", () => {
+//     mainmenu();
+// })
 
-document.getElementById("mainmenu2").addEventListener("click", () => {
-    mainmenu();
-    clearInterval(timeds);
-    clearInterval(popss);
-})
+// document.getElementById("mainmenu2").addEventListener("click", () => {
+//     mainmenu();
+//     clearInterval(timeds);
+//     clearInterval(popss);
+// })
 
-document.getElementById("end").addEventListener("click", () => {
-    reset();
-    document.getElementById("introduction").style.display = "flex";
-    document.getElementById("instructions").style.display = "flex";
-    document.getElementById("instructions1").style.display = "flex";
-})
+// document.getElementById("end").addEventListener("click", () => {
+//     reset();
+//     document.getElementById("introduction").style.display = "flex";
+//     document.getElementById("instructions").style.display = "flex";
+//     document.getElementById("instructions1").style.display = "flex";
+// })
 
 
-const timer = () => {
-    if (time > 0 && pausee != true) {
-        time -=1;
-        document.getElementById("timer").innerHTML = time;
-    }
-    if (time == 0) {
-        clearInterval (timeds);
-        clearInterval (popss);
-        document.getElementById("results").style.display = "flex";
-        highscores();
-    }
-}
+// const timer = () => {
+//     if (time > 0 && pausee != true) {
+//         time -=1;
+//         document.getElementById("timer").innerHTML = time;
+//     }
+//     if (time == 0) {
+//         clearInterval (timeds);
+//         clearInterval (popss);
+//         document.getElementById("results").style.display = "flex";
+//         highscores();
+//     }
+// }
 
-document.getElementById("retry").addEventListener("click", () => {
-    document.getElementById("results").style.display = "none";
-    counter = 0;
+// document.getElementById("retry").addEventListener("click", () => {
+//     document.getElementById("results").style.display = "none";
+//     counter = 0;
 
-    switch(count){
-        case 1: 
-            time = 30;
-            break;
-        case 2:
-            time = 60;
-            break;
-        case 3:
-            time = 120;
-            break;
-        case 4:
-            time = 180;
-            break;
-        case 5:
-            time = 240;
-            break;
-    }
+//     switch(count){
+//         case 1: 
+//             time = 30;
+//             break;
+//         case 2:
+//             time = 60;
+//             break;
+//         case 3:
+//             time = 120;
+//             break;
+//         case 4:
+//             time = 180;
+//             break;
+//         case 5:
+//             time = 240;
+//             break;
+//     }
 
-    switch(counts){
-        case 1: 
-            difficulty = 1000;
-            break;
-        case 2:
-            difficulty = 750;
-            break;
-        case 3:
-            difficulty = 350;
-            break;
-    }
+//     switch(counts){
+//         case 1: 
+//             difficulty = 1000;
+//             break;
+//         case 2:
+//             difficulty = 750;
+//             break;
+//         case 3:
+//             difficulty = 350;
+//             break;
+//     }
 
-    begin();
-})
+//     begin();
+// })
 
-const highscores = () => {
-    highscore.push(counter);
-    highscore = highscore.sort((a,b)=>b-a);
+// const highscores = () => {
+//     highscore.push(counter);
+//     highscore = highscore.sort((a,b)=>b-a);
 
-    const scores = ["score1", "score2", "score3", "score4", "score5", "score6", "score7", "score8", "score9", "score10"];
+//     const scores = ["score1", "score2", "score3", "score4", "score5", "score6", "score7", "score8", "score9", "score10"];
 
-    for (let i = 0; i < scores.length; i++){
-        if (highscore[i] != undefined){
-            document.getElementById(scores[i]).innerHTML = highscore[i]
-        }
-    }
-}
+//     for (let i = 0; i < scores.length; i++){
+//         if (highscore[i] != undefined){
+//             document.getElementById(scores[i]).innerHTML = highscore[i]
+//         }
+//     }
+// }
 
 const selection = () => {
     switch(counts){
