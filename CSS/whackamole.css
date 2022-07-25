@@ -75,13 +75,43 @@
     width: 100%;
 }
 
-.left{
-    width: 180px;
-    margin-left: 35px;
+.screen-container{
+    height: 39.35px;
+    z-index: -2;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
 }
 
-.left img{
-    max-height: 100%;
+#counter, #timer{
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    transform: translate(-45%, -50%);
+    color: white;
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+.left{
+    width: 180px;
+    margin: 17px 0 0 35px;
+    position: relative;
+}
+
+#t-container{
+    width: 150px;
+    left: 40%;
+    transform: translate(-40%, -50%);
+}
+
+#timer{
+    left: 70%;
+    transform: translate(-70%, -50%);
+}
+
+.stopwatch{
+    height: 100%;
 }
 
 .right{
@@ -90,45 +120,71 @@
     flex-direction: row;
     justify-content: space-between;
     margin-right: 25px;
+    align-items: center;
 }
 
 .life-line-container{
     position: relative;
-    width: 246px;
+    width: 230px;
     height: 100%;
     display: flex;
     align-items: center;
 }
 
+#life-line{
+    width: 200px;
+    height: 39.35px;
+}
+
 .life-line{
-    width: 246px;
-    height: 46px;
-    background-image: url("/Images/screen.png");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.container-hearts{
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    height: 22px;
+    width: 130px;
+    left: 12px;
+    top: 8px;
+}
+
+.container-hearts img{
+    height: 100%;
 }
 
 .life-heart{
     z-index: 2;
     position: absolute;
-    background-image: url("/Images/heart.png");
-    background-size: 100% 100%;
     width: 98px;
     height: 100%;
-    right: 0;
+    right: 0px;
 }
 
 .counter-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 95px;
-    width: 193px;
+    height: 81.27px;
+    width: 165px;
+    position: relative;
 }
 
-.counter-container img{
-    max-height: 100%;
-    
+.Mole{
+    height: 100%;
+    width: 80px;
+    position: absolute;
+    right: 0;
+}
+
+#c-container{
+    width: 139px;
+}
+
+.screen{
+    width: 100%;
+    height: 100%;
 }
 
 /*
