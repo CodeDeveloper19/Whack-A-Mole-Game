@@ -21,6 +21,13 @@
     font-display: block;
 }
 
+.fa-solid{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 #game{
     display: none;
     min-height: 100vh;
@@ -44,6 +51,146 @@
     bottom: 0;
     height: 71.22%;
     background-image: url("/Images/hill 2.png");
+}
+
+.options{
+    position: absolute;
+    top: 143px;
+    left: 53px;
+    width: 46px;
+    height: fit-content;
+}
+
+.options img, .bottom-controls img{
+    width: 100%;
+    height: 100%;
+}
+
+#sound-container{
+    width: 46px;
+    height: 50px;
+}
+
+#sound-container > .fa-solid{
+    color: white;
+    top: 11%;
+    left: 60%;
+    transform: translate(-60%, 11%);
+}
+
+#info-container{
+    width: 42px;
+    height: 42px;
+    margin: 15px 0 15px 0;
+}
+
+#info-container > .fa-solid{
+    color: white;
+    top: 55%;
+    transform: translate(-50%, -55%);
+    font-size: 18px;
+}
+
+#settings-container{
+    width: 100%;
+    height: 35px;
+}
+
+#settings-container > .fa-solid{
+    color: white;
+    top: 93%;
+    transform: translate(-50%, -93%);
+}
+
+.bottom-controls{
+    width: fit-content;
+    height: 48px;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 25px;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#pause-container{
+    width: 60px;
+    height: 35px;
+}
+
+#pause-container > .fa-solid{
+    color: white;
+    left: 10%;
+    top: 35%;
+    transform: unset;
+}
+
+#stop-container{
+    width: 42px;
+    height: 100%;
+    margin: 0 42px 0 33px;
+}
+
+#stop-container > .fa-solid{
+    color: white;
+    left: 49%;
+    top: 35%;
+    transform: unset;
+}
+
+#menu-container{
+    width: 46px;
+    height: 35px;
+}
+
+#menu-container > .fa-solid{
+    color: white;
+    left: 86%;
+    top: 35%;
+    transform: unset;
+}
+
+#blackboard-container{
+    position: absolute;
+    height: fit-content;
+    top: 150px;
+    right: 59px;
+}
+
+.blackboard{
+    width: 269px;
+    height: 370px;
+    margin-bottom: 20px;
+    background-color:#CE8B57;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.writing-area{
+    width: 232px;
+    background-color:#75B14D;
+    height: 339.42px;
+}
+
+.blackboard-navigation{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.blackboard-navigation > img{
+    height: 100%;
+    width: 30px;
+}
+
+.blackboard-navigation > img:first-child{
+    margin-right: 40px;
 }
 
 #main{
@@ -186,58 +333,6 @@
     width: 100%;
     height: 100%;
 }
-
-/*
-#highscoreslist{
-    z-index: 0;
-    position: absolute;
-    bottom: 20%;
-    left: 2%;
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-    width: 15%;
-    height: 350px;
-    border: 1px solid white;
-    color: white;
-    border-radius: 5px;
-    overflow-y: auto;
-}
-
-#highscores{
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.highscores h1{
-    font-size: 23px;
-    margin-top: 5px;
-}
-
-#difficulty{
-    font-size: 13px;
-    margin-top: 3px;
-}
-
-.scorer{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    font-size: 16px;
-    width: 80%;
-}
-
-.scorer h4{
-    width: 85%;
-}
-
-.scorer h5{
-    width: 15%;
-} */
 
 .hole{
     z-index: 2;
@@ -632,13 +727,6 @@ button:hover{
 
 .sound:hover{
     cursor: pointer;
-}
-
-.fa-solid{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 
 #s-instructions12{
