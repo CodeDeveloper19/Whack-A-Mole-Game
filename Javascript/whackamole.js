@@ -155,10 +155,10 @@ easy1.addEventListener("click", () => {
     counts = 1;
     difficulty = 1000;
     for(let i = 1; i < 4; i++){
-        document.getElementsByClassName("image")[i].src = "./images/normal slab.png"; 
+        document.getElementsByClassName("image")[i].src = "./Images/normal slab.png"; 
         isClicked2[i] = false;
     }
-    document.getElementsByClassName("image")[counts].src = "./images/slab hover.png";
+    document.getElementsByClassName("image")[counts].src = "./Images/slab hover.png";
     isClicked2[counts] = true;
 })
 
@@ -166,10 +166,10 @@ medium1.addEventListener("click", () => {
     counts = 2;
     difficulty = 750;
     for(let i = 1; i < 4; i++){
-        document.getElementsByClassName("image")[i].src = "./images/normal slab.png"; 
+        document.getElementsByClassName("image")[i].src = "./Images/normal slab.png"; 
         isClicked2[i] = false;
     }
-    document.getElementsByClassName("image")[counts].src = "./images/slab hover.png";
+    document.getElementsByClassName("image")[counts].src = "./Images/slab hover.png";
     isClicked2[counts] = true;      
 })
 
@@ -177,10 +177,10 @@ hard1.addEventListener("click", () => {
     counts = 3;
     difficulty = 350;
     for(let i = 1; i < 4; i++){
-        document.getElementsByClassName("image")[i].src = "./images/normal slab.png"; 
+        document.getElementsByClassName("image")[i].src = "./Images/normal slab.png"; 
         isClicked2[i] = false;
     }
-    document.getElementsByClassName("image")[counts].src = "./images/slab hover.png";
+    document.getElementsByClassName("image")[counts].src = "./Images/slab hover.png";
     isClicked2[counts] = true; 
 })
 
@@ -188,10 +188,10 @@ thirty1.addEventListener("click", () => {
     count = 1;
     time = 30;
     for(let i = 4; i < 9; i++){
-        document.getElementsByClassName("image")[i].src = "./images/normal slab.png"; 
+        document.getElementsByClassName("image")[i].src = "./Images/normal slab.png"; 
         isClicked2[i] = false;
     }
-    document.getElementsByClassName("image")[count + 3].src = "./images/slab hover.png";
+    document.getElementsByClassName("image")[count + 3].src = "./Images/slab hover.png";
     isClicked2[count + 3] = true; 
 })
 
@@ -199,10 +199,10 @@ sixty1.addEventListener("click", () => {
     count = 2;
     time = 60;
     for(let i = 4; i < 9; i++){
-        document.getElementsByClassName("image")[i].src = "./images/normal slab.png"; 
+        document.getElementsByClassName("image")[i].src = "./Images/normal slab.png"; 
         isClicked2[i] = false;
     }
-    document.getElementsByClassName("image")[count + 3].src = "./images/slab hover.png";
+    document.getElementsByClassName("image")[count + 3].src = "./Images/slab hover.png";
     isClicked2[count + 3] = true;     
 })
 
@@ -210,10 +210,10 @@ onetwenty1.addEventListener("click", () => {
     count = 3;
     time = 120;
     for(let i = 4; i < 9; i++){
-        document.getElementsByClassName("image")[i].src = "./images/normal slab.png"; 
+        document.getElementsByClassName("image")[i].src = "./Images/normal slab.png"; 
         isClicked2[i] = false;
     }
-    document.getElementsByClassName("image")[count + 3].src = "./images/slab hover.png";
+    document.getElementsByClassName("image")[count + 3].src = "./Images/slab hover.png";
     isClicked2[count + 3] = true;     
 })
 
@@ -221,10 +221,10 @@ oneeighty1.addEventListener("click", () => {
     count = 4;
     time = 180;
     for(let i = 4; i < 9; i++){
-        document.getElementsByClassName("image")[i].src = "./images/normal slab.png"; 
+        document.getElementsByClassName("image")[i].src = "./Images/normal slab.png"; 
         isClicked2[i] = false;
     }
-    document.getElementsByClassName("image")[count + 3].src = "./images/slab hover.png";
+    document.getElementsByClassName("image")[count + 3].src = "./Images/slab hover.png";
     isClicked2[count + 3] = true;     
 })
 
@@ -232,10 +232,10 @@ twoforty1.addEventListener("click", () => {
     count = 5;
     time = 240;
     for(let i = 4; i < 9; i++){
-        document.getElementsByClassName("image")[i].src = "./images/normal slab.png"; 
+        document.getElementsByClassName("image")[i].src = "./Images/normal slab.png"; 
         isClicked2[i] = false;
     }
-    document.getElementsByClassName("image")[count + 3].src = "./images/slab hover.png";
+    document.getElementsByClassName("image")[count + 3].src = "./Images/slab hover.png";
     isClicked2[count + 3] = true; 
 })
 
@@ -364,34 +364,34 @@ const selection = () => {
 
 for (let i = 9; i < document.getElementsByClassName("button").length; i++){
         document.getElementsByClassName("button")[i].addEventListener("mouseover", () => {
-            document.getElementsByClassName("image")[i].src = "./images/slab hover.png";
+            document.getElementsByClassName("image")[i].src = "./Images/slab hover.png";
         })
         
         document.getElementsByClassName("button")[i].addEventListener("mouseout", () => {
-            document.getElementsByClassName("image")[i].src = "./images/normal slab.png";
+            document.getElementsByClassName("image")[i].src = "./Images/normal slab.png";
         }) 
 }
 
 /*For the start button at the how-to-play section*/
 document.getElementsByClassName("button")[0].addEventListener("mouseover", () => {
-    document.getElementsByClassName("image")[0].src = "./images/slab hover.png";
+    document.getElementsByClassName("image")[0].src = "./Images/slab hover.png";
 })
 
 document.getElementsByClassName("button")[0].addEventListener("mouseout", () => {
-    document.getElementsByClassName("image")[0].src = "./images/normal slab.png";
+    document.getElementsByClassName("image")[0].src = "./Images/normal slab.png";
 }) 
 
 /*This is for the buttons that are option for the difficulty*/
 for (let i = 1; i < 4; i++){
     document.getElementsByClassName("button")[i].addEventListener("mouseover", () => {
-        document.getElementsByClassName("image")[i].src = "./images/slab hover.png";
+        document.getElementsByClassName("image")[i].src = "./Images/slab hover.png";
     })
 
     document.getElementsByClassName("button")[i].addEventListener("mouseout", () => {
         if ((!difficulty)){ 
-        document.getElementsByClassName("image")[i].src = "./images/normal slab.png";
+        document.getElementsByClassName("image")[i].src = "./Images/normal slab.png";
         } else if (difficulty && isClicked2[i] == false) {
-            document.getElementsByClassName("image")[i].src = "./images/normal slab.png";
+            document.getElementsByClassName("image")[i].src = "./Images/normal slab.png";
         }
     }) 
 }
@@ -399,14 +399,50 @@ for (let i = 1; i < 4; i++){
 /*This is for the buttons that are the options for time*/
 for (let i = 4; i < 9; i++){
     document.getElementsByClassName("button")[i].addEventListener("mouseover", () => {
-        document.getElementsByClassName("image")[i].src = "./images/slab hover.png";
+        document.getElementsByClassName("image")[i].src = "./Images/slab hover.png";
     })
 
     document.getElementsByClassName("button")[i].addEventListener("mouseout", () => {
         if ((!time)){ 
-        document.getElementsByClassName("image")[i].src = "./images/normal slab.png";
+        document.getElementsByClassName("image")[i].src = "./Images/normal slab.png";
         } else if (time && isClicked2[i] == false) {
-            document.getElementsByClassName("image")[i].src = "./images/normal slab.png";
+            document.getElementsByClassName("image")[i].src = "./Images/normal slab.png";
         }
     }) 
+}
+
+/*This is for the buttons that are in the game screen*/
+for (let i = 0; i < document.getElementsByClassName("button2").length; i++){
+    document.getElementsByClassName("button2")[i].addEventListener("mouseover", () => {
+        console.log(document.getElementsByClassName("image")[0].src)
+        if (document.getElementsByClassName("image2")[i].src == "/Images/Stones [Converted] 3.png"){ 
+            alert("A")
+            document.getElementsByClassName("image2")[i].src = "./Images/Stones [Converted] 3 hover.png";
+        } 
+        // else if (document.getElementsByClassName("image2")[i].src == "./images/Stones [Converted] 2.png") {
+        //     document.getElementsByClassName("image2")[i].src = "./images/Stones [Converted] 2 hover.png";
+        // } else if (document.getElementsByClassName("image2")[i].src == "./images/Stones [Converted].png"){
+        //     document.getElementsByClassName("image2")[i].src = "./images/Stones [Converted] hover.png";
+        // } else if (document.getElementsByClassName("image2")[i].src == "./images/Stones [Converted] 4.png"){
+        //     document.getElementsByClassName("image2")[i].src = "./images/Stones [Converted] 4 hover.png";
+        // }
+        // switch(document.getElementsByClassName("image2")[i].src){
+        //     case "/Images/Stones [Converted] 3.png":
+        //         document.getElementsByClassName("image2")[i].src = "/Images/Stones [Converted] 3 hover.png";
+        //         alert("A")
+        //         break;
+
+        //     case "/Images/Stones [Converted] 2.png":
+        //         document.getElementsByClassName("image2")[i].src = "/Images/Stones [Converted] 2 hover.png";
+        //         break;
+
+        //     case "/Images/Stones [Converted].png":
+        //         document.getElementsByClassName("image2")[i].src = "/Images/Stones [Converted] hover.png";
+        //         break;
+                
+        //     case "/Images/Stones [Converted] 4.png":
+        //         document.getElementsByClassName("image2")[i].src = "/Images/Stones [Converted] 4 hover.png";
+        //         break;
+        // }
+    })
 }
