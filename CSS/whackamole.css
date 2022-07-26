@@ -24,13 +24,247 @@
 @font-face {
     font-family: 'Film Cryptic';
     src: url('FilmCryptic.woff2') format('woff2'),
-        url('FilmCryptic.woff') format('woff');
+        url('FilmCryptic.woff') format('woff'), 
+        local('FilmCryptic.woff2') format('woff2'),
+        local('FilmCryptic.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 
-.fa-solid{
+#introduction{
+    z-index: 7;
+    height: inherit;
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white; 
+    background-image: url("/Images/introduction-background.jpg");
+    background-size: cover;
+}
+
+#introduction h1{
+    font-family: 'aurora';
+    color:  white;
+    font-size: 60px;
+    text-align: center;
+}
+
+.background-mole{
+    max-width: 35%;
+    max-height: 35%;
+}
+
+.logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#fun button{
+    width: 350px;
+    height: 40px;
+    margin-bottom: 130px;
+    margin-top: 50px;
+}
+
+#fun{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 900px;
+    min-height: 100vh;
+}
+
+.top-part{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.text a {
+    text-decoration: none;
+    color: yellow;
+}
+
+.text a:hover{
+    text-decoration: underline;
+    color: green;
+}
+
+#instructions{
+    z-index: 6;
+    display: none;
+    background-image: url("/Images/introduction-background.jpg");
+    background-size: cover;
+}
+
+.instructions{
+    backdrop-filter: blur(15px);
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#instructions1, .settings{
+    width: 820px;
+    height: 550px;
+    font-family: 'DEADCRT';
+    padding: 40px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.board, .settings img{
+    width: 100%;
+    height: 100%;
+}
+
+#instructions1 h1, .settings h1{
+    position: absolute;
+    top: 80px;
+}
+
+#next {
+    width: 200px;
+    position: absolute;
+    top: 435px;
+}
+
+.howtoplay, .setting-container{
+    height: 30%;
+    position: absolute;
+    top: 190px;
+    width: 620px;
+}
+
+.howtoplay ul{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.howtoplay1{
+    width: 80%;
+    position: absolute;
+    top: 160px;
+}
+
+#instructions12{
+    display: none; 
+    flex-direction: column;
+    align-items: center;
+    width: 820px;
+    height: 550px;
+    padding: 40px;
+    font-family: 'DEADCRT';
+    position: relative;
+}
+
+#instructions12 h1{
+    text-align: center;
+    position: absolute;
+    top: 80px;
+}
+
+.buttons2{
+    width: 350px;
+    position: absolute;
+    top: 455px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#previous, #begin{
+    width: 160px;
+    height: 60px;
+}
+
+.difficulty, .timeduration{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.timedurations, .difficulties{
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.difficulties{
+    width: 400px;
+}
+
+.timedurations{
+    width: 550px;
+}
+
+.timedurations > div, .difficulties > div{
+    width: 120px;
+    height: 50px;
+}
+
+.timedurations > div{
+    width: 100px;
+}
+
+.sound{
+    width: 30px;
+    height: 30px;
+    color: white;
+    position: absolute;
+    bottom: 5%;
+    left: 10%;
+}
+
+.circle-image{
+    height: 100%;
+    width: 100%;
+}
+
+.sound:hover{
+    cursor: pointer;
+}
+
+#s-instructions12{
+    position: absolute;
+    left: 160px;
+    top: 470px;
+}
+
+#s-introduction{
+    bottom: 5%;
+}
+
+#s-instructions{
+    position: absolute;
+    top: 450px;
+    left: 160px;
+}
+
+.fa-solid, .button>p, .credits-button p{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -191,6 +425,7 @@
     color: white;
     font-family: 'Film Cryptic';
     padding: 0 20px;
+    font-weight: 400;
 }
 
 .titles{
@@ -209,6 +444,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
+    font-size: 14px;
 }
 
 .scorer > h4:nth-child(2){
@@ -317,8 +553,9 @@
 
 #t-container{
     width: 150px;
-    left: 40%;
-    transform: translate(-40%, -50%);
+    left: 55%;
+    top: 60%;
+    transform: translate(-55%, -60%);
 }
 
 #timer{
@@ -401,6 +638,38 @@
 .screen{
     width: 100%;
     height: 100%;
+}
+
+#settings{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 3;
+    backdrop-filter: blur(15px);
+    display: none;
+}
+
+.settings{
+    display: flex;
+    margin: auto;
+}
+
+.setting-container{
+    top: 170px;
+    height: fit-content;
+}
+
+.setting-container > div{
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+.credits-button{
+    width: 155px;
+    height: 50px;
+    position: absolute;
+    top: 380px;
 }
 
 .hole{
@@ -531,11 +800,7 @@ button{
     position: relative;
 }
 
-.button>p{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.button>p, .credits-button p{
     font-size: 13.3px;
 }
 
@@ -580,236 +845,4 @@ button:hover{
 
 .pause:hover, #play:hover{
     background-color: green;
-}
-
-#introduction{
-    z-index: 7;
-    height: inherit;
-    width: inherit;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white; 
-    background-image: url("/Images/introduction-background.jpg");
-    background-size: cover;
-}
-
-#introduction h1{
-    font-family: 'aurora';
-    color:  white;
-    font-size: 60px;
-    text-align: center;
-}
-
-.background-mole{
-    max-width: 35%;
-    max-height: 35%;
-}
-
-.logo{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#fun button{
-    width: 350px;
-    height: 40px;
-    margin-bottom: 130px;
-    margin-top: 50px;
-}
-
-#fun{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    width: 900px;
-    min-height: 100vh;
-}
-
-.top-part{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: auto;
-}
-
-.text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.text a {
-    text-decoration: none;
-    color: yellow;
-}
-
-.text a:hover{
-    text-decoration: underline;
-    color: green;
-}
-
-#instructions{
-    z-index: 6;
-    display: none;
-    background-image: url("/Images/introduction-background.jpg");
-    background-size: cover;
-}
-
-.instructions{
-    backdrop-filter: blur(15px);
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#instructions1{
-    width: 820px;
-    height: 550px;
-    font-family: 'DEADCRT';
-    padding: 40px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.board{
-    width: 100%;
-    height: 100%;
-}
-
-#instructions1 h1{
-    position: absolute;
-    top: 80px;
-}
-
-#next {
-    width: 200px;
-    position: absolute;
-    top: 435px;
-}
-
-.howtoplay{
-    height: 30%;
-    position: absolute;
-    top: 190px;
-    width: 620px;
-}
-
-.howtoplay ul{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.howtoplay1{
-    width: 80%;
-    position: absolute;
-    top: 160px;
-}
-
-#instructions12{
-    display: none; 
-    flex-direction: column;
-    align-items: center;
-    width: 820px;
-    height: 550px;
-    padding: 40px;
-    font-family: 'DEADCRT';
-    position: relative;
-}
-
-#instructions12 h1{
-    text-align: center;
-    position: absolute;
-    top: 80px;
-}
-
-.buttons2{
-    width: 350px;
-    position: absolute;
-    top: 455px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-#previous, #begin{
-    width: 160px;
-    height: 60px;
-}
-
-.difficulty, .timeduration{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 30px;
-}
-
-.timedurations, .difficulties{
-    margin-top: 25px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.difficulties{
-    width: 400px;
-}
-
-.timedurations{
-    width: 550px;
-}
-
-.timedurations > div, .difficulties > div{
-    width: 120px;
-    height: 50px;
-}
-
-.timedurations > div{
-    width: 100px;
-}
-
-.sound{
-    width: 30px;
-    height: 30px;
-    color: white;
-    position: absolute;
-    bottom: 5%;
-    left: 10%;
-}
-
-.circle-image{
-    height: 100%;
-    width: 100%;
-}
-
-.sound:hover{
-    cursor: pointer;
-}
-
-#s-instructions12{
-    position: absolute;
-    left: 160px;
-    top: 470px;
-}
-
-#s-introduction{
-    bottom: 5%;
-}
-
-#s-instructions{
-    position: absolute;
-    top: 450px;
-    left: 160px;
 }

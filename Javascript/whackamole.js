@@ -151,6 +151,10 @@ document.getElementById("previous").addEventListener("click", () => {
     document.getElementById("instructions1").style.display = "flex";
 })
 
+document.getElementById("settings-container").addEventListener("click", () => {
+    document.getElementById("settings").style.display = "flex";
+})
+
 easy1.addEventListener("click", () => {
     counts = 1;
     difficulty = 1000;
@@ -412,37 +416,52 @@ for (let i = 4; i < 9; i++){
 }
 
 /*This is for the buttons that are in the game screen*/
-for (let i = 0; i < document.getElementsByClassName("button2").length; i++){
-    document.getElementsByClassName("button2")[i].addEventListener("mouseover", () => {
-        console.log(document.getElementsByClassName("image")[0].src)
-        if (document.getElementsByClassName("image2")[i].src == "/Images/Stones [Converted] 3.png"){ 
-            alert("A")
-            document.getElementsByClassName("image2")[i].src = "./Images/Stones [Converted] 3 hover.png";
-        } 
-        // else if (document.getElementsByClassName("image2")[i].src == "./images/Stones [Converted] 2.png") {
-        //     document.getElementsByClassName("image2")[i].src = "./images/Stones [Converted] 2 hover.png";
-        // } else if (document.getElementsByClassName("image2")[i].src == "./images/Stones [Converted].png"){
-        //     document.getElementsByClassName("image2")[i].src = "./images/Stones [Converted] hover.png";
-        // } else if (document.getElementsByClassName("image2")[i].src == "./images/Stones [Converted] 4.png"){
-        //     document.getElementsByClassName("image2")[i].src = "./images/Stones [Converted] 4 hover.png";
-        // }
-        // switch(document.getElementsByClassName("image2")[i].src){
-        //     case "/Images/Stones [Converted] 3.png":
-        //         document.getElementsByClassName("image2")[i].src = "/Images/Stones [Converted] 3 hover.png";
-        //         alert("A")
-        //         break;
+document.getElementsByClassName("button2")[0].addEventListener("mouseover", () => {
+    document.getElementsByClassName("image2")[0].src = "./Images/Stones[Converted]3hover.png";
+})
 
-        //     case "/Images/Stones [Converted] 2.png":
-        //         document.getElementsByClassName("image2")[i].src = "/Images/Stones [Converted] 2 hover.png";
-        //         break;
+document.getElementsByClassName("button2")[0].addEventListener("mouseout", () => {
+    document.getElementsByClassName("image2")[0].src = "./Images/Stones[Converted]3.png";
+})
 
-        //     case "/Images/Stones [Converted].png":
-        //         document.getElementsByClassName("image2")[i].src = "/Images/Stones [Converted] hover.png";
-        //         break;
-                
-        //     case "/Images/Stones [Converted] 4.png":
-        //         document.getElementsByClassName("image2")[i].src = "/Images/Stones [Converted] 4 hover.png";
-        //         break;
-        // }
-    })
-}
+document.getElementsByClassName("button2")[1].addEventListener("mouseover", () => {
+    document.getElementsByClassName("image2")[1].src = "./Images/Stones[Converted]2hover.png";
+})
+
+document.getElementsByClassName("button2")[1].addEventListener("mouseout", () => {
+    document.getElementsByClassName("image2")[1].src = "./Images/Stones[Converted]2.png";
+})
+
+document.getElementsByClassName("button2")[4].addEventListener("mouseover", () => {
+    document.getElementsByClassName("image2")[4].src = "./Images/Stones[Converted]2hover.png";
+})
+
+document.getElementsByClassName("button2")[4].addEventListener("mouseout", () => {
+    document.getElementsByClassName("image2")[4].src = "./Images/Stones[Converted]2.png";
+})
+
+document.getElementsByClassName("button2")[2].addEventListener("mouseover", () => {
+    document.getElementsByClassName("image2")[2].src = "./Images/Stones[Converted]hover.png";
+})
+
+document.getElementsByClassName("button2")[2].addEventListener("mouseout", () => {
+    document.getElementsByClassName("image2")[2].src = "./Images/Stones[Converted].png";
+})
+
+document.getElementsByClassName("button2")[5].addEventListener("mouseover", () => {
+    document.getElementsByClassName("image2")[5].src = "./Images/Stones[Converted]hover.png";
+})
+
+document.getElementsByClassName("button2")[5].addEventListener("mouseout", () => {
+    document.getElementsByClassName("image2")[5].src = "./Images/Stones[Converted].png";
+})
+
+document.getElementsByClassName("button2")[3].addEventListener("mouseover", () => {
+    document.getElementsByClassName("image2")[3].src = "./Images/Stones[Converted]4hover.png";
+})
+
+document.getElementsByClassName("button2")[3].addEventListener("mouseout", () => {
+    document.getElementsByClassName("image2")[3].src = "./Images/Stones[Converted]4.png";
+})
+
+/****************************/
