@@ -40,6 +40,9 @@ for (let i = 0; i < document.getElementsByClassName("button").length; i++){
     document.getElementsByClassName("button")[i].addEventListener("click", () => {
         audioClick.play();
     })
+    document.getElementsByClassName("button2")[i].addEventListener("click", () => {
+        audioClick.play();
+    })
 }
 
 document.getElementById("start").addEventListener("click", () => {

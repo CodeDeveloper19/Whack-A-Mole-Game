@@ -178,8 +178,8 @@
                     </div>
                 </div>
                 <div class="blackboard-navigation">
-                    <img src="./Images/left arrow.png" alt="illustration of left sign" id="move-left">
-                    <img src="./Images/right arrow.png" alt="illustration of right sign" id="move-right">
+                    <img src="./Images/left arrow.png" alt="illustration of left sign" id="move-left" class="button2 image2">
+                    <img src="./Images/right arrow.png" alt="illustration of right sign" id="move-right" class="button2 image2">
                 </div>
             </aside>
 
@@ -190,20 +190,62 @@
                     <div class="setting-container">
                         <div class="score-board">
                             <h3>Score Board</h3>
+                            <div class="switch">
+                                <img src="/Images/switch.png" alt="illustration of a switch" id="score-switch">
+                                <!-- <h3 id="ontext1" class="ontext">ON</h3> -->
+                                <img src="/Images/on.png" alt="illustration of a green ball" id="ball1" class="ball">
+                            </div>
                         </div>
                         <div class="sound-effects">
                             <h3>Sound Effects</h3>
+                            <div class="switch">
+                                <img src="/Images/switch.png" alt="illustration of a switch" id="sound-switch">
+                                <!-- <h3 id="ontext2" class="ontext">ON</h3> -->
+                                <img src="/Images/on.png" alt="illustration of a green ball" id="ball2" class="ball">
+                            </div>
                         </div>
                         <div class="music-volume">
-                            <h3>Music Volume</h3>
+                            <div class="volume-title">
+                                <h3>Music Volume</h3>
+                            </div>
                             <div class="volume">
-                                
+                                <div id="reduce-music" class="reduce button">
+                                    <img src="/Images/stone minus.png" alt="illustration of a minus" class="image">
+                                </div>
+                                <div class="music-bar">
+                                    <img src="/Images/circle slab.png" alt="illustration of a circle slab" class="circle" id="circle1">
+                                    <div class="gauge"></div>
+                                </div>
+                                <div id="increase-music" class="increase">
+                                    <img src="/Images/cross stone.png" alt="illustration of a plus" class="image3">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="effect-volume">
+                            <div class="volume-title">
+                                <h3>Effect Volume</h3>
+                            </div>
+                            <div class="volume">
+                                <div id="reduce-effect" class="reduce button">
+                                    <img src="/Images/stone minus.png" alt="illustration of a minus" class="image">
+                                </div>
+                                <div class="music-bar">
+                                    <img src="/Images/circle slab.png" alt="illustration of a circle slab" class="circle" id="circle2">
+                                    <div class="gauge"></div>
+                                </div>
+                                <div id="increase-effect" class="increase">
+                                    <img src="/Images/cross stone.png" alt="illustration of a plus" class="image3">
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="credits-button">
-                        <img src="/Images/normal slab.png" alt="illustration of a normal slab">
+                    <div class="button" id="credits-button">
+                        <img src="/Images/normal slab.png" alt="illustration of a normal slab" class="image">
                         <p>Credits</p>
+                    </div>
+                    <div id="okay-button">
+                        <img src="/Images/screen 2 hover.png" alt="illustration of a normal slab">
+                        <p>Okay</p>
                     </div>
                 </div>
             </section>
@@ -321,5 +363,6 @@
     <script src="https://kit.fontawesome.com/c123ad8ef2.js" crossorigin="anonymous"></script>
     <script src="/Javascript/whackamole.js"></script>
     <script src="/Javascript/sound.js"></script>
+    <script src="/Javascript/other functionalities.js"></script>
 </body>
 </html>
