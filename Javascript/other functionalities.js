@@ -1,5 +1,33 @@
 /*Hovering of Button*/
 
+document.getElementById("okay-button").addEventListener("mouseover", () => {
+document.getElementsByClassName("okay-image")[0].src = "./Images/screen 2 hover.svg";
+})
+
+document.getElementById("okay-button").addEventListener("mouseout", () => {
+document.getElementsByClassName("okay-image")[0].src = "./Images/screen 2.svg";
+}) 
+
+for (let i = 0; i < document.getElementsByClassName("reduce").length; i++){
+    document.getElementsByClassName("reduce")[i].addEventListener("mouseover", () => {
+        document.getElementsByClassName("reduce-image")[i].src = "./Images/stone minus hover.svg";
+    })
+    
+    document.getElementsByClassName("reduce")[i].addEventListener("mouseout", () => {
+        document.getElementsByClassName("reduce-image")[i].src = "./Images/stone minus.svg";
+    }) 
+}
+
+for (let i = 0; i < document.getElementsByClassName("increase").length; i++){
+    document.getElementsByClassName("increase")[i].addEventListener("mouseover", () => {
+        document.getElementsByClassName("increase-image")[i].src = "./Images/cross stone hover.svg";
+    })
+    
+    document.getElementsByClassName("increase")[i].addEventListener("mouseout", () => {
+        document.getElementsByClassName("increase-image")[i].src = "./Images/cross stone.svg";
+    }) 
+}
+
 for (let i = 9; i < document.getElementsByClassName("button").length; i++){
     document.getElementsByClassName("button")[i].addEventListener("mouseover", () => {
         document.getElementsByClassName("image")[i].src = "./Images/slab hover.png";
@@ -118,7 +146,24 @@ document.getElementById("previous").addEventListener("click", () => {
     document.getElementById("instructions1").style.display = "flex";
 })
 
+document.getElementById("okay-button").addEventListener("click", () =>{
+    document.getElementById("settings").style.display = "none";
+})
 
 document.getElementById("settings-container").addEventListener("click", () => {
     document.getElementById("settings").style.display = "flex";
+})
+
+
+/*Score Switch*/
+document.getElementById("ball1").addEventListener("click", () => {
+    if (document.getElementById("blackboard-container").style.display == "none"){
+        document.getElementById("blackboard-container").style.display = "block";
+        document.getElementById("ball1").src = "./Images/on.png";
+        document.getElementById("ball1").style.right = "15px";
+    } else{
+        document.getElementById("blackboard-container").style.display = "none"; 
+        document.getElementById("ball1").src = "./Images/off.png";
+        document.getElementById("ball1").style.right = "39px";
+    }
 })
