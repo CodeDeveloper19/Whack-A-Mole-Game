@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
+    <link href="http://buzinas.github.io/simple-scrollbar/simple-scrollbar.css" rel="stylesheet"/>
     <link rel="preload" href="./Fonts/aurora.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" href="./Fonts/DEADCRT.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="stylesheet" href="/CSS/whackamole.css">
@@ -190,18 +191,32 @@
                     <div class="setting-container">
                         <div class="score-board">
                             <h3>Score Board</h3>
-                            <div class="switch">
-                                <img src="/Images/switch.svg" alt="illustration of a switch" id="score-switch">
-                                <!-- <h3 id="ontext1" class="ontext">ON</h3> -->
-                                <img src="/Images/on.png" alt="illustration of a green ball" id="ball1" class="ball click">
+                            <div class="whole-switch">
+                                <div class="off">
+                                    <img src="./Images/off.svg" alt="illustraion of an 'off' text">
+                                </div>
+                                <div class="switch">
+                                    <img src="/Images/switch.svg" alt="illustration of a switch" id="score-switch">
+                                    <img src="/Images/on.png" alt="illustration of a green ball" id="ball1" class="ball click">
+                                </div>
+                                <div class="on">
+                                    <img src="./Images/on.svg" alt="illustraion of an 'on' text">
+                                </div>
                             </div>
                         </div>
                         <div class="sound-effects">
                             <h3>Sound Effects</h3>
-                            <div class="switch">
-                                <img src="/Images/switch.svg" alt="illustration of a switch" id="sound-switch">
-                                <!-- <h3 id="ontext2" class="ontext">ON</h3> -->
-                                <img src="/Images/on.png" alt="illustration of a green ball" id="ball2" class="ball click">
+                            <div class="whole-switch">
+                                <div class="off">
+                                    <img src="./Images/off.svg" alt="illustraion of an 'off' text">
+                                </div>
+                                <div class="switch">
+                                    <img src="/Images/switch.svg" alt="illustration of a switch" id="sound-switch">
+                                    <img src="/Images/on.png" alt="illustration of a green ball" id="ball2" class="ball click">
+                                </div>
+                                <div class="on">
+                                    <img src="./Images/on.svg" alt="illustraion of an 'on' text">
+                                </div>
                             </div>
                         </div>
                         <div class="music-volume">
@@ -243,9 +258,47 @@
                         <img src="/Images/normal slab.png" alt="illustration of a normal slab" class="image">
                         <p>Credits</p>
                     </div>
-                    <div id="okay-button" class="click">
+                    <div class="click okay-button">
                         <img src="/Images/screen 2.svg" alt="illustration of a normal slab" class="okay-image">
                         <p>Okay</p>
+                    </div>
+                </div>
+                <div id="credits">
+                    <div class="credits">
+                        <img src="./Images/credits.png" alt="illustration of a board">
+                        <h1>Credits</h1>
+                        <div class="credits-content" ss-container style="height: 60%; width: 70%; display: inline-block;">
+                            <div class="credit">
+                                <h2>Music</h2>
+                                <h5>Funk Me Baby from <a href="https://www.joystock.org">Music by Joystock</a></h5>
+                            </div>
+                            <div class="credit">
+                                <h2>Sound Effects</h2>
+                                <h5>Click sound from <a href="https://freesound.org/people/EminYILDIRIM/">EminYILDIRIM</a></h5>
+                                <h5>Splat sound from <a href="https://www.zapsplat.com/">Zapsplat</a></h5>
+                            </div>
+                            <div class="credit">
+                                <h2>Graphics</h2>
+                                <h5>Introduction Page background illustration from <a href="https://www.vecteezy.com/">Vecteezy</a></h5>
+                                <h5>Mole illustration from <a href="https://pngtree.com/">Png Tree</a></h5>
+                                <h5>Stopwatch icon from <a href="https://www.veryicon.com/icons/object/sports-fitness-icon/stopwatch-16.html">Very Icon</a></h5>
+                                <h5>Heart Pixel Art from <a href="https://DontMind8.blogspot.com/">Don't Mind8 Blogspot</a></h5>
+                                <h5>Game-ui-scrolls-stone-boards-antique-parchments from <a href="https://www.freepik.com/search?author=13115374&authorSlug=upklyak&format=author&query=game-ui-scrolls-stone-boards-antique-parchments">Upklyak on Freepik.com</a></h5>
+                                <h5>Stone-arrows-signs-set from <a href="https://www.freepik.com/search?author=10171402&authorSlug=pch.vector&format=author&query=stone-arrows-signs-set">Pch.Vector on Freepik.com</a></h5>
+                            </div>
+                            <div class="credit">
+                                <h2>Web Design</h2>
+                                <h5>Game Design by <a href="https://www.joystock.org">CodeDeveloper19</a></h5>
+                            </div>
+                            <div class="credit">
+                                <h2>Developer</h2>
+                                <h5>Game Code by <a href="https://www.linkedin.com/in/okoli-akachukwu-6b321b178/">CodeDeveloper19</a></h5>
+                            </div>
+                        </div>
+                        <div class="click okay-button">
+                            <img src="/Images/screen 2.svg" alt="illustration of a normal slab" class="okay-image">
+                            <p>Okay</p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -361,6 +414,7 @@
     </div> -->
 
     <script src="https://kit.fontawesome.com/c123ad8ef2.js" crossorigin="anonymous"></script>
+    <script src="http://buzinas.github.io/simple-scrollbar/simple-scrollbar.min.js"></script>
     <script src="/Javascript/whackamole.js"></script>
     <script src="/Javascript/sound.js"></script>
     <script src="/Javascript/other functionalities.js"></script>

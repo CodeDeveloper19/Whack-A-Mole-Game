@@ -1,12 +1,14 @@
 /*Hovering of Button*/
 
-document.getElementById("okay-button").addEventListener("mouseover", () => {
-document.getElementsByClassName("okay-image")[0].src = "./Images/screen 2 hover.svg";
-})
+for(let i = 0; i < document.getElementsByClassName("okay-button").length; i++){
+    document.getElementsByClassName("okay-button")[i].addEventListener("mouseover", () =>{
+        document.getElementsByClassName("okay-image")[i].src = "./Images/screen 2 hover.svg";
+    })
 
-document.getElementById("okay-button").addEventListener("mouseout", () => {
-document.getElementsByClassName("okay-image")[0].src = "./Images/screen 2.svg";
-}) 
+    document.getElementsByClassName("okay-button")[i].addEventListener("mouseout", () => {
+        document.getElementsByClassName("okay-image")[i].src = "./Images/screen 2.svg";
+    })
+}
 
 for (let i = 0; i < document.getElementsByClassName("reduce").length; i++){
     document.getElementsByClassName("reduce")[i].addEventListener("mouseover", () => {
@@ -146,9 +148,19 @@ document.getElementById("previous").addEventListener("click", () => {
     document.getElementById("instructions1").style.display = "flex";
 })
 
-document.getElementById("okay-button").addEventListener("click", () =>{
-    document.getElementById("settings").style.display = "none";
+document.getElementById("credits-button").addEventListener("click", () => {
+    document.getElementById("credits").style.display = "flex";
 })
+
+for(let i = 0; i < document.getElementsByClassName("okay-button").length; i++){
+document.getElementsByClassName("okay-button")[i].addEventListener("click", () =>{
+    if (i == 0){
+        document.getElementById("settings").style.display = "none";
+    } else if (i == 1){
+        document.getElementById("credits").style.display = "none";
+    }
+})
+}
 
 document.getElementById("settings-container").addEventListener("click", () => {
     document.getElementById("settings").style.display = "flex";
