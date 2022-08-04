@@ -52,6 +52,7 @@ for (let i = 1; i < document.getElementsByClassName("back-arrow").length; i++){
     switch(i){
         case 1:
             document.getElementsByClassName("back-arrow")[i].addEventListener("click", () => {
+                document.getElementById("instructions0").style.animationName = "empty";
                 document.getElementById("instructions0").style.display = "flex";
                 document.getElementById("instructions0-5").style.display = "none";
             })
@@ -200,6 +201,34 @@ document.getElementById("previous").addEventListener("click", () => {
 
 document.getElementById("credits-button").addEventListener("click", () => {
     document.getElementById("credits").style.display = "flex";
+})
+
+document.getElementById("menu-container").addEventListener("click", () => {
+    document.getElementById("instructions0").style.display = "none";
+    document.getElementById("game").style.display = "none";
+    document.getElementById("instructions").style.display = "flex";
+    document.getElementById("instructions12").style.display = "flex";
+
+    for (let i = 0; i < document.getElementsByClassName("image").length; i++){
+        document.getElementsByClassName("image")[i].src = "./Images/normal slab.png";
+        isClicked2[i] = false; 
+    }
+})
+
+document.getElementById("info-container").addEventListener("click", () => {
+    document.getElementById("game").style.display = "none";
+    document.getElementById("instructions").style.display = "flex";
+    document.getElementById("instructions0").style.display = "flex";
+    document.getElementById("instructions12").style.display = "none";
+
+    document.querySelector("#next p").innerHTML = "Close";
+    document.getElementById("next").setAttribute("id", "close");
+    document.getElementById("close").addEventListener("click", () => {
+        document.getElementById("instructions0").style.animationName = "menu-animation";
+        document.getElementById("game").style.display = "flex";
+        document.getElementById("instructions").style.display = "none";
+        document.getElementById("instructions0").style.display = "none";
+    })
 })
 
 for(let i = 0; i < document.getElementsByClassName("okay-button").length; i++){

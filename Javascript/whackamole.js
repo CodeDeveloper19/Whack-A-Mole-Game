@@ -26,18 +26,18 @@ const x = ["x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9"];
 //     })
 // }
 
-const moles = (num) => {
-    let finalNum = num - 1;
-    document.getElementById(mole[finalNum]).style.visibility = "visible";
-    document.getElementById(mole[finalNum]).style.animationName = "mole-popping";
+// const moles = (num) => {
+//     let finalNum = num - 1;
+//     document.getElementById(mole[finalNum]).style.visibility = "visible";
+//     document.getElementById(mole[finalNum]).style.animationName = "mole-popping";
 
-    if (isClicked[finalNum] == false){
-        setTimeout(()=>{
-            document.getElementById(mole[finalNum]).style.animationName = "";
-            document.getElementById(mole[finalNum]).style.visibility = "hidden";
-        }, 1500)
-    }
-}
+//     if (isClicked[finalNum] == false){
+//         setTimeout(()=>{
+//             document.getElementById(mole[finalNum]).style.animationName = "";
+//             document.getElementById(mole[finalNum]).style.visibility = "hidden";
+//         }, 1500)
+//     }
+// }
 
 
 const popping = () => {
@@ -117,7 +117,7 @@ const begin = () => {
     document.getElementById("introduction").style.display = "none";
     document.getElementById("instructions").style.display = "none";
     document.getElementById("instructions12").style.display = "none";
-    document.getElementById("results").style.display = "none";
+    // document.getElementById("results").style.display = "none";
     selection(); /*This function set a difficulty level under the high scores*/
 }
 document.getElementById("begin").addEventListener("click", () => {

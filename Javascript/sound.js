@@ -10,11 +10,11 @@ let icon = document.getElementsByTagName("i");
 
 for (let i = 0; i < document.getElementsByClassName("sound").length; i++ ){
     document.getElementsByClassName("sound")[i].addEventListener("mouseover", () => {
-        document.getElementsByClassName("circle-image")[i].src = "./images/circle slab hover.png";
+        document.getElementsByClassName("circle-image")[i].src = "./images/circle slab hover.svg";
     })
     
     document.getElementsByClassName("sound")[i].addEventListener("mouseout", () => {
-        document.getElementsByClassName("circle-image")[i].src = "./images/circle slab.png";
+        document.getElementsByClassName("circle-image")[i].src = "./images/circle slab.svg";
     })
     
     document.getElementsByClassName("sound")[i].addEventListener("click", () => {

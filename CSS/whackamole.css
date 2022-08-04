@@ -3,6 +3,10 @@
     margin: 0;
 }
 
+:root{
+    --animation-duration: .5s;
+}
+
 @font-face {
     font-family: 'DEADCRT';
     src: url('/Fonts/DEADCRT.woff2') format('woff2'),
@@ -93,7 +97,7 @@ button:hover{
     z-index: 7;
     height: inherit;
     width: inherit;
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -153,17 +157,41 @@ button:hover{
 
 .text a {
     text-decoration: none;
-    color: yellow;
 }
 
-.text a:hover{
-    text-decoration: underline;
-    color: green;
+/* .fa-brands:hover{
+    color: green; 
+} */
+
+.socialmedia{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: fit-content;
+}
+
+.fa-brands{
+    font-size: 35px;
+}
+
+.fa-linkedin{
+   color: #0A66C2; 
+}
+
+.fa-github{
+    color: black;
+    margin: 0 30px;
+}
+
+.mail{
+    max-width: 35px;
+    max-height: 35px;
 }
 
 #instructions{
     z-index: 6;
-    display: flex;
+    display: none;
     background-image: url("/Images/introduction-background.jpg");
     background-size: cover;
 }
@@ -188,6 +216,7 @@ button:hover{
 
 #instructions0{
     display: flex;
+    animation: menu-animation var(--animation-duration) linear;
 }
 
 .howtoplay0, .instruction-navigation{
@@ -265,10 +294,8 @@ button:hover{
     top: 80px;
 }
 
-#next {
+#next, #close{
     width: 200px;
-    /* position: absolute;
-    top: 435px; */
     margin: 0 2%;
 }
 
@@ -431,6 +458,8 @@ button:hover{
 #sound-container{
     width: 46px;
     height: 50px;
+    position: unset;
+    left: unset;
 }
 
 #sound-container > .fa-solid{
@@ -767,6 +796,7 @@ button:hover{
 .settings{
     display: flex;
     margin: auto;
+    animation: menu-animation var(--animation-duration)  linear;
 }
 
 #credits{
@@ -788,6 +818,7 @@ button:hover{
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* animation: menu-animation .3s linear; */
 }
 
 .credits h1{
@@ -929,15 +960,6 @@ button:hover{
     height: fit-content;
 }
 
-/* .ontext{
-    width: 20px;
-    height: 10px;
-    position: absolute;
-    top: 50%;
-    left: 12%;
-    transform: translate(0, -50%);
-} */
-
 #credits-button, .okay-button{
     width: 155px;
     height: 50px;
@@ -980,10 +1002,7 @@ button:hover{
     top: 30px;
     width: 60%;
     height: 110px;
-    animation-duration: 1.5s;
-    animation-iteration-count: 1;
-    animation-timing-function: ease-in;
-    animation-fill-mode: forwards;
+    animation: mole-popping 1.5s ease-in 1 forwards;
 }
 
 @keyframes mole-popping {
@@ -1051,4 +1070,19 @@ button:hover{
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+
+@keyframes menu-animation {
+    0%{
+        transform: scale(0);
+    }
+
+    50%{
+        transform: scale(0.5);
+    }
+
+    100%{
+        transform: scale(1);
+    }
 }
