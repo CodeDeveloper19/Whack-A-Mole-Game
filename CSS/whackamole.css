@@ -44,7 +44,7 @@
     }
 }
 
-#instructions1, .settings, #instructions12, .result, #credits{
+#instructions1, .settings, #instructions12, .result, #credits, #instructions0, #instructions0-5{
     font-family: 'DEADCRT';
 }
 
@@ -93,7 +93,7 @@ button:hover{
     z-index: 7;
     height: inherit;
     width: inherit;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -163,7 +163,7 @@ button:hover{
 
 #instructions{
     z-index: 6;
-    display: none;
+    display: flex;
     background-image: url("/Images/introduction-background.jpg");
     background-size: cover;
 }
@@ -176,14 +176,83 @@ button:hover{
     align-items: center;
 }
 
-#instructions1, .settings{
+#instructions1, .settings, #instructions0, #instructions0-5{
     width: 820px;
     height: 550px;
     padding: 40px;
     position: relative;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
+}
+
+#instructions0{
+    display: flex;
+}
+
+.howtoplay0, .instruction-navigation{
+    height: 45%;
+    position: absolute;
+    top: 28%;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.part1{
+    display: flex;
+    flex-direction: row;
+    height: 45%;
+}
+
+.part2{
+    display: flex;
+    flex-direction: row-reverse;
+    height: 45%;
+}
+
+.part-image, .part-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    font-size: 12px;
+    line-height: 170%;
+}
+
+.part-text{
+    padding: 0 5%;
+}
+
+.part-image img{
+    max-height: 100%;
+}
+
+.instruction-navigation{
+    top: 73%;
+    height: 15%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.instruction-navigation img{
+    width: 100%;
+    height: 100%;
+}
+
+.second{
+    top: 70%;
+    left: 10%;
+}
+
+.back-arrow, .numberofpages, .front-arrow{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    height: 50%;
 }
 
 .board, .settings img, .credits img{
@@ -191,15 +260,16 @@ button:hover{
     height: 100%;
 }
 
-#instructions1 h1, .settings h1{
+#instructions1 h1, .settings h1, #instructions0 h1, #instructions0-5 h1{
     position: absolute;
     top: 80px;
 }
 
 #next {
     width: 200px;
-    position: absolute;
-    top: 435px;
+    /* position: absolute;
+    top: 435px; */
+    margin: 0 2%;
 }
 
 .howtoplay, .setting-container{
@@ -215,6 +285,7 @@ button:hover{
     flex-direction: column;
     justify-content: space-between;
 }
+
 
 .howtoplay1{
     width: 80%;
@@ -288,9 +359,12 @@ button:hover{
     width: 30px;
     height: 30px;
     color: white;
-    position: absolute;
-    bottom: 5%;
-    left: 10%;
+    position: relative;
+    left: -10%;
+}
+
+.adjust{
+    left: -20%;
 }
 
 .circle-image{
@@ -304,22 +378,13 @@ button:hover{
     top: 470px;
 }
 
-#s-introduction{
-    bottom: 5%;
-}
-
-#s-instructions{
-    position: absolute;
-    top: 450px;
-    left: 160px;
-}
-
 .fa-solid, .button>p, .settings p, .okay-button p{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
 
 #game{
     display: none;
@@ -359,7 +424,7 @@ button:hover{
     height: 100%;
 }
 
-.sound:hover, .button2:hover, .switch{
+.sound:hover, .button2:hover, .switch, .back-arrow, .front-arrow, .reduce, .increase{
     cursor: pointer;
 }
 
@@ -710,6 +775,7 @@ button:hover{
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
+    display: none;
 }
 
 .credits{
@@ -818,13 +884,11 @@ button:hover{
 .reduce{
     width: 40px;
     height: 15px;
-    cursor: pointer;
 }
 
 .increase{
     width: 40px;
     height: 40px;
-    cursor: pointer;
 }
 
 .circle{

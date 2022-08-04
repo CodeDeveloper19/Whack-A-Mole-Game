@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple Whack-A-Mole game where the player has to smash as many moles as possible within the selected time limit while avoiding the other abnormal ones">
     <title>Whack-A-Mole</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,6 +38,80 @@
 
     <section id="instructions">
         <div class="instructions">
+                <div id="instructions0">
+                    <img src="/Images/board.png" alt="cartoon-board" class="board">
+                    <h1>How To Play</h1>
+                    <div class="howtoplay0">
+                        <div class="part1">
+                            <div class="part-image">
+                                <img src="/Images/life.JPG" alt="picture of the illustration of the life bar">
+                            </div>
+                            <div class="part-text">
+                                <h5>In each gameplay, you are given four lives. A life is deducted when you whack the wrong mole. The game ends when all four lives have been depleted or the timelimit has elapsed.</h5>
+                            </div>
+                        </div>
+                        <div class="part2">
+                            <div class="part-image">
+                                <img src="/Images/timer.JPG" alt="picture of the illustration of the timer">
+                            </div>
+                            <div class="part-text">
+                                <h5>The timelimit is selected before you start the game. Once the timer runs out, the game stops automatically with your final score shown to you thereafter.</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="instruction-navigation">
+                        <div class="sound adjust"> 
+                            <img src="./Images/circle slab.png" alt="circle slab" class="circle-image"> 
+                            <i class="fa-solid fa-volume-xmark"></i>
+                        </div>
+                        <div class="back-arrow click">
+                            <img src="/Images/arrow 2.svg" alt="illustration of a back arrow" class="backarrow">
+                        </div>
+                        <div class="numberofpages">
+                            <h5>1 / 3</h5>
+                        </div>
+                        <div class="front-arrow click">
+                            <img src="/Images/green arrow.svg" alt="illustration of a front arrow" class="frontarrow">
+                        </div>
+                    </div>
+                </div>
+                <div id="instructions0-5">
+                    <img src="/Images/board.png" alt="cartoon-board" class="board">
+                    <h1>How To Play</h1>
+                    <div class="howtoplay0">
+                        <div class="part1">
+                            <div class="part-image">
+                                <img src="/Images/score.JPG" alt="picture of the illustration of the score bar">
+                            </div>
+                            <div class="part-text">
+                                <h5>This board displays your score during the gameplay. It automatically adds a score for each regular mole you whack successfully.</h5>
+                            </div>
+                        </div>
+                        <div class="part2">
+                            <div class="part-image">
+                                <img src="/Images/scoreboard.PNG" alt="picture of the illustration of the score board">
+                            </div>
+                            <div class="part-text">
+                                <h5>This board is different from the player's score board. It shows the top 10 players with the highest score for each difficulty level and time limit in the game.</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="instruction-navigation">
+                        <div class="sound adjust"> 
+                            <img src="./Images/circle slab.png" alt="circle slab" class="circle-image"> 
+                            <i class="fa-solid fa-volume-xmark"></i>
+                        </div>
+                        <div class="back-arrow click">
+                            <img src="/Images/green arrow 2.svg" alt="illustration of a back arrow" class="backarrow">
+                        </div>
+                        <div class="numberofpages">
+                            <h5>2 / 3</h5>
+                        </div>
+                        <div class="front-arrow click">
+                            <img src="/Images/green arrow.svg" alt="illustration of a front arrow" class="frontarrow">
+                        </div>
+                    </div>
+                </div>
                 <div id="instructions1">
                     <img src="/Images/board.png" alt="cartoon-board" class="board">
                     <h1>How To Play</h1>
@@ -48,14 +123,26 @@
                             <li>The total number of moles you are able to smash will be your final score.</li>
                         </ul>
                     </div>
-                    <div id="next" class="button click">
+                    <div class="instruction-navigation second">
+                        <div class="sound"> 
+                            <img src="./Images/circle slab.png" alt="circle slab" class="circle-image"> 
+                            <i class="fa-solid fa-volume-xmark"></i>
+                        </div>
+                        <div class="back-arrow click">
+                            <img src="/Images/green arrow 2.svg" alt="illustration of a back arrow" class="backarrow">
+                        </div>
+                        <div id="next" class="button click">
+                            <img src="./Images/normal slab.png" alt="normal slab" class="image"> 
+                            <p>Start</p>
+                        </div>
+                        <div class="front-arrow click">
+                            <img src="/Images/arrow.svg" alt="illustration of a front arrow" class="frontarrow">
+                        </div>
+                    </div>
+                    <!-- <div id="next" class="button click">
                         <img src="./Images/normal slab.png" alt="normal slab" class="image"> 
                         <p>Start</p>
-                    </div>
-                    <div class="sound music" id="s-instructions"> 
-                        <img src="./Images/circle slab.png" alt="circle slab" class="circle-image"> 
-                        <i class="fa-solid fa-volume-xmark"></i>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div id="instructions12">
@@ -281,6 +368,8 @@
                                 <h2>Graphics</h2>
                                 <h5>Introduction Page background illustration from <a href="https://www.vecteezy.com/">Vecteezy</a></h5>
                                 <h5>Mole illustration from <a href="https://pngtree.com/">Png Tree</a></h5>
+                                <h5>Magician hat illustration from<a href="https://www.vecteezy.com/free-vector/hat">Hat Vectors by Vecteezy</a></h5>
+                                <h5>Mustache illustraion from<a href="https://www.vecteezy.com/free-vector/mustache">Mustache Vectors by Vecteezy</a></h5>
                                 <h5>Stopwatch icon from <a href="https://www.veryicon.com/icons/object/sports-fitness-icon/stopwatch-16.html">Very Icon</a></h5>
                                 <h5>Heart Pixel Art from <a href="https://DontMind8.blogspot.com/">Don't Mind8 Blogspot</a></h5>
                                 <h5>Game-ui-scrolls-stone-boards-antique-parchments from <a href="https://www.freepik.com/search?author=13115374&authorSlug=upklyak&format=author&query=game-ui-scrolls-stone-boards-antique-parchments">Upklyak on Freepik.com</a></h5>
@@ -288,11 +377,17 @@
                             </div>
                             <div class="credit">
                                 <h2>Web Design</h2>
-                                <h5>Game Design by <a href="https://www.joystock.org">CodeDeveloper19</a></h5>
+                                <h5>Game Design by <a href="https://www.linkedin.com/in/okoli-akachukwu-6b321b178/">CodeDeveloper19</a></h5>
                             </div>
                             <div class="credit">
                                 <h2>Developer</h2>
                                 <h5>Game Code by <a href="https://www.linkedin.com/in/okoli-akachukwu-6b321b178/">CodeDeveloper19</a></h5>
+                            </div>
+                            <div class="credit">
+                                <h2>Fonts</h2>
+                                <h5>Blackboard 'High-Score Board' font style from <a href="https://www.1001fonts.com/film-cryptic-font.html">Film Cryptic</a></h5>
+                                <h5>Instructions font style from <a href="https://www.1001fonts.com/deadcrt-font.html">DEADCRT</a></h5>
+                                <h5>Homepage 'Whack-A-Mole' font style from <a href="https://www.1001fonts.com/aurora-font.html">Aurora</a></h5>
                             </div>
                         </div>
                         <div class="click okay-button">
@@ -414,7 +509,7 @@
     </div> -->
 
     <script src="https://kit.fontawesome.com/c123ad8ef2.js" crossorigin="anonymous"></script>
-    <script src="http://buzinas.github.io/simple-scrollbar/simple-scrollbar.min.js"></script>
+    <script src="http://buzinas.github.io/simple-scrollbar/simple-scrollbar.js"></script>
     <script src="/Javascript/whackamole.js"></script>
     <script src="/Javascript/sound.js"></script>
     <script src="/Javascript/other functionalities.js"></script>

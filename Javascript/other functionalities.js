@@ -40,6 +40,56 @@ for (let i = 9; i < document.getElementsByClassName("button").length; i++){
     }) 
 }
 
+for (let i = 1; i < document.getElementsByClassName("back-arrow").length; i++){
+    document.getElementsByClassName("back-arrow")[i].addEventListener("mouseover", () => {
+        document.getElementsByClassName("backarrow")[i].src = "./Images/red arrow 2.svg";
+    })
+    
+    document.getElementsByClassName("back-arrow")[i].addEventListener("mouseout", () => {
+        document.getElementsByClassName("backarrow")[i].src = "./Images/green arrow 2.svg";
+    }) 
+
+    switch(i){
+        case 1:
+            document.getElementsByClassName("back-arrow")[i].addEventListener("click", () => {
+                document.getElementById("instructions0").style.display = "flex";
+                document.getElementById("instructions0-5").style.display = "none";
+            })
+            break;
+        case 2: 
+            document.getElementsByClassName("back-arrow")[i].addEventListener("click", () => {
+                document.getElementById("instructions0-5").style.display = "flex";
+                document.getElementById("instructions1").style.display = "none";
+            })
+            break;     
+    }
+}
+
+for (let i = 0; i < document.getElementsByClassName("front-arrow").length - 1; i++){
+    document.getElementsByClassName("front-arrow")[i].addEventListener("mouseover", () => {
+        document.getElementsByClassName("frontarrow")[i].src = "./Images/red arrow.svg";
+    })
+    
+    document.getElementsByClassName("front-arrow")[i].addEventListener("mouseout", () => {
+        document.getElementsByClassName("frontarrow")[i].src = "./Images/green arrow.svg";
+    }) 
+
+    switch(i){
+        case 0:
+            document.getElementsByClassName("front-arrow")[i].addEventListener("click", () => {
+                document.getElementById("instructions0-5").style.display = "flex";
+                document.getElementById("instructions0").style.display = "none";
+            })
+            break;
+        case 1: 
+            document.getElementsByClassName("front-arrow")[i].addEventListener("click", () => {
+                document.getElementById("instructions1").style.display = "flex";
+                document.getElementById("instructions0-5").style.display = "none";
+            })
+            break;     
+    }
+}
+
 /*For the start button at the how-to-play section*/
 document.getElementsByClassName("button")[0].addEventListener("mouseover", () => {
 document.getElementsByClassName("image")[0].src = "./Images/slab hover.png";
