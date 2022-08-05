@@ -147,6 +147,12 @@ button:hover{
     margin: auto;
 }
 
+.lower-part{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .text {
     display: flex;
     flex-direction: column;
@@ -158,10 +164,6 @@ button:hover{
 .text a {
     text-decoration: none;
 }
-
-/* .fa-brands:hover{
-    color: green; 
-} */
 
 .socialmedia{
     display: flex;
