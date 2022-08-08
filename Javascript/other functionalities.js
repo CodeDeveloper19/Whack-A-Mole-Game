@@ -52,15 +52,16 @@ for (let i = 1; i < document.getElementsByClassName("back-arrow").length; i++){
     switch(i){
         case 1:
             document.getElementsByClassName("back-arrow")[i].addEventListener("click", () => {
-                document.getElementById("instructions0").style.animationName = "empty";
-                document.getElementById("instructions0").style.display = "flex";
-                document.getElementById("instructions0-5").style.display = "none";
+                document.getElementById("instruction-navigation-list").style.left = "0px";
+                document.getElementById("h1-main").style.left = "0px";
+                document.getElementById("howtoplay-main").style.left = "0px";
             })
             break;
         case 2: 
             document.getElementsByClassName("back-arrow")[i].addEventListener("click", () => {
-                document.getElementById("instructions0-5").style.display = "flex";
-                document.getElementById("instructions1").style.display = "none";
+                document.getElementById("instruction-navigation-list").style.left = "-675px";
+                document.getElementById("howtoplay-main").style.left = "-675px";
+                document.getElementById("h1-main").style.left = "-290px";
             })
             break;     
     }
@@ -75,17 +76,19 @@ for (let i = 0; i < document.getElementsByClassName("front-arrow").length - 1; i
         document.getElementsByClassName("frontarrow")[i].src = "./Images/green arrow.svg";
     }) 
 
-    switch(i){
+        switch(i){
         case 0:
             document.getElementsByClassName("front-arrow")[i].addEventListener("click", () => {
-                document.getElementById("instructions0-5").style.display = "flex";
-                document.getElementById("instructions0").style.display = "none";
+                document.getElementById("instruction-navigation-list").style.left = "-675px";
+                document.getElementById("howtoplay-main").style.left = "-675px";
+                document.getElementById("h1-main").style.left = "-290px";
             })
             break;
         case 1: 
             document.getElementsByClassName("front-arrow")[i].addEventListener("click", () => {
-                document.getElementById("instructions1").style.display = "flex";
-                document.getElementById("instructions0-5").style.display = "none";
+                document.getElementById("instruction-navigation-list").style.left = "-1350px";
+                document.getElementById("howtoplay-main").style.left = "-1350px";
+                document.getElementById("h1-main").style.left = "-580px";  
             })
             break;     
     }
@@ -190,13 +193,16 @@ document.getElementById("start").addEventListener("click", () => {
 })
 
 document.getElementById("next").addEventListener("click", () => {
-    document.getElementById("instructions1").style.display = "none";
+    document.getElementById("instructions-0").style.display = "none";
+    document.getElementById("instructions12").style.animationName = "menu-animation";
     document.getElementById("instructions12").style.display = "flex";
+
 })
 
 document.getElementById("previous").addEventListener("click", () => {
     document.getElementById("instructions12").style.display = "none";
-    document.getElementById("instructions1").style.display = "flex";
+    document.getElementById("instructions-0").style.animationName = "menu-animation";
+    document.getElementById("instructions-0").style.display = "flex";
 })
 
 document.getElementById("credits-button").addEventListener("click", () => {

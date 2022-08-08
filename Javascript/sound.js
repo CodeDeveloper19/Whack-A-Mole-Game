@@ -24,12 +24,12 @@ for (let i = 0; i < document.getElementsByClassName("sound").length; i++ ){
         }
     
         if (icon[2].classList[1] == "fa-volume-xmark") {
-            for(let i = 0; i < document.getElementsByClassName("sound").length; i++){
-                icon[i].classList.replace("fa-volume-xmark", "fa-volume-high")
+            for(let i = 2; i < 7; i++){
+                icon[i].classList.replace("fa-volume-xmark", "fa-volume-high");
             }
             audioBackgroundMusic.muted = false;
         } else {
-            for(let i = 0; i < document.getElementsByClassName("sound").length; i++){
+            for(let i = 2; i < 7; i++){
                 icon[i].classList.replace("fa-volume-high", "fa-volume-xmark")
             }
             audioBackgroundMusic.muted = true;

@@ -120,13 +120,13 @@ const begin = () => {
     // document.getElementById("results").style.display = "none";
     selection(); /*This function set a difficulty level under the high scores*/
 }
-document.getElementById("begin").addEventListener("click", () => {
-    if (count == undefined || counts == undefined){
-        alert("Please select both a difficulty level and timelimit")
-    } else {
-        begin();
-    }
-})
+// document.getElementById("begin").addEventListener("click", () => {
+//     if (count == undefined || counts == undefined){
+//         alert("Please select both a difficulty level and timelimit")
+//     } else {
+//         begin();
+//     }
+// })
 
 // document.getElementById("pause").addEventListener("click", () => {
 //     pausee = true;
