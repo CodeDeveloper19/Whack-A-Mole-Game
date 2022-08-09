@@ -68,23 +68,20 @@
                                             </div>
                                             <img src="/Images/screen.png" alt="illustration of a screen" class="life-line" id="life-line-image-dummy">
                                         </div>
-                                        <img src="/Images/icons8-heart-64.png" alt="illustration of a heart" class="life-heart">
+                                        <img src="/Images/icons8-heart-64.png" alt="illustration of a heart" class="life-heart" id="life-heart-dummy">
                                     </div>
                                     <div class="part-text">
                                         <h5>In each gameplay, you are given four lives. A life is deducted when you whack the wrong mole. The game ends when all four lives have been depleted or the timelimit has elapsed.</h5>
                                     </div>
                                 </div>
                                 <div class="part2">
-                                    <div class="part-image">
-                                        <img src="/Images/timer.JPG" alt="picture of the illustration of the timer">
-                                    </div>
-                                    <!-- <div class="left part-image">
-                                        <div class="screen-container" id="t-container">
-                                            <h1 id="timer">120</h1>
+                                    <div class="left part-image">
+                                        <div class="screen-container" id="t-container-dummy">
+                                            <h1 id="timer" class="timer-dummy">120</h1>
                                             <img src="/Images/screen.png" alt="illustration of a screen" class="screen">
                                         </div>
-                                        <img src="/Images/stopwatch-16.svg" alt="illustration of a stopwatch" class="stopwatch">
-                                    </div> -->
+                                        <img src="/Images/stopwatch-16.svg" alt="illustration of a stopwatch" id="stopwatch-dummy" class="stopwatch">
+                                    </div>
                                     <div class="part-text">
                                         <h5>The timelimit is selected before you start the game. Once the timer runs out, the game stops automatically with your final score shown to you thereafter.</h5>
                                     </div>
@@ -92,16 +89,23 @@
                             </div>
                             <div class="howtoplay0">
                                 <div class="part1">
-                                    <div class="part-image">
-                                        <img src="/Images/score.JPG" alt="picture of the illustration of the score bar">
+                                    <div class="counter-container part-image">
+                                        <div class="screen-container" id="c-container-dummy">
+                                            <h2 id="counter">0</h2>
+                                            <img src="/Images/screen.png" alt="illustration of a screen" class="screen">
+                                        </div>
+                                        <img src="/Images/mole.png" alt="illustration of a mole" class="Mole" id="Mole-dummy">
                                     </div>
                                     <div class="part-text">
                                         <h5>This board displays your score during the gameplay. It automatically adds a score for each regular mole you whack successfully.</h5>
                                     </div>
                                 </div>
                                 <div class="part2">
-                                    <div class="part-image">
-                                        <img src="/Images/scoreboard.PNG" alt="picture of the illustration of the score board">
+                                    <div id="blackboard-container-dummy" class="part-image">
+                                        <div class="blackboard" id="blackboard-dummy">
+                                            <div class="writing-area" id="writing-area-dummy">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="part-text">
                                         <h5>This board is different from the player's score board. It shows the top 10 players with the highest score for each difficulty level and time limit in the game.</h5>
@@ -110,20 +114,8 @@
                             </div>
                             <div class="howtoplay0">
                                 <div class="part1">
-                                    <div class="part-image">
-                                        <img src="/Images/score.JPG" alt="picture of the illustration of the score bar">
-                                    </div>
-                                    <div class="part-text">
-                                        <h5>This board displays your score during the gameplay. It automatically adds a score for each regular mole you whack successfully.</h5>
-                                    </div>
                                 </div>
                                 <div class="part2">
-                                    <div class="part-image">
-                                        <img src="/Images/scoreboard.PNG" alt="picture of the illustration of the score board">
-                                    </div>
-                                    <div class="part-text">
-                                        <h5>This board is different from the player's score board. It shows the top 10 players with the highest score for each difficulty level and time limit in the game.</h5>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -160,7 +152,7 @@
                                     <img src="/Images/green arrow.svg" alt="illustration of a front arrow" class="frontarrow">
                                 </div>
                             </div>
-                            <div class="instruction-navigation">
+                            <div class="instruction-navigation shift">
                                 <div class="sound"> 
                                     <img src="./Images/circle slab.svg" alt="circle slab" class="circle-image"> 
                                     <i class="fa-solid fa-volume-xmark"></i>

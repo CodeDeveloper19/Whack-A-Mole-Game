@@ -111,8 +111,8 @@ let oneeighty1 = document.getElementById("oneeighty");
 
 
 const begin = () => {
-    timeds = setInterval(timer, 1000);
-    popss = setInterval(popping, 500); /* Use this to set how fast the mole will be spawned */ /*change back to number to "difficulty"*/
+    // timeds = setInterval(timer, 1000);
+    // popss = setInterval(popping, 500); /* Use this to set how fast the mole will be spawned */ /*change back to number to "difficulty"*/
     document.getElementById("game").style.display = "flex";
     document.getElementById("introduction").style.display = "none";
     document.getElementById("instructions").style.display = "none";
@@ -120,13 +120,13 @@ const begin = () => {
     // document.getElementById("results").style.display = "none";
     selection(); /*This function set a difficulty level under the high scores*/
 }
-// document.getElementById("begin").addEventListener("click", () => {
-//     if (count == undefined || counts == undefined){
-//         alert("Please select both a difficulty level and timelimit")
-//     } else {
-//         begin();
-//     }
-// })
+document.getElementById("begin").addEventListener("click", () => {
+    if (count == undefined || counts == undefined){
+        alert("Please select both a difficulty level and timelimit")
+    } else {
+        begin();
+    }
+})
 
 // document.getElementById("pause").addEventListener("click", () => {
 //     pausee = true;
@@ -332,15 +332,15 @@ const reset = () => {
 // }
 
 const selection = () => {
-    switch(counts){
-        case 1: 
-            difficult.innerHTML = "(Easy)";
-            break;
-        case 2:
-            difficult.innerHTML = "(Medium)";
-            break;
-        case 3:
-            difficult.innerHTML = "(Hard)";
-            break;
-    }
+    // switch(counts){
+    //     case 1: 
+    //         difficult.innerHTML = "(Easy)";
+    //         break;
+    //     case 2:
+    //         difficult.innerHTML = "(Medium)";
+    //         break;
+    //     case 3:
+    //         difficult.innerHTML = "(Hard)";
+    //         break;
+    // }
 }

@@ -1,5 +1,23 @@
 /*Hovering of Button*/
 
+const resetInstructionsList = () => {
+    document.getElementById("instruction-navigation-list").style.left = "0px";
+    document.getElementById("h1-main").style.left = "0px";
+    document.getElementById("howtoplay-main").style.left = "0px";
+}
+
+const showInstructions = () => {
+    document.getElementById("instructions").style.display = "flex";
+    document.getElementById("instructions-0").style.display = "flex";
+    document.getElementById("game").style.display = "none";
+}
+
+const secondSectionOfInstructionList = () => {
+    document.getElementById("instruction-navigation-list").style.left = "-675px";
+    document.getElementById("howtoplay-main").style.left = "-675px";
+    document.getElementById("h1-main").style.left = "-290px";
+}
+
 for(let i = 0; i < document.getElementsByClassName("okay-button").length; i++){
     document.getElementsByClassName("okay-button")[i].addEventListener("mouseover", () =>{
         document.getElementsByClassName("okay-image")[i].src = "./Images/screen 2 hover.svg";
@@ -52,16 +70,12 @@ for (let i = 1; i < document.getElementsByClassName("back-arrow").length; i++){
     switch(i){
         case 1:
             document.getElementsByClassName("back-arrow")[i].addEventListener("click", () => {
-                document.getElementById("instruction-navigation-list").style.left = "0px";
-                document.getElementById("h1-main").style.left = "0px";
-                document.getElementById("howtoplay-main").style.left = "0px";
+                resetInstructionsList();
             })
             break;
         case 2: 
             document.getElementsByClassName("back-arrow")[i].addEventListener("click", () => {
-                document.getElementById("instruction-navigation-list").style.left = "-675px";
-                document.getElementById("howtoplay-main").style.left = "-675px";
-                document.getElementById("h1-main").style.left = "-290px";
+                secondSectionOfInstructionList();
             })
             break;     
     }
@@ -79,9 +93,7 @@ for (let i = 0; i < document.getElementsByClassName("front-arrow").length - 1; i
         switch(i){
         case 0:
             document.getElementsByClassName("front-arrow")[i].addEventListener("click", () => {
-                document.getElementById("instruction-navigation-list").style.left = "-675px";
-                document.getElementById("howtoplay-main").style.left = "-675px";
-                document.getElementById("h1-main").style.left = "-290px";
+                secondSectionOfInstructionList();
             })
             break;
         case 1: 
@@ -194,14 +206,12 @@ document.getElementById("start").addEventListener("click", () => {
 
 document.getElementById("next").addEventListener("click", () => {
     document.getElementById("instructions-0").style.display = "none";
-    document.getElementById("instructions12").style.animationName = "menu-animation";
     document.getElementById("instructions12").style.display = "flex";
 
 })
 
 document.getElementById("previous").addEventListener("click", () => {
     document.getElementById("instructions12").style.display = "none";
-    document.getElementById("instructions-0").style.animationName = "menu-animation";
     document.getElementById("instructions-0").style.display = "flex";
 })
 
@@ -210,30 +220,30 @@ document.getElementById("credits-button").addEventListener("click", () => {
 })
 
 document.getElementById("menu-container").addEventListener("click", () => {
-    document.getElementById("instructions0").style.display = "none";
-    document.getElementById("game").style.display = "none";
-    document.getElementById("instructions").style.display = "flex";
-    document.getElementById("instructions12").style.display = "flex";
+    if(document.getElementById("close")){
+        document.getElementById("close").setAttribute("id", "next");
+        document.querySelector("#close p").innerHTML = "Start";   // Helps to exvhange the start button with the close button after visiting the info section then trting to visit the menu section
+    } //Not completed
+    resetInstructionsList();
+    showInstructions();
 
     for (let i = 0; i < document.getElementsByClassName("image").length; i++){
         document.getElementsByClassName("image")[i].src = "./Images/normal slab.png";
-        isClicked2[i] = false; 
+        isClicked2[i] = false;         // Refreshes the selections at the settings(difficulty and time)
     }
 })
 
 document.getElementById("info-container").addEventListener("click", () => {
-    document.getElementById("game").style.display = "none";
-    document.getElementById("instructions").style.display = "flex";
-    document.getElementById("instructions0").style.display = "flex";
-    document.getElementById("instructions12").style.display = "none";
+    resetInstructionsList();
+    showInstructions();
 
     document.querySelector("#next p").innerHTML = "Close";
     document.getElementById("next").setAttribute("id", "close");
     document.getElementById("close").addEventListener("click", () => {
-        document.getElementById("instructions0").style.animationName = "menu-animation";
+        document.getElementById("instructions-0").style.display = "none";
+        document.getElementById("instructions12").style.display = "none";
         document.getElementById("game").style.display = "flex";
         document.getElementById("instructions").style.display = "none";
-        document.getElementById("instructions0").style.display = "none";
     })
 })
 

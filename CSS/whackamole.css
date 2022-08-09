@@ -5,7 +5,7 @@
 
 :root{
     --animation-duration: .6s;
-    --transition-duration: .4s;
+    --transition-duration: .3s;
 }
 
 @font-face {
@@ -90,6 +90,19 @@
     position: relative;
 }
 
+.counter-container{
+    height: 81.27px;
+    width: 165px;
+    position: relative;
+}
+
+.Mole{
+    height: 100%;
+    width: 80px;
+    position: absolute;
+    right: 0;
+}
+
 .settings, #instructions12, .result, #credits, #instructions-0{
     font-family: 'DEADCRT';
 }
@@ -139,7 +152,7 @@ button:hover{
     z-index: 7;
     height: inherit;
     width: inherit;
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -235,7 +248,7 @@ button:hover{
 
 #instructions{
     z-index: 6;
-    display: flex;
+    display: none;
     background-image: url("/Images/introduction-background.jpg");
     background-size: cover;
 }
@@ -248,7 +261,6 @@ button:hover{
     align-items: center;
 }
 
-
 .settings{
     width: 820px;
     height: 550px;
@@ -259,16 +271,10 @@ button:hover{
     align-items: center;
 }
 
-.settings{
-    width: 820px;
-    height: 100%;
-    padding: inherit;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.settings h1{
+    position: absolute;
+    top: 85px;
 }
-
 
 #instructions-0{
     display: flex;
@@ -346,6 +352,11 @@ button:hover{
     height: 100%;
 }
 
+.shift{
+    position: relative;
+    left: -10px;
+}
+
 .back-arrow, .numberofpages, .front-arrow{
     display: flex;
     align-items: center;
@@ -378,6 +389,7 @@ button:hover{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: hidden;
 }
 
 .part1{
@@ -403,24 +415,79 @@ button:hover{
 
 .part-image{
     height: 90%;
+    display: block;
+    margin: unset;
 }
 
 #life-line-dummy{
     width: 60%;
     height: 39.35px;
     z-index: unset;
+    position: relative;
+    left: 30px;
 }
 
 #life-heart-dummy{
-    right: 10px;
+    right: 45px;
+    top: 0;
 }
 
 .part-text{
     padding: 0 5%;
 }
 
-.part-image img{
-    max-height: 100%;
+#t-container-dummy{
+    width: 140px;
+    left: 30%;
+    top: 60%;
+    z-index: unset;
+}
+
+#stopwatch-dummy{
+    height: 100%;
+    position: relative;
+    left: 10%;
+}
+
+.timer-dummy{
+    left: 65% !important;
+    transform: translate(-65%, -50%) !important;
+}
+
+#c-container-dummy{
+    z-index: unset;
+    left: 50px;
+}
+
+#Mole-dummy{
+    height: 65%;
+    width: 25%;
+    position: relative;
+    top: 20px;
+    left: 130px;
+}
+
+.blackboard-container-dummy{
+    position: relative;
+    height: 100%;
+    display: block;
+}
+
+#blackboard-dummy{
+    width: 30%;
+    height: 100%;
+    margin: unset;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 120px;
+}
+
+#writing-area-dummy{
+    height: 85%;
+    width: 35%;
 }
 
 #instructions12{
@@ -841,19 +908,6 @@ button:hover{
 
 .container-hearts img{
     height: 100%;
-}
-
-.counter-container{
-    height: 81.27px;
-    width: 165px;
-    position: relative;
-}
-
-.Mole{
-    height: 100%;
-    width: 80px;
-    position: absolute;
-    right: 0;
 }
 
 #c-container{
