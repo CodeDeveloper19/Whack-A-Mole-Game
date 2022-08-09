@@ -759,16 +759,34 @@ button:hover{
     font-family: 'Film Cryptic';
     padding: 0 20px;
     font-weight: 400;
+    display: flex;
+    justify-content: center;
 }
 
-.titles{
-    margin: 15px 0 15px 0;
+.titles-container{
+    overflow-x: hidden;
+    width: 100px;
+    height: fit-content;
 }
 
-.titles h1{
+.titles-container h1{
     font-size: 20px;
     text-align: center;
     font-weight: 400;
+}
+
+.titles-main{
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+}
+
+.title{
+    height: 100%;
+    width: 100px;
+    margin: 15px 0 15px 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .scorer{

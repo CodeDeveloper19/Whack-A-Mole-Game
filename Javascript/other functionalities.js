@@ -220,12 +220,10 @@ document.getElementById("credits-button").addEventListener("click", () => {
 })
 
 document.getElementById("menu-container").addEventListener("click", () => {
-    if(document.getElementById("close")){
-        document.getElementById("close").setAttribute("id", "next");
-        document.querySelector("#close p").innerHTML = "Start";   // Helps to exvhange the start button with the close button after visiting the info section then trting to visit the menu section
-    } //Not completed
-    resetInstructionsList();
-    showInstructions();
+    document.getElementById("instructions").style.display = "flex";
+    document.getElementById("instructions-0").style.display = "none";
+    document.getElementById("instructions12").style.display = "flex";
+    document.getElementById("game").style.display = "none";
 
     for (let i = 0; i < document.getElementsByClassName("image").length; i++){
         document.getElementsByClassName("image")[i].src = "./Images/normal slab.png";
@@ -272,5 +270,21 @@ document.getElementById("ball1").addEventListener("click", () => {
         document.getElementById("blackboard-container").style.display = "none"; 
         document.getElementById("ball1").src = "./Images/off.png";
         document.getElementById("ball1").style.right = "39px";
+    }
+})
+
+/*Green/Black Board Functionality*/
+
+let currentSlide = 0;
+
+document.getElementById("move-left").addEventListener("click", () => {
+    if(currentSlide <= 2 && currentSlide >= 1){
+        currentSlide--;
+    }
+})
+
+document.getElementById("move-right").addEventListener("click", () => {
+    if(currentSlide <= 1 && currentSlide >= 0){
+        currentSlide++;
     }
 })
