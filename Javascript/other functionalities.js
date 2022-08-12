@@ -276,15 +276,25 @@ document.getElementById("ball1").addEventListener("click", () => {
 /*Green/Black Board Functionality*/
 
 let currentSlide = 0;
+let titlesMainOrigin = 0;
+let scorerMainOrigin = 0;
 
 document.getElementById("move-left").addEventListener("click", () => {
     if(currentSlide <= 2 && currentSlide >= 1){
+        titlesMainOrigin = titlesMainOrigin + 100;
+        scorerMainOrigin = scorerMainOrigin + 192;
+        document.getElementsByClassName("titles-main")[0].style.left = `${titlesMainOrigin}px`;
+        document.getElementsByClassName("scorer-main")[0].style.left = `${scorerMainOrigin}px`;
         currentSlide--;
     }
 })
 
 document.getElementById("move-right").addEventListener("click", () => {
     if(currentSlide <= 1 && currentSlide >= 0){
+        titlesMainOrigin = titlesMainOrigin - 100;
+        scorerMainOrigin = scorerMainOrigin - 192;
+        document.getElementsByClassName("titles-main")[0].style.left = `${titlesMainOrigin}px`;
+        document.getElementsByClassName("scorer-main")[0].style.left = `${scorerMainOrigin}px`;
         currentSlide++;
     }
 })

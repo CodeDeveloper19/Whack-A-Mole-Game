@@ -344,3 +344,38 @@ const selection = () => {
     //         break;
     // }
 }
+
+
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+  import { getDatabase, ref, get, set, child } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
+
+  let easyList;
+  let mediumList;
+  let hardList;
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBXSptTREJ4JvPwhmwX1JdYcYBhgOrIVn8",
+    authDomain: "whack-a-mole-9bdcc.firebaseapp.com",
+    projectId: "whack-a-mole-9bdcc",
+    storageBucket: "whack-a-mole-9bdcc.appspot.com",
+    messagingSenderId: "774401565017",
+    appId: "1:774401565017:web:3300cd36256d4afffdec48",
+    measurementId: "G-RWN641EXW2"
+  };
+
+  const app = initializeApp(firebaseConfig);
+
+  const dbRef = ref(getDatabase());
+  get(child(dbRef, `/`)).then((snapshot) => {
+    if (snapshot.exists()) {
+        easyList = Object.values(snapshot.val())[0];
+        mediumList = Object.values(snapshot.val())[1];
+        hardList = Object.values(snapshot.val())[2];
+      console.log(mediumList);
+    } else {
+      console.log("No data available");
+    }
+  }).catch((error) => {
+    console.error(error);
+  });

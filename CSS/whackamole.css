@@ -152,7 +152,7 @@ button:hover{
     z-index: 7;
     height: inherit;
     width: inherit;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -602,7 +602,7 @@ button:hover{
 
 
 #game{
-    display: none;
+    display: flex;
     min-height: 100vh;
     width: 100%;
     position: relative;
@@ -760,12 +760,19 @@ button:hover{
     padding: 0 20px;
     font-weight: 400;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .titles-container{
     overflow-x: hidden;
     width: 100px;
+    height: fit-content;
+}
+
+#scorer-container{
+    overflow-x: hidden;
+    width: 192px;
     height: fit-content;
 }
 
@@ -775,10 +782,13 @@ button:hover{
     font-weight: 400;
 }
 
-.titles-main{
+.titles-main, .scorer-main{
+    position: relative;
+    left: 0;
     display: flex;
     flex-direction: row;
     width: fit-content;
+    transition: left var(--transition-duration) linear;
 }
 
 .title{
@@ -789,11 +799,16 @@ button:hover{
     flex-direction: column;
 }
 
+.score{
+    width: 192px;
+}
+
 .scorer{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    /* width: 100%; */
     margin-bottom: 10px;
     font-size: 14px;
 }
