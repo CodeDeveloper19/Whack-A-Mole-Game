@@ -350,9 +350,7 @@ const selection = () => {
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
   import { getDatabase, ref, get, set, child } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
 
-  let easyList;
-  let mediumList;
-  let hardList;
+  let listArray = [];
 
   const firebaseConfig = {
     apiKey: "AIzaSyBXSptTREJ4JvPwhmwX1JdYcYBhgOrIVn8",
@@ -369,13 +367,131 @@ const selection = () => {
   const dbRef = ref(getDatabase());
   get(child(dbRef, `/`)).then((snapshot) => {
     if (snapshot.exists()) {
-        easyList = Object.values(snapshot.val())[0];
-        mediumList = Object.values(snapshot.val())[1];
-        hardList = Object.values(snapshot.val())[2];
-      console.log(mediumList);
+        listArray = Object.values(snapshot.val());
+        constructLeaderboard(listArray);
     } else {
       console.log("No data available");
     }
   }).catch((error) => {
     console.error(error);
   });
+
+
+//   const constructLeaderboard = () => {
+//     console.log(listArray[0]);
+//     // console.log(Object.values(listArray[0])[0]);
+//     for (let i = 0; i < listArray.length; i++){
+//         if(i == 0){
+//             // console.log(Object.keys(listArray[i]).length)
+//             for (let x = 0; x < 6; i++){
+//                 // console.log(listArray[i]);
+//                 console.log(x)
+//                 // console.log(Object.values(listArray[i])[x]);
+//             }
+//         } else if (i == 1){
+//             // for (let x = 0; x < 6; i++){
+//             //     // console.log(listArray[i]);
+//             // }
+//         } else if (i == 2){
+//             // for (let x = 0; x < 6; i++){
+//             //     // console.log(listArray[i]);
+//             // }
+//         }
+//     }
+//   }
+
+
+const constructLeaderboard = () => {
+    for (let i = 0; i < listArray.length; i++){
+        if(i == 0){
+            constructEasyList(listArray[0]);
+        } else if (i == 1){
+            constructHardList(listArray[1]);
+        } else if (i == 2){
+            constructMediumList(listArray[2]);
+        }
+    }
+}
+
+const constructEasyList = (v) => {
+    let difficultyList = Object.values(v);
+    let difficultyScores = Object.values(difficultyList);
+    let difficultyNames = Object.values(difficultyList);
+    
+    let scorers = [];
+
+    for (let b = 0; b < 15; b++){
+        let score = document.createElement("div");
+        score.className = "score";
+        document.getElementsByClassName("scorer-main")[0].appendChild(score);
+
+        scorers[b] = "scorer";
+    }
+
+    for(let i = 0; i < 6; i++){
+        let difficultyNameAtTime;
+        switch (i) {
+            case 0:
+                difficultyNameAtTime = Object.keys(difficultyNames[i]);
+                let scorer, number, name, scores;
+                    for (let a = 0; a < 10; a++){
+                        // console.log(difficultyNameAtTime[a]);
+                        scorers[a] = document.createElement("div");
+                        scorers[a].className = "scorer";
+                        document.getElementsByClassName("score")[a].appendChild(scorers[a]);
+                
+                        number =  document.createElement("h4");
+                        for (let c = 0; c < 10; c++){
+                            number.innerHTML = c + 1;
+                        }
+                        document.getElementsByClassName("scorer")[a].appendChild(number);
+                
+                        name = document.createElement("h4");
+                        // name.innerHTML = difficultyNameAtTime[a];
+                        document.getElementsByClassName("scorer")[a].appendChild(name);
+                
+                        scores = document.createElement("h5");
+                        document.getElementsByClassName("scorer")[a].appendChild(scores);
+                    }
+                break;
+            case 1:
+                difficultyNameAtTime = Object.keys(difficultyNames[i]);
+                    for (let a = 0; a < 10; a++){
+                        console.log(difficultyNameAtTime[a])
+                    }
+                break;
+            case 2:
+                difficultyNameAtTime = Object.keys(difficultyNames[i]);
+                    for (let a = 0; a < 10; a++){
+                        console.log(difficultyNameAtTime[a])
+                    }
+                break;
+            case 3:
+                difficultyNameAtTime = Object.keys(difficultyNames[i]);
+                    for (let a = 0; a < 10; a++){
+                        console.log(difficultyNameAtTime[a])
+                    }
+                break;
+            case 4:
+                difficultyNameAtTime = Object.keys(difficultyNames[i]);
+                    for (let a = 0; a < 10; a++){
+                        console.log(difficultyNameAtTime[a])
+                    }
+                break;
+            case 5:
+                difficultyNameAtTime = Object.keys(difficultyNames[i]);
+                    for (let a = 0; a < 10; a++){
+                        console.log(difficultyNameAtTime[a])
+                    }
+                break;
+        }
+    }
+}
+
+const constructHardList = (v) => {
+    // console.log(Object.values(v));
+}
+
+const constructMediumList = (v) => {
+    // console.log(Object.values(v));
+}
