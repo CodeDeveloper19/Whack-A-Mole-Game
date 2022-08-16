@@ -119,6 +119,10 @@ const begin = () => {
     document.getElementById("instructions12").style.display = "none";
     // document.getElementById("results").style.display = "none";
     selection(); /*This function set a difficulty level under the high scores*/
+    difficulty = undefined; //refreshes the selections of the game options when clicking the menu button
+    time = undefined; //refreshes the selections of the game options when clicking the menu button
+    count = undefined; //refreshes the selections of the game options when clicking the menu button
+    counts = undefined; //refreshes the selections of the game options when clicking the menu button
 }
 document.getElementById("begin").addEventListener("click", () => {
     if (count == undefined || counts == undefined){
@@ -135,6 +139,36 @@ document.getElementById("begin").addEventListener("click", () => {
 // document.getElementById("play").addEventListener("click", () => {
 //     pausee = false;
 // })
+
+/*This is for the buttons that are option for the difficulty*/
+for (let i = 1; i < 4; i++){
+document.getElementsByClassName("button")[i].addEventListener("mouseover", () => {
+    document.getElementsByClassName("image")[i].src = "./Images/slab hover.png";
+})
+
+document.getElementsByClassName("button")[i].addEventListener("mouseout", () => {
+    if ((!difficulty)){ 
+    document.getElementsByClassName("image")[i].src = "./Images/normal slab.png";
+    } else if (difficulty && isClicked2[i] == false) {
+        document.getElementsByClassName("image")[i].src = "./Images/normal slab.png";
+    }
+}) 
+}
+
+/*This is for the buttons that are the options for time*/
+for (let i = 4; i < 9; i++){
+document.getElementsByClassName("button")[i].addEventListener("mouseover", () => {
+    document.getElementsByClassName("image")[i].src = "./Images/slab hover.png";
+})
+
+document.getElementsByClassName("button")[i].addEventListener("mouseout", () => {
+    if ((!time)){ 
+    document.getElementsByClassName("image")[i].src = "./Images/normal slab.png";
+    } else if (time && isClicked2[i] == false) {
+        document.getElementsByClassName("image")[i].src = "./Images/normal slab.png";
+    }
+}) 
+}
 
 easy1.addEventListener("click", () => {
     counts = 1;
@@ -400,8 +434,52 @@ const selection = () => {
 //     }
 //   }
 
-
 const constructLeaderboard = () => {
+    for (let b = 0; b < 18; b++){
+        let score = document.createElement("div");
+        score.className = "score";
+        document.getElementsByClassName("scorer-main")[0].appendChild(score);
+
+        for (let z = 0; z < 10; z++){
+            let scorer = document.createElement("div");
+            scorer.className = "scorer";
+            document.getElementsByClassName("score")[b].appendChild(scorer);
+        }
+
+        let title = document.createElement("div");
+        title.className = "title";
+        document.getElementsByClassName("titles-main")[0].appendChild(title);
+
+        for (let z = 0; z < 3; z++){
+            let titles = document.createElement("h1");
+            document.getElementsByClassName("title")[b].appendChild(titles);
+        }
+    }
+
+    for (let b = 0; b < document.querySelectorAll(".title h1").length; b++){
+        if (b % 3 == 0){
+            document.querySelectorAll(".title h1")[b].textContent = "High Scores";
+        } else if ((b % 3 == 2) && (Math.floor(b/3) < 6)){
+            document.querySelectorAll(".title h1")[b].textContent = "(Easy)";
+        } else if ((b % 3 == 2) && (((Math.floor(b/3) >= 6)) && ((Math.floor(b/3) < 12)))){
+            document.querySelectorAll(".title h1")[b].textContent = "(Medium)";
+        } else if ((b % 3 == 2) && (((Math.floor(b/3) >= 12)) && ((Math.floor(b/3) < 18)))){
+            document.querySelectorAll(".title h1")[b].textContent = "(Hard)";
+        } else if (b == 1 || b == 19 || b == 37){
+            document.querySelectorAll(".title h1")[b].textContent = "30s";
+        } else if (b == 4 || b == 22 || b == 40) {
+            document.querySelectorAll(".title h1")[b].textContent = "60s";
+        } else if (b == 7 || b == 25 || b == 43) {
+            document.querySelectorAll(".title h1")[b].textContent = "120s";
+        } else if (b == 10 || b == 28 || b == 46) {
+            document.querySelectorAll(".title h1")[b].textContent = "180s";
+        } else if (b == 13 || b == 31 || b == 49) {
+            document.querySelectorAll(".title h1")[b].textContent = "240s";
+         }else if (b == 16 || b == 34 || b == 52) {
+            document.querySelectorAll(".title h1")[b].textContent = "360s";
+        }
+    }
+
     for (let i = 0; i < listArray.length; i++){
         if(i == 0){
             constructEasyList(listArray[0]);
@@ -413,79 +491,87 @@ const constructLeaderboard = () => {
     }
 }
 
+
 const constructEasyList = (v) => {
     let difficultyList = Object.values(v);
     let difficultyScores = Object.values(difficultyList);
     let difficultyNames = Object.values(difficultyList);
+
+    let number, name, scores;
+    let index = 0;
+        for (let a = 0; a < document.getElementsByClassName("scorer").length; a++){  
+            number =  document.createElement("h4");  
+            if (a % 10 == 0){
+                index = 0; 
+            }
+            number.innerHTML = index + 1;
+            document.getElementsByClassName("scorer")[a].appendChild(number);
+
+            name = document.createElement("h4");
+            document.getElementsByClassName("scorer")[a].appendChild(name);
     
-    let scorers = [];
-
-    for (let b = 0; b < 15; b++){
-        let score = document.createElement("div");
-        score.className = "score";
-        document.getElementsByClassName("scorer-main")[0].appendChild(score);
-
-        scorers[b] = "scorer";
-    }
-
-    for(let i = 0; i < 6; i++){
-        let difficultyNameAtTime;
-        switch (i) {
-            case 0:
-                difficultyNameAtTime = Object.keys(difficultyNames[i]);
-                let scorer, number, name, scores;
-                    for (let a = 0; a < 10; a++){
-                        // console.log(difficultyNameAtTime[a]);
-                        scorers[a] = document.createElement("div");
-                        scorers[a].className = "scorer";
-                        document.getElementsByClassName("score")[a].appendChild(scorers[a]);
-                
-                        number =  document.createElement("h4");
-                        for (let c = 0; c < 10; c++){
-                            number.innerHTML = c + 1;
-                        }
-                        document.getElementsByClassName("scorer")[a].appendChild(number);
-                
-                        name = document.createElement("h4");
-                        // name.innerHTML = difficultyNameAtTime[a];
-                        document.getElementsByClassName("scorer")[a].appendChild(name);
-                
-                        scores = document.createElement("h5");
-                        document.getElementsByClassName("scorer")[a].appendChild(scores);
-                    }
-                break;
-            case 1:
-                difficultyNameAtTime = Object.keys(difficultyNames[i]);
-                    for (let a = 0; a < 10; a++){
-                        console.log(difficultyNameAtTime[a])
-                    }
-                break;
-            case 2:
-                difficultyNameAtTime = Object.keys(difficultyNames[i]);
-                    for (let a = 0; a < 10; a++){
-                        console.log(difficultyNameAtTime[a])
-                    }
-                break;
-            case 3:
-                difficultyNameAtTime = Object.keys(difficultyNames[i]);
-                    for (let a = 0; a < 10; a++){
-                        console.log(difficultyNameAtTime[a])
-                    }
-                break;
-            case 4:
-                difficultyNameAtTime = Object.keys(difficultyNames[i]);
-                    for (let a = 0; a < 10; a++){
-                        console.log(difficultyNameAtTime[a])
-                    }
-                break;
-            case 5:
-                difficultyNameAtTime = Object.keys(difficultyNames[i]);
-                    for (let a = 0; a < 10; a++){
-                        console.log(difficultyNameAtTime[a])
-                    }
-                break;
+            scores = document.createElement("h5");
+            document.getElementsByClassName("scorer")[a].appendChild(scores);
+            index++;
         }
-    }
+
+    // for(let i = 0; i < 6; i++){
+    //     let difficultyNameAtTime;
+    //     switch (i) {
+    //         case 0:
+    //             difficultyNameAtTime = Object.keys(difficultyNames[i]);
+    //             let number, name, scores;
+    //             let index = 0;
+    //                 for (let a = 0; a < document.getElementsByClassName("scorer").length; a++){
+    //                     console.log(difficultyNameAtTime[a]);       
+    //                     number =  document.createElement("h4");  
+    //                     if (a % 10 == 0){
+    //                         index = 0; 
+    //                     }
+    //                     number.innerHTML = index + 1;
+    //                     document.getElementsByClassName("scorer")[a].appendChild(number);
+
+    //                     name = document.createElement("h4");
+    //                     // // name.innerHTML = difficultyNameAtTime[a];
+    //                     document.getElementsByClassName("scorer")[a].appendChild(name);
+                
+    //                     scores = document.createElement("h5");
+    //                     document.getElementsByClassName("scorer")[a].appendChild(scores);
+    //                     index++;
+    //                 }
+    //             break;
+    //         case 1:
+    //             difficultyNameAtTime = Object.keys(difficultyNames[i]);
+    //                 for (let a = 0; a < 10; a++){
+    //                     // console.log(difficultyNameAtTime[a])
+    //                 }
+    //             break;
+    //         case 2:
+    //             difficultyNameAtTime = Object.keys(difficultyNames[i]);
+    //                 for (let a = 0; a < 10; a++){
+    //                     // console.log(difficultyNameAtTime[a])
+    //                 }
+    //             break;
+    //         case 3:
+    //             difficultyNameAtTime = Object.keys(difficultyNames[i]);
+    //                 for (let a = 0; a < 10; a++){
+    //                     // console.log(difficultyNameAtTime[a])
+    //                 }
+    //             break;
+    //         case 4:
+    //             difficultyNameAtTime = Object.keys(difficultyNames[i]);
+    //                 for (let a = 0; a < 10; a++){
+    //                     // console.log(difficultyNameAtTime[a])
+    //                 }
+    //             break;
+    //         case 5:
+    //             difficultyNameAtTime = Object.keys(difficultyNames[i]);
+    //                 for (let a = 0; a < 10; a++){
+    //                     // console.log(difficultyNameAtTime[a])
+    //                 }
+    //             break;
+    //     }
+    // }
 }
 
 const constructHardList = (v) => {

@@ -115,36 +115,6 @@ document.getElementsByClassName("button")[0].addEventListener("mouseout", () => 
 document.getElementsByClassName("image")[0].src = "./Images/normal slab.png";
 }) 
 
-/*This is for the buttons that are option for the difficulty*/
-for (let i = 1; i < 4; i++){
-document.getElementsByClassName("button")[i].addEventListener("mouseover", () => {
-    document.getElementsByClassName("image")[i].src = "./Images/slab hover.png";
-})
-
-document.getElementsByClassName("button")[i].addEventListener("mouseout", () => {
-    if ((!difficulty)){ 
-    document.getElementsByClassName("image")[i].src = "./Images/normal slab.png";
-    } else if (difficulty && isClicked2[i] == false) {
-        document.getElementsByClassName("image")[i].src = "./Images/normal slab.png";
-    }
-}) 
-}
-
-/*This is for the buttons that are the options for time*/
-for (let i = 4; i < 9; i++){
-document.getElementsByClassName("button")[i].addEventListener("mouseover", () => {
-    document.getElementsByClassName("image")[i].src = "./Images/slab hover.png";
-})
-
-document.getElementsByClassName("button")[i].addEventListener("mouseout", () => {
-    if ((!time)){ 
-    document.getElementsByClassName("image")[i].src = "./Images/normal slab.png";
-    } else if (time && isClicked2[i] == false) {
-        document.getElementsByClassName("image")[i].src = "./Images/normal slab.png";
-    }
-}) 
-}
-
 /*This is for the buttons that are in the game screen*/
 
 for (let i = 0; i < document.getElementsByClassName("button2").length; i++){
@@ -227,7 +197,6 @@ document.getElementById("menu-container").addEventListener("click", () => {
 
     for (let i = 0; i < document.getElementsByClassName("image").length; i++){
         document.getElementsByClassName("image")[i].src = "./Images/normal slab.png";
-        isClicked2[i] = false;         // Refreshes the selections at the settings(difficulty and time)
     }
 })
 
@@ -280,7 +249,7 @@ let titlesMainOrigin = 0;
 let scorerMainOrigin = 0;
 
 document.getElementById("move-left").addEventListener("click", () => {
-    if(currentSlide <= 2 && currentSlide >= 1){
+    if(currentSlide <= 17 && currentSlide >= 1){
         titlesMainOrigin = titlesMainOrigin + 100;
         scorerMainOrigin = scorerMainOrigin + 192;
         document.getElementsByClassName("titles-main")[0].style.left = `${titlesMainOrigin}px`;
@@ -290,7 +259,7 @@ document.getElementById("move-left").addEventListener("click", () => {
 })
 
 document.getElementById("move-right").addEventListener("click", () => {
-    if(currentSlide <= 1 && currentSlide >= 0){
+    if(currentSlide <= 16 && currentSlide >= 0){
         titlesMainOrigin = titlesMainOrigin - 100;
         scorerMainOrigin = scorerMainOrigin - 192;
         document.getElementsByClassName("titles-main")[0].style.left = `${titlesMainOrigin}px`;

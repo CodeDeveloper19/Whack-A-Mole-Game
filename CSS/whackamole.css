@@ -152,7 +152,7 @@ button:hover{
     z-index: 7;
     height: inherit;
     width: inherit;
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -602,7 +602,7 @@ button:hover{
 
 
 #game{
-    display: flex;
+    display: none;
     min-height: 100vh;
     width: 100%;
     position: relative;
@@ -808,7 +808,6 @@ button:hover{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    /* width: 100%; */
     margin-bottom: 10px;
     font-size: 14px;
 }
@@ -985,7 +984,6 @@ button:hover{
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* animation: menu-animation .3s linear; */
 }
 
 .credits h1{
