@@ -28,10 +28,8 @@
 
 @font-face {
     font-family: 'Film Cryptic';
-    src: url('FilmCryptic.woff2') format('woff2'),
-        url('FilmCryptic.woff') format('woff'), 
-        local('FilmCryptic.woff2') format('woff2'),
-        local('FilmCryptic.woff') format('woff');
+    src: url('/Fonts/FilmCryptic.woff2') format('woff2'),
+        url('/Fonts/FilmCryptic.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: block;
