@@ -799,6 +799,22 @@ button:hover{
     flex-direction: column;
 }
 
+.error-message{
+    width: 100%;
+}
+
+.error-message h3{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .score{
     width: 192px;
 }

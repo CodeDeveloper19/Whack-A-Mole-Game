@@ -385,6 +385,11 @@ const selection = () => {
   import { getDatabase, ref, get, set, child } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
 
   let listArray = [];
+  let difficultyScores, difficultyNames;
+  let number, name, scores, b;
+  let index = 0;
+  let n = 0;
+  let difficultyScoreList;
 
   const firebaseConfig = {
     apiKey: "AIzaSyBXSptTREJ4JvPwhmwX1JdYcYBhgOrIVn8",
@@ -404,35 +409,14 @@ const selection = () => {
         listArray = Object.values(snapshot.val());
         constructLeaderboard(listArray);
     } else {
-      console.log("No data available");
+        document.getElementsByClassName("error-message")[0].style.height = "100%";
+        document.querySelector(".error-message h3").textContent = "No data available";
     }
   }).catch((error) => {
-    console.error(error);
+    document.getElementsByClassName("error-message")[0].style.height = "100%";
+    document.querySelector(".error-message h3").innerHTML = error.message;
   });
 
-
-//   const constructLeaderboard = () => {
-//     console.log(listArray[0]);
-//     // console.log(Object.values(listArray[0])[0]);
-//     for (let i = 0; i < listArray.length; i++){
-//         if(i == 0){
-//             // console.log(Object.keys(listArray[i]).length)
-//             for (let x = 0; x < 6; i++){
-//                 // console.log(listArray[i]);
-//                 console.log(x)
-//                 // console.log(Object.values(listArray[i])[x]);
-//             }
-//         } else if (i == 1){
-//             // for (let x = 0; x < 6; i++){
-//             //     // console.log(listArray[i]);
-//             // }
-//         } else if (i == 2){
-//             // for (let x = 0; x < 6; i++){
-//             //     // console.log(listArray[i]);
-//             // }
-//         }
-//     }
-//   }
 
 const constructLeaderboard = () => {
     for (let b = 0; b < 18; b++){
@@ -480,104 +464,140 @@ const constructLeaderboard = () => {
         }
     }
 
-    for (let i = 0; i < listArray.length; i++){
-        if(i == 0){
-            constructEasyList(listArray[0]);
-        } else if (i == 1){
-            constructHardList(listArray[1]);
-        } else if (i == 2){
-            constructMediumList(listArray[2]);
+    for (let a = 0; a < document.getElementsByClassName("scorer").length; a++){  
+        number =  document.createElement("h4");  
+        if (a % 10 == 0){
+            index = 0; 
         }
+        number.innerHTML = index + 1;
+        document.getElementsByClassName("scorer")[a].appendChild(number);
+
+        name = document.createElement("h4");
+        name.className = "name";
+        document.getElementsByClassName("scorer")[a].appendChild(name);
+
+        scores = document.createElement("h5");
+        document.getElementsByClassName("scorer")[a].appendChild(scores);
+        index++;
+    }
+
+    for (let i = 0; i < listArray.length; i++){
+        attachListToBoard(listArray[i])
     }
 }
 
+const scoreSorting = (d) => {
+    difficultyScores = Object.keys(d);
+    difficultyScores.reverse(); //Reaarranges the scores from back to front instead
+}
 
-const constructEasyList = (v) => {
-    let difficultyList = Object.values(v);
-    let difficultyScores = Object.values(difficultyList);
-    let difficultyNames = Object.values(difficultyList);
+const nameSorting = (d) => {
+    difficultyNames = Object.values(d);
+    difficultyNames.reverse();  //Reaarranges the names from back to front instead
+}
 
-    let number, name, scores;
-    let index = 0;
-        for (let a = 0; a < document.getElementsByClassName("scorer").length; a++){  
-            number =  document.createElement("h4");  
-            if (a % 10 == 0){
-                index = 0; 
-            }
-            number.innerHTML = index + 1;
-            document.getElementsByClassName("scorer")[a].appendChild(number);
+const attachListToBoard = (v) => {
+    difficultyScoreList = Object.values(v);
+    overallSorting(difficultyScoreList);
+}
 
-            name = document.createElement("h4");
-            document.getElementsByClassName("scorer")[a].appendChild(name);
-    
-            scores = document.createElement("h5");
-            document.getElementsByClassName("scorer")[a].appendChild(scores);
-            index++;
+
+const overallSorting = (d) => {
+    for (let i = 0; i < difficultyScoreList.length; i++){
+        switch (i){
+            case 0:
+                scoreSorting(d[i]);
+                nameSorting(d[i]);
+                    for (let a = 0; a < difficultyScores.length; a++){
+                        if (n == 0){
+                            b = a;
+                        } else if (n == 1){
+                            b = a + 60;
+                        } else if (n == 2){
+                            b = a + 120;
+                        }
+                        document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
+                        document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
+                    }
+                break;
+            case 1:
+                scoreSorting(d[i]);
+                nameSorting(d[i]);
+                for (let a = 0; a < difficultyScores.length; a++){
+                    if (n == 0){
+                        b = a + 10;
+                    } else if (n == 1){
+                        b = a + 70;
+                    } else if (n == 2){
+                        b = a + 130;
+                    }
+                    document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
+                    document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
+                }
+                break;
+            case 2:
+                scoreSorting(d[i]);
+                nameSorting(d[i]);
+                for (let a = 0; a < difficultyScores.length; a++){
+                    if (n == 0){
+                        b = a + 20;
+                    } else if (n == 1){
+                        b = a + 80;
+                    } else if (n == 2){
+                        b = a + 140;
+                    }
+                    document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
+                    document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
+                }
+                break;
+            case 3:
+                scoreSorting(d[i]);
+                nameSorting(d[i]);
+                for (let a = 0; a < difficultyScores.length; a++){
+                    if (n == 0){
+                        b = a + 30;
+                    } else if (n == 1){
+                        b = a + 90;
+                    } else if (n == 2){
+                        b = a + 150;
+                    }
+                    document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
+                    document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
+                }
+                break;
+            case 4:
+                scoreSorting(d[i]);
+                nameSorting(d[i]);
+                for (let a = 0; a < difficultyScores.length; a++){
+                    if (n == 0){
+                        b = a + 40;
+                    } else if (n == 1){
+                        b = a + 100;
+                    } else if (n == 2){
+                        b = a + 160;
+                    }
+                    document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
+                    document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
+                }
+                break;
+            case 5:
+                scoreSorting(d[i]);
+                nameSorting(d[i]);
+                for (let a = 0; a < difficultyScores.length; a++){
+                    if (n == 0){
+                        b = a + 50;
+                    } else if (n == 1){
+                        b = a + 110;
+                    } else if (n == 2){
+                        b = a + 170;
+                    }
+                    document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
+                    document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
+                }
+                break;
         }
-
-    // for(let i = 0; i < 6; i++){
-    //     let difficultyNameAtTime;
-    //     switch (i) {
-    //         case 0:
-    //             difficultyNameAtTime = Object.keys(difficultyNames[i]);
-    //             let number, name, scores;
-    //             let index = 0;
-    //                 for (let a = 0; a < document.getElementsByClassName("scorer").length; a++){
-    //                     console.log(difficultyNameAtTime[a]);       
-    //                     number =  document.createElement("h4");  
-    //                     if (a % 10 == 0){
-    //                         index = 0; 
-    //                     }
-    //                     number.innerHTML = index + 1;
-    //                     document.getElementsByClassName("scorer")[a].appendChild(number);
-
-    //                     name = document.createElement("h4");
-    //                     // // name.innerHTML = difficultyNameAtTime[a];
-    //                     document.getElementsByClassName("scorer")[a].appendChild(name);
-                
-    //                     scores = document.createElement("h5");
-    //                     document.getElementsByClassName("scorer")[a].appendChild(scores);
-    //                     index++;
-    //                 }
-    //             break;
-    //         case 1:
-    //             difficultyNameAtTime = Object.keys(difficultyNames[i]);
-    //                 for (let a = 0; a < 10; a++){
-    //                     // console.log(difficultyNameAtTime[a])
-    //                 }
-    //             break;
-    //         case 2:
-    //             difficultyNameAtTime = Object.keys(difficultyNames[i]);
-    //                 for (let a = 0; a < 10; a++){
-    //                     // console.log(difficultyNameAtTime[a])
-    //                 }
-    //             break;
-    //         case 3:
-    //             difficultyNameAtTime = Object.keys(difficultyNames[i]);
-    //                 for (let a = 0; a < 10; a++){
-    //                     // console.log(difficultyNameAtTime[a])
-    //                 }
-    //             break;
-    //         case 4:
-    //             difficultyNameAtTime = Object.keys(difficultyNames[i]);
-    //                 for (let a = 0; a < 10; a++){
-    //                     // console.log(difficultyNameAtTime[a])
-    //                 }
-    //             break;
-    //         case 5:
-    //             difficultyNameAtTime = Object.keys(difficultyNames[i]);
-    //                 for (let a = 0; a < 10; a++){
-    //                     // console.log(difficultyNameAtTime[a])
-    //                 }
-    //             break;
-    //     }
-    // }
+    }
+    n++;
 }
 
-const constructHardList = (v) => {
-    // console.log(Object.values(v));
-}
 
-const constructMediumList = (v) => {
-    // console.log(Object.values(v));
-}
