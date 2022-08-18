@@ -189,16 +189,6 @@ document.getElementById("credits-button").addEventListener("click", () => {
     document.getElementById("credits").style.display = "flex";
 })
 
-document.getElementById("menu-container").addEventListener("click", () => {
-    document.getElementById("instructions").style.display = "flex";
-    document.getElementById("instructions-0").style.display = "none";
-    document.getElementById("instructions12").style.display = "flex";
-    document.getElementById("game").style.display = "none";
-
-    for (let i = 0; i < document.getElementsByClassName("image").length; i++){
-        document.getElementsByClassName("image")[i].src = "./Images/normal slab.png";
-    }
-})
 
 document.getElementById("info-container").addEventListener("click", () => {
     resetInstructionsList();

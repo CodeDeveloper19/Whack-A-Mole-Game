@@ -91,13 +91,9 @@ document.getElementById("counter").innerHTML = counter;
 document.getElementById("output").innerHTML = counter;
 }
 
-let time; /* Use this to set timelimit*/
-let count;
-let difficulty;  /* Use this to set how fast the mole will be spawned (difficulty*/
-let counts;
-let timeds;
+let counts, timeds, countingDown, difficulty, count, time, popss;
+let countdown = 3;
 let highscore = [];
-let popss;
 let isClicked2 = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
 let difficult = document.getElementById("difficulty");
 let easy1 = document.getElementById("easy");
@@ -111,6 +107,9 @@ let oneeighty1 = document.getElementById("oneeighty");
 
 
 const begin = () => {
+    document.getElementById("timer").textContent = time;
+    countingDown = setInterval(countDown, 1000);
+    document.getElementById("delay").style.display = "flex";
     // timeds = setInterval(timer, 1000);
     // popss = setInterval(popping, 500); /* Use this to set how fast the mole will be spawned */ /*change back to number to "difficulty"*/
     document.getElementById("game").style.display = "flex";
@@ -118,11 +117,7 @@ const begin = () => {
     document.getElementById("instructions").style.display = "none";
     document.getElementById("instructions12").style.display = "none";
     // document.getElementById("results").style.display = "none";
-    selection(); /*This function set a difficulty level under the high scores*/
-    difficulty = undefined; //refreshes the selections of the game options when clicking the menu button
-    time = undefined; //refreshes the selections of the game options when clicking the menu button
-    count = undefined; //refreshes the selections of the game options when clicking the menu button
-    counts = undefined; //refreshes the selections of the game options when clicking the menu button
+    // selection(); /*This function set a difficulty level under the high scores*/
 }
 document.getElementById("begin").addEventListener("click", () => {
     if (count == undefined || counts == undefined){
@@ -132,13 +127,29 @@ document.getElementById("begin").addEventListener("click", () => {
     }
 })
 
-// document.getElementById("pause").addEventListener("click", () => {
-//     pausee = true;
-// })
+const countDown = () => {
+    setTimeout(()=>{
+        countdown--;
+        document.getElementById("countdown").textContent = countdown;
+        if (countdown == 0){
+            clearInterval(countingDown)
+            setTimeout(()=>{
+                document.getElementById("delay").style.display = "none";
+                timeds = setInterval(timer, 1000);
+            }, 1000)
+        }
+    }, 300)
+}
 
-// document.getElementById("play").addEventListener("click", () => {
-//     pausee = false;
-// })
+document.getElementById("pause-container").addEventListener("click", () => {
+    if (document.querySelector("#pause-container i").classList[1] == "fa-pause"){
+        pausee = true;
+        document.querySelector("#pause-container i").classList.replace("fa-pause", "fa-play");
+    } else if (document.querySelector("#pause-container i").classList[1] == "fa-play"){
+        pausee = false;
+        document.querySelector("#pause-container i").classList.replace("fa-play", "fa-pause");
+    }
+})
 
 /*This is for the buttons that are option for the difficulty*/
 for (let i = 1; i < 4; i++){
@@ -264,18 +275,26 @@ const reset = () => {
     counts = undefined;
     time = undefined;
     counter = 0;
-    const scores = ["score1", "score2", "score3", "score4", "score5", "score6", "score7", "score8", "score9", "score10"];
-    const timeAndDifficulty = [thirty1, sixty1, onetwenty1, oneeighty1, twoforty1, easy1, medium1, hard1];
-
-    for(let i = 0; i < scores.length; i++){
-        document.getElementById(scores[i]).innerHTML = ""; 
+    countdown = 3; 
+    clearInterval (timeds);
+    document.getElementById("timer").textContent = "0";
+    document.getElementById("countdown").textContent = "3";
+    if (document.querySelector("#pause-container i").classList[1] == "fa-play"){
+        pausee = false;
+        document.querySelector("#pause-container i").classList.replace("fa-play", "fa-pause");
     }
+    // const scores = ["score1", "score2", "score3", "score4", "score5", "score6", "score7", "score8", "score9", "score10"];
+    // const timeAndDifficulty = [thirty1, sixty1, onetwenty1, oneeighty1, twoforty1, easy1, medium1, hard1];
 
-    for (let i = 0; i < timeAndDifficulty.length; i++){
-        timeAndDifficulty[i].classList.remove("change");
-    }
+    // for(let i = 0; i < scores.length; i++){
+    //     document.getElementById(scores[i]).innerHTML = ""; 
+    // }
 
-    highscore = [];
+    // for (let i = 0; i < timeAndDifficulty.length; i++){
+    //     timeAndDifficulty[i].classList.remove("change");
+    // }
+
+    // highscore = [];
 }
 
 // const mainmenu = () => {
@@ -302,18 +321,18 @@ const reset = () => {
 // })
 
 
-// const timer = () => {
-//     if (time > 0 && pausee != true) {
-//         time -=1;
-//         document.getElementById("timer").innerHTML = time;
-//     }
-//     if (time == 0) {
-//         clearInterval (timeds);
-//         clearInterval (popss);
-//         document.getElementById("results").style.display = "flex";
-//         highscores();
-//     }
-// }
+const timer = () => {
+    if (time > 0 && pausee != true) {
+        time--;
+        document.getElementById("timer").textContent = time;
+    }
+    if (time == 0) {
+        clearInterval (timeds);
+        // clearInterval (popss);
+        // document.getElementById("results").style.display = "flex";
+        // highscores();
+    }
+}
 
 // document.getElementById("retry").addEventListener("click", () => {
 //     document.getElementById("results").style.display = "none";
@@ -378,6 +397,18 @@ const selection = () => {
     //         break;
     // }
 }
+
+document.getElementById("menu-container").addEventListener("click", () => {
+    reset();
+    document.getElementById("instructions").style.display = "flex";
+    document.getElementById("instructions-0").style.display = "none";
+    document.getElementById("instructions12").style.display = "flex";
+    document.getElementById("game").style.display = "none";
+
+    for (let i = 0; i < document.getElementsByClassName("image").length; i++){
+        document.getElementsByClassName("image")[i].src = "./Images/normal slab.png";
+    }
+})
 
 
   // Import the functions you need from the SDKs you need

@@ -10,7 +10,8 @@
 
 @font-face {
     font-family: 'DEADCRT';
-    src: url('/Fonts/DEADCRT.woff2') format('woff2'),
+    src: 
+        url('/Fonts/DEADCRT.woff2') format('woff2'),
         url('/Fonts/DEADCRT.woff') format('woff');
     font-weight: normal;
     font-style: normal;
@@ -19,7 +20,8 @@
 
 @font-face {
     font-family: 'aurora';
-    src: url('/Fonts/aurora.woff2') format('woff2'),
+    src: 
+        url('/Fonts/aurora.woff2') format('woff2'),
         url('/Fonts/aurora.woff') format('woff');
     font-weight: normal;
     font-style: normal;
@@ -28,21 +30,32 @@
 
 @font-face {
     font-family: 'Film Cryptic';
-    src: url('/Fonts/FilmCryptic.woff2') format('woff2'),
+    src: 
+        url('/Fonts/FilmCryptic.woff2') format('woff2'),
         url('/Fonts/FilmCryptic.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 
+@font-face {
+    font-family: 'MisterVampire';
+    src: 
+        url('/Fonts/MisterVampire.woff2') format('woff2'),
+        url('/Fonts/MisterVampire.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 @supports (backdrop-filter: blur()){
-    #results, .instructions, #settings{
+    #results, .instructions, #settings, #gameover{
         backdrop-filter: blur(15px);
     } 
 }
 
 @supports not (backdrop-filter: blur()){
-    #results, .instructions, #settings{
+    #results, .instructions, #settings, #gameover{
         background-color: rgba(0, 0, 0, 0.7);
     }
 }
@@ -361,6 +374,8 @@ button:hover{
     justify-content: center;
     width: 10%;
     height: 50%;
+    font-family: 'MisterVampire';
+    font-size: 20px;
 }
 
 .howtoplay-container{
@@ -622,6 +637,23 @@ button:hover{
     bottom: 0;
     height: 71.22%;
     background-image: url("/Images/hill 2.png");
+}
+
+#delay, #gameover{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    z-index: 3;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#delay h1{
+    font-size: 400px;
+    color: white;
+    font-family: 'MisterVampire';
 }
 
 .options{
@@ -905,14 +937,14 @@ button:hover{
     width: 100%;
 }
 
-#counter, #timer{
+#counter, .timer{
     position: absolute;
     top: 50%;
     left: 45%;
     transform: translate(-45%, -50%);
     color: white;
     font-size: 20px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'MisterVampire';
     font-weight: 300;
 }
 
@@ -923,9 +955,9 @@ button:hover{
     transform: translate(-55%, -60%);
 }
 
-#timer{
-    left: 70%;
-    transform: translate(-70%, -50%);
+.timer{
+    left: 66%;
+    transform: translate(-66%, -50%);
 }
 
 .stopwatch{
@@ -977,6 +1009,11 @@ button:hover{
     display: flex;
     margin: auto;
     animation: menu-animation var(--animation-duration)  linear;
+}
+
+#gameover{
+    display: flex;
+    background-color: unset;
 }
 
 #credits{

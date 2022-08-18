@@ -75,7 +75,7 @@
                                 <div class="part2">
                                     <div class="left part-image">
                                         <div class="screen-container" id="t-container-dummy">
-                                            <h1 id="timer" class="timer-dummy">120</h1>
+                                            <h1 class="timer timer-dummy">120</h1>
                                             <img src="/Images/screen.png" alt="illustration of a screen" class="screen">
                                         </div>
                                         <img src="/Images/stopwatch-16.svg" alt="illustration of a stopwatch" id="stopwatch-dummy" class="stopwatch">
@@ -236,223 +236,232 @@
     </section>
 
     <main id="game">
-            <div class="background-image-container-1"></div>
-            <div class="background-image-container-2"></div>
+        <section id="delay">
+            <h1 id="countdown">3</h1>
+        </section>
+        <div class="background-image-container-1"></div>
+        <div class="background-image-container-2"></div>
 
-            <aside class="options">
-                <div id="sound-container" class="button2 click sound">
-                    <img src="./Images/Stones[Converted]3.png" alt="illustration of a stone 1" class="image2">
-                    <i class="fa-solid fa-volume-xmark"></i>
-                </div>
-                <div id="info-container" class="button2 click">
-                    <img src="./Images/Stones[Converted]2.png" alt="illustration of a stone 2" class="image2">
-                    <i class="fa-solid fa-info"></i>
-                </div>
-                <div id="settings-container" class="button2 click">
-                    <img src="./Images/Stones[Converted].png" alt="illustration of a stone 3" class="image2">
-                    <i class="fa-solid fa-gear"></i>
-                </div>
-            </aside>
+        <aside class="options">
+            <div id="sound-container" class="button2 click sound">
+                <img src="./Images/Stones[Converted]3.png" alt="illustration of a stone 1" class="image2">
+                <i class="fa-solid fa-volume-xmark"></i>
+            </div>
+            <div id="info-container" class="button2 click">
+                <img src="./Images/Stones[Converted]2.png" alt="illustration of a stone 2" class="image2">
+                <i class="fa-solid fa-info"></i>
+            </div>
+            <div id="settings-container" class="button2 click">
+                <img src="./Images/Stones[Converted].png" alt="illustration of a stone 3" class="image2">
+                <i class="fa-solid fa-gear"></i>
+            </div>
+        </aside>
 
-            <footer class="bottom-controls">
-                <div id="pause-container" class="button2 click">
-                    <img src="./Images/Stones[Converted]4.png" alt="illustration of a stone 1" class="image2">
-                    <i class="fa-solid fa-pause"></i>
-                </div>
-                <div id="stop-container" class="button2 click">
-                    <img src="./Images/Stones[Converted]2.png" alt="illustration of a stone 2" class="image2">
-                    <i class="fa-solid fa-stop"></i>
-                </div>
-                <div id="menu-container" class="button2 click">
-                    <img src="./Images/Stones[Converted].png" alt="illustration of a stone 3" class="image2">
-                    <i class="fa-solid fa-bars"></i>
-                </div>
-            </footer>
+        <footer class="bottom-controls">
+            <div id="pause-container" class="button2 click">
+                <img src="./Images/Stones[Converted]4.png" alt="illustration of a stone 1" class="image2">
+                <i class="fa-solid fa-pause"></i>
+            </div>
+            <div id="stop-container" class="button2 click">
+                <img src="./Images/Stones[Converted]2.png" alt="illustration of a stone 2" class="image2">
+                <i class="fa-solid fa-stop"></i>
+            </div>
+            <div id="menu-container" class="button2 click">
+                <img src="./Images/Stones[Converted].png" alt="illustration of a stone 3" class="image2">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </footer>
 
-            <aside id="blackboard-container">
-                <div class="blackboard">
-                    <div class="writing-area">
-                        <div class="error-message">
-                            <h3></h3>
-                        </div>
-                        <div class="titles-container">
-                            <div class="titles-main">
-                            </div>
-                        </div>
-                        <div id="scorer-container">
-                            <div class="scorer-main">
-                            </div>
-                        </div>
-                        <div class="duster">
-                            <div class="holder"></div>
-                        </div>
-                        <div class="chalk"></div>
+        <aside id="blackboard-container">
+            <div class="blackboard">
+                <div class="writing-area">
+                    <div class="error-message">
+                        <h3></h3>
                     </div>
+                    <div class="titles-container">
+                        <div class="titles-main">
+                        </div>
+                    </div>
+                    <div id="scorer-container">
+                        <div class="scorer-main">
+                        </div>
+                    </div>
+                    <div class="duster">
+                        <div class="holder"></div>
+                    </div>
+                    <div class="chalk"></div>
                 </div>
-                <div class="blackboard-navigation">
-                    <img src="./Images/left arrow.png" alt="illustration of left sign" id="move-left" class="button2 image2 click">
-                    <img src="./Images/right arrow.png" alt="illustration of right sign" id="move-right" class="button2 image2 click">
-                </div>
-            </aside>
+            </div>
+            <div class="blackboard-navigation">
+                <img src="./Images/left arrow.png" alt="illustration of left sign" id="move-left" class="button2 image2 click">
+                <img src="./Images/right arrow.png" alt="illustration of right sign" id="move-right" class="button2 image2 click">
+            </div>
+        </aside>
 
-            <section id="settings">
-                <div class="settings">
-                    <img src="/Images/board.png" alt="cartoon-board" class="board">
-                    <h1>Settings</h1>
-                    <div class="setting-container">
-                        <div class="score-board">
-                            <h3>Score Board</h3>
-                            <div class="whole-switch">
-                                <div class="off">
-                                    <img src="./Images/off.svg" alt="illustraion of an 'off' text">
-                                </div>
-                                <div class="switch">
-                                    <img src="/Images/switch.svg" alt="illustration of a switch" id="score-switch">
-                                    <img src="/Images/on.png" alt="illustration of a green ball" id="ball1" class="ball click">
-                                </div>
-                                <div class="on">
-                                    <img src="./Images/on.svg" alt="illustraion of an 'on' text">
-                                </div>
+        <section id="settings">
+            <div class="settings">
+                <img src="/Images/board.png" alt="cartoon-board" class="board">
+                <h1>Settings</h1>
+                <div class="setting-container">
+                    <div class="score-board">
+                        <h3>Score Board</h3>
+                        <div class="whole-switch">
+                            <div class="off">
+                                <img src="./Images/off.svg" alt="illustraion of an 'off' text">
                             </div>
-                        </div>
-                        <div class="sound-effects">
-                            <h3>Sound Effects</h3>
-                            <div class="whole-switch">
-                                <div class="off">
-                                    <img src="./Images/off.svg" alt="illustraion of an 'off' text">
-                                </div>
-                                <div class="switch">
-                                    <img src="/Images/switch.svg" alt="illustration of a switch" id="sound-switch">
-                                    <img src="/Images/on.png" alt="illustration of a green ball" id="ball2" class="ball click">
-                                </div>
-                                <div class="on">
-                                    <img src="./Images/on.svg" alt="illustraion of an 'on' text">
-                                </div>
+                            <div class="switch">
+                                <img src="/Images/switch.svg" alt="illustration of a switch" id="score-switch">
+                                <img src="/Images/on.png" alt="illustration of a green ball" id="ball1" class="ball click">
                             </div>
-                        </div>
-                        <div class="music-volume">
-                            <div class="volume-title">
-                                <h3>Music Volume</h3>
-                            </div>
-                            <div class="volume">
-                                <div id="reduce-music" class="reduce">
-                                    <img src="/Images/stone minus.svg" alt="illustration of a minus" class="reduce-image">
-                                </div>
-                                <div class="music-bar">
-                                    <img src="/Images/circle slab.svg" alt="illustration of a circle slab" class="circle" id="circle1">
-                                    <div class="gauge"></div>
-                                </div>
-                                <div id="increase-music" class="increase">
-                                    <img src="/Images/cross stone.svg" alt="illustration of a plus" class="increase-image">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="effect-volume">
-                            <div class="volume-title">
-                                <h3>Effect Volume</h3>
-                            </div>
-                            <div class="volume">
-                                <div id="reduce-effect" class="reduce">
-                                    <img src="/Images/stone minus.svg" alt="illustration of a minus" class="reduce-image">
-                                </div>
-                                <div class="music-bar">
-                                    <img src="/Images/circle slab.svg" alt="illustration of a circle slab" class="circle" id="circle2">
-                                    <div class="gauge"></div>
-                                </div>
-                                <div id="increase-effect" class="increase">
-                                    <img src="/Images/cross stone.svg" alt="illustration of a plus" class="increase-image">
-                                </div>
+                            <div class="on">
+                                <img src="./Images/on.svg" alt="illustraion of an 'on' text">
                             </div>
                         </div>
                     </div>
-                    <div class="button click" id="credits-button">
-                        <img src="/Images/normal slab.png" alt="illustration of a normal slab" class="image">
-                        <p>Credits</p>
+                    <div class="sound-effects">
+                        <h3>Sound Effects</h3>
+                        <div class="whole-switch">
+                            <div class="off">
+                                <img src="./Images/off.svg" alt="illustraion of an 'off' text">
+                            </div>
+                            <div class="switch">
+                                <img src="/Images/switch.svg" alt="illustration of a switch" id="sound-switch">
+                                <img src="/Images/on.png" alt="illustration of a green ball" id="ball2" class="ball click">
+                            </div>
+                            <div class="on">
+                                <img src="./Images/on.svg" alt="illustraion of an 'on' text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="music-volume">
+                        <div class="volume-title">
+                            <h3>Music Volume</h3>
+                        </div>
+                        <div class="volume">
+                            <div id="reduce-music" class="reduce">
+                                <img src="/Images/stone minus.svg" alt="illustration of a minus" class="reduce-image">
+                            </div>
+                            <div class="music-bar">
+                                <img src="/Images/circle slab.svg" alt="illustration of a circle slab" class="circle" id="circle1">
+                                <div class="gauge"></div>
+                            </div>
+                            <div id="increase-music" class="increase">
+                                <img src="/Images/cross stone.svg" alt="illustration of a plus" class="increase-image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="effect-volume">
+                        <div class="volume-title">
+                            <h3>Effect Volume</h3>
+                        </div>
+                        <div class="volume">
+                            <div id="reduce-effect" class="reduce">
+                                <img src="/Images/stone minus.svg" alt="illustration of a minus" class="reduce-image">
+                            </div>
+                            <div class="music-bar">
+                                <img src="/Images/circle slab.svg" alt="illustration of a circle slab" class="circle" id="circle2">
+                                <div class="gauge"></div>
+                            </div>
+                            <div id="increase-effect" class="increase">
+                                <img src="/Images/cross stone.svg" alt="illustration of a plus" class="increase-image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="button click" id="credits-button">
+                    <img src="/Images/normal slab.png" alt="illustration of a normal slab" class="image">
+                    <p>Credits</p>
+                </div>
+                <div class="click okay-button">
+                    <img src="/Images/screen 2.svg" alt="illustration of a normal slab" class="okay-image">
+                    <p>Okay</p>
+                </div>
+            </div>
+            <div id="credits">
+                <div class="credits">
+                    <img src="./Images/credits.png" alt="illustration of a board">
+                    <h1>Credits</h1>
+                    <div class="credits-content" ss-container style="height: 60%; width: 70%; display: inline-block;">
+                        <div class="credit">
+                            <h2>Music</h2>
+                            <h5>Funk Me Baby from <a href="https://www.joystock.org">Music by Joystock</a></h5>
+                        </div>
+                        <div class="credit">
+                            <h2>Sound Effects</h2>
+                            <h5>Click sound from <a href="https://freesound.org/people/EminYILDIRIM/">EminYILDIRIM</a></h5>
+                            <h5>Splat sound from <a href="https://www.zapsplat.com/">Zapsplat</a></h5>
+                        </div>
+                        <div class="credit">
+                            <h2>Graphics</h2>
+                            <h5>Introduction Page background illustration from <a href="https://www.vecteezy.com/">Vecteezy</a></h5>
+                            <h5>Gmail Logo from <a target="_blank" href="https://icons8.com/icon/ho8QlOYvMuG3/gmail-logo">Icons8</a></h5>
+                            <h5>Mole illustration from <a href="https://pngtree.com/">Png Tree</a></h5>
+                            <h5>Magician hat illustration from <a href="https://www.vecteezy.com/free-vector/hat">Hat Vectors by Vecteezy</a></h5>
+                            <h5>Mustache illustraion from <a href="https://www.vecteezy.com/free-vector/mustache">Mustache Vectors by Vecteezy</a></h5>
+                            <h5>Stopwatch icon from <a href="https://www.veryicon.com/icons/object/sports-fitness-icon/stopwatch-16.html">Very Icon</a></h5>
+                            <h5>Heart Pixel Art from <a href="https://DontMind8.blogspot.com/">Don't Mind8 Blogspot</a></h5>
+                            <h5>Game-ui-scrolls-stone-boards-antique-parchments from <a href="https://www.freepik.com/search?author=13115374&authorSlug=upklyak&format=author&query=game-ui-scrolls-stone-boards-antique-parchments">Upklyak on Freepik.com</a></h5>
+                            <h5>Stone-arrows-signs-set from <a href="https://www.freepik.com/search?author=10171402&authorSlug=pch.vector&format=author&query=stone-arrows-signs-set">Pch.Vector on Freepik.com</a></h5>
+                        </div>
+                        <div class="credit">
+                            <h2>Web Design</h2>
+                            <h5>Game Design by <a href="https://www.linkedin.com/in/okoli-akachukwu-6b321b178/">CodeDeveloper19</a></h5>
+                        </div>
+                        <div class="credit">
+                            <h2>Developer</h2>
+                            <h5>Game Code by <a href="https://www.linkedin.com/in/okoli-akachukwu-6b321b178/">CodeDeveloper19</a></h5>
+                        </div>
+                        <div class="credit">
+                            <h2>Fonts</h2>
+                            <h5>Blackboard 'High-Score Board' font style from <a href="https://www.1001fonts.com/film-cryptic-font.html">Film Cryptic</a></h5>
+                            <h5>Instructions font style from <a href="https://www.1001fonts.com/deadcrt-font.html">DEADCRT</a></h5>
+                            <h5>Homepage 'Whack-A-Mole' font style from <a href="https://www.1001fonts.com/aurora-font.html">Aurora</a></h5>
+                        </div>
                     </div>
                     <div class="click okay-button">
                         <img src="/Images/screen 2.svg" alt="illustration of a normal slab" class="okay-image">
                         <p>Okay</p>
                     </div>
                 </div>
-                <div id="credits">
-                    <div class="credits">
-                        <img src="./Images/credits.png" alt="illustration of a board">
-                        <h1>Credits</h1>
-                        <div class="credits-content" ss-container style="height: 60%; width: 70%; display: inline-block;">
-                            <div class="credit">
-                                <h2>Music</h2>
-                                <h5>Funk Me Baby from <a href="https://www.joystock.org">Music by Joystock</a></h5>
-                            </div>
-                            <div class="credit">
-                                <h2>Sound Effects</h2>
-                                <h5>Click sound from <a href="https://freesound.org/people/EminYILDIRIM/">EminYILDIRIM</a></h5>
-                                <h5>Splat sound from <a href="https://www.zapsplat.com/">Zapsplat</a></h5>
-                            </div>
-                            <div class="credit">
-                                <h2>Graphics</h2>
-                                <h5>Introduction Page background illustration from <a href="https://www.vecteezy.com/">Vecteezy</a></h5>
-                                <h5>Gmail Logo from <a target="_blank" href="https://icons8.com/icon/ho8QlOYvMuG3/gmail-logo">Icons8</a></h5>
-                                <h5>Mole illustration from <a href="https://pngtree.com/">Png Tree</a></h5>
-                                <h5>Magician hat illustration from <a href="https://www.vecteezy.com/free-vector/hat">Hat Vectors by Vecteezy</a></h5>
-                                <h5>Mustache illustraion from <a href="https://www.vecteezy.com/free-vector/mustache">Mustache Vectors by Vecteezy</a></h5>
-                                <h5>Stopwatch icon from <a href="https://www.veryicon.com/icons/object/sports-fitness-icon/stopwatch-16.html">Very Icon</a></h5>
-                                <h5>Heart Pixel Art from <a href="https://DontMind8.blogspot.com/">Don't Mind8 Blogspot</a></h5>
-                                <h5>Game-ui-scrolls-stone-boards-antique-parchments from <a href="https://www.freepik.com/search?author=13115374&authorSlug=upklyak&format=author&query=game-ui-scrolls-stone-boards-antique-parchments">Upklyak on Freepik.com</a></h5>
-                                <h5>Stone-arrows-signs-set from <a href="https://www.freepik.com/search?author=10171402&authorSlug=pch.vector&format=author&query=stone-arrows-signs-set">Pch.Vector on Freepik.com</a></h5>
-                            </div>
-                            <div class="credit">
-                                <h2>Web Design</h2>
-                                <h5>Game Design by <a href="https://www.linkedin.com/in/okoli-akachukwu-6b321b178/">CodeDeveloper19</a></h5>
-                            </div>
-                            <div class="credit">
-                                <h2>Developer</h2>
-                                <h5>Game Code by <a href="https://www.linkedin.com/in/okoli-akachukwu-6b321b178/">CodeDeveloper19</a></h5>
-                            </div>
-                            <div class="credit">
-                                <h2>Fonts</h2>
-                                <h5>Blackboard 'High-Score Board' font style from <a href="https://www.1001fonts.com/film-cryptic-font.html">Film Cryptic</a></h5>
-                                <h5>Instructions font style from <a href="https://www.1001fonts.com/deadcrt-font.html">DEADCRT</a></h5>
-                                <h5>Homepage 'Whack-A-Mole' font style from <a href="https://www.1001fonts.com/aurora-font.html">Aurora</a></h5>
-                            </div>
-                        </div>
-                        <div class="click okay-button">
-                            <img src="/Images/screen 2.svg" alt="illustration of a normal slab" class="okay-image">
-                            <p>Okay</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            </div>
+        </section>
 
-            <header id="timers">
-                <div class="left">
-                    <div class="screen-container" id="t-container">
-                        <h1 id="timer">120</h1>
+        <!-- <section id="gameover">
+            <div class="gameover">
+                <img src="/Images/board.png" alt="cartoon-board" class="board">
+            </div>
+        </section> -->
+
+        <header id="timers">
+            <div class="left">
+                <div class="screen-container" id="t-container">
+                    <h1 id="timer" class="timer"></h1>
+                    <img src="/Images/screen.png" alt="illustration of a screen" class="screen">
+                </div>
+                <img src="/Images/stopwatch-16.svg" alt="illustration of a stopwatch" class="stopwatch">
+            </div>
+            <div class="right">
+                <div class="life-line-container">
+                    <div class="screen-container" id="life-line">
+                        <div class="container-hearts">
+                            <img src="/Images/heart pixel art.png" alt="illustration of a pixelated heart">
+                            <img src="/Images/heart pixel art.png" alt="illustration of a pixelated heart">
+                            <img src="/Images/heart pixel art.png" alt="illustration of a pixelated heart">
+                            <img src="/Images/heart pixel art.png" alt="illustration of a pixelated heart">
+                        </div>
+                        <img src="/Images/screen.png" alt="illustration of a screen" class="life-line">
+                    </div>
+                    <img src="/Images/icons8-heart-64.png" alt="illustration of a heart" class="life-heart">
+                </div>
+                <div class="counter-container">
+                    <div class="screen-container" id="c-container">
+                        <h2 id="counter">0</h2>
                         <img src="/Images/screen.png" alt="illustration of a screen" class="screen">
                     </div>
-                    <img src="/Images/stopwatch-16.svg" alt="illustration of a stopwatch" class="stopwatch">
+                    <img src="/Images/mole.png" alt="illustration of a mole" class="Mole">
                 </div>
-                <div class="right">
-                    <div class="life-line-container">
-                        <div class="screen-container" id="life-line">
-                            <div class="container-hearts">
-                                <img src="/Images/heart pixel art.png" alt="illustration of a pixelated heart">
-                                <img src="/Images/heart pixel art.png" alt="illustration of a pixelated heart">
-                                <img src="/Images/heart pixel art.png" alt="illustration of a pixelated heart">
-                                <img src="/Images/heart pixel art.png" alt="illustration of a pixelated heart">
-                            </div>
-                            <img src="/Images/screen.png" alt="illustration of a screen" class="life-line">
-                        </div>
-                        <img src="/Images/icons8-heart-64.png" alt="illustration of a heart" class="life-heart">
-                    </div>
-                    <div class="counter-container">
-                        <div class="screen-container" id="c-container">
-                            <h2 id="counter">0</h2>
-                            <img src="/Images/screen.png" alt="illustration of a screen" class="screen">
-                        </div>
-                        <img src="/Images/mole.png" alt="illustration of a mole" class="Mole">
-                    </div>
-                </div>
-            </header>
+            </div>
+        </header>
     </main>
 
     <script src="https://kit.fontawesome.com/c123ad8ef2.js" crossorigin="anonymous"></script>
