@@ -8,6 +8,16 @@ let audioClick = new Audio('./Sound Effects/click.mp3');
 
 let icon = document.getElementsByTagName("i");
 
+document.getElementById("start").addEventListener("click", () => {
+    document.getElementById("instructions").style.display = "flex";
+    document.getElementById("introduction").style.display = "none";
+    
+    if (LIMIT == 1){
+        audioBackgroundMusic.play();
+        LIMIT += 1;
+    }
+})
+
 for (let i = 0; i < document.getElementsByClassName("sound").length; i++ ){
     document.getElementsByClassName("sound")[i].addEventListener("mouseover", () => {
         document.getElementsByClassName("circle-image")[i].src = "./images/circle slab hover.svg";

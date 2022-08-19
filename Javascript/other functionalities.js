@@ -169,11 +169,6 @@ for (let i = 0; i < document.getElementsByClassName("button2").length; i++){
     })
 }
 
-document.getElementById("start").addEventListener("click", () => {
-    document.getElementById("instructions").style.display = "flex";
-    document.getElementById("introduction").style.display = "none";
-})
-
 document.getElementById("next").addEventListener("click", () => {
     document.getElementById("instructions-0").style.display = "none";
     document.getElementById("instructions12").style.display = "flex";
