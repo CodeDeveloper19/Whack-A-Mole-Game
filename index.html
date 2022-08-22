@@ -69,7 +69,7 @@
                                         <img src="/Images/icons8-heart-64.png" alt="illustration of a heart" class="life-heart" id="life-heart-dummy">
                                     </div>
                                     <div class="part-text">
-                                        <h5>In each gameplay, you are given four lives. A life is deducted when you whack the wrong mole. The game ends when all four lives have been depleted or the timelimit has elapsed.</h5>
+                                        <h5>At the start, you are given four hearts. A heart is removed when you whack the wrong mole. Exhaust all hearts and the game ends.</h5>
                                     </div>
                                 </div>
                                 <div class="part2">
@@ -81,7 +81,7 @@
                                         <img src="/Images/stopwatch-16.svg" alt="illustration of a stopwatch" id="stopwatch-dummy" class="stopwatch">
                                     </div>
                                     <div class="part-text">
-                                        <h5>The timelimit is selected before you start the game. Once the timer runs out, the game stops automatically with your final score shown to you thereafter.</h5>
+                                        <h5>You select a time limit before the game begins. The game ends once your time runs out.</h5>
                                     </div>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@
                                         <img src="/Images/mole.png" alt="illustration of a mole" class="Mole" id="Mole-dummy">
                                     </div>
                                     <div class="part-text">
-                                        <h5>This board displays your score during the gameplay. It automatically adds a score for each regular mole you whack successfully.</h5>
+                                        <h5>This board shows your score. The type of mole you whack affects your score.</h5>
                                     </div>
                                 </div>
                                 <div class="part2">
@@ -106,7 +106,7 @@
                                         </div>
                                     </div>
                                     <div class="part-text">
-                                        <h5>This board is different from the player's score board. It shows the top 10 players with the highest score for each difficulty level and time limit in the game.</h5>
+                                        <h5>This board shows the top 10 players with the highest score for each difficulty level and time limit in the game.</h5>
                                     </div>
                                 </div>
                             </div>
@@ -426,11 +426,40 @@
             </div>
         </section>
 
-        <!-- <section id="gameover">
+        <section id="gameover">
             <div class="gameover">
-                <img src="/Images/board.png" alt="cartoon-board" class="board">
+                <img src="/Images/credits.png" alt="cartoon-board" class="gameover">
+                <h1>Game Over</h1>
+                <div class="gameover-content">
+                    <div class="g-option gameoverscore">
+                        <h3>Your Score:</h3>
+                        <h3 id="score"></h3>
+                    </div>
+                    <div class="g-option gameoverdifficulty">
+                        <h3>Highest Score:</h3>
+                        <h3 id="highscore">50</h3>
+                    </div>
+                    <div class="g-option gameoverdifficulty">
+                        <h3>Difficulty:</h3>
+                        <h3 id="difficultysetting">Medium</h3>
+                    </div>
+                    <div class="g-option gameoverdifficulty">
+                        <h3>Time:</h3>
+                        <h3 id="timesetting">30s</h3>
+                    </div>
+                </div>
+                <div class="gameoverbuttons">
+                    <div id="playagain" class="button click">
+                        <img src="./Images/normal slab.png" alt="normal slab" class="image">
+                        <p>Try Again</p>
+                    </div>
+                    <div id="menu" class="button click">
+                        <img src="./Images/normal slab.png" alt="normal slab" class="image">
+                        <p>Main menu</p>
+                    </div>
+                </div>
             </div>
-        </section> -->
+        </section>
 
         <header id="timers">
             <div class="left">

@@ -283,42 +283,8 @@ const reset = () => {
         pausee = false;
         document.querySelector("#pause-container i").classList.replace("fa-play", "fa-pause");
     }
-    // const scores = ["score1", "score2", "score3", "score4", "score5", "score6", "score7", "score8", "score9", "score10"];
-    // const timeAndDifficulty = [thirty1, sixty1, onetwenty1, oneeighty1, twoforty1, easy1, medium1, hard1];
-
-    // for(let i = 0; i < scores.length; i++){
-    //     document.getElementById(scores[i]).innerHTML = ""; 
-    // }
-
-    // for (let i = 0; i < timeAndDifficulty.length; i++){
-    //     timeAndDifficulty[i].classList.remove("change");
-    // }
-
-    // highscore = [];
 }
 
-// const mainmenu = () => {
-//     reset();
-//     document.getElementById("instructions").style.display = "flex";
-//     document.getElementById("instructions12").style.display = "flex";
-// }
-
-// document.getElementById("mainmenu").addEventListener("click", () => {
-//     mainmenu();
-// })
-
-// document.getElementById("mainmenu2").addEventListener("click", () => {
-//     mainmenu();
-//     clearInterval(timeds);
-//     clearInterval(popss);
-// })
-
-// document.getElementById("end").addEventListener("click", () => {
-//     reset();
-//     document.getElementById("introduction").style.display = "flex";
-//     document.getElementById("instructions").style.display = "flex";
-//     document.getElementById("instructions1").style.display = "flex";
-// })
 
 
 const timer = () => {
@@ -328,61 +294,52 @@ const timer = () => {
     }
     if (time == 0) {
         clearInterval (timeds);
-        // clearInterval (popss);
-        // document.getElementById("results").style.display = "flex";
-        // highscores();
+        document.getElementById("gameover").style.display = "flex";
+        document.getElementById("score").textContent = 
+        setTimeout(()=>{
+            document.querySelector(".gameover h1").style.display = "flex";
+            document.getElementsByClassName("gameover-content")[0].style.display = "flex";
+            document.getElementsByClassName("gameoverbuttons")[0].style.display = "flex";
+
+            setTimeout(() => {
+                playerScoreAnimation();
+            }, 200);
+
+            setTimeout(()=>{
+                highScoreAnimation();
+            }, 400)
+
+        }, 800)
     }
 }
 
-// document.getElementById("retry").addEventListener("click", () => {
-//     document.getElementById("results").style.display = "none";
-//     counter = 0;
+const playerScoreAnimation = () => {
+    let score = 0;
+    let playerScore = 20;
 
-//     switch(count){
-//         case 1: 
-//             time = 30;
-//             break;
-//         case 2:
-//             time = 60;
-//             break;
-//         case 3:
-//             time = 120;
-//             break;
-//         case 4:
-//             time = 180;
-//             break;
-//         case 5:
-//             time = 240;
-//             break;
-//     }
+    let playerInterval = setInterval(()=>{
+        if (score <= playerScore){
+            document.getElementById("score").textContent = score;
+            score++;
+        } else if (score > playerScore){
+            clearInterval(playerInterval);
+        }
+    }, 80)
+}
 
-//     switch(counts){
-//         case 1: 
-//             difficulty = 1000;
-//             break;
-//         case 2:
-//             difficulty = 750;
-//             break;
-//         case 3:
-//             difficulty = 350;
-//             break;
-//     }
+const highScoreAnimation = () => {
+    let score = 0;
+    let highScore = 40;
 
-//     begin();
-// })
-
-// const highscores = () => {
-//     highscore.push(counter);
-//     highscore = highscore.sort((a,b)=>b-a);
-
-//     const scores = ["score1", "score2", "score3", "score4", "score5", "score6", "score7", "score8", "score9", "score10"];
-
-//     for (let i = 0; i < scores.length; i++){
-//         if (highscore[i] != undefined){
-//             document.getElementById(scores[i]).innerHTML = highscore[i]
-//         }
-//     }
-// }
+    let playerInterval = setInterval(()=>{
+        if (score <= highScore){
+            document.getElementById("highscore").textContent = score;
+            score++;
+        } else if (score > highScore){
+            clearInterval(playerInterval);
+        }
+    }, 80)
+}
 
 const selection = () => {
     // switch(counts){
@@ -397,8 +354,7 @@ const selection = () => {
     //         break;
     // }
 }
-
-document.getElementById("menu-container").addEventListener("click", () => {
+const menu = () => {
     reset();
     document.getElementById("instructions").style.display = "flex";
     document.getElementById("instructions-0").style.display = "none";
@@ -408,6 +364,15 @@ document.getElementById("menu-container").addEventListener("click", () => {
     for (let i = 0; i < document.getElementsByClassName("image").length; i++){
         document.getElementsByClassName("image")[i].src = "./Images/normal slab.png";
     }
+}
+
+document.getElementById("menu-container").addEventListener("click", () => {
+    menu();
+})
+
+document.getElementById("menu").addEventListener("click", () => {
+    menu();
+    document.getElementById("gameover").style.display = "none";
 })
 
 
@@ -517,28 +482,28 @@ const constructLeaderboard = () => {
     }
 }
 
-const scoreSorting = (d) => {
-    difficultyScores = Object.keys(d);
+const scoreSorting = (difficultyScoreList) => {
+    difficultyScores = Object.keys(difficultyScoreList);
     difficultyScores.reverse(); //Reaarranges the scores from back to front instead
 }
 
-const nameSorting = (d) => {
-    difficultyNames = Object.values(d);
+const nameSorting = (difficultyScoreList) => {
+    difficultyNames = Object.values(difficultyScoreList);
     difficultyNames.reverse();  //Reaarranges the names from back to front instead
 }
 
-const attachListToBoard = (v) => {
-    difficultyScoreList = Object.values(v);
+const attachListToBoard = (listArray) => {
+    difficultyScoreList = Object.values(listArray);
     overallSorting(difficultyScoreList);
 }
 
 
-const overallSorting = (d) => {
+const overallSorting = (difficultyScoreList) => {
     for (let i = 0; i < difficultyScoreList.length; i++){
         switch (i){
             case 0:
-                scoreSorting(d[i]);
-                nameSorting(d[i]);
+                scoreSorting(difficultyScoreList[i]);
+                nameSorting(difficultyScoreList[i]);
                     for (let a = 0; a < difficultyScores.length; a++){
                         if (n == 0){
                             b = a;
@@ -552,8 +517,8 @@ const overallSorting = (d) => {
                     }
                 break;
             case 1:
-                scoreSorting(d[i]);
-                nameSorting(d[i]);
+                scoreSorting(difficultyScoreList[i]);
+                nameSorting(difficultyScoreList[i]);
                 for (let a = 0; a < difficultyScores.length; a++){
                     if (n == 0){
                         b = a + 10;
@@ -567,8 +532,8 @@ const overallSorting = (d) => {
                 }
                 break;
             case 2:
-                scoreSorting(d[i]);
-                nameSorting(d[i]);
+                scoreSorting(difficultyScoreList[i]);
+                nameSorting(difficultyScoreList[i]);
                 for (let a = 0; a < difficultyScores.length; a++){
                     if (n == 0){
                         b = a + 20;
@@ -582,8 +547,8 @@ const overallSorting = (d) => {
                 }
                 break;
             case 3:
-                scoreSorting(d[i]);
-                nameSorting(d[i]);
+                scoreSorting(difficultyScoreList[i]);
+                nameSorting(difficultyScoreList[i]);
                 for (let a = 0; a < difficultyScores.length; a++){
                     if (n == 0){
                         b = a + 30;
@@ -597,8 +562,8 @@ const overallSorting = (d) => {
                 }
                 break;
             case 4:
-                scoreSorting(d[i]);
-                nameSorting(d[i]);
+                scoreSorting(difficultyScoreList[i]);
+                nameSorting(difficultyScoreList[i]);
                 for (let a = 0; a < difficultyScores.length; a++){
                     if (n == 0){
                         b = a + 40;
@@ -612,8 +577,8 @@ const overallSorting = (d) => {
                 }
                 break;
             case 5:
-                scoreSorting(d[i]);
-                nameSorting(d[i]);
+                scoreSorting(difficultyScoreList[i]);
+                nameSorting(difficultyScoreList[i]);
                 for (let a = 0; a < difficultyScores.length; a++){
                     if (n == 0){
                         b = a + 50;

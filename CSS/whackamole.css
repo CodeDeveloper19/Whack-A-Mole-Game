@@ -9,16 +9,6 @@
 }
 
 @font-face {
-    font-family: 'DEADCRT';
-    src: 
-        url('/Fonts/DEADCRT.woff2') format('woff2'),
-        url('/Fonts/DEADCRT.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
-}
-
-@font-face {
     font-family: 'aurora';
     src: 
         url('/Fonts/aurora.woff2') format('woff2'),
@@ -115,7 +105,7 @@
 }
 
 .settings, #instructions12, .result, #credits, #instructions-0{
-    font-family: 'DEADCRT';
+    font-family: 'MisterVampire';
 }
 
 .mole:hover, .button:hover{
@@ -284,7 +274,12 @@ button:hover{
 
 .settings h1{
     position: absolute;
-    top: 85px;
+    top: 80px;
+    font-size: 35px
+}
+
+.settings h3, #instructions12 h2{
+    font-size: 25px;
 }
 
 #instructions-0{
@@ -292,7 +287,7 @@ button:hover{
     animation: menu-animation var(--animation-duration) linear;
 }
 
-.board, .settings img, .credits img{
+.board, .settings img, .credits img, .gameover img{
     width: 100%;
     height: 100%;
 }
@@ -309,7 +304,7 @@ button:hover{
 
 .h1-container{
     position: absolute;
-    top: 80px;
+    top: 75px;
     left: 34%;
     width: 270px;
     overflow-x: hidden;
@@ -325,7 +320,8 @@ button:hover{
 }
 
 #h1-main > h1 {
-    font-size: 24px;
+    /* font-size: 24px; */
+    font-size: 35px;
     padding: 0 10px;
     width: 270px;
 }
@@ -422,7 +418,8 @@ button:hover{
     align-items: center;
     justify-content: center;
     width: 50%;
-    font-size: 12px;
+    /* font-size: 12px; */
+    font-size: 17.5px;
     line-height: 170%;
 }
 
@@ -516,7 +513,8 @@ button:hover{
 
 #instructions12 h1{
     position: absolute;
-    top: 80px;
+    top: 75px;
+    font-size: 35px;
 }
 
 .howtoplay1{
@@ -599,11 +597,16 @@ button:hover{
     top: 470px;
 }
 
-.fa-solid, .button>p, .settings p, .okay-button p{
+.fa-solid, .button>p, .settings p, .okay-button p, .gameoverbuttons p{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.button>p, .settings p, .okay-button p{
+    color: white;
+    font-size: 16px;
 }
 
 .setting-container{
@@ -1012,7 +1015,7 @@ button:hover{
 }
 
 #gameover{
-    display: flex;
+    display: none;
     background-color: unset;
 }
 
@@ -1025,7 +1028,7 @@ button:hover{
     display: none;
 }
 
-.credits{
+.credits, .gameover{
     width: 500px;
     height: 600px;
     position: relative;
@@ -1037,7 +1040,7 @@ button:hover{
     align-items: center;
 }
 
-.credits h1{
+.credits h1, .gameover h1{
     text-align: center;
     position: absolute;
     top: 80px;
@@ -1081,6 +1084,77 @@ button:hover{
 .credit a:hover{
     text-decoration: underline;
     color:green;
+}
+
+.gameover{
+    position: unset;
+    top: unset;
+    left: unset;
+    transform: unset;
+    animation: menu-animation var(--animation-duration) linear;
+    font-family: 'MisterVampire';
+}
+
+.gameover h1{
+    font-size: 35px;
+    top: 110px;
+    display: none;
+    /* display: flex; */
+    animation: blinking 10s ease-in 10;
+}
+
+.gameover-content{
+    position: absolute;
+    top: 200px;
+    width: 330px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    display: none;
+    /* display: flex; */
+}
+
+.gameoverbuttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 330px;
+    height: 50px;
+    position: absolute;
+    top: 500px;
+    display: none;
+    /* display: flex; */
+}
+
+.gameover p{
+    font-size: 12px;
+}
+
+#playagain, #menu{
+    height: 100%;
+    width: 45%;
+}
+
+.g-option{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.g-option h3{
+    font-size: 25px;
+}
+
+@keyframes blinking {
+    0%{
+        opacity: 1;
+    }
+
+    100%{
+        opacity: 0;
+
+    }
 }
 
 .setting-container{
