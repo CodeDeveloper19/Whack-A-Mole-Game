@@ -92,6 +92,7 @@ document.getElementById("output").innerHTML = counter;
 }
 
 let counts, timeds, countingDown, difficulty, count, time, popss;
+let isStillCounting = true;
 let countdown = 3;
 let highscore = [];
 let isClicked2 = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
@@ -107,18 +108,17 @@ let oneeighty1 = document.getElementById("oneeighty");
 
 
 const begin = () => {
+    audioGameOver.muted = false;
     document.getElementById("timer").textContent = time;
     countingDown = setInterval(countDown, 1000);
     document.getElementById("delay").style.display = "flex";
-    // timeds = setInterval(timer, 1000);
-    // popss = setInterval(popping, 500); /* Use this to set how fast the mole will be spawned */ /*change back to number to "difficulty"*/
     document.getElementById("game").style.display = "flex";
     document.getElementById("introduction").style.display = "none";
     document.getElementById("instructions").style.display = "none";
     document.getElementById("instructions12").style.display = "none";
-    // document.getElementById("results").style.display = "none";
-    // selection(); /*This function set a difficulty level under the high scores*/
 }
+
+
 document.getElementById("begin").addEventListener("click", () => {
     if (count == undefined || counts == undefined){
         alert("Please select both a difficulty level and timelimit")
@@ -285,75 +285,71 @@ const reset = () => {
     }
 }
 
-
-
 const timer = () => {
-    if (time > 0 && pausee != true) {
+    if (time > 0 && !pausee) {
         time--;
         document.getElementById("timer").textContent = time;
     }
     if (time == 0) {
         clearInterval (timeds);
         document.getElementById("gameover").style.display = "flex";
-        document.getElementById("score").textContent = 
+        audioGameOver.play();
         setTimeout(()=>{
             document.querySelector(".gameover h1").style.display = "flex";
             document.getElementsByClassName("gameover-content")[0].style.display = "flex";
             document.getElementsByClassName("gameoverbuttons")[0].style.display = "flex";
 
-            setTimeout(() => {
-                playerScoreAnimation();
-            }, 200);
+            playerScoreAnimation();
 
-            setTimeout(()=>{
-                highScoreAnimation();
-            }, 400)
+            highScoreAnimation();
 
         }, 800)
     }
 }
 
-const playerScoreAnimation = () => {
-    let score = 0;
-    let playerScore = 20;
+let score = 0;
+let playerScore = 20;
+let highScore = 40;
 
-    let playerInterval = setInterval(()=>{
-        if (score <= playerScore){
-            document.getElementById("score").textContent = score;
-            score++;
-        } else if (score > playerScore){
-            clearInterval(playerInterval);
-        }
-    }, 80)
+const playerScoreAnimation = () => {
+    // let score = 0;
+    // let playerScore = 20;       
+
+    setTimeout(() => {
+        ondecoded();
+        let playerInterval = setInterval(()=>{
+            if (score <= playerScore){
+                document.getElementById("score").textContent = score;
+                score++;
+            } else if (score > playerScore){
+                clearInterval(playerInterval);
+                if (isStillCounting != false && highScore < playerScore){
+                    isStillCounting = false;
+                }
+            }
+        }, 80)
+    }, 200);
 }
 
 const highScoreAnimation = () => {
-    let score = 0;
-    let highScore = 40;
+    // let score = 0;
+    // let highScore = 40;
 
-    let playerInterval = setInterval(()=>{
-        if (score <= highScore){
-            document.getElementById("highscore").textContent = score;
-            score++;
-        } else if (score > highScore){
-            clearInterval(playerInterval);
-        }
-    }, 80)
+    setTimeout(()=>{
+        let playerInterval = setInterval(()=>{
+            if (score <= highScore){
+                document.getElementById("highscore").textContent = score;
+                score++;
+            } else if (score > highScore){
+                clearInterval(playerInterval);
+                if (isStillCounting != false && highScore > playerScore){
+                    isStillCounting = false;
+                }
+            }
+        }, 80)
+    }, 400)
 }
 
-const selection = () => {
-    // switch(counts){
-    //     case 1: 
-    //         difficult.innerHTML = "(Easy)";
-    //         break;
-    //     case 2:
-    //         difficult.innerHTML = "(Medium)";
-    //         break;
-    //     case 3:
-    //         difficult.innerHTML = "(Hard)";
-    //         break;
-    // }
-}
 const menu = () => {
     reset();
     document.getElementById("instructions").style.display = "flex";
@@ -595,5 +591,143 @@ const overallSorting = (difficultyScoreList) => {
     }
     n++;
 }
+
+
+/*Sound System*/
+
+let LIMIT = 1; // Allows the program to start playing the audio only once as there are other sound buttons
+let audioBackgroundMusic = new Audio('/Sound Effects/backgroundmusic.mp3');
+audioBackgroundMusic.volume = 0.02;
+audioBackgroundMusic.loop = true;
+
+let audioClick = new Audio('./Sound Effects/click.mp3');
+let audioGameOver =  new Audio('./Sound Effects/Gameover.mp3');
+
+let icon = document.getElementsByTagName("i");
+
+document.getElementById("start").addEventListener("click", () => {
+    document.getElementById("instructions").style.display = "flex";
+    document.getElementById("introduction").style.display = "none";
+    
+    if (LIMIT == 1){
+        audioBackgroundMusic.play();
+        LIMIT += 1;
+    }
+})
+
+let aCtx = new AudioContext(); // here is the real audioBuffer to sound part
+
+
+let xhr = new XMLHttpRequest();
+xhr.onload = function() {
+  aCtx.decodeAudioData(this.response, ondecoded);
+};
+xhr.responseType = 'arraybuffer';
+xhr.open('get', './Sound Effects/ES_Video Game Score Tally.mp3');
+xhr.send();
+
+const ondecoded = (buf) => {
+    let source = aCtx.createBufferSource();
+    source.buffer = buf;
+    source.loop = true;
+    source.connect(aCtx.destination);
+    source.start(0);
+    let tempInterval = setInterval(()=>{
+        if (isStillCounting == false){
+            source.stop(0);
+            clearInterval(tempInterval);
+        }
+    }, 10)
+}    
+
+for (let i = 0; i < document.getElementsByClassName("sound").length; i++ ){
+    document.getElementsByClassName("sound")[i].addEventListener("mouseover", () => {
+        document.getElementsByClassName("circle-image")[i].src = "./images/circle slab hover.svg";
+    })
+    
+    document.getElementsByClassName("sound")[i].addEventListener("mouseout", () => {
+        document.getElementsByClassName("circle-image")[i].src = "./images/circle slab.svg";
+    })
+    
+    document.getElementsByClassName("sound")[i].addEventListener("click", () => {
+        if (LIMIT == 1){
+            audioBackgroundMusic.play();
+            LIMIT += 1;
+        }
+    
+        if (icon[2].classList[1] == "fa-volume-xmark") {
+            for(let i = 2; i < 7; i++){
+                icon[i].classList.replace("fa-volume-xmark", "fa-volume-high");
+            }
+            audioBackgroundMusic.muted = false;
+        } else {
+            for(let i = 2; i < 7; i++){
+                icon[i].classList.replace("fa-volume-high", "fa-volume-xmark")
+            }
+            audioBackgroundMusic.muted = true;
+        }
+    })
+}
+
+
+for (let i = 0; i < document.getElementsByClassName("click").length; i++){
+    document.getElementsByClassName("click")[i].addEventListener("click", () => {
+        audioClick.play();
+    })
+}
+
+/*Sound Settings*/
+let positionOfBall = [22.5, 220.5]
+
+for(let i = 0; i < document.getElementsByClassName("reduce").length; i++){
+    document.getElementsByClassName("increase")[i].addEventListener("click", () => {
+        if (positionOfBall[i] < 220.5){
+            positionOfBall[i] = positionOfBall[i] + 22;
+            document.getElementsByClassName("circle")[i].style.left = positionOfBall[i].toString() + "px";
+            audioClick.play();
+            switch(i){
+                case 0:
+                    audioBackgroundMusic.volume = audioBackgroundMusic.volume + 0.02;
+                    break;
+                case 1:
+                    audioClick.volume = audioClick.volume + 0.1;
+                    audioGameOver.volume = audioGameOver.volume + 0.1;
+                    break;
+            }
+        }
+    })
+
+    document.getElementsByClassName("reduce")[i].addEventListener("click", () => {
+        if (positionOfBall[i] > 22.5){
+            positionOfBall[i] = positionOfBall[i] - 22;
+            document.getElementsByClassName("circle")[i].style.left = positionOfBall[i].toString() + "px";
+            audioClick.play();
+            switch(i){
+                case 0:
+                    audioBackgroundMusic.volume = audioBackgroundMusic.volume - 0.02;
+                    break;
+                case 1:
+                    audioClick.volume = audioClick.volume + 0.1;
+                    audioGameOver.volume = audioGameOver.volume - 0.1;
+                    break;
+            }
+        }
+    })
+}
+/*Sound Effects*/
+document.getElementById("ball2").addEventListener("click", () => {
+    if (audioClick.muted == false || audioGameOver.muted == false){
+        audioClick.muted = true;
+        audioGameOver.muted = true;
+        document.getElementById("ball2").style.right = "39px";
+        document.getElementById("ball2").src = "./Images/off.png";
+    } else{
+        audioClick.muted = false;
+        audioGameOver.muted = false;
+        document.getElementById("ball2").style.right = "15px";
+        document.getElementById("ball2").src = "./Images/on.png";
+    }
+})
+
 
 

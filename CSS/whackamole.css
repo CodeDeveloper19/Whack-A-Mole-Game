@@ -67,7 +67,7 @@
 }
 
 .life-heart{
-    z-index: 2;
+    z-index: 1.5;
     position: absolute;
     width: 98px;
     height: 100%;
@@ -1017,6 +1017,7 @@ button:hover{
 #gameover{
     display: none;
     background-color: unset;
+    z-index: 2;
 }
 
 #credits{
