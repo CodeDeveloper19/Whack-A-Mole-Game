@@ -4,99 +4,93 @@ let pausee;
 let counter = 0;
 let isClicked = [false, false, false, false, false, false, false, false, false];
 
-const mole = ["mole1", "mole2", "mole3", "mole4", "mole5", "mole6", "mole7", "mole8", "mole9"];
-const x = ["x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9"];
+// const mole = ["mole1", "mole2", "mole3", "mole4", "mole5", "mole6", "mole7", "mole8", "mole9"];
+// const x = ["x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9"];
 
-// for (let i = 0; i < 9; i++){
-//     document.getElementById(mole[i]).addEventListener("click", () => {
-//         isClicked[i] = true;
-//         if (document.getElementById(mole[i]).style.visibility == "visible" && pausee != true){
-//             counter += 1;
-//             var audio1 = new Audio('/Sound Effects/splat.mp3');
-//             audio1.play();
-//             document.getElementById(mole[i]).style.animationName = "";
-//             document.getElementById(x[i]).style.display = "flex";
-//             setTimeout(()=>{
-//                 document.getElementById(mole[i]).style.visibility = "hidden";
-//                 document.getElementById(x[i]).style.display = "none";
-//                 document.getElementById(mole[i]).style.animationName = "";
-//                 isClicked[i] = false;
-//             }, 300);
-//         } 
-//     })
-// }
+for (let i = 0; i < 9; i++){
+    document.getElementsByClassName("mole")[i].addEventListener("click", () => {
+        isClicked[i] = true;
+        if (document.getElementsByClassName("mole")[i].style.visibility == "visible" && pausee != true){
+            counter += 1;
+            let audio1 = new Audio('/Sound Effects/splat.mp3');
+            audio1.play();
+            document.getElementsByClassName("mole")[i].style.animationName = "";
+            document.getElementsByClassName("x")[i].style.display = "flex";
+            setTimeout(()=>{
+                document.getElementsByClassName("mole")[i].style.visibility = "hidden";
+                document.getElementsByClassName("x")[i].style.display = "none";
+                document.getElementsByClassName("mole")[i].style.animationName = "";
+                isClicked[i] = false;
+            }, 300);
+        } 
+    })
+}
 
-// const moles = (num) => {
-//     let finalNum = num - 1;
-//     document.getElementById(mole[finalNum]).style.visibility = "visible";
-//     document.getElementById(mole[finalNum]).style.animationName = "mole-popping";
 
-//     if (isClicked[finalNum] == false){
-//         setTimeout(()=>{
-//             document.getElementById(mole[finalNum]).style.animationName = "";
-//             document.getElementById(mole[finalNum]).style.visibility = "hidden";
-//         }, 1500)
-//     }
-// }
+const moles = (value) => {
+    console.log(value)
+    // let finalNum = num - 1;
+    // document.getElementsByClassName("mole")[value].style.visibility = "visible";
+    // document.getElementsByClassName("mole")[value].style.animationName = "mole-popping";
+
+    document.getElementById("mole1").style.visibility = "visible";
+    document.getElementById("mole1").style.animationName = "mole-popping";
+
+    // if (isClicked[value] == false){
+    //     setTimeout(()=>{
+    //         document.getElementsByClassName("mole")[value].style.animationName = "";
+    //         document.getElementsByClassName("mole")[value].style.visibility = "hidden";
+    //     }, 1500)
+    // }
+}
 
 
 const popping = () => {
-    let num;
-    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    let value;
+    const arr = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     
     if (time > 0 && pausee != true){
-        var value = arr[Math.floor(Math.random()*arr.length)]
-    } 
+        value = arr[Math.floor(Math.random()*arr.length)]
+    }
 
 switch (value){
+    case 0:
+        moles(value);
+        break;
     case 1:
-        num = 1;
-        moles(num);
+        moles(value);
         break;
     case 2:
-        num = 2;
-        moles(num);
+        moles(value);
         break;
     case 3:
-        num = 3;
-        moles(num);
+        moles(value);
         break;
     case 4:
-        num = 4;
-        moles(num);
+        moles(value);
         break;
     case 5:
-        num = 5;
-        moles(num);
+        moles(value);
         break;
     case 6:
-        num = 6;
-        moles(num);
+        moles(value);
         break;
     case 7:
-        num = 7;
-        moles(num);
+        moles(value);
         break;
     case 8:
-        num = 8;
-        moles(num);
-        break;
-    case 9:
-        num = 9;
-        moles(num);
+        moles(value);
         break;
 }
 
 document.getElementById("counter").innerHTML = counter;
-document.getElementById("output").innerHTML = counter;
+// document.getElementById("output").innerHTML = counter;
 }
 
 let counts, timeds, countingDown, difficulty, count, time, popss;
 let isStillCounting = true;
 let countdown = 3;
-let highscore = [];
 let isClicked2 = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
-let difficult = document.getElementById("difficulty");
 let easy1 = document.getElementById("easy");
 let medium1 = document.getElementById("medium");
 let hard1 = document.getElementById("hard");
@@ -132,10 +126,11 @@ const countDown = () => {
         countdown--;
         document.getElementById("countdown").textContent = countdown;
         if (countdown == 0){
-            clearInterval(countingDown)
+            clearInterval(countingDown);
             setTimeout(()=>{
                 document.getElementById("delay").style.display = "none";
                 timeds = setInterval(timer, 1000);
+                popss = setInterval(popping, difficulty);
             }, 1000)
         }
     }, 300)
@@ -277,6 +272,7 @@ const reset = () => {
     counter = 0;
     countdown = 3; 
     clearInterval (timeds);
+    clearInterval(popss)
     document.getElementById("timer").textContent = "0";
     document.getElementById("countdown").textContent = "3";
     if (document.querySelector("#pause-container i").classList[1] == "fa-play"){
@@ -291,7 +287,9 @@ const timer = () => {
         document.getElementById("timer").textContent = time;
     }
     if (time == 0) {
-        clearInterval (timeds);
+        clearInterval(timeds);
+        clearInterval(popss);
+        selection();
         document.getElementById("gameover").style.display = "flex";
         audioGameOver.play();
         setTimeout(()=>{
@@ -359,6 +357,33 @@ const menu = () => {
 
     for (let i = 0; i < document.getElementsByClassName("image").length; i++){
         document.getElementsByClassName("image")[i].src = "./Images/normal slab.png";
+    }
+}
+
+const selection = () => {
+    switch(counts){
+        case 1:
+            document.getElementById("difficultysetting").innerHTML = "Easy";
+            break;
+        case 2:
+            document.getElementById("difficultysetting").innerHTML = "Medium";
+            break;
+        case 3:
+            document.getElementById("difficultysetting").innerHTML = "Hard";
+            break;
+    }
+
+    switch(count){
+        case 1:
+            document.getElementById("timesetting").innerHTML = "30s";
+        case 2:
+            document.getElementById("timesetting").innerHTML = "60s";
+        case 3:
+            document.getElementById("timesetting").innerHTML = "120s";
+        case 4:
+            document.getElementById("timesetting").innerHTML = "180s";
+        case 5:
+            document.getElementById("timesetting").innerHTML = "240s";
     }
 }
 
@@ -615,16 +640,16 @@ document.getElementById("start").addEventListener("click", () => {
     }
 })
 
-let aCtx = new AudioContext(); // here is the real audioBuffer to sound part
+// let aCtx = new AudioContext(); // here is the real audioBuffer to sound part
 
 
-let xhr = new XMLHttpRequest();
-xhr.onload = function() {
-  aCtx.decodeAudioData(this.response, ondecoded);
-};
-xhr.responseType = 'arraybuffer';
-xhr.open('get', './Sound Effects/ES_Video Game Score Tally.mp3');
-xhr.send();
+// let xhr = new XMLHttpRequest();
+// xhr.onload = function() {
+//   aCtx.decodeAudioData(this.response, ondecoded);
+// };
+// xhr.responseType = 'arraybuffer';
+// xhr.open('get', './Sound Effects/ES_Video Game Score Tally.mp3');
+// xhr.send();
 
 const ondecoded = (buf) => {
     let source = aCtx.createBufferSource();
