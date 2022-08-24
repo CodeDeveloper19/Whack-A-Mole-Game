@@ -209,11 +209,6 @@ document.getElementsByClassName("okay-button")[i].addEventListener("click", () =
 })
 }
 
-document.getElementById("settings-container").addEventListener("click", () => {
-    document.getElementById("settings").style.display = "flex";
-})
-
-
 /*Score Switch*/
 document.getElementById("ball1").addEventListener("click", () => {
     if (document.getElementById("blackboard-container").style.display == "none"){

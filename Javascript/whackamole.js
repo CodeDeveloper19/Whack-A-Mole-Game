@@ -1,25 +1,20 @@
-let playy;
-let pausee;
+let isPaused;
 
 let counter = 0;
 let isClicked = [false, false, false, false, false, false, false, false, false];
 
-// const mole = ["mole1", "mole2", "mole3", "mole4", "mole5", "mole6", "mole7", "mole8", "mole9"];
-// const x = ["x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9"];
-
 for (let i = 0; i < 9; i++){
     document.getElementsByClassName("mole")[i].addEventListener("click", () => {
         isClicked[i] = true;
-        if (document.getElementsByClassName("mole")[i].style.visibility == "visible" && pausee != true){
+        if (document.getElementsByClassName("mole")[i].classList[1] == "mole-popping" && isPaused != true){
             counter += 1;
-            let audio1 = new Audio('/Sound Effects/splat.mp3');
-            audio1.play();
-            document.getElementsByClassName("mole")[i].style.animationName = "";
+            document.getElementById("counter").textContent = counter;
+            moleDieingSound();
+            document.getElementsByClassName("mole")[i].classList.remove("mole-popping");
             document.getElementsByClassName("x")[i].style.display = "flex";
             setTimeout(()=>{
                 document.getElementsByClassName("mole")[i].style.visibility = "hidden";
                 document.getElementsByClassName("x")[i].style.display = "none";
-                document.getElementsByClassName("mole")[i].style.animationName = "";
                 isClicked[i] = false;
             }, 300);
         } 
@@ -28,63 +23,59 @@ for (let i = 0; i < 9; i++){
 
 
 const moles = (value) => {
-    console.log(value)
-    // let finalNum = num - 1;
-    // document.getElementsByClassName("mole")[value].style.visibility = "visible";
-    // document.getElementsByClassName("mole")[value].style.animationName = "mole-popping";
+    document.getElementsByClassName("mole")[value].classList.add("mole-popping");
 
-    document.getElementById("mole1").style.visibility = "visible";
-    document.getElementById("mole1").style.animationName = "mole-popping";
-
-    // if (isClicked[value] == false){
-    //     setTimeout(()=>{
-    //         document.getElementsByClassName("mole")[value].style.animationName = "";
-    //         document.getElementsByClassName("mole")[value].style.visibility = "hidden";
-    //     }, 1500)
-    // }
+    if (isClicked[value] == false){
+        setTimeout(()=>{
+            document.getElementsByClassName("mole")[value].classList.remove("mole-popping");
+        }, 1500)
+    }
 }
 
 
 const popping = () => {
-    let value;
+    let value, tempvalue;
     const arr = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     
-    if (time > 0 && pausee != true){
-        value = arr[Math.floor(Math.random()*arr.length)]
+    if (time > 0 && isPaused != true){
+        tempvalue = arr[Math.floor(Math.random()*arr.length)];
+        if (tempvalue != value){
+            value = tempvalue;
+        } else {
+            tempvalue = arr[Math.floor(Math.random()*arr.length)];
+            value = tempvalue;
+        }
     }
 
-switch (value){
-    case 0:
-        moles(value);
-        break;
-    case 1:
-        moles(value);
-        break;
-    case 2:
-        moles(value);
-        break;
-    case 3:
-        moles(value);
-        break;
-    case 4:
-        moles(value);
-        break;
-    case 5:
-        moles(value);
-        break;
-    case 6:
-        moles(value);
-        break;
-    case 7:
-        moles(value);
-        break;
-    case 8:
-        moles(value);
-        break;
-}
-
-document.getElementById("counter").innerHTML = counter;
-// document.getElementById("output").innerHTML = counter;
+    switch (value){
+        case 0:
+            moles(value);
+            break;
+        case 1:
+            moles(value);
+            break;
+        case 2:
+            moles(value);
+            break;
+        case 3:
+            moles(value);
+            break;
+        case 4:
+            moles(value);
+            break;
+        case 5:
+            moles(value);
+            break;
+        case 6:
+            moles(value);
+            break;
+        case 7:
+            moles(value);
+            break;
+        case 8:
+            moles(value);
+            break;
+    }
 }
 
 let counts, timeds, countingDown, difficulty, count, time, popss;
@@ -103,6 +94,7 @@ let oneeighty1 = document.getElementById("oneeighty");
 
 const begin = () => {
     audioGameOver.muted = false;
+    document.getElementById("counter").textContent = 0;
     document.getElementById("timer").textContent = time;
     countingDown = setInterval(countDown, 1000);
     document.getElementById("delay").style.display = "flex";
@@ -111,15 +103,6 @@ const begin = () => {
     document.getElementById("instructions").style.display = "none";
     document.getElementById("instructions12").style.display = "none";
 }
-
-
-document.getElementById("begin").addEventListener("click", () => {
-    if (count == undefined || counts == undefined){
-        alert("Please select both a difficulty level and timelimit")
-    } else {
-        begin();
-    }
-})
 
 const countDown = () => {
     setTimeout(()=>{
@@ -136,13 +119,38 @@ const countDown = () => {
     }, 300)
 }
 
-document.getElementById("pause-container").addEventListener("click", () => {
+const pause = () => {
     if (document.querySelector("#pause-container i").classList[1] == "fa-pause"){
-        pausee = true;
+        isPaused = true;
         document.querySelector("#pause-container i").classList.replace("fa-pause", "fa-play");
     } else if (document.querySelector("#pause-container i").classList[1] == "fa-play"){
-        pausee = false;
+        isPaused = false;
         document.querySelector("#pause-container i").classList.replace("fa-play", "fa-pause");
+    }
+}
+
+document.getElementById("begin").addEventListener("click", () => {
+    if (count == undefined || counts == undefined){
+        alert("Please select both a difficulty level and timelimit")
+    } else {
+        begin();
+    }
+})
+
+document.getElementById("pause-container").addEventListener("click", () => {
+    pause();
+})
+
+document.getElementById("settings-container").addEventListener("click", () => {
+    if (isPaused == false){
+        pause();
+    }
+    document.getElementById("settings").style.display = "flex";
+})
+
+document.getElementById("info-container").addEventListener("click", () => {
+    if (isPaused == false){
+        pause();
     }
 })
 
@@ -265,10 +273,6 @@ twoforty1.addEventListener("click", () => {
 })
 
 const reset = () => {
-    difficulty = undefined;
-    count = undefined;
-    counts = undefined;
-    time = undefined;
     counter = 0;
     countdown = 3; 
     clearInterval (timeds);
@@ -276,13 +280,43 @@ const reset = () => {
     document.getElementById("timer").textContent = "0";
     document.getElementById("countdown").textContent = "3";
     if (document.querySelector("#pause-container i").classList[1] == "fa-play"){
-        pausee = false;
+        isPaused = false;
         document.querySelector("#pause-container i").classList.replace("fa-play", "fa-pause");
     }
 }
 
+const moleDieingSound = () => {
+    let audio1 = new Audio('/Sound Effects/splat.mp3');
+    // audio1.volume = 0.2;
+    audio1.play();
+}
+
+const gameOver = () => {
+    audioGameOver.play();
+    setTimeout(()=>{
+        document.getElementById("gameover").style.display = "flex";
+    }, 200)
+    setTimeout(()=>{
+        document.querySelector(".gameover h1").style.display = "flex";
+        document.querySelector(".gameover h1").classList.add("blinking");
+        setTimeout(()=>{
+            document.querySelector(".gameover h1").classList.remove("blinking");
+
+            // document.getElementsByClassName("gameover-content")[0].style.display = "flex";
+            document.getElementsByClassName("gameover-content")[0].classList.add("fadein");
+            // document.getElementsByClassName("gameoverbuttons")[0].style.display = "flex";
+            document.getElementsByClassName("gameoverbuttons")[0].classList.add("fadein");
+    
+            playerScoreAnimation();
+    
+            highScoreAnimation();
+        }, 1000)
+
+    }, 1000)
+}
+
 const timer = () => {
-    if (time > 0 && !pausee) {
+    if (time > 0 && !isPaused) {
         time--;
         document.getElementById("timer").textContent = time;
     }
@@ -290,38 +324,23 @@ const timer = () => {
         clearInterval(timeds);
         clearInterval(popss);
         selection();
-        document.getElementById("gameover").style.display = "flex";
-        audioGameOver.play();
-        setTimeout(()=>{
-            document.querySelector(".gameover h1").style.display = "flex";
-            document.getElementsByClassName("gameover-content")[0].style.display = "flex";
-            document.getElementsByClassName("gameoverbuttons")[0].style.display = "flex";
-
-            playerScoreAnimation();
-
-            highScoreAnimation();
-
-        }, 800)
+        gameOver();
     }
 }
 
 let score = 0;
-let playerScore = 20;
 let highScore = 40;
 
 const playerScoreAnimation = () => {
-    // let score = 0;
-    // let playerScore = 20;       
-
     setTimeout(() => {
-        ondecoded();
+        // ondecoded();
         let playerInterval = setInterval(()=>{
-            if (score <= playerScore){
+            if (score <= document.getElementById("counter").innerHTML){
                 document.getElementById("score").textContent = score;
                 score++;
-            } else if (score > playerScore){
+            } else if (score > document.getElementById("counter").innerHTML){
                 clearInterval(playerInterval);
-                if (isStillCounting != false && highScore < playerScore){
+                if (isStillCounting != false && highScore < document.getElementById("counter").innerHTML){
                     isStillCounting = false;
                 }
             }
@@ -330,9 +349,6 @@ const playerScoreAnimation = () => {
 }
 
 const highScoreAnimation = () => {
-    // let score = 0;
-    // let highScore = 40;
-
     setTimeout(()=>{
         let playerInterval = setInterval(()=>{
             if (score <= highScore){
@@ -340,7 +356,7 @@ const highScoreAnimation = () => {
                 score++;
             } else if (score > highScore){
                 clearInterval(playerInterval);
-                if (isStillCounting != false && highScore > playerScore){
+                if (isStillCounting != false && highScore > document.getElementById("counter").innerHTML){
                     isStillCounting = false;
                 }
             }
@@ -350,6 +366,10 @@ const highScoreAnimation = () => {
 
 const menu = () => {
     reset();
+    difficulty = undefined;
+    count = undefined;
+    counts = undefined;
+    time = undefined;
     document.getElementById("instructions").style.display = "flex";
     document.getElementById("instructions-0").style.display = "none";
     document.getElementById("instructions12").style.display = "flex";
@@ -376,19 +396,30 @@ const selection = () => {
     switch(count){
         case 1:
             document.getElementById("timesetting").innerHTML = "30s";
+            break;
         case 2:
             document.getElementById("timesetting").innerHTML = "60s";
         case 3:
             document.getElementById("timesetting").innerHTML = "120s";
+            break;
         case 4:
             document.getElementById("timesetting").innerHTML = "180s";
+            break;
         case 5:
             document.getElementById("timesetting").innerHTML = "240s";
+            break;
     }
 }
 
 document.getElementById("menu-container").addEventListener("click", () => {
     menu();
+})
+
+document.getElementById("playagain").addEventListener("click", () => {
+    alert(time);
+    document.getElementById("gameover").style.display = "none";
+    reset();
+    begin();
 })
 
 document.getElementById("menu").addEventListener("click", () => {
@@ -651,19 +682,19 @@ document.getElementById("start").addEventListener("click", () => {
 // xhr.open('get', './Sound Effects/ES_Video Game Score Tally.mp3');
 // xhr.send();
 
-const ondecoded = (buf) => {
-    let source = aCtx.createBufferSource();
-    source.buffer = buf;
-    source.loop = true;
-    source.connect(aCtx.destination);
-    source.start(0);
-    let tempInterval = setInterval(()=>{
-        if (isStillCounting == false){
-            source.stop(0);
-            clearInterval(tempInterval);
-        }
-    }, 10)
-}    
+// const ondecoded = (buf) => {
+//     let source = aCtx.createBufferSource();
+//     source.buffer = buf;
+//     source.loop = true;
+//     source.connect(aCtx.destination);
+//     source.start(0);
+//     let tempInterval = setInterval(()=>{
+//         if (isStillCounting == false){
+//             source.stop(0);
+//             clearInterval(tempInterval);
+//         }
+//     }, 10)
+// }    
 
 for (let i = 0; i < document.getElementsByClassName("sound").length; i++ ){
     document.getElementsByClassName("sound")[i].addEventListener("mouseover", () => {
