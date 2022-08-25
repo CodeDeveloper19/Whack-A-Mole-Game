@@ -1148,7 +1148,6 @@ button:hover{
 .gameover h1{
     top: 110px;
     display: none;
-    /* display: flex; */
 }
 
 .blinking{
@@ -1161,7 +1160,6 @@ button:hover{
     }
 
     100%{
-        /* background-color: rgba(0, 0, 255, 0.75); */
         color: rgba(0, 0, 0, 0);
 
     }
@@ -1177,11 +1175,10 @@ button:hover{
     justify-content: space-between;
     display: flex;
     color: rgba(0, 0, 0, 0); 
-    /* display: flex; */
 }
 
 .gameoverbuttons{
-    display: flex;
+    display: none;
     flex-direction: row;
     justify-content: space-between;
     width: 330px;
@@ -1190,7 +1187,6 @@ button:hover{
     top: 500px;
     display: flex;
     color: rgba(0, 0, 0, 0); 
-    /* display: flex; */
 }
 
 .gameover p{
@@ -1198,15 +1194,11 @@ button:hover{
 }
 
 .fadein{
-    animation: fadein 1s ease-in 2s 1 forwards;
+    animation: fadein 1.5s ease-in 1 forwards;
 }
 
 @keyframes fadein {
     0%{
-        color: black;
-    }
-
-    50%{
         color: rgba(0, 0, 0, 0); 
     }
 

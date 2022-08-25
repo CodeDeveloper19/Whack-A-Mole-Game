@@ -189,8 +189,10 @@ document.getElementById("info-container").addEventListener("click", () => {
     resetInstructionsList();
     showInstructions();
 
-    document.querySelector("#next p").innerHTML = "Close";
-    document.getElementById("next").setAttribute("id", "close");
+    if (!document.getElementById("close")){
+        document.getElementById("next").setAttribute("id", "close");
+        document.querySelector("#close p").innerHTML = "Close";
+    }
     document.getElementById("close").addEventListener("click", () => {
         document.getElementById("instructions-0").style.display = "none";
         document.getElementById("instructions12").style.display = "none";

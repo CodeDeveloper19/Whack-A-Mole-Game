@@ -1,7 +1,370 @@
-let isPaused;
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+import { getDatabase, ref, get, set, child } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
 
+let listArray = [];
+let difficultyScores, difficultyNames;
+let number, name, scores, b;
+let index = 0;
+let n = 0;
+let difficultyScoreList;
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBXSptTREJ4JvPwhmwX1JdYcYBhgOrIVn8",
+  authDomain: "whack-a-mole-9bdcc.firebaseapp.com",
+  projectId: "whack-a-mole-9bdcc",
+  storageBucket: "whack-a-mole-9bdcc.appspot.com",
+  messagingSenderId: "774401565017",
+  appId: "1:774401565017:web:3300cd36256d4afffdec48",
+  measurementId: "G-RWN641EXW2"
+};
+
+const app = initializeApp(firebaseConfig);
+
+const dbRef = ref(getDatabase());
+get(child(dbRef, `/`)).then((snapshot) => {
+  if (snapshot.exists()) {
+      listArray = Object.values(snapshot.val());
+      constructLeaderboard(listArray);
+  } else {
+      document.getElementsByClassName("error-message")[0].style.height = "100%";
+      document.querySelector(".error-message h3").textContent = "No data available";
+  }
+}).catch((error) => {
+  document.getElementsByClassName("error-message")[0].style.height = "100%";
+  document.querySelector(".error-message h3").innerHTML = error.message;
+});
+
+
+const constructLeaderboard = () => {
+  for (let b = 0; b < 18; b++){
+      let score = document.createElement("div");
+      score.className = "score";
+      document.getElementsByClassName("scorer-main")[0].appendChild(score);
+
+      for (let z = 0; z < 10; z++){
+          let scorer = document.createElement("div");
+          scorer.className = "scorer";
+          document.getElementsByClassName("score")[b].appendChild(scorer);
+      }
+
+      let title = document.createElement("div");
+      title.className = "title";
+      document.getElementsByClassName("titles-main")[0].appendChild(title);
+
+      for (let z = 0; z < 3; z++){
+          let titles = document.createElement("h1");
+          document.getElementsByClassName("title")[b].appendChild(titles);
+      }
+  }
+
+  for (let b = 0; b < document.querySelectorAll(".title h1").length; b++){
+      if (b % 3 == 0){
+          document.querySelectorAll(".title h1")[b].textContent = "High Scores";
+      } else if ((b % 3 == 2) && (Math.floor(b/3) < 6)){
+          document.querySelectorAll(".title h1")[b].textContent = "(Easy)";
+      } else if ((b % 3 == 2) && (((Math.floor(b/3) >= 6)) && ((Math.floor(b/3) < 12)))){
+          document.querySelectorAll(".title h1")[b].textContent = "(Medium)";
+      } else if ((b % 3 == 2) && (((Math.floor(b/3) >= 12)) && ((Math.floor(b/3) < 18)))){
+          document.querySelectorAll(".title h1")[b].textContent = "(Hard)";
+      } else if (b == 1 || b == 19 || b == 37){
+          document.querySelectorAll(".title h1")[b].textContent = "30s";
+      } else if (b == 4 || b == 22 || b == 40) {
+          document.querySelectorAll(".title h1")[b].textContent = "60s";
+      } else if (b == 7 || b == 25 || b == 43) {
+          document.querySelectorAll(".title h1")[b].textContent = "120s";
+      } else if (b == 10 || b == 28 || b == 46) {
+          document.querySelectorAll(".title h1")[b].textContent = "180s";
+      } else if (b == 13 || b == 31 || b == 49) {
+          document.querySelectorAll(".title h1")[b].textContent = "240s";
+       }else if (b == 16 || b == 34 || b == 52) {
+          document.querySelectorAll(".title h1")[b].textContent = "360s";
+      }
+  }
+
+  for (let a = 0; a < document.getElementsByClassName("scorer").length; a++){  
+      number =  document.createElement("h4");  
+      if (a % 10 == 0){
+          index = 0; 
+      }
+      number.innerHTML = index + 1;
+      document.getElementsByClassName("scorer")[a].appendChild(number);
+
+      name = document.createElement("h4");
+      name.className = "name";
+      document.getElementsByClassName("scorer")[a].appendChild(name);
+
+      scores = document.createElement("h5");
+      document.getElementsByClassName("scorer")[a].appendChild(scores);
+      index++;
+  }
+
+  for (let i = 0; i < listArray.length; i++){
+      attachListToBoard(listArray[i])
+  }
+}
+
+const attachListToBoard = (listArray) => {
+    difficultyScoreList = Object.values(listArray);
+    overallSorting(difficultyScoreList);
+}
+
+const overallSorting = (difficultyScoreList) => {
+    for (let i = 0; i < difficultyScoreList.length; i++){
+        switch (i){
+            case 0:
+                scoreSorting(difficultyScoreList[i]);
+                nameSorting(difficultyScoreList[i]);
+                    for (let a = 0; a < difficultyScores.length; a++){
+                        if (n == 0){
+                            b = a;
+                        } else if (n == 1){
+                            b = a + 60;
+                        } else if (n == 2){
+                            b = a + 120;
+                        }
+                        document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
+                        document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
+                    }
+                break;
+            case 1:
+                scoreSorting(difficultyScoreList[i]);
+                nameSorting(difficultyScoreList[i]);
+                for (let a = 0; a < difficultyScores.length; a++){
+                    if (n == 0){
+                        b = a + 10;
+                    } else if (n == 1){
+                        b = a + 70;
+                    } else if (n == 2){
+                        b = a + 130;
+                    }
+                    document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
+                    document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
+                }
+                break;
+            case 2:
+                scoreSorting(difficultyScoreList[i]);
+                nameSorting(difficultyScoreList[i]);
+                for (let a = 0; a < difficultyScores.length; a++){
+                    if (n == 0){
+                        b = a + 20;
+                    } else if (n == 1){
+                        b = a + 80;
+                    } else if (n == 2){
+                        b = a + 140;
+                    }
+                    document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
+                    document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
+                }
+                break;
+            case 3:
+                scoreSorting(difficultyScoreList[i]);
+                nameSorting(difficultyScoreList[i]);
+                for (let a = 0; a < difficultyScores.length; a++){
+                    if (n == 0){
+                        b = a + 30;
+                    } else if (n == 1){
+                        b = a + 90;
+                    } else if (n == 2){
+                        b = a + 150;
+                    }
+                    document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
+                    document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
+                }
+                break;
+            case 4:
+                scoreSorting(difficultyScoreList[i]);
+                nameSorting(difficultyScoreList[i]);
+                for (let a = 0; a < difficultyScores.length; a++){
+                    if (n == 0){
+                        b = a + 40;
+                    } else if (n == 1){
+                        b = a + 100;
+                    } else if (n == 2){
+                        b = a + 160;
+                    }
+                    document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
+                    document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
+                }
+                break;
+            case 5:
+                scoreSorting(difficultyScoreList[i]);
+                nameSorting(difficultyScoreList[i]);
+                for (let a = 0; a < difficultyScores.length; a++){
+                    if (n == 0){
+                        b = a + 50;
+                    } else if (n == 1){
+                        b = a + 110;
+                    } else if (n == 2){
+                        b = a + 170;
+                    }
+                    document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
+                    document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
+                }
+                break;
+        }
+    }
+    n++;
+}
+
+const scoreSorting = (difficultyScoreList) => {
+  difficultyScores = Object.keys(difficultyScoreList);
+  difficultyScores.reverse(); //Reaarranges the scores from back to front instead
+}
+
+const nameSorting = (difficultyScoreList) => {
+  difficultyNames = Object.values(difficultyScoreList);
+  difficultyNames.reverse();  //Reaarranges the names from back to front instead
+}
+
+/*Sound System*/
+
+let LIMIT = 1; // Allows the program to start playing the audio only once as there are other sound buttons
+let audioBackgroundMusic = new Audio('/Sound Effects/backgroundmusic.mp3');
+audioBackgroundMusic.volume = 0.02;
+audioBackgroundMusic.loop = true;
+
+let audioClick = new Audio('./Sound Effects/click.mp3');
+let audioGameOver =  new Audio('./Sound Effects/Gameover.mp3');
+
+let icon = document.getElementsByTagName("i");
+
+document.getElementById("start").addEventListener("click", () => {
+    document.getElementById("instructions").style.display = "flex";
+    document.getElementById("introduction").style.display = "none";
+    
+    if (LIMIT == 1){
+        audioBackgroundMusic.play();
+        LIMIT += 1;
+    }
+})
+
+// let aCtx = new AudioContext(); // here is the real audioBuffer to sound part
+
+
+// let xhr = new XMLHttpRequest();
+// xhr.onload = function() {
+//   aCtx.decodeAudioData(this.response, ondecoded);
+// };
+// xhr.responseType = 'arraybuffer';
+// xhr.open('get', './Sound Effects/ES_Video Game Score Tally.mp3');
+// xhr.send();
+
+// const ondecoded = (buf) => {
+//     let source = aCtx.createBufferSource();
+//     source.buffer = buf;
+//     source.loop = true;
+//     source.connect(aCtx.destination);
+//     source.start(0);
+//     let tempInterval = setInterval(()=>{
+//         if (isStillCounting == false){
+//             source.stop(0);
+//             clearInterval(tempInterval);
+//         }
+//     }, 10)
+// }    
+
+for (let i = 0; i < document.getElementsByClassName("sound").length; i++ ){
+    document.getElementsByClassName("sound")[i].addEventListener("mouseover", () => {
+        document.getElementsByClassName("circle-image")[i].src = "./images/circle slab hover.svg";
+    })
+    
+    document.getElementsByClassName("sound")[i].addEventListener("mouseout", () => {
+        document.getElementsByClassName("circle-image")[i].src = "./images/circle slab.svg";
+    })
+    
+    document.getElementsByClassName("sound")[i].addEventListener("click", () => {
+        if (LIMIT == 1){
+            audioBackgroundMusic.play();
+            LIMIT += 1;
+        }
+    
+        if (icon[2].classList[1] == "fa-volume-xmark") {
+            for(let i = 2; i < 7; i++){
+                icon[i].classList.replace("fa-volume-xmark", "fa-volume-high");
+            }
+            audioBackgroundMusic.muted = false;
+        } else {
+            for(let i = 2; i < 7; i++){
+                icon[i].classList.replace("fa-volume-high", "fa-volume-xmark")
+            }
+            audioBackgroundMusic.muted = true;
+        }
+    })
+}
+
+
+for (let i = 0; i < document.getElementsByClassName("click").length; i++){
+    document.getElementsByClassName("click")[i].addEventListener("click", () => {
+        audioClick.play();
+    })
+}
+
+/*Sound Settings*/
+let positionOfBall = [22.5, 220.5]
+
+for(let i = 0; i < document.getElementsByClassName("reduce").length; i++){
+    document.getElementsByClassName("increase")[i].addEventListener("click", () => {
+        if (positionOfBall[i] < 220.5){
+            positionOfBall[i] = positionOfBall[i] + 22;
+            document.getElementsByClassName("circle")[i].style.left = positionOfBall[i].toString() + "px";
+            audioClick.play();
+            switch(i){
+                case 0:
+                    audioBackgroundMusic.volume = audioBackgroundMusic.volume + 0.02;
+                    break;
+                case 1:
+                    audioClick.volume = audioClick.volume + 0.1;
+                    audioGameOver.volume = audioGameOver.volume + 0.1;
+                    break;
+            }
+        }
+    })
+
+    document.getElementsByClassName("reduce")[i].addEventListener("click", () => {
+        if (positionOfBall[i] > 22.5){
+            positionOfBall[i] = positionOfBall[i] - 22;
+            document.getElementsByClassName("circle")[i].style.left = positionOfBall[i].toString() + "px";
+            audioClick.play();
+            switch(i){
+                case 0:
+                    audioBackgroundMusic.volume = audioBackgroundMusic.volume - 0.02;
+                    break;
+                case 1:
+                    audioClick.volume = audioClick.volume + 0.1;
+                    audioGameOver.volume = audioGameOver.volume - 0.1;
+                    break;
+            }
+        }
+    })
+}
+
+/*Sound Effects*/
+document.getElementById("ball2").addEventListener("click", () => {
+    if (audioClick.muted == false || audioGameOver.muted == false){
+        audioClick.muted = true;
+        audioGameOver.muted = true;
+        document.getElementById("ball2").style.right = "39px";
+        document.getElementById("ball2").src = "./Images/off.png";
+    } else{
+        audioClick.muted = false;
+        audioGameOver.muted = false;
+        document.getElementById("ball2").style.right = "15px";
+        document.getElementById("ball2").src = "./Images/on.png";
+    }
+})
+
+
+
+/*Game Logic and Mechanics*/
+let counts, timeds, countingDown, difficulty, count, time, popss, isPaused;
 let counter = 0;
+let countdown = 3;
+let score = 0;
+let highScore;
 let isClicked = [false, false, false, false, false, false, false, false, false];
+let isClicked2 = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
+let isStillCounting = true;
 
 for (let i = 0; i < 9; i++){
     document.getElementsByClassName("mole")[i].addEventListener("click", () => {
@@ -78,10 +441,6 @@ const popping = () => {
     }
 }
 
-let counts, timeds, countingDown, difficulty, count, time, popss;
-let isStillCounting = true;
-let countdown = 3;
-let isClicked2 = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
 let easy1 = document.getElementById("easy");
 let medium1 = document.getElementById("medium");
 let hard1 = document.getElementById("hard");
@@ -121,6 +480,7 @@ const countDown = () => {
 
 const pause = () => {
     if (document.querySelector("#pause-container i").classList[1] == "fa-pause"){
+        console.log(isPaused)
         isPaused = true;
         document.querySelector("#pause-container i").classList.replace("fa-pause", "fa-play");
     } else if (document.querySelector("#pause-container i").classList[1] == "fa-play"){
@@ -129,10 +489,45 @@ const pause = () => {
     }
 }
 
+const selectHighScore = (listArray) => {
+    switch(counts){
+        case 1:
+            selectHighScoreAsTime(Object.values(listArray[0]));
+            break;
+        case 2:
+            selectHighScoreAsTime(Object.values(listArray[1]));
+            break;
+        case 3:
+            selectHighScoreAsTime(Object.values(listArray[2]));
+            break;
+    }
+}
+
+const selectHighScoreAsTime = (v) => {
+    switch(count){
+        case 1:
+            highScore = Object.keys(v[0])[0];
+            break;
+        case 2:
+            highScore = Object.keys(v[1])[0];
+            break;
+        case 3:
+            highScore = Object.keys(v[2])[0];
+            break;
+        case 4:
+            highScore = Object.keys(v[3])[0];
+            break;
+        case 5:
+            highScore = Object.keys(v[4])[0];
+            break;
+    }
+}
+
 document.getElementById("begin").addEventListener("click", () => {
     if (count == undefined || counts == undefined){
         alert("Please select both a difficulty level and timelimit")
     } else {
+        selectHighScore(listArray);
         begin();
     }
 })
@@ -142,6 +537,7 @@ document.getElementById("pause-container").addEventListener("click", () => {
 })
 
 document.getElementById("settings-container").addEventListener("click", () => {
+    console.log(isPaused)
     if (isPaused == false){
         pause();
     }
@@ -275,10 +671,15 @@ twoforty1.addEventListener("click", () => {
 const reset = () => {
     counter = 0;
     countdown = 3; 
-    clearInterval (timeds);
-    clearInterval(popss)
-    document.getElementById("timer").textContent = "0";
+    clearInterval(timeds);
+    clearInterval(popss);
+    document.getElementById("score").textContent = "0";
     document.getElementById("countdown").textContent = "3";
+    document.getElementById("timer").textContent = "0";
+    document.getElementById("highscore").textContent = "0";
+    for(let i = 0; i < document.getElementsByClassName("g-option").length; i++){
+        document.getElementsByClassName("g-option")[i].classList.remove("fadein");
+    }
     if (document.querySelector("#pause-container i").classList[1] == "fa-play"){
         isPaused = false;
         document.querySelector("#pause-container i").classList.replace("fa-play", "fa-pause");
@@ -298,27 +699,30 @@ const gameOver = () => {
     }, 200)
     setTimeout(()=>{
         document.querySelector(".gameover h1").style.display = "flex";
+        document.getElementsByClassName("gameoverbuttons")[0].style.display = "flex";
         document.querySelector(".gameover h1").classList.add("blinking");
         setTimeout(()=>{
             document.querySelector(".gameover h1").classList.remove("blinking");
-
-            // document.getElementsByClassName("gameover-content")[0].style.display = "flex";
-            document.getElementsByClassName("gameover-content")[0].classList.add("fadein");
-            // document.getElementsByClassName("gameoverbuttons")[0].style.display = "flex";
-            document.getElementsByClassName("gameoverbuttons")[0].classList.add("fadein");
-    
+            document.getElementsByClassName("gameoverscore")[0].classList.add("fadein");
             playerScoreAnimation();
-    
-            highScoreAnimation();
+            setTimeout(()=>{
+                document.getElementsByClassName("gameoverhighscore")[0].classList.add("fadein");
+                highScoreAnimation();
+                setTimeout(()=>{
+                    document.getElementsByClassName("gameoverdifficulty")[0].classList.add("fadein");
+                    setTimeout(()=>{
+                        document.getElementsByClassName("gameovertime")[0].classList.add("fadein");
+                    }, 1000)
+                }, 1000)
+            }, 1000)
         }, 1000)
-
-    }, 1000)
+    }, 1500)
 }
 
 const timer = () => {
     if (time > 0 && !isPaused) {
-        time--;
         document.getElementById("timer").textContent = time;
+        time--;
     }
     if (time == 0) {
         clearInterval(timeds);
@@ -328,9 +732,6 @@ const timer = () => {
     }
 }
 
-let score = 0;
-let highScore = 40;
-
 const playerScoreAnimation = () => {
     setTimeout(() => {
         // ondecoded();
@@ -339,12 +740,13 @@ const playerScoreAnimation = () => {
                 document.getElementById("score").textContent = score;
                 score++;
             } else if (score > document.getElementById("counter").innerHTML){
+                score = 0;
                 clearInterval(playerInterval);
                 if (isStillCounting != false && highScore < document.getElementById("counter").innerHTML){
                     isStillCounting = false;
                 }
             }
-        }, 80)
+        }, 100)
     }, 200);
 }
 
@@ -355,12 +757,13 @@ const highScoreAnimation = () => {
                 document.getElementById("highscore").textContent = score;
                 score++;
             } else if (score > highScore){
+                score = 0;
                 clearInterval(playerInterval);
                 if (isStillCounting != false && highScore > document.getElementById("counter").innerHTML){
                     isStillCounting = false;
                 }
             }
-        }, 80)
+        }, 100)
     }, 400)
 }
 
@@ -399,6 +802,7 @@ const selection = () => {
             break;
         case 2:
             document.getElementById("timesetting").innerHTML = "60s";
+            break;
         case 3:
             document.getElementById("timesetting").innerHTML = "120s";
             break;
@@ -416,8 +820,23 @@ document.getElementById("menu-container").addEventListener("click", () => {
 })
 
 document.getElementById("playagain").addEventListener("click", () => {
-    alert(time);
     document.getElementById("gameover").style.display = "none";
+    switch(count){
+        case 1:
+            time = 30;
+            break;
+        case 2:
+            time = 60;
+        case 3:
+            time = 120;
+            break;
+        case 4:
+            time = 18;
+            break;
+        case 5:
+            time = 240;
+            break;
+    }
     reset();
     begin();
 })
@@ -426,364 +845,3 @@ document.getElementById("menu").addEventListener("click", () => {
     menu();
     document.getElementById("gameover").style.display = "none";
 })
-
-
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
-  import { getDatabase, ref, get, set, child } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
-
-  let listArray = [];
-  let difficultyScores, difficultyNames;
-  let number, name, scores, b;
-  let index = 0;
-  let n = 0;
-  let difficultyScoreList;
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyBXSptTREJ4JvPwhmwX1JdYcYBhgOrIVn8",
-    authDomain: "whack-a-mole-9bdcc.firebaseapp.com",
-    projectId: "whack-a-mole-9bdcc",
-    storageBucket: "whack-a-mole-9bdcc.appspot.com",
-    messagingSenderId: "774401565017",
-    appId: "1:774401565017:web:3300cd36256d4afffdec48",
-    measurementId: "G-RWN641EXW2"
-  };
-
-  const app = initializeApp(firebaseConfig);
-
-  const dbRef = ref(getDatabase());
-  get(child(dbRef, `/`)).then((snapshot) => {
-    if (snapshot.exists()) {
-        listArray = Object.values(snapshot.val());
-        constructLeaderboard(listArray);
-    } else {
-        document.getElementsByClassName("error-message")[0].style.height = "100%";
-        document.querySelector(".error-message h3").textContent = "No data available";
-    }
-  }).catch((error) => {
-    document.getElementsByClassName("error-message")[0].style.height = "100%";
-    document.querySelector(".error-message h3").innerHTML = error.message;
-  });
-
-
-const constructLeaderboard = () => {
-    for (let b = 0; b < 18; b++){
-        let score = document.createElement("div");
-        score.className = "score";
-        document.getElementsByClassName("scorer-main")[0].appendChild(score);
-
-        for (let z = 0; z < 10; z++){
-            let scorer = document.createElement("div");
-            scorer.className = "scorer";
-            document.getElementsByClassName("score")[b].appendChild(scorer);
-        }
-
-        let title = document.createElement("div");
-        title.className = "title";
-        document.getElementsByClassName("titles-main")[0].appendChild(title);
-
-        for (let z = 0; z < 3; z++){
-            let titles = document.createElement("h1");
-            document.getElementsByClassName("title")[b].appendChild(titles);
-        }
-    }
-
-    for (let b = 0; b < document.querySelectorAll(".title h1").length; b++){
-        if (b % 3 == 0){
-            document.querySelectorAll(".title h1")[b].textContent = "High Scores";
-        } else if ((b % 3 == 2) && (Math.floor(b/3) < 6)){
-            document.querySelectorAll(".title h1")[b].textContent = "(Easy)";
-        } else if ((b % 3 == 2) && (((Math.floor(b/3) >= 6)) && ((Math.floor(b/3) < 12)))){
-            document.querySelectorAll(".title h1")[b].textContent = "(Medium)";
-        } else if ((b % 3 == 2) && (((Math.floor(b/3) >= 12)) && ((Math.floor(b/3) < 18)))){
-            document.querySelectorAll(".title h1")[b].textContent = "(Hard)";
-        } else if (b == 1 || b == 19 || b == 37){
-            document.querySelectorAll(".title h1")[b].textContent = "30s";
-        } else if (b == 4 || b == 22 || b == 40) {
-            document.querySelectorAll(".title h1")[b].textContent = "60s";
-        } else if (b == 7 || b == 25 || b == 43) {
-            document.querySelectorAll(".title h1")[b].textContent = "120s";
-        } else if (b == 10 || b == 28 || b == 46) {
-            document.querySelectorAll(".title h1")[b].textContent = "180s";
-        } else if (b == 13 || b == 31 || b == 49) {
-            document.querySelectorAll(".title h1")[b].textContent = "240s";
-         }else if (b == 16 || b == 34 || b == 52) {
-            document.querySelectorAll(".title h1")[b].textContent = "360s";
-        }
-    }
-
-    for (let a = 0; a < document.getElementsByClassName("scorer").length; a++){  
-        number =  document.createElement("h4");  
-        if (a % 10 == 0){
-            index = 0; 
-        }
-        number.innerHTML = index + 1;
-        document.getElementsByClassName("scorer")[a].appendChild(number);
-
-        name = document.createElement("h4");
-        name.className = "name";
-        document.getElementsByClassName("scorer")[a].appendChild(name);
-
-        scores = document.createElement("h5");
-        document.getElementsByClassName("scorer")[a].appendChild(scores);
-        index++;
-    }
-
-    for (let i = 0; i < listArray.length; i++){
-        attachListToBoard(listArray[i])
-    }
-}
-
-const scoreSorting = (difficultyScoreList) => {
-    difficultyScores = Object.keys(difficultyScoreList);
-    difficultyScores.reverse(); //Reaarranges the scores from back to front instead
-}
-
-const nameSorting = (difficultyScoreList) => {
-    difficultyNames = Object.values(difficultyScoreList);
-    difficultyNames.reverse();  //Reaarranges the names from back to front instead
-}
-
-const attachListToBoard = (listArray) => {
-    difficultyScoreList = Object.values(listArray);
-    overallSorting(difficultyScoreList);
-}
-
-
-const overallSorting = (difficultyScoreList) => {
-    for (let i = 0; i < difficultyScoreList.length; i++){
-        switch (i){
-            case 0:
-                scoreSorting(difficultyScoreList[i]);
-                nameSorting(difficultyScoreList[i]);
-                    for (let a = 0; a < difficultyScores.length; a++){
-                        if (n == 0){
-                            b = a;
-                        } else if (n == 1){
-                            b = a + 60;
-                        } else if (n == 2){
-                            b = a + 120;
-                        }
-                        document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
-                        document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
-                    }
-                break;
-            case 1:
-                scoreSorting(difficultyScoreList[i]);
-                nameSorting(difficultyScoreList[i]);
-                for (let a = 0; a < difficultyScores.length; a++){
-                    if (n == 0){
-                        b = a + 10;
-                    } else if (n == 1){
-                        b = a + 70;
-                    } else if (n == 2){
-                        b = a + 130;
-                    }
-                    document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
-                    document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
-                }
-                break;
-            case 2:
-                scoreSorting(difficultyScoreList[i]);
-                nameSorting(difficultyScoreList[i]);
-                for (let a = 0; a < difficultyScores.length; a++){
-                    if (n == 0){
-                        b = a + 20;
-                    } else if (n == 1){
-                        b = a + 80;
-                    } else if (n == 2){
-                        b = a + 140;
-                    }
-                    document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
-                    document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
-                }
-                break;
-            case 3:
-                scoreSorting(difficultyScoreList[i]);
-                nameSorting(difficultyScoreList[i]);
-                for (let a = 0; a < difficultyScores.length; a++){
-                    if (n == 0){
-                        b = a + 30;
-                    } else if (n == 1){
-                        b = a + 90;
-                    } else if (n == 2){
-                        b = a + 150;
-                    }
-                    document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
-                    document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
-                }
-                break;
-            case 4:
-                scoreSorting(difficultyScoreList[i]);
-                nameSorting(difficultyScoreList[i]);
-                for (let a = 0; a < difficultyScores.length; a++){
-                    if (n == 0){
-                        b = a + 40;
-                    } else if (n == 1){
-                        b = a + 100;
-                    } else if (n == 2){
-                        b = a + 160;
-                    }
-                    document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
-                    document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
-                }
-                break;
-            case 5:
-                scoreSorting(difficultyScoreList[i]);
-                nameSorting(difficultyScoreList[i]);
-                for (let a = 0; a < difficultyScores.length; a++){
-                    if (n == 0){
-                        b = a + 50;
-                    } else if (n == 1){
-                        b = a + 110;
-                    } else if (n == 2){
-                        b = a + 170;
-                    }
-                    document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
-                    document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
-                }
-                break;
-        }
-    }
-    n++;
-}
-
-
-/*Sound System*/
-
-let LIMIT = 1; // Allows the program to start playing the audio only once as there are other sound buttons
-let audioBackgroundMusic = new Audio('/Sound Effects/backgroundmusic.mp3');
-audioBackgroundMusic.volume = 0.02;
-audioBackgroundMusic.loop = true;
-
-let audioClick = new Audio('./Sound Effects/click.mp3');
-let audioGameOver =  new Audio('./Sound Effects/Gameover.mp3');
-
-let icon = document.getElementsByTagName("i");
-
-document.getElementById("start").addEventListener("click", () => {
-    document.getElementById("instructions").style.display = "flex";
-    document.getElementById("introduction").style.display = "none";
-    
-    if (LIMIT == 1){
-        audioBackgroundMusic.play();
-        LIMIT += 1;
-    }
-})
-
-// let aCtx = new AudioContext(); // here is the real audioBuffer to sound part
-
-
-// let xhr = new XMLHttpRequest();
-// xhr.onload = function() {
-//   aCtx.decodeAudioData(this.response, ondecoded);
-// };
-// xhr.responseType = 'arraybuffer';
-// xhr.open('get', './Sound Effects/ES_Video Game Score Tally.mp3');
-// xhr.send();
-
-// const ondecoded = (buf) => {
-//     let source = aCtx.createBufferSource();
-//     source.buffer = buf;
-//     source.loop = true;
-//     source.connect(aCtx.destination);
-//     source.start(0);
-//     let tempInterval = setInterval(()=>{
-//         if (isStillCounting == false){
-//             source.stop(0);
-//             clearInterval(tempInterval);
-//         }
-//     }, 10)
-// }    
-
-for (let i = 0; i < document.getElementsByClassName("sound").length; i++ ){
-    document.getElementsByClassName("sound")[i].addEventListener("mouseover", () => {
-        document.getElementsByClassName("circle-image")[i].src = "./images/circle slab hover.svg";
-    })
-    
-    document.getElementsByClassName("sound")[i].addEventListener("mouseout", () => {
-        document.getElementsByClassName("circle-image")[i].src = "./images/circle slab.svg";
-    })
-    
-    document.getElementsByClassName("sound")[i].addEventListener("click", () => {
-        if (LIMIT == 1){
-            audioBackgroundMusic.play();
-            LIMIT += 1;
-        }
-    
-        if (icon[2].classList[1] == "fa-volume-xmark") {
-            for(let i = 2; i < 7; i++){
-                icon[i].classList.replace("fa-volume-xmark", "fa-volume-high");
-            }
-            audioBackgroundMusic.muted = false;
-        } else {
-            for(let i = 2; i < 7; i++){
-                icon[i].classList.replace("fa-volume-high", "fa-volume-xmark")
-            }
-            audioBackgroundMusic.muted = true;
-        }
-    })
-}
-
-
-for (let i = 0; i < document.getElementsByClassName("click").length; i++){
-    document.getElementsByClassName("click")[i].addEventListener("click", () => {
-        audioClick.play();
-    })
-}
-
-/*Sound Settings*/
-let positionOfBall = [22.5, 220.5]
-
-for(let i = 0; i < document.getElementsByClassName("reduce").length; i++){
-    document.getElementsByClassName("increase")[i].addEventListener("click", () => {
-        if (positionOfBall[i] < 220.5){
-            positionOfBall[i] = positionOfBall[i] + 22;
-            document.getElementsByClassName("circle")[i].style.left = positionOfBall[i].toString() + "px";
-            audioClick.play();
-            switch(i){
-                case 0:
-                    audioBackgroundMusic.volume = audioBackgroundMusic.volume + 0.02;
-                    break;
-                case 1:
-                    audioClick.volume = audioClick.volume + 0.1;
-                    audioGameOver.volume = audioGameOver.volume + 0.1;
-                    break;
-            }
-        }
-    })
-
-    document.getElementsByClassName("reduce")[i].addEventListener("click", () => {
-        if (positionOfBall[i] > 22.5){
-            positionOfBall[i] = positionOfBall[i] - 22;
-            document.getElementsByClassName("circle")[i].style.left = positionOfBall[i].toString() + "px";
-            audioClick.play();
-            switch(i){
-                case 0:
-                    audioBackgroundMusic.volume = audioBackgroundMusic.volume - 0.02;
-                    break;
-                case 1:
-                    audioClick.volume = audioClick.volume + 0.1;
-                    audioGameOver.volume = audioGameOver.volume - 0.1;
-                    break;
-            }
-        }
-    })
-}
-/*Sound Effects*/
-document.getElementById("ball2").addEventListener("click", () => {
-    if (audioClick.muted == false || audioGameOver.muted == false){
-        audioClick.muted = true;
-        audioGameOver.muted = true;
-        document.getElementById("ball2").style.right = "39px";
-        document.getElementById("ball2").src = "./Images/off.png";
-    } else{
-        audioClick.muted = false;
-        audioGameOver.muted = false;
-        document.getElementById("ball2").style.right = "15px";
-        document.getElementById("ball2").src = "./Images/on.png";
-    }
-})
-
-
-
