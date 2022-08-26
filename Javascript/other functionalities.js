@@ -231,7 +231,7 @@ let titlesMainOrigin = 0;
 let scorerMainOrigin = 0;
 
 document.getElementById("move-left").addEventListener("click", () => {
-    if(currentSlide <= 17 && currentSlide >= 1){
+    if(currentSlide <= 14 && currentSlide >= 1){
         titlesMainOrigin = titlesMainOrigin + 100;
         scorerMainOrigin = scorerMainOrigin + 192;
         document.getElementsByClassName("titles-main")[0].style.left = `${titlesMainOrigin}px`;
@@ -241,7 +241,7 @@ document.getElementById("move-left").addEventListener("click", () => {
 })
 
 document.getElementById("move-right").addEventListener("click", () => {
-    if(currentSlide <= 16 && currentSlide >= 0){
+    if(currentSlide <= 13 && currentSlide >= 0){
         titlesMainOrigin = titlesMainOrigin - 100;
         scorerMainOrigin = scorerMainOrigin - 192;
         document.getElementsByClassName("titles-main")[0].style.left = `${titlesMainOrigin}px`;

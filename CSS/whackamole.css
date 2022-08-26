@@ -153,7 +153,7 @@ button:hover{
     z-index: 7;
     height: inherit;
     width: inherit;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -616,7 +616,7 @@ button:hover{
 
 
 #game{
-    display: none;
+    display: flex;
     min-height: 100vh;
     width: 100%;
     position: relative;
@@ -1067,7 +1067,7 @@ button:hover{
 }
 
 #gameover{
-    display: none;
+    display: flex;
     background-color: unset;
     z-index: 2;
 }
@@ -1220,6 +1220,18 @@ button:hover{
 
 .g-option h3{
     font-size: 25px;
+}
+
+.congratulations{
+    width: 700px;
+    height: 200px;
+    position: absolute;
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .setting-container{

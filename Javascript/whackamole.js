@@ -8,6 +8,7 @@ let number, name, scores, b;
 let index = 0;
 let n = 0;
 let difficultyScoreList;
+let isOffline;
 
 const firebaseConfig = {
   apiKey: "AIzaSyBXSptTREJ4JvPwhmwX1JdYcYBhgOrIVn8",
@@ -26,6 +27,7 @@ get(child(dbRef, `/`)).then((snapshot) => {
   if (snapshot.exists()) {
       listArray = Object.values(snapshot.val());
       constructLeaderboard(listArray);
+      isOffline = false;
   } else {
       document.getElementsByClassName("error-message")[0].style.height = "100%";
       document.querySelector(".error-message h3").textContent = "No data available";
@@ -33,11 +35,12 @@ get(child(dbRef, `/`)).then((snapshot) => {
 }).catch((error) => {
   document.getElementsByClassName("error-message")[0].style.height = "100%";
   document.querySelector(".error-message h3").innerHTML = error.message;
+  isOffline = true;
 });
 
 
 const constructLeaderboard = () => {
-  for (let b = 0; b < 18; b++){
+  for (let b = 0; b < 15; b++){
       let score = document.createElement("div");
       score.className = "score";
       document.getElementsByClassName("scorer-main")[0].appendChild(score);
@@ -61,31 +64,29 @@ const constructLeaderboard = () => {
   for (let b = 0; b < document.querySelectorAll(".title h1").length; b++){
       if (b % 3 == 0){
           document.querySelectorAll(".title h1")[b].textContent = "High Scores";
-      } else if ((b % 3 == 2) && (Math.floor(b/3) < 6)){
+      } else if ((b % 3 == 2) && (Math.floor(b/3) < 5)){
           document.querySelectorAll(".title h1")[b].textContent = "(Easy)";
-      } else if ((b % 3 == 2) && (((Math.floor(b/3) >= 6)) && ((Math.floor(b/3) < 12)))){
+      } else if ((b % 3 == 2) && (((Math.floor(b/3) >= 5)) && ((Math.floor(b/3) < 10)))){  
           document.querySelectorAll(".title h1")[b].textContent = "(Medium)";
-      } else if ((b % 3 == 2) && (((Math.floor(b/3) >= 12)) && ((Math.floor(b/3) < 18)))){
+      } else if ((b % 3 == 2) && (((Math.floor(b/3) >= 10)) && ((Math.floor(b/3) < 15)))){
           document.querySelectorAll(".title h1")[b].textContent = "(Hard)";
-      } else if (b == 1 || b == 19 || b == 37){
+      } else if (b == 1 || b == 16 || b == 31){
           document.querySelectorAll(".title h1")[b].textContent = "30s";
-      } else if (b == 4 || b == 22 || b == 40) {
+      } else if (b == 4 || b == 19 || b == 34) {
           document.querySelectorAll(".title h1")[b].textContent = "60s";
-      } else if (b == 7 || b == 25 || b == 43) {
+      } else if (b == 7 || b == 22 || b == 37) {
           document.querySelectorAll(".title h1")[b].textContent = "120s";
-      } else if (b == 10 || b == 28 || b == 46) {
+      } else if (b == 10 || b == 25 || b == 40) {
           document.querySelectorAll(".title h1")[b].textContent = "180s";
-      } else if (b == 13 || b == 31 || b == 49) {
+      } else if (b == 13 || b == 28 || b == 43) {
           document.querySelectorAll(".title h1")[b].textContent = "240s";
-       }else if (b == 16 || b == 34 || b == 52) {
-          document.querySelectorAll(".title h1")[b].textContent = "360s";
-      }
+       }
   }
 
   for (let a = 0; a < document.getElementsByClassName("scorer").length; a++){  
       number =  document.createElement("h4");  
       if (a % 10 == 0){
-          index = 0; 
+        index = 0; 
       }
       number.innerHTML = index + 1;
       document.getElementsByClassName("scorer")[a].appendChild(number);
@@ -119,9 +120,9 @@ const overallSorting = (difficultyScoreList) => {
                         if (n == 0){
                             b = a;
                         } else if (n == 1){
-                            b = a + 60;
+                            b = a + 50;
                         } else if (n == 2){
-                            b = a + 120;
+                            b = a + 100;
                         }
                         document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
                         document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
@@ -134,9 +135,9 @@ const overallSorting = (difficultyScoreList) => {
                     if (n == 0){
                         b = a + 10;
                     } else if (n == 1){
-                        b = a + 70;
+                        b = a + 60;
                     } else if (n == 2){
-                        b = a + 130;
+                        b = a + 110;
                     }
                     document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
                     document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
@@ -149,9 +150,9 @@ const overallSorting = (difficultyScoreList) => {
                     if (n == 0){
                         b = a + 20;
                     } else if (n == 1){
-                        b = a + 80;
+                        b = a + 70;
                     } else if (n == 2){
-                        b = a + 140;
+                        b = a + 120;
                     }
                     document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
                     document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
@@ -164,9 +165,9 @@ const overallSorting = (difficultyScoreList) => {
                     if (n == 0){
                         b = a + 30;
                     } else if (n == 1){
-                        b = a + 90;
+                        b = a + 80;
                     } else if (n == 2){
-                        b = a + 150;
+                        b = a + 130;
                     }
                     document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
                     document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
@@ -179,24 +180,9 @@ const overallSorting = (difficultyScoreList) => {
                     if (n == 0){
                         b = a + 40;
                     } else if (n == 1){
-                        b = a + 100;
+                        b = a + 90;
                     } else if (n == 2){
-                        b = a + 160;
-                    }
-                    document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
-                    document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
-                }
-                break;
-            case 5:
-                scoreSorting(difficultyScoreList[i]);
-                nameSorting(difficultyScoreList[i]);
-                for (let a = 0; a < difficultyScores.length; a++){
-                    if (n == 0){
-                        b = a + 50;
-                    } else if (n == 1){
-                        b = a + 110;
-                    } else if (n == 2){
-                        b = a + 170;
+                        b = a + 140;
                     }
                     document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
                     document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
@@ -357,7 +343,8 @@ document.getElementById("ball2").addEventListener("click", () => {
 
 
 /*Game Logic and Mechanics*/
-let counts, timeds, countingDown, difficulty, count, time, popss, isPaused;
+let counts, timeds, countingDown, difficulty, count, time, popss;
+let isPaused = false;
 let counter = 0;
 let countdown = 3;
 let score = 0;
@@ -480,7 +467,6 @@ const countDown = () => {
 
 const pause = () => {
     if (document.querySelector("#pause-container i").classList[1] == "fa-pause"){
-        console.log(isPaused)
         isPaused = true;
         document.querySelector("#pause-container i").classList.replace("fa-pause", "fa-play");
     } else if (document.querySelector("#pause-container i").classList[1] == "fa-play"){
@@ -527,7 +513,11 @@ document.getElementById("begin").addEventListener("click", () => {
     if (count == undefined || counts == undefined){
         alert("Please select both a difficulty level and timelimit")
     } else {
-        selectHighScore(listArray);
+        if (isOffline){
+            highScore = null;
+        } else if (isOffline == false){
+            selectHighScore(listArray);
+        }
         begin();
     }
 })
@@ -537,7 +527,6 @@ document.getElementById("pause-container").addEventListener("click", () => {
 })
 
 document.getElementById("settings-container").addEventListener("click", () => {
-    console.log(isPaused)
     if (isPaused == false){
         pause();
     }
@@ -752,18 +741,22 @@ const playerScoreAnimation = () => {
 
 const highScoreAnimation = () => {
     setTimeout(()=>{
-        let playerInterval = setInterval(()=>{
-            if (score <= highScore){
-                document.getElementById("highscore").textContent = score;
-                score++;
-            } else if (score > highScore){
-                score = 0;
-                clearInterval(playerInterval);
-                if (isStillCounting != false && highScore > document.getElementById("counter").innerHTML){
-                    isStillCounting = false;
+        if (highScore == null){
+            document.getElementById("highscore").textContent = "-";
+        } else {
+            let playerInterval = setInterval(()=>{
+                if (score <= highScore){
+                    document.getElementById("highscore").textContent = score;
+                    score++;
+                } else if (score > highScore){
+                    score = 0;
+                    clearInterval(playerInterval);
+                    if (isStillCounting != false && highScore > document.getElementById("counter").innerHTML){
+                        isStillCounting = false;
+                    }
                 }
-            }
-        }, 100)
+            }, 100)
+        }
     }, 400)
 }
 
