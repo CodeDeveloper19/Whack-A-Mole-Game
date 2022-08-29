@@ -39,13 +39,13 @@
 }
 
 @supports (backdrop-filter: blur()){
-    #results, .instructions, #settings, #gameover{
+    #results, .instructions, #settings, #gameover, #congratulations{
         backdrop-filter: blur(15px);
     } 
 }
 
 @supports not (backdrop-filter: blur()){
-    #results, .instructions, #settings, #gameover{
+    #results, .instructions, #settings, #gameover, #congratulations{
         background-color: rgba(0, 0, 0, 0.7);
     }
 }
@@ -104,7 +104,7 @@
     right: 0;
 }
 
-.settings, #instructions12, .result, #credits, #instructions-0{
+.settings, #instructions12, .result, #credits, #instructions-0, #congratulations{
     font-family: 'MisterVampire';
 }
 
@@ -595,7 +595,7 @@ button:hover{
     top: 470px;
 }
 
-.fa-solid, .button>p, .settings p, .okay-button p, .gameoverbuttons p{
+.fa-solid, .button>p, .settings p, .okay-button p, .gameoverbuttons p, .congratulation p{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -647,7 +647,7 @@ button:hover{
 }
 
 
-#delay, #gameover{
+#delay, #gameover, #congratulations{
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
@@ -1066,7 +1066,7 @@ button:hover{
     animation: menu-animation var(--animation-duration)  linear;
 }
 
-#gameover{
+#gameover, #congratulations{
     display: flex;
     background-color: unset;
     z-index: 2;
@@ -1222,16 +1222,115 @@ button:hover{
     font-size: 25px;
 }
 
+#congratulations{
+    z-index: 3;
+}
+
 .congratulations{
-    width: 700px;
-    height: 200px;
+    width: 750px;
+    height: 500px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.second-board{
     position: absolute;
-    /* top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
+}
+
+.left-side, .right-side{
+    height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    z-index: 1;
+}
+
+.left-side{
+    width: 40%;
+    display: unset;
+    animation: pulsing 3s ease-in-out infinite;
+}
+
+@keyframes pulsing {
+    0% {
+        transform: scale(1);
+    }
+
+    50%{
+        transform: scale(1.1);
+    }
+
+    100%{
+        transform: scale(1);
+    }
+}
+
+.trophy{
+    width: 100px;
+    position: relative;
+    top: 30%;
+    left: 40%;
+}
+
+.star-container{
+    width: 150px;
+    height: 40px;
+    position: relative;
+    top: 30%;
+    left: 40%;
+    display: flex;
+    flex-direction: row;
+    border-radius: 50%;
+}
+
+.star:nth-child(odd){
+    width: 30px;
+}
+
+.right-side{
+    width: 60%;
+}
+
+.congratulation{
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 30%;
+    position: absolute;
+    left: 50%;
+}
+
+.congratulation:nth-child(1){
+    top: 20%;
+}
+
+.congratulation:nth-child(2){
+    top: 30%;
+}
+
+.congratulation:nth-child(3){
+    flex-direction: column;
+    text-align: center;
+    height: 15%;
+    font-size: 15px;
+    top: 40%;
+    left: 40%;
+    width: 50%;
+}
+
+.congratulation:nth-child(4){
+    top: 60%;
+    height: 8%;
+    width: 30%;
+}
+
+.sure, .nah{
+    width: 45%;
+    height: 100%;
+    position: relative;
+    color: white;
 }
 
 .setting-container{

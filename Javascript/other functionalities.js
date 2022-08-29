@@ -249,3 +249,7 @@ document.getElementById("move-right").addEventListener("click", () => {
         currentSlide++;
     }
 })
+
+document.getElementsByClassName("nah")[0].addEventListener("click", () => {
+    document.getElementById("congratulations").style.display = "none";
+})
