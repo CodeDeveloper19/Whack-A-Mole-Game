@@ -250,6 +250,11 @@ document.getElementById("move-right").addEventListener("click", () => {
     }
 })
 
-document.getElementsByClassName("nah")[0].addEventListener("click", () => {
+document.getElementsByClassName("yanah")[1].addEventListener("click", () => {
     document.getElementById("congratulations").style.display = "none";
 })
+
+document.getElementsByClassName("yanah")[0].addEventListener("click", () => {
+    document.getElementsByClassName("congratulation-list")[0].style.left = "-100%";
+})
+

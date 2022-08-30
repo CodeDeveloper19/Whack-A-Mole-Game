@@ -212,6 +212,7 @@ audioBackgroundMusic.loop = true;
 
 let audioClick = new Audio('./Sound Effects/click.mp3');
 let audioGameOver =  new Audio('./Sound Effects/Gameover.mp3');
+let audioVictory = new Audio("./Sound Effects/victory.mp3");
 
 let icon = document.getElementsByTagName("i");
 
@@ -681,8 +682,7 @@ const moleDieingSound = () => {
     audio1.play();
 }
 
-const gameOver = () => {
-    audioGameOver.play();
+const gameOverAnimation = () => { 
     setTimeout(()=>{
         document.getElementById("gameover").style.display = "flex";
     }, 200)
@@ -708,6 +708,21 @@ const gameOver = () => {
     }, 1500)
 }
 
+const gameOver = () => {
+    console.log(document.getElementById("counter").innerHTML);
+    console.log(document.getElementById("highscore").innerHTML);
+    if (document.getElementById("counter").innerHTML < document.getElementById("highscore").innerHTML){
+        audioGameOver.play();
+        gameOverAnimation();
+    } else if (document.getElementById("counter").innerHTML > document.getElementById("highscore").innerHTML){
+        audioVictory.play();
+        gameOverAnimation();
+        checkLeaderboard();
+        document.querySelectorAll("congratulation h4")[1].innerHTML = document.getElementById("counter").innerHTML;
+        document.getElementById("congratulations").style.display = "flex";
+    }
+}
+
 const timer = () => {
     if (time > 0 && !isPaused) {
         document.getElementById("timer").textContent = time;
@@ -719,6 +734,10 @@ const timer = () => {
         selection();
         gameOver();
     }
+}
+
+const checkLeaderboard = () => {
+
 }
 
 const playerScoreAnimation = () => {
@@ -837,4 +856,9 @@ document.getElementById("playagain").addEventListener("click", () => {
 document.getElementById("menu").addEventListener("click", () => {
     menu();
     document.getElementById("gameover").style.display = "none";
+})
+
+document.getElementsByClassName("sure")[0].addEventListener("click", () => {
+    document.getElementById("congratulations").style.display = "none";
+    document.getElementsByClassName("congratulation-list")[0].style.left = "100%";
 })
