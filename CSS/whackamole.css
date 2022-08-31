@@ -960,7 +960,6 @@ button:hover{
     z-index: 1;
     position: relative;
     top: 100px;
-    /* top: 30px; */
     width: 60%;
     height: 80px;
 }
@@ -1233,6 +1232,7 @@ button:hover{
     display: flex;
     flex-direction: row;
     align-items: center;
+    animation: menu-animation var(--animation-duration) linear;
 }
 
 .second-board{

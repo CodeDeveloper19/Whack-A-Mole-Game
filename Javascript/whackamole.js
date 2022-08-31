@@ -349,7 +349,7 @@ let isPaused = false;
 let counter = 0;
 let countdown = 3;
 let score = 0;
-let highScore;
+let highScore, scoreArray;
 let isClicked = [false, false, false, false, false, false, false, false, false];
 let isClicked2 = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
 let isStillCounting = true;
@@ -709,17 +709,17 @@ const gameOverAnimation = () => {
 }
 
 const gameOver = () => {
-    console.log(document.getElementById("counter").innerHTML);
-    console.log(document.getElementById("highscore").innerHTML);
-    if (document.getElementById("counter").innerHTML < document.getElementById("highscore").innerHTML){
+    if (document.getElementById("counter").innerHTML < highScore){
         audioGameOver.play();
         gameOverAnimation();
-    } else if (document.getElementById("counter").innerHTML > document.getElementById("highscore").innerHTML){
+    } else if (document.getElementById("counter").innerHTML > highScore){
         audioVictory.play();
         gameOverAnimation();
         checkLeaderboard();
-        document.querySelectorAll("congratulation h4")[1].innerHTML = document.getElementById("counter").innerHTML;
-        document.getElementById("congratulations").style.display = "flex";
+        document.getElementById("second-score").innerHTML = document.getElementById("counter").innerHTML;
+        setTimeout(() => {
+            document.getElementById("congratulations").style.display = "flex";
+        }, 7000)
     }
 }
 
@@ -737,8 +737,47 @@ const timer = () => {
 }
 
 const checkLeaderboard = () => {
-
+    switch(counts){
+        case 1:
+            getScoreList(Object.values(listArray[0]));
+            break;
+        case 2:
+            getScoreList(Object.values(listArray[1]));
+            break;
+        case 3:
+            getScoreList(Object.values(listArray[2]));
+            break;
+    }
 }
+
+const getScoreList = (v) => {
+    switch(count){
+        case 1:
+            scoreArray = Object.keys(v[0]);
+            scoreArray.forEach(e => console.log(e));
+            break;
+        case 2:
+            scoreArray = Object.keys(v[1]);
+            scoreArray.forEach(e => console.log(e));
+            break;
+        case 3:
+            scoreArray = Object.keys(v[2]);
+            scoreArray.forEach(e => console.log(e));
+            break;
+        case 4:
+            scoreArray = Object.keys(v[3]);
+            scoreArray.forEach(e => console.log(e));
+            break;
+        case 5:
+            scoreArray = Object.keys(v[4]);
+            scoreArray.forEach(e => console.log(e));
+            break;
+    }
+}
+
+// const isBigger = (v) => {
+//     console.log(v)
+// }
 
 const playerScoreAnimation = () => {
     setTimeout(() => {
@@ -860,5 +899,5 @@ document.getElementById("menu").addEventListener("click", () => {
 
 document.getElementsByClassName("sure")[0].addEventListener("click", () => {
     document.getElementById("congratulations").style.display = "none";
-    document.getElementsByClassName("congratulation-list")[0].style.left = "100%";
+    document.getElementsByClassName("congratulation-list")[0].style.left = "0%";
 })
