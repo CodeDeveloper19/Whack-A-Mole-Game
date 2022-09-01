@@ -1,14 +1,10 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
-import { getDatabase, ref, get, set, child } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
+import { getDatabase, ref, get, push, update, child } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
 
 let listArray = [];
-let difficultyScores, difficultyNames;
-let number, name, scores, b;
-let index = 0;
-let n = 0;
-let difficultyScoreList;
-let isOffline;
+let difficultyScores, difficultyNames, isOffline, difficultyScoreList, number, name, scores, b;
+let index = 0, n = 0;
 
 const firebaseConfig = {
   apiKey: "AIzaSyBXSptTREJ4JvPwhmwX1JdYcYBhgOrIVn8",
@@ -210,9 +206,8 @@ let audioBackgroundMusic = new Audio('/Sound Effects/backgroundmusic.mp3');
 audioBackgroundMusic.volume = 0.02;
 audioBackgroundMusic.loop = true;
 
-let audioClick = new Audio('./Sound Effects/click.mp3');
-let audioGameOver =  new Audio('./Sound Effects/Gameover.mp3');
-let audioVictory = new Audio("./Sound Effects/victory.mp3");
+let audioGameOver =  new Audio('./Sound Effects/Gameover.mp3'), audioVictory = new Audio("./Sound Effects/victory.mp3"), audioClick = new Audio('./Sound Effects/click.mp3');
+
 
 let icon = document.getElementsByTagName("i");
 
@@ -344,15 +339,10 @@ document.getElementById("ball2").addEventListener("click", () => {
 
 
 /*Game Logic and Mechanics*/
-let counts, timeds, countingDown, difficulty, count, time, popss;
-let isPaused = false;
-let counter = 0;
-let countdown = 3;
-let score = 0;
-let highScore, scoreArray;
-let isClicked = [false, false, false, false, false, false, false, false, false];
-let isClicked2 = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
-let isStillCounting = true;
+let counts, timeds, countingDown, difficulty, count, time, popss, highScore, scoreArray, scorePosition, playerName;
+let isPaused = false, isStillCounting = true;
+let counter = 0, countdown = 3, score = 0;
+let isClicked = [false, false, false, false, false, false, false, false, false], isClicked2 = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
 
 for (let i = 0; i < 9; i++){
     document.getElementsByClassName("mole")[i].addEventListener("click", () => {
@@ -719,7 +709,7 @@ const gameOver = () => {
         document.getElementById("second-score").innerHTML = document.getElementById("counter").innerHTML;
         setTimeout(() => {
             document.getElementById("congratulations").style.display = "flex";
-        }, 7000)
+        }, 7000);
     }
 }
 
@@ -754,30 +744,77 @@ const getScoreList = (v) => {
     switch(count){
         case 1:
             scoreArray = Object.keys(v[0]);
-            scoreArray.forEach(e => console.log(e));
+            isBigger(scoreArray);
             break;
         case 2:
             scoreArray = Object.keys(v[1]);
-            scoreArray.forEach(e => console.log(e));
+            isBigger(scoreArray);
             break;
         case 3:
             scoreArray = Object.keys(v[2]);
-            scoreArray.forEach(e => console.log(e));
+            isBigger(scoreArray);
             break;
         case 4:
             scoreArray = Object.keys(v[3]);
-            scoreArray.forEach(e => console.log(e));
+            isBigger(scoreArray);
             break;
         case 5:
             scoreArray = Object.keys(v[4]);
-            scoreArray.forEach(e => console.log(e));
+            isBigger(scoreArray);
             break;
     }
 }
 
-// const isBigger = (v) => {
-//     console.log(v)
-// }
+const isBigger = (scoreArray) => {
+    for (let i = 0; i < scoreArray.length; i++){
+        if (document.getElementById("counter").innerHTML <= scoreArray[i]){
+            scorePosition = i;
+            assignRanking(scorePosition);
+            break;
+        }
+    }
+}
+ 
+const assignRanking = (scorePosition) => {
+    switch(scorePosition){
+        case 0:
+            document.getElementById("ranking").textContent = "1st";
+            break;
+        case 1:
+            document.getElementById("ranking").textContent = "2nd";
+            break;
+        case 2:
+            document.getElementById("ranking").textContent = "3rd";
+            break;
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+            document.getElementById("ranking").textContent = `${scorePosition + 1}th`;
+            break;
+    }
+}
+
+const insertScore = () => {
+    const db = getDatabase();
+    // update(ref(db, `${counts}/` + count), {
+    //     "7": playerName
+    // }).catch((error) => {
+    //     console.log(error)
+    // });
+    const postData = {
+        "7": playerName
+    };
+  
+    // Write the new post's data simultaneously in the posts list and the user's post list.
+    const updates = {};
+    updates["/0/"+ "1"] = postData;
+  
+    return update(ref(db), updates);
+}
 
 const playerScoreAnimation = () => {
     setTimeout(() => {
@@ -900,4 +937,6 @@ document.getElementById("menu").addEventListener("click", () => {
 document.getElementsByClassName("sure")[0].addEventListener("click", () => {
     document.getElementById("congratulations").style.display = "none";
     document.getElementsByClassName("congratulation-list")[0].style.left = "0%";
+    playerName = document.getElementById("playername").value;
+    insertScore();
 })

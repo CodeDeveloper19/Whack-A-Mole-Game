@@ -109,7 +109,7 @@
 }
 
 .mole:hover, .button:hover{
-    cursor: url('hammericon.cur'), url('/Images/hammericon.png'), pointer;
+    cursor: url('/Images/hammericon.png'), pointer;
 }
 
 .buttons{
