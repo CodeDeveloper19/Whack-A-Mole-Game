@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
-import { getDatabase, ref, get, push, update, child } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
+import { getDatabase, ref, get, update, child } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
 
 let listArray = [];
 let difficultyScores, difficultyNames, isOffline, difficultyScoreList, number, name, scores, b;
@@ -22,6 +22,8 @@ const dbRef = ref(getDatabase());
 get(child(dbRef, `/`)).then((snapshot) => {
   if (snapshot.exists()) {
       listArray = Object.values(snapshot.val());
+    //   Object.delete(listArray[0][0])
+      console.log(listArray)
       constructLeaderboard(listArray);
       isOffline = false;
   } else {
@@ -339,7 +341,7 @@ document.getElementById("ball2").addEventListener("click", () => {
 
 
 /*Game Logic and Mechanics*/
-let counts, timeds, countingDown, difficulty, count, time, popss, highScore, scoreArray, scorePosition, playerName;
+let counts, timeds, countingDown, difficulty, count, time, popss, highScore, scoreArray, scorePosition, playerName, overTakenScore, playerScore;
 let isPaused = false, isStillCounting = true;
 let counter = 0, countdown = 3, score = 0;
 let isClicked = [false, false, false, false, false, false, false, false, false], isClicked2 = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
@@ -699,7 +701,7 @@ const gameOverAnimation = () => {
 }
 
 const gameOver = () => {
-    if (document.getElementById("counter").innerHTML < highScore){
+    if (document.getElementById("counter").innerHTML < highScore || isOffline == true){
         audioGameOver.play();
         gameOverAnimation();
     } else if (document.getElementById("counter").innerHTML > highScore){
@@ -768,6 +770,7 @@ const getScoreList = (v) => {
 const isBigger = (scoreArray) => {
     for (let i = 0; i < scoreArray.length; i++){
         if (document.getElementById("counter").innerHTML <= scoreArray[i]){
+            overTakenScore = scoreArray[i];
             scorePosition = i;
             assignRanking(scorePosition);
             break;
@@ -799,21 +802,24 @@ const assignRanking = (scorePosition) => {
 }
 
 const insertScore = () => {
+    playerScore = document.getElementById("counter").textContent; 
     const db = getDatabase();
-    // update(ref(db, `${counts}/` + count), {
-    //     "7": playerName
-    // }).catch((error) => {
-    //     console.log(error)
-    // });
-    const postData = {
-        "7": playerName
-    };
+    // const postData = {
+    //     listArray
+    // };
+    // const updates = {};
+    // updates["/0/"+ "1/"] = listArray[0];
   
-    // Write the new post's data simultaneously in the posts list and the user's post list.
+    // return update(ref(db), updates);
+
+    // const postData = {
+    //     playerName
+    // };
     const updates = {};
-    updates["/0/"+ "1"] = postData;
+    updates["/0/"+ "1/" + overTakenScore] = playerName;
   
     return update(ref(db), updates);
+
 }
 
 const playerScoreAnimation = () => {
