@@ -22,8 +22,6 @@ const dbRef = ref(getDatabase());
 get(child(dbRef, `/`)).then((snapshot) => {
   if (snapshot.exists()) {
       listArray = Object.values(snapshot.val());
-    //   Object.delete(listArray[0][0])
-      console.log(listArray)
       constructLeaderboard(listArray);
       isOffline = false;
   } else {
@@ -33,6 +31,7 @@ get(child(dbRef, `/`)).then((snapshot) => {
 }).catch((error) => {
   document.getElementsByClassName("error-message")[0].style.height = "100%";
   document.querySelector(".error-message h3").innerHTML = error.message;
+  console.log(error)
   isOffline = true;
 });
 
@@ -248,15 +247,17 @@ document.getElementById("start").addEventListener("click", () => {
 //     }, 10)
 // }    
 
-for (let i = 0; i < document.getElementsByClassName("sound").length; i++ ){
-    document.getElementsByClassName("sound")[i].addEventListener("mouseover", () => {
+for (let i = 0; i < document.getElementsByClassName("circle-sound").length; i++){
+    document.getElementsByClassName("circle-sound")[i].addEventListener("mouseover", () => {
         document.getElementsByClassName("circle-image")[i].src = "./images/circle slab hover.svg";
     })
     
-    document.getElementsByClassName("sound")[i].addEventListener("mouseout", () => {
+    document.getElementsByClassName("circle-sound")[i].addEventListener("mouseout", () => {
         document.getElementsByClassName("circle-image")[i].src = "./images/circle slab.svg";
     })
-    
+}
+
+for (let i = 0; i < document.getElementsByClassName("sound").length; i++ ){    
     document.getElementsByClassName("sound")[i].addEventListener("click", () => {
         if (LIMIT == 1){
             audioBackgroundMusic.play();
@@ -341,7 +342,20 @@ document.getElementById("ball2").addEventListener("click", () => {
 
 
 /*Game Logic and Mechanics*/
-let counts, timeds, countingDown, difficulty, count, time, popss, highScore, scoreArray, scorePosition, playerName, overTakenScore, playerScore;
+let counts, timeds, countingDown, difficulty, count, time, popss, highScore, scoreArray, scorePosition, playerName, alphabet, playerScore;
+let arrayOfScores, arrayOfNames;
+let newArrayOfNamesAndScores = {};
+let difficultySetting = document.getElementById("difficultysetting");
+let timeSetting = document.getElementById("timesetting");
+let easy1 = document.getElementById("easy");
+let medium1 = document.getElementById("medium");
+let hard1 = document.getElementById("hard");
+let thirty1 = document.getElementById("thirty");
+let sixty1 = document.getElementById("sixty");
+let onetwenty1 = document.getElementById("onetwenty");
+let twoforty1 = document.getElementById("twoforty");
+let oneeighty1 = document.getElementById("oneeighty");
+let ranking = document.getElementById("ranking");
 let isPaused = false, isStillCounting = true;
 let counter = 0, countdown = 3, score = 0;
 let isClicked = [false, false, false, false, false, false, false, false, false], isClicked2 = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
@@ -420,16 +434,6 @@ const popping = () => {
             break;
     }
 }
-
-let easy1 = document.getElementById("easy");
-let medium1 = document.getElementById("medium");
-let hard1 = document.getElementById("hard");
-let thirty1 = document.getElementById("thirty");
-let sixty1 = document.getElementById("sixty");
-let onetwenty1 = document.getElementById("onetwenty");
-let twoforty1 = document.getElementById("twoforty");
-let oneeighty1 = document.getElementById("oneeighty");
-
 
 const begin = () => {
     audioGameOver.muted = false;
@@ -768,9 +772,9 @@ const getScoreList = (v) => {
 }
 
 const isBigger = (scoreArray) => {
+    scoreArray.reverse();
     for (let i = 0; i < scoreArray.length; i++){
-        if (document.getElementById("counter").innerHTML <= scoreArray[i]){
-            overTakenScore = scoreArray[i];
+        if (parseFloat(document.getElementById("counter").innerHTML) >= parseFloat(scoreArray[i])){
             scorePosition = i;
             assignRanking(scorePosition);
             break;
@@ -781,13 +785,13 @@ const isBigger = (scoreArray) => {
 const assignRanking = (scorePosition) => {
     switch(scorePosition){
         case 0:
-            document.getElementById("ranking").textContent = "1st";
+            ranking.textContent = "1st";
             break;
         case 1:
-            document.getElementById("ranking").textContent = "2nd";
+            ranking.textContent = "2nd";
             break;
         case 2:
-            document.getElementById("ranking").textContent = "3rd";
+            ranking.textContent = "3rd";
             break;
         case 3:
         case 4:
@@ -796,30 +800,50 @@ const assignRanking = (scorePosition) => {
         case 7:
         case 8:
         case 9:
-            document.getElementById("ranking").textContent = `${scorePosition + 1}th`;
+            ranking.textContent = `${scorePosition + 1}th`;
             break;
     }
 }
 
-const insertScore = () => {
+const retrieveScoreAndNames = () => {
     playerScore = document.getElementById("counter").textContent; 
+    const dbRef = ref(getDatabase());
+    get(child(dbRef, '/' + counts + '/'+ alphabet)).then((snapshot) => {
+    if (snapshot.exists()) {
+        arrayOfNames = Object.values(snapshot.val());
+        arrayOfScores = Object.keys(snapshot.val());
+        insertScoreAndName();
+        createNewJSON();
+        updateDatabase();
+        updateUserTable();
+    }
+    }).catch((error) => {
+        console.log(error);
+    });
+}
+
+const insertScoreAndName = () => {
+    arrayOfNames.reverse();
+    arrayOfScores.reverse();
+    arrayOfScores.splice(scorePosition, 1, playerScore);
+    arrayOfNames.splice(scorePosition, 1, playerName);
+}
+
+const createNewJSON = () => {
+    for (let i = 0; i < arrayOfScores.length; i++) {
+        newArrayOfNamesAndScores[arrayOfScores[i]] = arrayOfNames[i];
+    }
+}
+
+const updateDatabase = () => {
     const db = getDatabase();
-    // const postData = {
-    //     listArray
-    // };
-    // const updates = {};
-    // updates["/0/"+ "1/"] = listArray[0];
-  
-    // return update(ref(db), updates);
-
-    // const postData = {
-    //     playerName
-    // };
     const updates = {};
-    updates["/0/"+ "1/" + overTakenScore] = playerName;
-  
+    updates['/' + counts + '/' + alphabet] = newArrayOfNamesAndScores;
     return update(ref(db), updates);
+}
 
+const updateUserTable = () => {
+    console.log("A work in progress")
 }
 
 const playerScoreAnimation = () => {
@@ -880,31 +904,36 @@ const menu = () => {
 const selection = () => {
     switch(counts){
         case 1:
-            document.getElementById("difficultysetting").innerHTML = "Easy";
+            difficultySetting.innerHTML = "Easy";
             break;
         case 2:
-            document.getElementById("difficultysetting").innerHTML = "Medium";
+            difficultySetting.innerHTML = "Medium";
             break;
         case 3:
-            document.getElementById("difficultysetting").innerHTML = "Hard";
+            difficultySetting.innerHTML = "Hard";
             break;
     }
 
     switch(count){
         case 1:
-            document.getElementById("timesetting").innerHTML = "30s";
+            timeSetting.innerHTML = "30s";
+            alphabet = "A";
             break;
         case 2:
-            document.getElementById("timesetting").innerHTML = "60s";
+            timeSetting.innerHTML = "60s";
+            alphabet = "B";
             break;
         case 3:
-            document.getElementById("timesetting").innerHTML = "120s";
+            timeSetting.innerHTML = "120s";
+            alphabet = "C";
             break;
         case 4:
-            document.getElementById("timesetting").innerHTML = "180s";
+            timeSetting.innerHTML = "180s";
+            alphabet = "D";
             break;
         case 5:
-            document.getElementById("timesetting").innerHTML = "240s";
+            timeSetting.innerHTML = "240s";
+            alphabet = "E";
             break;
     }
 }
@@ -944,5 +973,5 @@ document.getElementsByClassName("sure")[0].addEventListener("click", () => {
     document.getElementById("congratulations").style.display = "none";
     document.getElementsByClassName("congratulation-list")[0].style.left = "0%";
     playerName = document.getElementById("playername").value;
-    insertScore();
+    retrieveScoreAndNames();
 })
