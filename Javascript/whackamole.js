@@ -1,10 +1,14 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
 import { getDatabase, ref, get, update, child } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
 
 let listArray = [];
 let difficultyScores, difficultyNames, isOffline, difficultyScoreList, number, name, scores, b;
-let index = 0, n = 0;
+let index = 0, n = 0, numberOfDifficultyAndTimeDivs = 15, numberOfScoreAndNameDivs = 10, numberOfH1s = 3;
+let errorMessageDiv = document.querySelector(".error-message h3");
+let arrayOfLocationsFor30sTime = [1, 16, 31], arrayOfLocationsFor60sTime = [4, 19, 34], arrayOfLocationsFor120sTime = [7, 22, 37];
+let arrayOfLocationsFor180sTime = [10, 25, 40], arrayOfLocationsFor240sTime = [13, 28, 43]; // where the total number of H1 tags(b) is 45 and the H1 tag for time appears at every third tag
+let numberOfScorerAtEachDifficulty30s = [0, 50, 100], numberOfScorerAtEachDifficulty60s = [10, 60, 110], numberOfScorerAtEachDifficulty120s = [20, 70, 120];
+let numberOfScorerAtEachDifficulty180s = [30, 80, 130], numberOfScorerAtEachDifficulty240s = [40, 90, 140]; // where the total number scorer divs is 150
 
 const firebaseConfig = {
   apiKey: "AIzaSyBXSptTREJ4JvPwhmwX1JdYcYBhgOrIVn8",
@@ -25,81 +29,123 @@ get(child(dbRef, `/`)).then((snapshot) => {
       constructLeaderboard(listArray);
       isOffline = false;
   } else {
-      document.getElementsByClassName("error-message")[0].style.height = "100%";
-      document.querySelector(".error-message h3").textContent = "No data available";
+    displayErrorMessageOnTable();
   }
 }).catch((error) => {
-  document.getElementsByClassName("error-message")[0].style.height = "100%";
-  document.querySelector(".error-message h3").innerHTML = error.message;
-  console.log(error)
-  isOffline = true;
+    displayErrorMessageOnTable(error);
+    isOffline = true;
 });
 
+const displayErrorMessageOnTable = (error) => {
+    document.getElementsByClassName("error-message")[0].style.height = "100%";
+    if (!error){
+        errorMessageDiv.textContent = "No data available";
+    } else {
+        errorMessageDiv.textContent = error.message;
+    }
+}
 
 const constructLeaderboard = () => {
-  for (let b = 0; b < 15; b++){
-      let score = document.createElement("div");
-      score.className = "score";
-      document.getElementsByClassName("scorer-main")[0].appendChild(score);
-
-      for (let z = 0; z < 10; z++){
-          let scorer = document.createElement("div");
-          scorer.className = "scorer";
-          document.getElementsByClassName("score")[b].appendChild(scorer);
-      }
-
-      let title = document.createElement("div");
-      title.className = "title";
-      document.getElementsByClassName("titles-main")[0].appendChild(title);
-
-      for (let z = 0; z < 3; z++){
-          let titles = document.createElement("h1");
-          document.getElementsByClassName("title")[b].appendChild(titles);
-      }
+  for (let b = 0; b < numberOfDifficultyAndTimeDivs; b++){
+    createScoreAndNameParentDiv();
+    createScoreAndNameChildrenDivs(b);
+    createTitleParentDiv();
+    createTitleChildrenDivs(b);
   }
+  writeToAllTitleH1s();
+  createChildrenElementForEachScorerClass();
+  selectfirstLevelOfDatabase();
+}
 
-  for (let b = 0; b < document.querySelectorAll(".title h1").length; b++){
-      if (b % 3 == 0){
-          document.querySelectorAll(".title h1")[b].textContent = "High Scores";
-      } else if ((b % 3 == 2) && (Math.floor(b/3) < 5)){
-          document.querySelectorAll(".title h1")[b].textContent = "(Easy)";
-      } else if ((b % 3 == 2) && (((Math.floor(b/3) >= 5)) && ((Math.floor(b/3) < 10)))){  
-          document.querySelectorAll(".title h1")[b].textContent = "(Medium)";
-      } else if ((b % 3 == 2) && (((Math.floor(b/3) >= 10)) && ((Math.floor(b/3) < 15)))){
-          document.querySelectorAll(".title h1")[b].textContent = "(Hard)";
-      } else if (b == 1 || b == 16 || b == 31){
-          document.querySelectorAll(".title h1")[b].textContent = "30s";
-      } else if (b == 4 || b == 19 || b == 34) {
-          document.querySelectorAll(".title h1")[b].textContent = "60s";
-      } else if (b == 7 || b == 22 || b == 37) {
-          document.querySelectorAll(".title h1")[b].textContent = "120s";
-      } else if (b == 10 || b == 25 || b == 40) {
-          document.querySelectorAll(".title h1")[b].textContent = "180s";
-      } else if (b == 13 || b == 28 || b == 43) {
-          document.querySelectorAll(".title h1")[b].textContent = "240s";
-       }
-  }
+const createScoreAndNameParentDiv = () => {
+    let score = document.createElement("div");
+    score.className = "score";
+    document.getElementsByClassName("scorer-main")[0].appendChild(score);
+}
 
-  for (let a = 0; a < document.getElementsByClassName("scorer").length; a++){  
-      number =  document.createElement("h4");  
-      if (a % 10 == 0){
+const createScoreAndNameChildrenDivs = (b) => {
+    for (let z = 0; z < numberOfScoreAndNameDivs; z++){
+        let scorer = document.createElement("div");
+        scorer.className = "scorer";
+        document.getElementsByClassName("score")[b].appendChild(scorer);
+    }
+}
+
+const createTitleChildrenDivs = (b) => {
+    for (let z = 0; z < numberOfH1s; z++){
+        let titles = document.createElement("h1");
+        document.getElementsByClassName("title")[b].appendChild(titles);
+    }
+}
+
+const createTitleParentDiv = () => {
+    let title = document.createElement("div");
+    title.className = "title";
+    document.getElementsByClassName("titles-main")[0].appendChild(title);
+}
+
+const writeToAllTitleH1s = () => {
+    let titleH1 = document.querySelectorAll(".title h1");
+    for (let b = 0, length = document.querySelectorAll(".title h1").length; b < length; b++){
+        if (b % 3 == 0){
+            titleH1[b].textContent = "High Scores";
+        } else if ((b % 3 == 2) && (Math.floor(b/3) < 5)){
+            titleH1[b].textContent = "(Easy)";
+        } else if ((b % 3 == 2) && (((Math.floor(b/3) >= 5)) && ((Math.floor(b/3) < 10)))){  
+            titleH1[b].textContent = "(Medium)";
+        } else if ((b % 3 == 2) && (((Math.floor(b/3) >= 10)) && ((Math.floor(b/3) < 15)))){
+            titleH1[b].textContent = "(Hard)";
+        } else if (b == arrayOfLocationsFor30sTime[0] || b == arrayOfLocationsFor30sTime[1] || b == arrayOfLocationsFor30sTime[2]){
+            titleH1[b].textContent = "30s";
+        } else if (b == arrayOfLocationsFor60sTime[0] || b == arrayOfLocationsFor60sTime[1] || b == arrayOfLocationsFor60sTime[2]){
+            titleH1[b].textContent = "60s";
+        } else if (b == arrayOfLocationsFor120sTime[0] || b == arrayOfLocationsFor120sTime[1] || b == arrayOfLocationsFor120sTime[2]){
+            titleH1[b].textContent = "120s";
+        } else if (b == arrayOfLocationsFor180sTime[0] || b == arrayOfLocationsFor180sTime[1] || b == arrayOfLocationsFor180sTime[2]){
+            titleH1[b].textContent = "180s";
+        } else if (b == arrayOfLocationsFor240sTime[0] || b == arrayOfLocationsFor240sTime[1] || b == arrayOfLocationsFor240sTime[2]){
+            titleH1[b].textContent = "240s";
+         }
+    }
+}
+
+const createChildrenElementForEachScorerClass = () => {
+    for (let a = 0, length = document.getElementsByClassName("scorer").length; a < length; a++){  
+        number =  document.createElement("h4");  
+        indexNumberLimiter(a);
+        writeSerialNumberForEachScorerClass(a);
+        createPlayerNameDivs(a);
+        createPlayerScoreDivs(a)
+    }
+}
+
+const selectfirstLevelOfDatabase = () => {
+    for (let i = 0, length = listArray.length; i < length; i++) {
+        attachListToBoard(listArray[i])
+    }
+}
+
+const indexNumberLimiter = (a) => {
+    if (a % 10 == 0){
         index = 0; 
-      }
-      number.innerHTML = index + 1;
-      document.getElementsByClassName("scorer")[a].appendChild(number);
+    }
+}
 
-      name = document.createElement("h4");
-      name.className = "name";
-      document.getElementsByClassName("scorer")[a].appendChild(name);
+const writeSerialNumberForEachScorerClass = (a) => {
+    number.innerHTML = index + 1;
+    document.getElementsByClassName("scorer")[a].appendChild(number);
+}
 
-      scores = document.createElement("h5");
-      document.getElementsByClassName("scorer")[a].appendChild(scores);
-      index++;
-  }
+const createPlayerNameDivs = (a) => {
+    name = document.createElement("h4");
+    name.className = "name";
+    document.getElementsByClassName("scorer")[a].appendChild(name);
+}
 
-  for (let i = 0; i < listArray.length; i++){
-      attachListToBoard(listArray[i])
-  }
+const createPlayerScoreDivs = (a) => {
+    scores = document.createElement("h5");
+    document.getElementsByClassName("scorer")[a].appendChild(scores);
+    index++;
 }
 
 const attachListToBoard = (listArray) => {
@@ -108,86 +154,42 @@ const attachListToBoard = (listArray) => {
 }
 
 const overallSorting = (difficultyScoreList) => {
-    for (let i = 0; i < difficultyScoreList.length; i++){
+    for (let i = 0, length = difficultyScoreList.length; i < length; i++){
         switch (i){
             case 0:
-                scoreSorting(difficultyScoreList[i]);
-                nameSorting(difficultyScoreList[i]);
-                    for (let a = 0; a < difficultyScores.length; a++){
-                        if (n == 0){
-                            b = a;
-                        } else if (n == 1){
-                            b = a + 50;
-                        } else if (n == 2){
-                            b = a + 100;
-                        }
-                        document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
-                        document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
-                    }
+                insertScoreAndNameforTable(numberOfScorerAtEachDifficulty30s, i);
                 break;
             case 1:
-                scoreSorting(difficultyScoreList[i]);
-                nameSorting(difficultyScoreList[i]);
-                for (let a = 0; a < difficultyScores.length; a++){
-                    if (n == 0){
-                        b = a + 10;
-                    } else if (n == 1){
-                        b = a + 60;
-                    } else if (n == 2){
-                        b = a + 110;
-                    }
-                    document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
-                    document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
-                }
+                insertScoreAndNameforTable(numberOfScorerAtEachDifficulty60s, i);
                 break;
             case 2:
-                scoreSorting(difficultyScoreList[i]);
-                nameSorting(difficultyScoreList[i]);
-                for (let a = 0; a < difficultyScores.length; a++){
-                    if (n == 0){
-                        b = a + 20;
-                    } else if (n == 1){
-                        b = a + 70;
-                    } else if (n == 2){
-                        b = a + 120;
-                    }
-                    document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
-                    document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
-                }
+                insertScoreAndNameforTable(numberOfScorerAtEachDifficulty120s, i);
                 break;
             case 3:
-                scoreSorting(difficultyScoreList[i]);
-                nameSorting(difficultyScoreList[i]);
-                for (let a = 0; a < difficultyScores.length; a++){
-                    if (n == 0){
-                        b = a + 30;
-                    } else if (n == 1){
-                        b = a + 80;
-                    } else if (n == 2){
-                        b = a + 130;
-                    }
-                    document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
-                    document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
-                }
+                insertScoreAndNameforTable(numberOfScorerAtEachDifficulty180s, i);
                 break;
             case 4:
-                scoreSorting(difficultyScoreList[i]);
-                nameSorting(difficultyScoreList[i]);
-                for (let a = 0; a < difficultyScores.length; a++){
-                    if (n == 0){
-                        b = a + 40;
-                    } else if (n == 1){
-                        b = a + 90;
-                    } else if (n == 2){
-                        b = a + 140;
-                    }
-                    document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
-                    document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
-                }
+                insertScoreAndNameforTable(numberOfScorerAtEachDifficulty240s, i);
                 break;
         }
     }
     n++;
+}
+
+const insertScoreAndNameforTable = (c, i) => {
+    scoreSorting(difficultyScoreList[i]);
+    nameSorting(difficultyScoreList[i]);
+        for (let a = 0, length = difficultyScores.length; a < length; a++){
+            if (n == 0){
+                b = a + c[0];
+            } else if (n == 1){
+                b = a + c[1];
+            } else if (n == 2){
+                b = a + c[2];
+            }
+            document.querySelectorAll(".scorer h5")[b].textContent = difficultyScores[a];
+            document.getElementsByClassName("name")[b].textContent = difficultyNames[a];
+        }
 }
 
 const scoreSorting = (difficultyScoreList) => {
@@ -247,7 +249,7 @@ document.getElementById("start").addEventListener("click", () => {
 //     }, 10)
 // }    
 
-for (let i = 0; i < document.getElementsByClassName("circle-sound").length; i++){
+for (let i = 0, length = document.getElementsByClassName("circle-sound").length; i < length; i++){
     document.getElementsByClassName("circle-sound")[i].addEventListener("mouseover", () => {
         document.getElementsByClassName("circle-image")[i].src = "./images/circle slab hover.svg";
     })
@@ -257,7 +259,7 @@ for (let i = 0; i < document.getElementsByClassName("circle-sound").length; i++)
     })
 }
 
-for (let i = 0; i < document.getElementsByClassName("sound").length; i++ ){    
+for (let i = 0, length = document.getElementsByClassName("sound").length; i < length; i++ ){    
     document.getElementsByClassName("sound")[i].addEventListener("click", () => {
         if (LIMIT == 1){
             audioBackgroundMusic.play();
@@ -279,7 +281,7 @@ for (let i = 0; i < document.getElementsByClassName("sound").length; i++ ){
 }
 
 
-for (let i = 0; i < document.getElementsByClassName("click").length; i++){
+for (let i = 0, length = document.getElementsByClassName("click").length; i < length; i++){
     document.getElementsByClassName("click")[i].addEventListener("click", () => {
         audioClick.play();
     })
@@ -288,7 +290,7 @@ for (let i = 0; i < document.getElementsByClassName("click").length; i++){
 /*Sound Settings*/
 let positionOfBall = [22.5, 220.5]
 
-for(let i = 0; i < document.getElementsByClassName("reduce").length; i++){
+const increaseVolume = (i) => {
     document.getElementsByClassName("increase")[i].addEventListener("click", () => {
         if (positionOfBall[i] < 220.5){
             positionOfBall[i] = positionOfBall[i] + 22;
@@ -305,7 +307,9 @@ for(let i = 0; i < document.getElementsByClassName("reduce").length; i++){
             }
         }
     })
+}
 
+const reduceVolume = (i) => {
     document.getElementsByClassName("reduce")[i].addEventListener("click", () => {
         if (positionOfBall[i] > 22.5){
             positionOfBall[i] = positionOfBall[i] - 22;
@@ -322,6 +326,12 @@ for(let i = 0; i < document.getElementsByClassName("reduce").length; i++){
             }
         }
     })
+}
+
+
+for(let i = 0, length = document.getElementsByClassName("reduce").length; i < length; i++){
+    increaseVolume(i);
+    reduceVolume(i);
 }
 
 /*Sound Effects*/
@@ -377,7 +387,6 @@ for (let i = 0; i < 9; i++){
         } 
     })
 }
-
 
 const moles = (value) => {
     document.getElementsByClassName("mole")[value].classList.add("mole-popping");
@@ -663,7 +672,7 @@ const reset = () => {
     document.getElementById("countdown").textContent = "3";
     document.getElementById("timer").textContent = "0";
     document.getElementById("highscore").textContent = "0";
-    for(let i = 0; i < document.getElementsByClassName("g-option").length; i++){
+    for(let i = 0, length = document.getElementsByClassName("g-option").length; i < length; i++){
         document.getElementsByClassName("g-option")[i].classList.remove("fadein");
     }
     if (document.querySelector("#pause-container i").classList[1] == "fa-play"){
@@ -682,26 +691,50 @@ const gameOverAnimation = () => {
     setTimeout(()=>{
         document.getElementById("gameover").style.display = "flex";
     }, 200)
+    animationDelayForGameoverBody();
+}
+
+const animationDelayForGameoverBody = () => {
     setTimeout(()=>{
-        document.querySelector(".gameover h1").style.display = "flex";
-        document.getElementsByClassName("gameoverbuttons")[0].style.display = "flex";
-        document.querySelector(".gameover h1").classList.add("blinking");
-        setTimeout(()=>{
-            document.querySelector(".gameover h1").classList.remove("blinking");
-            document.getElementsByClassName("gameoverscore")[0].classList.add("fadein");
-            playerScoreAnimation();
-            setTimeout(()=>{
-                document.getElementsByClassName("gameoverhighscore")[0].classList.add("fadein");
-                highScoreAnimation();
-                setTimeout(()=>{
-                    document.getElementsByClassName("gameoverdifficulty")[0].classList.add("fadein");
-                    setTimeout(()=>{
-                        document.getElementsByClassName("gameovertime")[0].classList.add("fadein");
-                    }, 1000)
-                }, 1000)
-            }, 1000)
-        }, 1000)
+        animationForGameoverTitle();
+        animationDelayForPlayerScoreAndHighScore();
     }, 1500)
+}
+
+const animationForGameoverTitle = () => {
+    document.querySelector(".gameover h1").style.display = "flex";
+    document.getElementsByClassName("gameoverbuttons")[0].style.display = "flex";
+    document.querySelector(".gameover h1").classList.add("blinking");
+}
+
+const animationDelayForPlayerScoreAndHighScore = () => {
+    setTimeout(()=>{
+        document.querySelector(".gameover h1").classList.remove("blinking");
+        document.getElementsByClassName("gameoverscore")[0].classList.add("fadein");
+        playerScoreAnimation();
+        animationDelayForGameoverHighScoreDifficultyAndTime();
+    }, 1000)
+}
+
+const animationDelayForGameoverHighScoreDifficultyAndTime = () => {
+    setTimeout(()=>{
+        document.getElementsByClassName("gameoverhighscore")[0].classList.add("fadein");
+        highScoreAnimation();
+        animationDelayForGameoverDifficultyAndTime();
+    }, 1000)
+}
+
+const animationDelayForGameoverDifficultyAndTime = () => {
+    setTimeout(()=>{
+        document.getElementsByClassName("gameoverdifficulty")[0].classList.add("fadein");
+        animationDelayForGameoverTime();
+    }, 1000)
+}
+
+const animationDelayForGameoverTime = () => {
+    setTimeout(()=>{
+        document.getElementsByClassName("gameovertime")[0].classList.add("fadein");
+    }, 1000)
 }
 
 const gameOver = () => {
@@ -773,7 +806,7 @@ const getScoreList = (v) => {
 
 const isBigger = (scoreArray) => {
     scoreArray.reverse();
-    for (let i = 0; i < scoreArray.length; i++){
+    for (let i = 0, length = scoreArray.length; i < length; i++){
         if (parseFloat(document.getElementById("counter").innerHTML) >= parseFloat(scoreArray[i])){
             scorePosition = i;
             assignRanking(scorePosition);
@@ -830,7 +863,7 @@ const insertScoreAndName = () => {
 }
 
 const createNewJSON = () => {
-    for (let i = 0; i < arrayOfScores.length; i++) {
+    for (let i = 0, length = arrayOfScores.length; i < length; i++) {
         newArrayOfNamesAndScores[arrayOfScores[i]] = arrayOfNames[i];
     }
 }
@@ -843,7 +876,8 @@ const updateDatabase = () => {
 }
 
 const updateUserTable = () => {
-    console.log("A work in progress")
+    console.log(document.querySelectorAll(".score h4").length)
+    console.log(document.querySelectorAll(".scorer h4").length)
 }
 
 const playerScoreAnimation = () => {
@@ -896,7 +930,7 @@ const menu = () => {
     document.getElementById("instructions12").style.display = "flex";
     document.getElementById("game").style.display = "none";
 
-    for (let i = 0; i < document.getElementsByClassName("image").length; i++){
+    for (let i = 0, length = document.getElementsByClassName("image").length; i < length; i++){
         document.getElementsByClassName("image")[i].src = "./Images/normal slab.png";
     }
 }
