@@ -132,7 +132,7 @@ const indexNumberLimiter = (a) => {
 }
 
 const writeSerialNumberForEachScorerClass = (a) => {
-    number.innerHTML = index + 1;
+    number.textContent = index + 1;
     document.getElementsByClassName("scorer")[a].appendChild(number);
 }
 
@@ -366,9 +366,12 @@ let onetwenty1 = document.getElementById("onetwenty");
 let twoforty1 = document.getElementById("twoforty");
 let oneeighty1 = document.getElementById("oneeighty");
 let ranking = document.getElementById("ranking");
+let gameoverbuttons =  document.getElementsByClassName("gameoverbuttons")[0];
 let isPaused = false, isStillCounting = true;
 let counter = 0, countdown = 3, score = 0;
-let isClicked = [false, false, false, false, false, false, false, false, false], isClicked2 = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
+let isClicked = [false, false, false, false, false, false, false, false, false];
+let isClicked2 = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
+
 
 for (let i = 0; i < 9; i++){
     document.getElementsByClassName("mole")[i].addEventListener("click", () => {
@@ -462,13 +465,21 @@ const countDown = () => {
         document.getElementById("countdown").textContent = countdown;
         if (countdown == 0){
             clearInterval(countingDown);
-            setTimeout(()=>{
+            if (isPaused){
                 document.getElementById("delay").style.display = "none";
-                timeds = setInterval(timer, 1000);
-                popss = setInterval(popping, difficulty);
-            }, 1000)
+            } else {
+                startGame();
+            }
         }
     }, 300)
+}
+
+const startGame = () => {
+    setTimeout(()=>{
+        document.getElementById("delay").style.display = "none";
+        timeds = setInterval(timer, 1000);
+        popss = setInterval(popping, difficulty);
+    }, 1000)
 }
 
 const pause = () => {
@@ -476,9 +487,19 @@ const pause = () => {
         isPaused = true;
         document.querySelector("#pause-container i").classList.replace("fa-pause", "fa-play");
     } else if (document.querySelector("#pause-container i").classList[1] == "fa-play"){
-        isPaused = false;
         document.querySelector("#pause-container i").classList.replace("fa-play", "fa-pause");
+        displayCountdownForResume();
+        setTimeout(() => {
+            isPaused = false;
+        }, 3500);
     }
+}
+
+const displayCountdownForResume = () => {
+    document.getElementById("countdown").textContent = "3";
+    countdown = 3;
+    document.getElementById("delay").style.display = "flex";
+    countingDown = setInterval(countDown, 1000);
 }
 
 const selectHighScore = (listArray) => {
@@ -530,6 +551,10 @@ document.getElementById("begin").addEventListener("click", () => {
 
 document.getElementById("pause-container").addEventListener("click", () => {
     pause();
+})
+
+document.getElementById("stop-container").addEventListener("click", () => {
+    endGame();
 })
 
 document.getElementById("settings-container").addEventListener("click", () => {
@@ -687,6 +712,22 @@ const moleDieingSound = () => {
     audio1.play();
 }
 
+const gameOver = () => {
+    let counterDivValue = parseFloat(document.getElementById("counter").textContent);
+    if (counterDivValue > highScore){
+        audioVictory.play();
+        gameOverAnimation();
+        checkLeaderboard();
+        document.getElementById("second-score").textContent = counterDivValue;
+        setTimeout(() => {
+            document.getElementById("congratulations").style.display = "flex";
+        }, 7000);
+    } else {
+        audioGameOver.play();
+        gameOverAnimation();
+    } 
+}
+
 const gameOverAnimation = () => { 
     setTimeout(()=>{
         document.getElementById("gameover").style.display = "flex";
@@ -703,7 +744,6 @@ const animationDelayForGameoverBody = () => {
 
 const animationForGameoverTitle = () => {
     document.querySelector(".gameover h1").style.display = "flex";
-    document.getElementsByClassName("gameoverbuttons")[0].style.display = "flex";
     document.querySelector(".gameover h1").classList.add("blinking");
 }
 
@@ -734,22 +774,8 @@ const animationDelayForGameoverDifficultyAndTime = () => {
 const animationDelayForGameoverTime = () => {
     setTimeout(()=>{
         document.getElementsByClassName("gameovertime")[0].classList.add("fadein");
+        gameoverbuttons.style.display = "flex";
     }, 1000)
-}
-
-const gameOver = () => {
-    if (document.getElementById("counter").innerHTML < highScore || isOffline == true){
-        audioGameOver.play();
-        gameOverAnimation();
-    } else if (document.getElementById("counter").innerHTML > highScore){
-        audioVictory.play();
-        gameOverAnimation();
-        checkLeaderboard();
-        document.getElementById("second-score").innerHTML = document.getElementById("counter").innerHTML;
-        setTimeout(() => {
-            document.getElementById("congratulations").style.display = "flex";
-        }, 7000);
-    }
 }
 
 const timer = () => {
@@ -758,12 +784,16 @@ const timer = () => {
         time--;
     }
     if (time == 0) {
-        clearInterval(timeds);
-        clearInterval(popss);
-        selection();
-        gameOver();
+        endGame();
     }
 }
+
+const endGame = () => {
+    clearInterval(timeds);
+    clearInterval(popss);
+    selection();
+    gameOver();
+};
 
 const checkLeaderboard = () => {
     switch(counts){
@@ -805,9 +835,10 @@ const getScoreList = (v) => {
 }
 
 const isBigger = (scoreArray) => {
+    let counterValue = parseFloat(document.getElementById("counter").textContent);
     scoreArray.reverse();
     for (let i = 0, length = scoreArray.length; i < length; i++){
-        if (parseFloat(document.getElementById("counter").innerHTML) >= parseFloat(scoreArray[i])){
+        if (counterValue >= parseFloat(scoreArray[i])){
             scorePosition = i;
             assignRanking(scorePosition);
             break;
@@ -876,21 +907,45 @@ const updateDatabase = () => {
 }
 
 const updateUserTable = () => {
-    console.log(document.querySelectorAll(".score h4").length)
-    console.log(document.querySelectorAll(".scorer h4").length)
+    checkForNumberRange();
+}
+
+const checkForNumberRange = () => {
+    let baseValue;
+    switch(counts){
+        case 1:
+            baseValue = 0;
+            checkForNumberRangeWithTimeLimit(baseValue);
+            break;
+        case 2:
+            baseValue = 50;
+            checkForNumberRangeWithTimeLimit(baseValue);
+            break;
+        case 2:
+            baseValue = 100;
+            checkForNumberRangeWithTimeLimit(baseValue);
+            break;
+    }
+}
+
+const checkForNumberRangeWithTimeLimit = (baseValue) => {
+    let positionOfValueWithTimeLimit = 10*(count - 1) + baseValue + scorePosition;
+    document.getElementsByClassName("name")[positionOfValueWithTimeLimit].textContent = playerName;
+    document.querySelectorAll(".scorer h5")[positionOfValueWithTimeLimit].textContent = playerScore;
+
 }
 
 const playerScoreAnimation = () => {
     setTimeout(() => {
         // ondecoded();
         let playerInterval = setInterval(()=>{
-            if (score <= document.getElementById("counter").innerHTML){
+            if (score <= document.getElementById("counter").textContent){
                 document.getElementById("score").textContent = score;
                 score++;
-            } else if (score > document.getElementById("counter").innerHTML){
+            } else if (score > document.getElementById("counter").textContent){
                 score = 0;
                 clearInterval(playerInterval);
-                if (isStillCounting != false && highScore < document.getElementById("counter").innerHTML){
+                if (isStillCounting != false && highScore < document.getElementById("counter").textContent){
                     isStillCounting = false;
                 }
             }
@@ -910,7 +965,7 @@ const highScoreAnimation = () => {
                 } else if (score > highScore){
                     score = 0;
                     clearInterval(playerInterval);
-                    if (isStillCounting != false && highScore > document.getElementById("counter").innerHTML){
+                    if (isStillCounting != false && highScore > document.getElementById("counter").textContent){
                         isStillCounting = false;
                     }
                 }
@@ -938,38 +993,44 @@ const menu = () => {
 const selection = () => {
     switch(counts){
         case 1:
-            difficultySetting.innerHTML = "Easy";
+            difficultySetting.textContent = "Easy";
             break;
         case 2:
-            difficultySetting.innerHTML = "Medium";
+            difficultySetting.textContent = "Medium";
             break;
         case 3:
-            difficultySetting.innerHTML = "Hard";
+            difficultySetting.textContent = "Hard";
             break;
     }
 
     switch(count){
         case 1:
-            timeSetting.innerHTML = "30s";
+            timeSetting.textContent = "30s";
             alphabet = "A";
             break;
         case 2:
-            timeSetting.innerHTML = "60s";
+            timeSetting.textContent = "60s";
             alphabet = "B";
             break;
         case 3:
-            timeSetting.innerHTML = "120s";
+            timeSetting.textContent = "120s";
             alphabet = "C";
             break;
         case 4:
-            timeSetting.innerHTML = "180s";
+            timeSetting.textContent = "180s";
             alphabet = "D";
             break;
         case 5:
-            timeSetting.innerHTML = "240s";
+            timeSetting.textContent = "240s";
             alphabet = "E";
             break;
     }
+}
+
+const hideGameoverScreen = () => {
+    document.getElementById("gameover").style.display = "none";
+    gameoverbuttons.style.display = "none";
+    document.querySelector(".gameover h1").style.display = "none";
 }
 
 document.getElementById("menu-container").addEventListener("click", () => {
@@ -977,13 +1038,15 @@ document.getElementById("menu-container").addEventListener("click", () => {
 })
 
 document.getElementById("playagain").addEventListener("click", () => {
-    document.getElementById("gameover").style.display = "none";
+    hideGameoverScreen();
+    reset();
     switch(count){
         case 1:
             time = 30;
             break;
         case 2:
             time = 60;
+            break;
         case 3:
             time = 120;
             break;
@@ -994,18 +1057,18 @@ document.getElementById("playagain").addEventListener("click", () => {
             time = 240;
             break;
     }
-    reset();
     begin();
 })
 
 document.getElementById("menu").addEventListener("click", () => {
+    hideGameoverScreen();
     menu();
-    document.getElementById("gameover").style.display = "none";
 })
 
 document.getElementsByClassName("sure")[0].addEventListener("click", () => {
     document.getElementById("congratulations").style.display = "none";
     document.getElementsByClassName("congratulation-list")[0].style.left = "0%";
-    playerName = document.getElementById("playername").value;
+    let playerNameUnpurified = document.getElementById("playername").value;
+    playerName = DOMPurify.sanitize(playerNameUnpurified);
     retrieveScoreAndNames();
 })

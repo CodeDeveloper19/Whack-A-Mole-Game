@@ -1184,7 +1184,6 @@ button:hover{
     height: 50px;
     position: absolute;
     top: 500px;
-    display: flex;
     color: rgba(0, 0, 0, 0); 
 }
 
