@@ -1,3 +1,8 @@
+$(function()
+{
+	$('.scroll-pane').jScrollPane();
+});
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
 import { getDatabase, ref, get, update, child } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
 
@@ -224,30 +229,31 @@ document.getElementById("start").addEventListener("click", () => {
     }
 })
 
-// let aCtx = new AudioContext(); // here is the real audioBuffer to sound part
+const ondecoded = (buf) => {
+    retrieveAudioDecoder();
+    let source = aCtx.createBufferSource();
+    source.buffer = buf;
+    source.loop = true;
+    source.connect(aCtx.destination);
+    source.start(0);
+    let tempInterval = setInterval(()=>{
+        if (isStillCounting == false){
+            source.stop(0);
+            clearInterval(tempInterval);
+        }
+    }, 10)
+}    
 
-
-// let xhr = new XMLHttpRequest();
-// xhr.onload = function() {
-//   aCtx.decodeAudioData(this.response, ondecoded);
-// };
-// xhr.responseType = 'arraybuffer';
-// xhr.open('get', './Sound Effects/ES_Video Game Score Tally.mp3');
-// xhr.send();
-
-// const ondecoded = (buf) => {
-//     let source = aCtx.createBufferSource();
-//     source.buffer = buf;
-//     source.loop = true;
-//     source.connect(aCtx.destination);
-//     source.start(0);
-//     let tempInterval = setInterval(()=>{
-//         if (isStillCounting == false){
-//             source.stop(0);
-//             clearInterval(tempInterval);
-//         }
-//     }, 10)
-// }    
+const retrieveAudioDecoder = () => {
+    let aCtx = new AudioContext(); // here is the real audioBuffer to sound part
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        aCtx.decodeAudioData(this.response, ondecoded);
+        };
+    xhr.responseType = 'arraybuffer';
+    xhr.open('get', './Sound Effects/ES_Video Game Score Tally.mp3');
+    xhr.send();
+}
 
 for (let i = 0, length = document.getElementsByClassName("circle-sound").length; i < length; i++){
     document.getElementsByClassName("circle-sound")[i].addEventListener("mouseover", () => {
@@ -353,7 +359,7 @@ document.getElementById("ball2").addEventListener("click", () => {
 
 /*Game Logic and Mechanics*/
 let counts, timeds, countingDown, difficulty, count, time, popss, highScore, scoreArray, scorePosition, playerName, alphabet, playerScore;
-let arrayOfScores, arrayOfNames;
+let arrayOfScores, arrayOfNames, value, tempvalue;
 let newArrayOfNamesAndScores = {};
 let difficultySetting = document.getElementById("difficultysetting");
 let timeSetting = document.getElementById("timesetting");
@@ -383,7 +389,7 @@ for (let i = 0; i < 9; i++){
             document.getElementsByClassName("mole")[i].classList.remove("mole-popping");
             document.getElementsByClassName("x")[i].style.display = "flex";
             setTimeout(()=>{
-                document.getElementsByClassName("mole")[i].style.visibility = "hidden";
+                // document.getElementsByClassName("mole")[i].style.visibility = "hidden";
                 document.getElementsByClassName("x")[i].style.display = "none";
                 isClicked[i] = false;
             }, 300);
@@ -392,30 +398,34 @@ for (let i = 0; i < 9; i++){
 }
 
 const moles = (value) => {
+    let timeForPoppingAniamtionToEnd = 1500;
     document.getElementsByClassName("mole")[value].classList.add("mole-popping");
 
     if (isClicked[value] == false){
         setTimeout(()=>{
             document.getElementsByClassName("mole")[value].classList.remove("mole-popping");
-        }, 1500)
+        }, timeForPoppingAniamtionToEnd)
     }
 }
 
 
 const popping = () => {
-    let value, tempvalue;
     const arr = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     
     if (time > 0 && isPaused != true){
         tempvalue = arr[Math.floor(Math.random()*arr.length)];
-        if (tempvalue != value){
-            value = tempvalue;
-        } else {
+        if (tempvalue == value){
             tempvalue = arr[Math.floor(Math.random()*arr.length)];
             value = tempvalue;
+            checkTheValue(value);
+        } else {
+            value = tempvalue;
+            checkTheValue(value);
         }
     }
+}
 
+const checkTheValue = (value) => {
     switch (value){
         case 0:
             moles(value);
@@ -714,7 +724,7 @@ const moleDieingSound = () => {
 
 const gameOver = () => {
     let counterDivValue = parseFloat(document.getElementById("counter").textContent);
-    if (counterDivValue > highScore){
+    if (counterDivValue > highScore && !isOffline){
         audioVictory.play();
         gameOverAnimation();
         checkLeaderboard();

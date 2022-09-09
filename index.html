@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" href="/Images/favicon.ico" type="image/x-icon" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
-    <link href="http://buzinas.github.io/simple-scrollbar/simple-scrollbar.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jScrollPane/2.2.2/style/jquery.jscrollpane.min.css" integrity="sha512-qVGZo16kFUROlnuSNN+j0oxMYHIRBjpnsjXl6Iz/pNR9nTU9WISq5eGODr1Qn0Fz8lzZPxu9i4RVaeof8xVZRA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/CSS/whackamole.css">
     <link rel="stylesheet" href="/CSS/mediaqueries (introduction page).css">
 </head>
@@ -26,7 +26,7 @@
             </div>
             <div class="lower-part">
                 <div class="text">
-                    <div class="socialmedia">
+                    <div class="flex-row socialmedia">
                         <div class="linkedin">
                             <a target="_blank" href="https://www.linkedin.com/in/okoli-akachukwu-6b321b178/"><i class="fa-brands fa-linkedin"></i></a>
                         </div>
@@ -46,20 +46,20 @@
         <div class="instructions">
                 <div id="instructions-0">
                     <img src="/Images/board.png" alt="cartoon-board" class="board">
-                    <div class="h1-container">
-                        <div id="h1-main">
+                    <div class="position-absolute h1-container">
+                        <div id="h1-main" class="flex-row">
                             <h1>How To Play</h1>
                             <h1>How To Play</h1>
                             <h1>How To Play</h1>
                         </div>
                     </div>
-                    <div class="howtoplay-container">
-                        <div id="howtoplay-main">
+                    <div class="position-absolute howtoplay-container">
+                        <div id="howtoplay-main" class="flex-row">
                             <div class="howtoplay0">
-                                <div class="part1">
+                                <div class="flex-row part1">
                                     <div class="life-line-container part-image">
-                                        <div class="screen-container" id="life-line-dummy">
-                                            <div class="container-hearts">
+                                        <div class="position-absolute screen-container" id="life-line-dummy">
+                                            <div class="position-absolute container-hearts">
                                                 <img src="/Images/heart pixel art.png" alt="illustration of a pixelated heart">
                                                 <img src="/Images/heart pixel art.png" alt="illustration of a pixelated heart">
                                                 <img src="/Images/heart pixel art.png" alt="illustration of a pixelated heart">
@@ -67,7 +67,7 @@
                                             </div>
                                             <img src="/Images/screen.png" alt="illustration of a screen" class="life-line" id="life-line-image-dummy">
                                         </div>
-                                        <img src="/Images/icons8-heart-64.png" alt="illustration of a heart" class="life-heart" id="life-heart-dummy">
+                                        <img src="/Images/icons8-heart-64.png" alt="illustration of a heart" class="position-absolute life-heart" id="life-heart-dummy">
                                     </div>
                                     <div class="part-text">
                                         <h5>At the start, you are given four hearts. A heart is removed when you whack the wrong mole. Exhaust all hearts and the game ends.</h5>
@@ -75,8 +75,8 @@
                                 </div>
                                 <div class="part2">
                                     <div class="left part-image">
-                                        <div class="screen-container" id="t-container-dummy">
-                                            <h1 class="timer timer-dummy">120</h1>
+                                        <div class="position-absolute screen-container" id="t-container-dummy">
+                                            <h1 class="position-absolute timer timer-dummy">120</h1>
                                             <img src="/Images/screen.png" alt="illustration of a screen" class="screen">
                                         </div>
                                         <img src="/Images/stopwatch-16.svg" alt="illustration of a stopwatch" id="stopwatch-dummy" class="stopwatch">
@@ -87,13 +87,13 @@
                                 </div>
                             </div>
                             <div class="howtoplay0">
-                                <div class="part1">
+                                <div class="flex-row part1">
                                     <div class="counter-container part-image">
-                                        <div class="screen-container" id="c-container-dummy">
-                                            <h2 class="counter">0</h2>
+                                        <div class="position-absolute screen-container" id="c-container-dummy">
+                                            <h2 class="position-absolute counter">0</h2>
                                             <img src="/Images/screen.png" alt="illustration of a screen" class="screen">
                                         </div>
-                                        <img src="/Images/mole.png" alt="illustration of a mole" class="Mole" id="Mole-dummy">
+                                        <img src="/Images/mole.png" alt="illustration of a mole" class="position-absolute Mole" id="Mole-dummy">
                                     </div>
                                     <div class="part-text">
                                         <h5>This board shows your score. The type of mole you whack affects your score.</h5>
@@ -112,16 +112,16 @@
                                 </div>
                             </div>
                             <div class="howtoplay0">
-                                <div class="part1">
+                                <div class="flex-row part1">
                                 </div>
                                 <div class="part2">
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="instruction-navigation-container">
+                    <div class="position-absolute instruction-navigation-container">
                         <div id="instruction-navigation-list">
-                            <div class="instruction-navigation">
+                            <div class="flex-row instruction-navigation">
                                     <div class="sound adjust circle-sound"> 
                                         <img src="./Images/circle slab.svg" alt="circle slab" class="circle-image"> 
                                         <i class="fa-solid fa-volume-high"></i>
@@ -136,7 +136,7 @@
                                         <img src="/Images/green arrow.svg" alt="illustration of a front arrow" class="frontarrow">
                                     </div>
                             </div>
-                            <div class="instruction-navigation">
+                            <div class="flex-row instruction-navigation">
                                 <div class="sound adjust circle-sound"> 
                                     <img src="./Images/circle slab.svg" alt="circle slab" class="circle-image"> 
                                     <i class="fa-solid fa-volume-high"></i>
@@ -151,7 +151,7 @@
                                     <img src="/Images/green arrow.svg" alt="illustration of a front arrow" class="frontarrow">
                                 </div>
                             </div>
-                            <div class="instruction-navigation shift">
+                            <div class="flex-row instruction-navigation shift">
                                 <div class="sound circle-sound"> 
                                     <img src="./Images/circle slab.svg" alt="circle slab" class="circle-image"> 
                                     <i class="fa-solid fa-volume-high"></i>
@@ -171,12 +171,12 @@
                     </div>
                 </div>
                 <div id="instructions12">
-                    <h1>Settings</h1>
+                    <h1 class="position-absolute">Settings</h1>
                     <img src="/Images/board.png" alt="cartoon-board" class="board">
-                    <div class="howtoplay1">
+                    <div class="position-absolute howtoplay1">
                         <div class="difficulty">
                             <h2>Difficulty Level</h2>
-                            <div class="difficulties">
+                            <div class="flex-row difficulties">
                                 <div id="easy" class="button click">
                                     <img src="./Images/normal slab.png" alt="normal slab" class="image"> 
                                     <p>Easy</p>
@@ -194,7 +194,7 @@
 
                         <div class="timeduration">
                             <h2>Time Duration</h2>
-                            <div class="timedurations">
+                            <div class="flex-row timedurations">
                                 <div id="thirty" class="button click">
                                     <img src="./Images/normal slab.png" alt="normal slab" class="image"> 
                                     <p>30s</p>
@@ -218,7 +218,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="buttons2">
+                    <div class="flex-row position-absolute buttons2">
                         <div id="previous" class="button click">
                             <img src="./Images/normal slab.png" alt="normal slab" class="image"> 
                             <p>Previous</p>
@@ -240,12 +240,12 @@
         <section id="delay">
             <h1 id="countdown">3</h1>
         </section>
-        <div class="background-image-container-1"></div>
-        <div class="background-image-container-2">
+        <div class="position-absolute background-image-container-1"></div>
+        <div class="position-absolute background-image-container-2">
             <img src="./Images/test background 2.png" alt="" srcset="">
         </div>
 
-        <aside class="options">
+        <aside class="position-absolute options">
             <div id="sound-container" class="button2 click sound">
                 <img src="./Images/Stones[Converted]3.png" alt="illustration of a stone 1" class="image2">
                 <i class="fa-solid fa-volume-high"></i>
@@ -260,64 +260,64 @@
             </div>
         </aside>
 
-        <main id="main">
+        <main class="position-absolute" id="main">
             <div class="row1">
-                <img src="/Images/x.svg" alt="image of x" class="x" id="x1">
-                <img src="/Images/mole.png" id="mole1" class="mole" alt="image of a mole">
+                <img src="/Images/x.svg" alt="image of x" class="position-absolute x" id="x1">
+                <img src="/Images/mole.png" class="mole" alt="image of a mole">
                 <img src="/Images/hole3.png" class="hole" alt="image of a hole">
             </div>
 
             <div class="row2">
-                <img src="/Images/x.svg" alt="image of x" class="x" id="x2">
-                <img src="/Images/mole.png" id="mole2" class="mole" alt="image of a mole">
+                <img src="/Images/x.svg" alt="image of x" class="position-absolute x" id="x2">
+                <img src="/Images/mole.png" class="mole" alt="image of a mole">
                 <img src="/Images/hole3.png" class="hole" alt="image of a hole">
             </div>
 
             <div class="row3">
-                <img src="/Images/x.svg" alt="image of x" class="x" id="x3">
-                <img src="/Images/mole.png" id="mole3" class="mole" alt="image of a mole">
+                <img src="/Images/x.svg" alt="image of x" class="position-absolute x" id="x3">
+                <img src="/Images/mole.png" class="mole" alt="image of a mole">
                 <img src="/Images/hole3.png" class="hole" alt="image of a hole">
             </div>
 
             <div class="row4">
-                <img src="/Images/x.svg" alt="image of x" class="x" id="x4">
-                <img src="/Images/mole.png" id="mole4" class="mole" alt="image of a mole">
+                <img src="/Images/x.svg" alt="image of x" class="position-absolute x" id="x4">
+                <img src="/Images/mole.png" class="mole" alt="image of a mole">
                 <img src="/Images/hole3.png" class="hole" alt="image of a hole">
             </div>
 
             <div class="row5">
-                <img src="/Images/x.svg" alt="image of x" class="x" id="x5">
-                <img src="/Images/mole.png" id="mole5" class="mole" alt="image of a mole">
+                <img src="/Images/x.svg" alt="image of x" class="position-absolute x" id="x5">
+                <img src="/Images/mole.png" class="mole" alt="image of a mole">
                 <img src="/Images/hole3.png" class="hole" alt="image of a hole">
             </div>
 
             <div class="row6">
-                <img src="/Images/x.svg" alt="image of x" class="x" id="x6">
-                <img src="/Images/mole.png" id="mole6" class="mole" alt="image of a mole">
+                <img src="/Images/x.svg" alt="image of x" class="position-absolute x" id="x6">
+                <img src="/Images/mole.png" class="mole" alt="image of a mole">
                 <img src="/Images/hole3.png" class="hole" alt="image of a hole">
             </div>
 
             <div class="row7">
-                <img src="/Images/x.svg" alt="image of x" class="x" id="x7">
-                <img src="/Images/mole.png" id="mole7" class="mole" alt="image of a mole">
+                <img src="/Images/x.svg" alt="image of x" class="position-absolute x" id="x7">
+                <img src="/Images/mole.png" class="mole" alt="image of a mole">
                 <img src="/Images/hole3.png" class="hole" alt="image of a hole">
             </div>
 
             <div class="row8">
-                <img src="/Images/x.svg" alt="image of x" class="x" id="x8">
-                <img src="/Images/mole.png" id="mole8" class="mole" alt="image of a mole">
+                <img src="/Images/x.svg" alt="image of x" class="position-absolute x" id="x8">
+                <img src="/Images/mole.png" class="mole" alt="image of a mole">
                 <img src="/Images/hole3.png" class="hole" alt="image of a hole">
             </div>
 
             <div class="row9">
-                <img src="/Images/x.svg" alt="image of x" class="x" id="x9">
-                <img src="/Images/mole.png" id="mole9" class="mole" alt="image of a mole">
+                <img src="/Images/x.svg" alt="image of x" class="position-absolute x" id="x9">
+                <img src="/Images/mole.png" class="mole" alt="image of a mole">
                 <img src="/Images/hole3.png" class="hole" alt="image of a hole">
             </div>
 
         </main>
 
-        <footer class="bottom-controls">
+        <footer class="flex-row position-absolute bottom-controls">
             <div id="pause-container" class="button2 click">
                 <img src="./Images/Stones[Converted]4.png" alt="illustration of a stone 1" class="image2">
                 <i class="fa-solid fa-pause"></i>
@@ -332,46 +332,46 @@
             </div>
         </footer>
 
-        <aside id="blackboard-container">
+        <aside class="position-absolute" id="blackboard-container">
             <div class="blackboard">
                 <div class="writing-area">
                     <div class="error-message">
                         <h3></h3>
                     </div>
                     <div class="titles-container">
-                        <div class="titles-main">
+                        <div class="flex-row titles-main">
                         </div>
                     </div>
                     <div id="scorer-container">
-                        <div class="scorer-main">
+                        <div class="flex-row scorer-main">
                         </div>
                     </div>
-                    <div class="duster">
+                    <div class="position-absolute duster">
                         <div class="holder"></div>
                     </div>
-                    <div class="chalk"></div>
+                    <div class="position-absolute chalk"></div>
                 </div>
             </div>
-            <div class="blackboard-navigation">
+            <div class="flex-row blackboard-navigation">
                 <img src="./Images/left arrow.png" alt="illustration of left sign" id="move-left" class="button2 image2 click">
                 <img src="./Images/right arrow.png" alt="illustration of right sign" id="move-right" class="button2 image2 click">
             </div>
         </aside>
 
-        <section id="settings">
+        <section class="position-absolute" id="settings">
             <div class="settings">
                 <img src="/Images/board.png" alt="cartoon-board" class="board">
-                <h1>Settings</h1>
-                <div class="setting-container">
+                <h1 class="position-absolute">Settings</h1>
+                <div class="position-absolute setting-container">
                     <div class="score-board">
                         <h3>Score Board</h3>
-                        <div class="whole-switch">
+                        <div class="flex-row whole-switch">
                             <div class="off">
                                 <img src="./Images/off.svg" alt="illustraion of an 'off' text">
                             </div>
                             <div class="switch">
                                 <img src="/Images/switch.svg" alt="illustration of a switch" id="score-switch">
-                                <img src="/Images/on.png" alt="illustration of a green ball" id="ball1" class="ball click">
+                                <img src="/Images/on.png" alt="illustration of a green ball" id="ball1" class="position-absolute ball click">
                             </div>
                             <div class="on">
                                 <img src="./Images/on.svg" alt="illustraion of an 'on' text">
@@ -380,13 +380,13 @@
                     </div>
                     <div class="sound-effects">
                         <h3>Sound Effects</h3>
-                        <div class="whole-switch">
+                        <div class="flex-row whole-switch">
                             <div class="off">
                                 <img src="./Images/off.svg" alt="illustraion of an 'off' text">
                             </div>
                             <div class="switch">
                                 <img src="/Images/switch.svg" alt="illustration of a switch" id="sound-switch">
-                                <img src="/Images/on.png" alt="illustration of a green ball" id="ball2" class="ball click">
+                                <img src="/Images/on.png" alt="illustration of a green ball" id="ball2" class="position-absolute ball click">
                             </div>
                             <div class="on">
                                 <img src="./Images/on.svg" alt="illustraion of an 'on' text">
@@ -397,12 +397,12 @@
                         <div class="volume-title">
                             <h3>Music Volume</h3>
                         </div>
-                        <div class="volume">
+                        <div class="flex-row volume">
                             <div id="reduce-music" class="reduce">
                                 <img src="/Images/stone minus.svg" alt="illustration of a minus" class="reduce-image">
                             </div>
                             <div class="music-bar">
-                                <img src="/Images/circle slab.svg" alt="illustration of a circle slab" class="circle" id="circle1">
+                                <img src="/Images/circle slab.svg" alt="illustration of a circle slab" class="position-absolute circle" id="circle1">
                                 <div class="gauge"></div>
                             </div>
                             <div id="increase-music" class="increase">
@@ -414,12 +414,12 @@
                         <div class="volume-title">
                             <h3>Effect Volume</h3>
                         </div>
-                        <div class="volume">
+                        <div class="flex-row volume">
                             <div id="reduce-effect" class="reduce">
                                 <img src="/Images/stone minus.svg" alt="illustration of a minus" class="reduce-image">
                             </div>
                             <div class="music-bar">
-                                <img src="/Images/circle slab.svg" alt="illustration of a circle slab" class="circle" id="circle2">
+                                <img src="/Images/circle slab.svg" alt="illustration of a circle slab" class="position-absolute circle" id="circle2">
                                 <div class="gauge"></div>
                             </div>
                             <div id="increase-effect" class="increase">
@@ -437,11 +437,11 @@
                     <p>Okay</p>
                 </div>
             </div>
-            <div id="credits">
+            <div id="credits" class="position-absolute">
                 <div class="credits">
                     <img src="./Images/credits.png" alt="illustration of a board">
                     <h1>Credits</h1>
-                    <div class="credits-content" ss-container style="height: 60%; width: 70%; display: inline-block;">
+                    <div class="position-absolute credits-content" ss-container style="height: 60%; width: 70%; display: inline-block;">
                         <div class="credit">
                             <h2>Music</h2>
                             <h5>Funk Me Baby from <a href="https://www.joystock.org">Music by Joystock</a></h5>
@@ -493,25 +493,25 @@
             <div class="gameover">
                 <img src="/Images/credits.png" alt="cartoon-board" class="gameover">
                 <h1>Game Over</h1>
-                <div class="gameover-content">
-                    <div class="g-option gameoverscore">
+                <div class="position-absolute gameover-content">
+                    <div class="g-option gameoverscore flex-row">
                         <h3>Your Score:</h3>
                         <h3 id="score"></h3>
                     </div>
-                    <div class="g-option gameoverhighscore">
+                    <div class="g-option gameoverhighscore flex-row">
                         <h3>Highest Score:</h3>
                         <h3 id="highscore"></h3>
                     </div>
-                    <div class="g-option gameoverdifficulty">
+                    <div class="g-option gameoverdifficulty flex-row">
                         <h3>Difficulty:</h3>
                         <h3 id="difficultysetting"></h3>
                     </div>
-                    <div class="g-option gameovertime">
+                    <div class="g-option gameovertime flex-row">
                         <h3>Time:</h3>
                         <h3 id="timesetting"></h3>
                     </div>
                 </div>
-                <div class="gameoverbuttons">
+                <div class="flex-row position-absolute gameoverbuttons">
                     <div id="playagain" class="button click">
                         <img src="./Images/normal slab.png" alt="normal slab" class="image">
                         <p>Try Again</p>
@@ -525,13 +525,13 @@
         </section>
 
         <section id="congratulations">
-            <div class="congratulations">
-                <img src="/Images/board 2.png" alt="cartoon-board" class="board second-board">
+            <div class="flex-row congratulations">
+                <img src="/Images/board 2.png" alt="cartoon-board" class="position-absolute board second-board">
                 <div class="left-side">
                     <div class="trophy">
                         <img src="/Images/trophy.png" alt="illustration of a trophy" class="board">
                     </div>
-                    <div class="star-container">
+                    <div class="flex-row star-container">
                         <div class="star">
                             <img src="/Images/star_1.svg" alt="illustration of a star" class="board">
                         </div>
@@ -544,21 +544,21 @@
                     </div>
                 </div>
                 <div class="right-side">
-                    <div class="congratulation">
+                    <div class="flex-row position-absolute congratulation">
                         <h4>Your Score:</h4>
                         <h4 id="second-score">30</h4>
                     </div>
-                    <div class="congratulation">
+                    <div class="flex-row position-absolute congratulation">
                         <h4>Your Ranking:</h4>
                         <h4 id="ranking"></h4>
                     </div>
-                    <div class="congratulation">
-                        <div class="congratulation-list">
+                    <div class="flex-row position-absolute congratulation">
+                        <div class="flex-row congratulation-list">
                             <div class="congratulation-1">
                                 <h4>Congratulations, your score earned you a position on the leaderboard.</h4>
                                 <h4>Would you like your name to be added?</h4>
         
-                                <div class="confirm-buttons">
+                                <div class="flex-row confirm-buttons">
                                     <div class="yanah click button">
                                         <img src="/Images/normal slab.png" alt="normal slab" class="image board"> 
                                         <p>Yes</p>
@@ -571,7 +571,7 @@
                             </div>
                             <div class="congratulation-2">
                                 <h4>What would you want to be called?</h4>
-                                <div class="playerdetails">
+                                <div class="flex-row playerdetails">
                                     <input name="playername"  type="text" id="playername"> 
                                     <div class="sure click button">
                                         <img src="/Images/normal slab.png" alt="normal slab" class="image board"> 
@@ -585,18 +585,18 @@
             </div>
         </section>
 
-        <header id="timers">
+        <header id="timers" class="flex-row">
             <div class="left">
-                <div class="screen-container" id="t-container">
-                    <h1 id="timer" class="timer"></h1>
+                <div class="position-absolute screen-container" id="t-container">
+                    <h1 id="timer" class="position-absolute timer"></h1>
                     <img src="/Images/screen.png" alt="illustration of a screen" class="screen">
                 </div>
                 <img src="/Images/stopwatch-16.svg" alt="illustration of a stopwatch" class="stopwatch">
             </div>
-            <div class="right">
+            <div class="flex-row right">
                 <div class="life-line-container">
-                    <div class="screen-container" id="life-line">
-                        <div class="container-hearts">
+                    <div class="position-absolute screen-container" id="life-line">
+                        <div class="position-absolute container-hearts">
                             <img src="/Images/heart pixel art.png" alt="illustration of a pixelated heart">
                             <img src="/Images/heart pixel art.png" alt="illustration of a pixelated heart">
                             <img src="/Images/heart pixel art.png" alt="illustration of a pixelated heart">
@@ -604,21 +604,23 @@
                         </div>
                         <img src="/Images/screen.png" alt="illustration of a screen" class="life-line">
                     </div>
-                    <img src="/Images/icons8-heart-64.png" alt="illustration of a heart" class="life-heart">
+                    <img src="/Images/icons8-heart-64.png" alt="illustration of a heart" class="position-absolute life-heart">
                 </div>
                 <div class="counter-container">
-                    <div class="screen-container" id="c-container">
-                        <h2 class="counter" id="counter"></h2>
+                    <div class="position-absolute screen-container" id="c-container">
+                        <h2 class="position-absolute counter" id="counter"></h2>
                         <img src="/Images/screen.png" alt="illustration of a screen" class="screen">
                     </div>
-                    <img src="/Images/mole.png" alt="illustration of a mole" class="Mole">
+                    <img src="/Images/mole.png" alt="illustration of a mole" class="position-absolute Mole">
                 </div>
             </div>
         </header>
     </main>
 
     <script src="https://kit.fontawesome.com/c123ad8ef2.js" crossorigin="anonymous"></script>
-    <script src="http://buzinas.github.io/simple-scrollbar/simple-scrollbar.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jScrollPane/2.2.2/script/jquery.jscrollpane.min.js" integrity="sha512-EqofP+sBEn/OWcyAINAUnewpwC0e9zc0GvyiVeE3qeHYxqtdCcNocVBUiZhGWbPFWGTWxfJ60CcOK6HQ6G7uiw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js" integrity="sha512-rCjfoab9CVKOH/w/T6GbBxnAH5Azhy4+q1EXW5XEURefHbIkRbQ++ZR+GBClo3/d3q583X/gO4FKmOFuhkKrdA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js" integrity="sha512-/hVAZO5POxCKdZMSLefw30xEVwjm94PAV9ynjskGbIpBvHO9EBplEcdUlBdCKutpZsF+La8Ag4gNrG0gAOn3Ig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="module" src="/Javascript/whackamole.js"></script>
     <script src="/Javascript/other functionalities.js"></script>

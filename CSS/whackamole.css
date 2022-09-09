@@ -50,6 +50,15 @@
     }
 }
 
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.position-absolute{
+    position: absolute;
+}
+
 .life-line-container{
     position: relative;
     width: 230px;
@@ -61,14 +70,12 @@
 .screen-container{
     height: 39.35px;
     z-index: -2;
-    position: absolute;
     top: 50%;
     transform: translate(0, -50%);
 }
 
 .life-heart{
     z-index: 1.5;
-    position: absolute;
     width: 98px;
     height: 100%;
     right: 0px;
@@ -100,7 +107,6 @@
 .Mole{
     height: 100%;
     width: 80px;
-    position: absolute;
     right: 0;
 }
 
@@ -113,8 +119,6 @@
 }
 
 .buttons{
-    display: flex;
-    flex-direction: row;
     width: inherit;
     justify-content: center;
     margin-top: 20px;
@@ -222,8 +226,6 @@ button:hover{
 }
 
 .socialmedia{
-    display: flex;
-    flex-direction: row;
     justify-content: space-between;
     margin-top: 10px;
     width: fit-content;
@@ -273,7 +275,6 @@ button:hover{
 }
 
 .settings h1{
-    position: absolute;
     top: 80px;
     font-size: 35px
 }
@@ -303,7 +304,6 @@ button:hover{
 }
 
 .h1-container{
-    position: absolute;
     top: 75px;
     left: 34%;
     width: 270px;
@@ -312,8 +312,6 @@ button:hover{
 
 #h1-main{
     position: relative;
-    display: flex;
-    flex-direction: row;
     width: fit-content;
     left: 0;
     transition: left var(--transition-duration) linear;
@@ -328,7 +326,6 @@ button:hover{
 .instruction-navigation-container{
     width: 675px;
     height: 15%;
-    position: absolute;
     top: 73%;
     overflow: hidden;
 }
@@ -345,8 +342,6 @@ button:hover{
 }
 
 .instruction-navigation{
-    display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
     height: 100%;
@@ -377,15 +372,12 @@ button:hover{
     width: 75%;
     height: 48%;
     overflow-x: hidden;
-    position: absolute;
     top: 170px;
 }
 
 #howtoplay-main{
     width: fit-content;
     height: 100%;
-    display: flex;
-    flex-direction: row;
     position: relative;
     left: 0;
     transition: left var(--transition-duration) linear;
@@ -401,8 +393,6 @@ button:hover{
 }
 
 .part1{
-    display: flex;
-    flex-direction: row;
     height: 45%;
 }
 
@@ -517,7 +507,6 @@ button:hover{
 
 .howtoplay1{
     width: 80%;
-    position: absolute;
     top: 160px;
 }
 
@@ -528,10 +517,7 @@ button:hover{
 
 .buttons2{
     width: 350px;
-    position: absolute;
     top: 455px;
-    display: flex;
-    flex-direction: row;
     justify-content: space-between;
 }
 
@@ -550,8 +536,6 @@ button:hover{
 
 .timedurations, .difficulties{
     margin-top: 25px;
-    display: flex;
-    flex-direction: row;
     justify-content: space-between;
 }
 
@@ -609,7 +593,6 @@ button:hover{
 
 .setting-container{
     height: 30%;
-    position: absolute;
     top: 190px;
     width: 620px;
 }
@@ -665,7 +648,6 @@ button:hover{
 }
 
 .options{
-    position: absolute;
     top: 143px;
     left: 53px;
     width: 46px;
@@ -722,13 +704,10 @@ button:hover{
 .bottom-controls{
     width: fit-content;
     height: 48px;
-    position: absolute;
     bottom: 0;
     margin-bottom: 25px;
     left: 50%;
     transform: translate(-50%);
-    display: flex;
-    flex-direction: row;
     align-items: center;
 }
 
@@ -770,7 +749,6 @@ button:hover{
 }
 
 #blackboard-container{
-    position: absolute;
     height: fit-content;
     top: 22%;
     right: 59px;
@@ -823,8 +801,6 @@ button:hover{
 .titles-main, .scorer-main{
     position: relative;
     left: 0;
-    display: flex;
-    flex-direction: row;
     width: fit-content;
     transition: left var(--transition-duration) linear;
 }
@@ -875,7 +851,6 @@ button:hover{
 }
 
 .duster{
-    position: absolute;
     bottom: 0;
     right: 55px;
     width: 41px;
@@ -890,7 +865,6 @@ button:hover{
 }
 
 .chalk{
-    position: absolute;
     bottom: 0;
     right: 0;
     width: 45px;
@@ -902,8 +876,6 @@ button:hover{
 .blackboard-navigation{
     width: 100%;
     height: 30px;
-    display: flex;
-    flex-direction: row;
     justify-content: center;
 }
 
@@ -917,7 +889,6 @@ button:hover{
 }
 
 #main{
-    position: absolute;
     /* top: 45%; */
     top: 60%;
     left: 50%;
@@ -948,7 +919,6 @@ button:hover{
 }
 
 .x{
-    position: absolute;
     height: 50px;
     width: 50px;
     top: 30px;
@@ -984,8 +954,6 @@ button:hover{
 }
 
 #timers{
-    display: flex;
-    flex-direction: row;
     justify-content: space-between;
     height: 103px;
     width: 100%;
@@ -1020,15 +988,12 @@ button:hover{
 
 .right{
     width: 464px;
-    display: flex;
-    flex-direction: row;
     justify-content: space-between;
     margin-right: 25px;
     align-items: center;
 }
 
 .container-hearts{
-    position: absolute;
     z-index: 1;
     display: flex;
     justify-content: space-between;
@@ -1054,7 +1019,6 @@ button:hover{
 #settings{
     width: 100%;
     height: 100%;
-    position: absolute;
     z-index: 3;
     display: none;
 }
@@ -1072,7 +1036,6 @@ button:hover{
 }
 
 #credits{
-    position: absolute;
     z-index: 3;
     width: 100%;
     height: 100%;
@@ -1100,7 +1063,6 @@ button:hover{
 }
 
 .credits-content{
-    position: absolute;
     top: 150px;
 }
 
@@ -1165,7 +1127,6 @@ button:hover{
 }
 
 .gameover-content{
-    position: absolute;
     top: 200px;
     width: 330px;
     height: 250px;
@@ -1182,7 +1143,6 @@ button:hover{
     justify-content: space-between;
     width: 330px;
     height: 50px;
-    position: absolute;
     top: 500px;
     color: rgba(0, 0, 0, 0); 
 }
@@ -1211,8 +1171,6 @@ button:hover{
 }
 
 .g-option{
-    display: flex;
-    flex-direction: row;
     justify-content: space-between;
 }
 
@@ -1228,14 +1186,8 @@ button:hover{
     width: 750px;
     height: 500px;
     position: relative;
-    display: flex;
-    flex-direction: row;
     align-items: center;
     animation: menu-animation var(--animation-duration) linear;
-}
-
-.second-board{
-    position: absolute;
 }
 
 .left-side, .right-side{
@@ -1278,8 +1230,6 @@ button:hover{
     position: relative;
     top: 30%;
     left: 40%;
-    display: flex;
-    flex-direction: row;
     border-radius: 50%;
 }
 
@@ -1293,11 +1243,8 @@ button:hover{
 
 .congratulation{
     font-size: 20px;
-    display: flex;
-    flex-direction: row;
     justify-content: space-between;
     width: 30%;
-    position: absolute;
     left: 50%;
 }
 
@@ -1322,8 +1269,6 @@ button:hover{
 .congratulation-list{
     width: fit-content;
     height: 100%;
-    display: flex;
-    flex-direction: row;
     position: relative;
     transition: left var(--transition-duration) linear;
 }
@@ -1337,8 +1282,6 @@ button:hover{
 }
 
 .confirm-buttons{
-    display: flex;
-    flex-direction: row;
     justify-content: space-between;
     width: 50%;
 }
@@ -1361,8 +1304,6 @@ button:hover{
 
 .playerdetails{
     height: 65%;
-    display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
@@ -1417,15 +1358,12 @@ button:hover{
 
 .whole-switch{
     width: fit-content;
-    display: flex;
-    flex-direction: row;
     align-items: center;
 }
 
 .ball{
     max-width: 25px;
     max-height: 25px;
-    position: absolute;
     top: 50%;
     right: 15px;
     transform: translate(0, -50%);
@@ -1445,7 +1383,6 @@ button:hover{
 .circle{
     max-width: 25px;
     max-height: 25px;
-    position: absolute;
     left: 22.5px;
 }
 
@@ -1474,8 +1411,6 @@ button:hover{
 }
 
 .volume{
-    display: flex;
-    flex-direction: row;
     align-items: center;
     height: fit-content;
 }
@@ -1542,12 +1477,12 @@ button:hover{
     max-height: 25px;
 }
 
-.test{
+/* .test{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-}
+} */
 
 
 @keyframes menu-animation {
