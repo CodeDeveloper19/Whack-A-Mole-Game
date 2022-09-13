@@ -106,20 +106,35 @@
 /* Mediaqueries for the Instructions Screen*/
 
 @media screen and (max-width: 920px){
-    #instructions1, #instructions12{
+    #instructions-0{
         width: 600px;
         height: 400px;
     }
 
-    #instructions1 h1, #instructions12 h1{
+    #instructions-0 h1{
         top: 70px;
         font-size: 23px;
     }
 
-    .howtoplay{
-        top: 150px;
-        font-size: 11.2px;
-        width: 454px;
+    .howtoplay-container{
+        width: 70%;
+        height: 40%;
+        top: 130px;
+    }
+
+    .instruction-navigation-container{
+        height: 15%;
+        top: 340px;
+        left: 0;
+        width: 506px;
+    }
+
+    .instruction-navigation-container{
+        width: 506px;
+    }
+
+    .adjust{
+        left: -10%;
     }
 
     #next{
@@ -193,12 +208,12 @@
 }
 
 @media screen and (max-width: 700px){
-    #instructions1, #instructions12{
+    #instructions-0{
         width: 400px;
         height: 268px;
     }
 
-    #instructions1 h1, #instructions12 h1{
+    #instructions-0 h1{
         top: 60px;
         font-size: 15.6px;
     }
@@ -284,12 +299,12 @@
 }
 
 @media screen and (max-width: 500px){
-    #instructions1, #instructions12{
+    #instructions-0{
         width: 300px;
         height: 201px;
     }
 
-    #instructions1 h1, #instructions12 h1{
+    #instructions-0 h1{
         top: 55px;
         font-size: 11.7px;
     }
@@ -376,13 +391,13 @@
 }
 
 @media screen and (max-width: 400px){
-    #instructions1, #instructions12{
+    #instructions-0{
         width: 230px;
         height: 154px;
         padding: 0;
     }
 
-    #instructions1 h1, #instructions12 h1{
+    #instructions-0 h1{
         top: 10px;
         font-size: 8.9px;
     }

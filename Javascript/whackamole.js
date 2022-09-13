@@ -5,6 +5,7 @@ $(function()
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
 import { getDatabase, ref, get, update, child } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
+import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
 
 let listArray = [];
 let difficultyScores, difficultyNames, isOffline, difficultyScoreList, number, name, scores, b;
@@ -26,6 +27,12 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+
+const auth = getAuth();
+signInAnonymously(auth)
+  .catch((error) => {
+    console.log(error.message);
+  });
 
 const dbRef = ref(getDatabase());
 get(child(dbRef, `/`)).then((snapshot) => {
@@ -199,12 +206,12 @@ const insertScoreAndNameforTable = (c, i) => {
 
 const scoreSorting = (difficultyScoreList) => {
   difficultyScores = Object.keys(difficultyScoreList);
-  difficultyScores.reverse(); //Reaarranges the scores from back to front instead
+  difficultyScores.reverse();
 }
 
 const nameSorting = (difficultyScoreList) => {
   difficultyNames = Object.values(difficultyScoreList);
-  difficultyNames.reverse();  //Reaarranges the names from back to front instead
+  difficultyNames.reverse();
 }
 
 /*Sound System*/
@@ -271,19 +278,22 @@ for (let i = 0, length = document.getElementsByClassName("sound").length; i < le
             audioBackgroundMusic.play();
             LIMIT += 1;
         }
-    
-        if (icon[2].classList[1] == "fa-volume-xmark") {
-            for(let i = 2; i < 7; i++){
-                icon[i].classList.replace("fa-volume-xmark", "fa-volume-high");
-            }
-            audioBackgroundMusic.muted = false;
-        } else {
-            for(let i = 2; i < 7; i++){
-                icon[i].classList.replace("fa-volume-high", "fa-volume-xmark")
-            }
-            audioBackgroundMusic.muted = true;
-        }
+        swapSoundIcons();
     })
+}
+
+const swapSoundIcons = () => {
+    if (icon[2].classList[1] == "fa-volume-xmark") {
+        for(let i = 2; i < 7; i++){
+            icon[i].classList.replace("fa-volume-xmark", "fa-volume-high");
+        }
+        audioBackgroundMusic.muted = false;
+    } else {
+        for(let i = 2; i < 7; i++){
+            icon[i].classList.replace("fa-volume-high", "fa-volume-xmark")
+        }
+        audioBackgroundMusic.muted = true;
+    }
 }
 
 
@@ -613,90 +623,68 @@ document.getElementsByClassName("button")[i].addEventListener("mouseout", () => 
 easy1.addEventListener("click", () => {
     counts = 1;
     difficulty = 1000;
+    changeToSelectedState(counts);
+;})
+
+medium1.addEventListener("click", () => {
+    counts = 2;
+    difficulty = 750;
+    changeToSelectedState(counts);      
+})
+
+hard1.addEventListener("click", () => {
+    counts = 3;
+    difficulty = 350;
+    changeToSelectedState(counts); 
+})
+
+thirty1.addEventListener("click", () => {
+    count = 1;
+    time = 30;
+    changeToSelectedStateTime(count);
+})
+
+sixty1.addEventListener("click", () => {
+    count = 2;
+    time = 60;
+    changeToSelectedStateTime(count);    
+})
+
+onetwenty1.addEventListener("click", () => {
+    count = 3;
+    time = 120;
+    changeToSelectedStateTime(count);  
+})
+
+oneeighty1.addEventListener("click", () => {
+    count = 4;
+    time = 180;
+    changeToSelectedStateTime(count);    
+})
+
+twoforty1.addEventListener("click", () => {
+    count = 5;
+    time = 240;
+    changeToSelectedStateTime(count);
+})
+
+const changeToSelectedState = (counts) => {
     for(let i = 1; i < 4; i++){
         document.getElementsByClassName("image")[i].src = "./Images/normal slab.png"; 
         isClicked2[i] = false;
     }
     document.getElementsByClassName("image")[counts].src = "./Images/slab hover.png";
     isClicked2[counts] = true;
-})
+}
 
-medium1.addEventListener("click", () => {
-    counts = 2;
-    difficulty = 750;
-    for(let i = 1; i < 4; i++){
-        document.getElementsByClassName("image")[i].src = "./Images/normal slab.png"; 
-        isClicked2[i] = false;
-    }
-    document.getElementsByClassName("image")[counts].src = "./Images/slab hover.png";
-    isClicked2[counts] = true;      
-})
-
-hard1.addEventListener("click", () => {
-    counts = 3;
-    difficulty = 350;
-    for(let i = 1; i < 4; i++){
-        document.getElementsByClassName("image")[i].src = "./Images/normal slab.png"; 
-        isClicked2[i] = false;
-    }
-    document.getElementsByClassName("image")[counts].src = "./Images/slab hover.png";
-    isClicked2[counts] = true; 
-})
-
-thirty1.addEventListener("click", () => {
-    count = 1;
-    time = 30;
+const changeToSelectedStateTime = (count) => {
     for(let i = 4; i < 9; i++){
         document.getElementsByClassName("image")[i].src = "./Images/normal slab.png"; 
         isClicked2[i] = false;
     }
     document.getElementsByClassName("image")[count + 3].src = "./Images/slab hover.png";
     isClicked2[count + 3] = true; 
-})
-
-sixty1.addEventListener("click", () => {
-    count = 2;
-    time = 60;
-    for(let i = 4; i < 9; i++){
-        document.getElementsByClassName("image")[i].src = "./Images/normal slab.png"; 
-        isClicked2[i] = false;
-    }
-    document.getElementsByClassName("image")[count + 3].src = "./Images/slab hover.png";
-    isClicked2[count + 3] = true;     
-})
-
-onetwenty1.addEventListener("click", () => {
-    count = 3;
-    time = 120;
-    for(let i = 4; i < 9; i++){
-        document.getElementsByClassName("image")[i].src = "./Images/normal slab.png"; 
-        isClicked2[i] = false;
-    }
-    document.getElementsByClassName("image")[count + 3].src = "./Images/slab hover.png";
-    isClicked2[count + 3] = true;     
-})
-
-oneeighty1.addEventListener("click", () => {
-    count = 4;
-    time = 180;
-    for(let i = 4; i < 9; i++){
-        document.getElementsByClassName("image")[i].src = "./Images/normal slab.png"; 
-        isClicked2[i] = false;
-    }
-    document.getElementsByClassName("image")[count + 3].src = "./Images/slab hover.png";
-    isClicked2[count + 3] = true;     
-})
-
-twoforty1.addEventListener("click", () => {
-    count = 5;
-    time = 240;
-    for(let i = 4; i < 9; i++){
-        document.getElementsByClassName("image")[i].src = "./Images/normal slab.png"; 
-        isClicked2[i] = false;
-    }
-    document.getElementsByClassName("image")[count + 3].src = "./Images/slab hover.png";
-    isClicked2[count + 3] = true; 
-})
+}
 
 const reset = () => {
     counter = 0;
