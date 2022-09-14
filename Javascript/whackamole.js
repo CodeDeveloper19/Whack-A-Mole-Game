@@ -5,7 +5,7 @@ $(function()
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
 import { getDatabase, ref, get, update, child } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
-import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+import { getAuth, signInAnonymously} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
 
 let listArray = [];
 let difficultyScores, difficultyNames, isOffline, difficultyScoreList, number, name, scores, b;
@@ -30,23 +30,29 @@ const app = initializeApp(firebaseConfig);
 
 const auth = getAuth();
 signInAnonymously(auth)
-  .catch((error) => {
-    console.log(error.message);
-  });
+    .then(() => {
+        retrieveAndOutputDatabase();
+    })
+    .catch((error) => {
+        console.log(error.message);
+    });
 
-const dbRef = ref(getDatabase());
-get(child(dbRef, `/`)).then((snapshot) => {
-  if (snapshot.exists()) {
-      listArray = Object.values(snapshot.val());
-      constructLeaderboard(listArray);
-      isOffline = false;
-  } else {
-    displayErrorMessageOnTable();
-  }
-}).catch((error) => {
-    displayErrorMessageOnTable(error);
-    isOffline = true;
-});
+
+const retrieveAndOutputDatabase = () => {
+    const dbRef = ref(getDatabase());
+    get(child(dbRef, `/`)).then((snapshot) => {
+      if (snapshot.exists()) {
+          listArray = Object.values(snapshot.val());
+          constructLeaderboard(listArray);
+          isOffline = false;
+      } else {
+        displayErrorMessageOnTable();
+      }
+    }).catch((error) => {
+        displayErrorMessageOnTable(error);
+        isOffline = true;
+    });
+}
 
 const displayErrorMessageOnTable = (error) => {
     document.getElementsByClassName("error-message")[0].style.height = "100%";
